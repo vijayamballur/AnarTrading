@@ -202,7 +202,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jtableTimeSheet">
+        <Component class="javax.swing.JTable" name="jTable1">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="4">
@@ -255,9 +255,9 @@
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="cmbYear" min="-2" pref="182" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="txtAmount1" min="-2" pref="149" max="-2" attributes="0"/>
+                                          <Component id="txtDate" min="-2" pref="149" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jCalendarButton1" min="-2" pref="27" max="-2" attributes="0"/>
+                                          <Component id="btnDate" min="-2" pref="27" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -267,7 +267,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
-                          <Component id="cmbEmployeeName1" max="32767" attributes="0"/>
+                          <Component id="cmbPaidBy" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -294,8 +294,8 @@
                       <Component id="txtAmount" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                       <Component id="jLabel35" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel38" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtAmount1" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="jCalendarButton1" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="txtDate" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="btnDate" min="-2" pref="31" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -304,7 +304,7 @@
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="cmbEmployeeName1" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="cmbPaidBy" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                       <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
@@ -415,9 +415,9 @@
             <Property name="text" type="java.lang.String" value="Date"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtAmount1">
+        <Component class="javax.swing.JTextField" name="txtDate">
         </Component>
-        <Component class="net.sourceforge.jcalendarbutton.JCalendarButton" name="jCalendarButton1">
+        <Component class="net.sourceforge.jcalendarbutton.JCalendarButton" name="btnDate">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/images/Icons/calendar-icon.png"/>
@@ -440,14 +440,14 @@
             <Property name="text" type="java.lang.String" value="Paid By"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cmbEmployeeName1">
+        <Component class="javax.swing.JComboBox" name="cmbPaidBy">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbEmployeeName1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbPaidByActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtComment">

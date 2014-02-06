@@ -1,9 +1,15 @@
 
 import java.awt.Point;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -24,9 +30,69 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
         initComponents();
         setLocation(middle);
         cmbEmployeeName.setEditable(true);
+        cmbPaidBy.setEditable(true);
+        txtDate.setEditable(false);
+        txtDate.setText("1111-11-11");
+        cmbPaidBy.addItem("--select name--");
         AutoCompleteDecorator.decorate(cmbEmployeeName);
+        AutoCompleteDecorator.decorate(cmbPaidBy);
+        
         cmbEmployeeNameFill();
+        cmbPaidByFill();
+        viewDbEmployeeDetails();
+        btnDate.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+
+                @Override
+                public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                    if (evt.getNewValue() instanceof Date) {
+                        paymentDate((Date) evt.getNewValue());
+                    }
+                }
+            });
     }
+    public void viewDbEmployeeDetails()
+    {
+        connection c=new connection();
+        Connection con=c.conn();
+        try
+        {
+            Statement stmt=con.createStatement();
+            ResultSet rs=stmt.executeQuery("select advancePaymentId '"+"ID"+"',empName'"+"NAME"+"',pMonth '"+"MONTH"+"',pYear '"+"YEAR"+"',amount '"+"AMOUNT"+"',comments'"+"COMMENTS"+"',paidBy'"+"PAID BY"+"',paidDate '"+"DATE"+"' from tbl_advancepayment order by advancePaymentId desc");
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+            con.close();
+            jTable1.getColumnModel().getColumn(0).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(0).setWidth(0);
+            jTable1.setShowHorizontalLines( false );
+            jTable1.setRowSelectionAllowed( true );
+
+        }
+        catch(Exception e)
+        {
+
+        }
+    }
+    public void paymentDate(String dateString)
+    {
+		Date date = null;
+		try
+                {
+                    if ((dateString != null) && (dateString.length() > 0))
+                        date = dateFormat.parse(dateString);
+		}
+                catch (Exception e)
+                {
+                    date = null;
+		}
+                this.paymentDate(date);
+    }
+     public void paymentDate(Date date)
+     {
+        if (date != null)
+        dateString = dateFormat.format(date);
+        txtDate.setText(dateString);
+        btnDate.setTargetDate(date);
+     }
     public void cmbEmployeeNameFill() {
         try {
             connection c = new connection();
@@ -39,6 +105,60 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
             con.close();
         } catch (SQLException ex) {
             
+        }
+    }
+    public void cmbPaidByFill() {
+        try {
+            connection c = new connection();
+            Connection con = c.conn();
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT DISTINCT paidBy FROM tbl_advancepayment ORDER BY paidBy asc");
+            while (rs.next()) {
+                cmbPaidBy.addItem(rs.getString(1));
+            }
+            con.close();
+        } catch (SQLException ex) {
+            
+        }
+    }
+    public void ViewAdvancedPaymentForm()
+    {
+        AdvancePayment  advance=new AdvancePayment();
+        AnarTrading.desktopPane.add(advance);
+        advance.setVisible(true);
+        advance.show();
+    }
+    public void insertIntoDb()
+    {
+        connection c=new connection();
+        Connection con=c.conn();
+        try
+        {
+            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_advancepayment(empId,empName,pMonth,pYear,amount,comments,paidBy,paidDate) VALUES(?,?,?,?,?,?,?,?)");           
+            ps.setInt(1, empId);
+            ps.setString(2, cmbEmployeeName.getSelectedItem().toString());
+            ps.setString(3, cmbMonth.getSelectedItem().toString());
+            ps.setString(4, cmbYear.getSelectedItem().toString());
+            ps.setDouble(5, Double.parseDouble(txtAmount.getText()));
+            ps.setString(6, txtComment.getText());
+            ps.setString(7, cmbPaidBy.getSelectedItem().toString());
+            ps.setString(8, txtDate.getText());
+            int i=ps.executeUpdate();
+            if(i!=0)
+            {
+                PreparedStatement ps1=con.prepareStatement("INSERT INTO tbl_currentSite(empId,currentSite,fromDate,contractingCompany,basicSalary)SELECT MAX(empId),currentSite,todayDate,contractingCompany,basicSalary FROM tbl_labourdetails");
+                int j=ps1.executeUpdate();
+                if(j!=0)
+                {
+                    dispose();
+                    ViewAdvancedPaymentForm();
+                }
+            }
+            con.close();
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(rootPane,e+"Error SA001");
         }
     }
 
@@ -58,7 +178,7 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
         btnCancel = new javax.swing.JButton();
         btnRefresh = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtableTimeSheet = new javax.swing.JTable();
+        jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         lblEmployeeName = new javax.swing.JLabel();
         cmbEmployeeName = new javax.swing.JComboBox();
@@ -69,11 +189,11 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
         jLabel35 = new javax.swing.JLabel();
         txtAmount = new javax.swing.JTextField();
         jLabel38 = new javax.swing.JLabel();
-        txtAmount1 = new javax.swing.JTextField();
-        jCalendarButton1 = new net.sourceforge.jcalendarbutton.JCalendarButton();
+        txtDate = new javax.swing.JTextField();
+        btnDate = new net.sourceforge.jcalendarbutton.JCalendarButton();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
-        cmbEmployeeName1 = new javax.swing.JComboBox();
+        cmbPaidBy = new javax.swing.JComboBox();
         txtComment = new javax.swing.JTextField();
 
         setTitle("Advance Payment");
@@ -161,7 +281,7 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Time Sheet", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gabriola", 0, 18))); // NOI18N
 
-        jtableTimeSheet.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -172,7 +292,7 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jtableTimeSheet);
+        jScrollPane1.setViewportView(jTable1);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -222,7 +342,7 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
         jLabel38.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
         jLabel38.setText("Date");
 
-        jCalendarButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/calendar-icon.png"))); // NOI18N
+        btnDate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/calendar-icon.png"))); // NOI18N
 
         jLabel36.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
         jLabel36.setText("Comments");
@@ -230,9 +350,9 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
         jLabel37.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
         jLabel37.setText("Paid By");
 
-        cmbEmployeeName1.addActionListener(new java.awt.event.ActionListener() {
+        cmbPaidBy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbEmployeeName1ActionPerformed(evt);
+                cmbPaidByActionPerformed(evt);
             }
         });
 
@@ -264,14 +384,14 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(cmbYear, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(txtAmount1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jCalendarButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(btnDate, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(txtComment)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel37)
                         .addGap(98, 98, 98)
-                        .addComponent(cmbEmployeeName1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(cmbPaidBy, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -292,15 +412,15 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
                     .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel35)
                     .addComponent(jLabel38)
-                    .addComponent(txtAmount1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCalendarButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDate, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtComment, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel36))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbEmployeeName1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbPaidBy, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel37))
                 .addGap(57, 57, 57))
         );
@@ -358,11 +478,28 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
 
     private void cmbEmployeeNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEmployeeNameActionPerformed
         // TODO add your handling code here:
+        connection c=new connection();
+        Connection con=c.conn();
+        try
+        {
+            PreparedStatement ps=con.prepareStatement("SELECT empId FROM tbl_labourdetails WHERE empName=?");
+            ps.setString(1, cmbEmployeeName.getSelectedItem().toString());
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                 empId=rs.getInt(1);   
+            }
+        }
+        catch(Exception e)
+        {
+
+        }
 
     }//GEN-LAST:event_cmbEmployeeNameActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-
+         
+        insertIntoDb();
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
@@ -390,22 +527,22 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnRefreshActionPerformed
 
-    private void cmbEmployeeName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEmployeeName1ActionPerformed
+    private void cmbPaidByActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPaidByActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmbEmployeeName1ActionPerformed
+    }//GEN-LAST:event_cmbPaidByActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
+    private net.sourceforge.jcalendarbutton.JCalendarButton btnDate;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox cmbEmployeeName;
-    private javax.swing.JComboBox cmbEmployeeName1;
     private javax.swing.JComboBox cmbMonth;
+    private javax.swing.JComboBox cmbPaidBy;
     private javax.swing.JComboBox cmbYear;
-    private net.sourceforge.jcalendarbutton.JCalendarButton jCalendarButton1;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
@@ -415,11 +552,15 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jtableTimeSheet;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblEmployeeName;
     private javax.swing.JTextField txtAmount;
-    private javax.swing.JTextField txtAmount1;
     private javax.swing.JTextField txtComment;
+    private javax.swing.JTextField txtDate;
     // End of variables declaration//GEN-END:variables
     Point middle = new Point(100,0);
+    public static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    DateFormat defaultDate = new SimpleDateFormat("yyyy-MM-dd");
+    String dateString = "";
+    int empId;
 }
