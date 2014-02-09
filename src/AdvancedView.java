@@ -308,7 +308,7 @@ public final class AdvancedView extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         dispose();
         AnarTrading.btnAdvanced.setEnabled(true);
-        AnarTrading.menuItemAdvancedView.setEnabled(true);
+        AnarTrading.menuItemReceiptVoucher.setEnabled(true);
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateActionPerformed
