@@ -7,6 +7,7 @@ import java.math.RoundingMode;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -44,6 +45,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
         findHoliday();
         viewEmpDetails();
         viewDbEmployeeDetails();
+        advancedDeduction();
         setLocation(middle);
         btnUpdate.setEnabled(false);
         btnDelete.setEnabled(false);
@@ -261,6 +263,25 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
 
         }
     }
+     public void advancedDeduction() {
+        
+         try {
+            connection c = new connection();
+            Connection con = c.conn();
+            PreparedStatement ps=con.prepareStatement("SELECT SUM(amount) FROM tbl_advancepayment WHERE empId=? AND pMonth=? AND pYear=?");
+            ps.setInt(1, empId);
+            ps.setString(2, cmbMonth.getSelectedItem().toString());
+            ps.setString(3, cmbYear.getSelectedItem().toString());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) 
+            {
+                txtOtherDeduction.setText(Double.toString(rs.getDouble(1)));
+            }
+            con.close();
+        } catch (SQLException ex) {
+            
+        }
+    }
     public void fillTextFields(JTextField date,JTextField ot,JTextField normal,JTextField hot)
     {
         if(date.getBackground()!=Color.YELLOW && date.getBackground()!=Color.orange)
@@ -324,6 +345,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
         countLeave();
         ratePerHour();
         salaryCalculation();
+        
     }
     public void salaryCalculation()
     {
@@ -3381,6 +3403,8 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
           SetFriday();
           findHoliday();
+          advancedDeduction();
+          
           //fillEntireTextBox();
     }//GEN-LAST:event_cmbMonthItemStateChanged
 
@@ -3653,6 +3677,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
           SetFriday();
           findHoliday();
+          advancedDeduction();
           //fillEntireTextBox();
     }//GEN-LAST:event_cmbYearItemStateChanged
 
