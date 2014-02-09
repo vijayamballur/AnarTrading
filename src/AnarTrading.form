@@ -322,7 +322,7 @@
                   <Font name="Gabriola" size="18" style="0"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/Icons/billingIcon.png"/>
+                  <Image iconType="3" name="/images/Icons/serverBkpIcon.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Employee"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -343,7 +343,7 @@
                   <Dimension value="[71, 93]"/>
                 </Property>
                 <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/Icons/billingIcon1.png"/>
+                  <Image iconType="3" name="/images/Icons/serverBkpIcon1.png"/>
                 </Property>
                 <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/images/Icons/billingIcon1.png"/>
@@ -367,7 +367,7 @@
                   <Font name="Gabriola" size="18" style="0"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/Icons/purchaseIcon.png"/>
+                  <Image iconType="3" name="/images/Icons/serverBkpIcon.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Adavanced"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -385,7 +385,7 @@
                   <Dimension value="[71, 93]"/>
                 </Property>
                 <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/Icons/purchaseIcon1.png"/>
+                  <Image iconType="3" name="/images/Icons/serverBkpIcon1.png"/>
                 </Property>
                 <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/images/Icons/purchaseIcon1.png"/>
@@ -411,9 +411,9 @@
                   <Font name="Gabriola" size="18" style="0"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/Icons/SearchIcon.png"/>
+                  <Image iconType="3" name="/images/Icons/serverBkpIcon.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="3"/>
+                <Property name="text" type="java.lang.String" value="Receipt"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
                 </Property>
@@ -429,7 +429,7 @@
                   <Dimension value="[71, 93]"/>
                 </Property>
                 <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/Icons/SearchIcon1.png"/>
+                  <Image iconType="3" name="/images/Icons/serverBkpIcon1.png"/>
                 </Property>
                 <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/images/Icons/SearchIcon1.png"/>
@@ -444,7 +444,7 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="btnPaymentVoucher">
+            <Component class="javax.swing.JButton" name="btnPayment">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -453,9 +453,9 @@
                   <Font name="Gabriola" size="18" style="0"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/Icons/StockIcon.png"/>
+                  <Image iconType="3" name="/images/Icons/serverBkpIcon.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="4"/>
+                <Property name="text" type="java.lang.String" value="Payment"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
                 </Property>
@@ -471,7 +471,7 @@
                   <Dimension value="[71, 93]"/>
                 </Property>
                 <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/Icons/StockIcon1.png"/>
+                  <Image iconType="3" name="/images/Icons/serverBkpIcon1.png"/>
                 </Property>
                 <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/images/Icons/StockIcon1.png"/>
@@ -479,8 +479,8 @@
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnPaymentVoucherMouseEntered"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPaymentVoucherActionPerformed"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnPaymentMouseEntered"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPaymentActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>

@@ -593,7 +593,7 @@ public class paymentVoucher extends javax.swing.JInternalFrame {
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
         dispose();
-        AnarTrading.btnPaymentVoucher.setEnabled(true);
+        AnarTrading.btnPayment.setEnabled(true);
         AnarTrading.menuItemPaymentVoucher.setEnabled(true);
     }//GEN-LAST:event_btnCancelActionPerformed
 
@@ -715,7 +715,7 @@ public class paymentVoucher extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtTheSumOfQR;
     private javax.swing.JTextField txtpaidTo;
     // End of variables declaration//GEN-END:variables
-    Point middle = new Point(263,0);
+    Point middle = new Point(100,0);
     public static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     DateFormat defaultDate = new SimpleDateFormat("yyyy-MM-dd");
     String dateString = "";

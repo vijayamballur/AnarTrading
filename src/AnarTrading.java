@@ -40,7 +40,7 @@ public class AnarTrading extends javax.swing.JFrame {
         btnEmployee = new javax.swing.JButton();
         btnAdvanced = new javax.swing.JButton();
         btnReceiptVoucher = new javax.swing.JButton();
-        btnPaymentVoucher = new javax.swing.JButton();
+        btnPayment = new javax.swing.JButton();
         btnStudent = new javax.swing.JButton();
         btnExcel = new javax.swing.JButton();
         btnServerBkp = new javax.swing.JButton();
@@ -93,7 +93,7 @@ public class AnarTrading extends javax.swing.JFrame {
 
         btnEmployee.setBackground(new java.awt.Color(255, 255, 255));
         btnEmployee.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
-        btnEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/billingIcon.png"))); // NOI18N
+        btnEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/serverBkpIcon.png"))); // NOI18N
         btnEmployee.setText("Employee");
         btnEmployee.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEmployee.setFocusable(false);
@@ -102,7 +102,7 @@ public class AnarTrading extends javax.swing.JFrame {
         btnEmployee.setMaximumSize(new java.awt.Dimension(90, 93));
         btnEmployee.setMinimumSize(new java.awt.Dimension(71, 93));
         btnEmployee.setPreferredSize(new java.awt.Dimension(71, 93));
-        btnEmployee.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/billingIcon1.png"))); // NOI18N
+        btnEmployee.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/serverBkpIcon1.png"))); // NOI18N
         btnEmployee.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/billingIcon1.png"))); // NOI18N
         btnEmployee.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnEmployee.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -119,7 +119,7 @@ public class AnarTrading extends javax.swing.JFrame {
 
         btnAdvanced.setBackground(new java.awt.Color(255, 255, 255));
         btnAdvanced.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
-        btnAdvanced.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/purchaseIcon.png"))); // NOI18N
+        btnAdvanced.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/serverBkpIcon.png"))); // NOI18N
         btnAdvanced.setText("Adavanced");
         btnAdvanced.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAdvanced.setFocusable(false);
@@ -127,7 +127,7 @@ public class AnarTrading extends javax.swing.JFrame {
         btnAdvanced.setMargin(new java.awt.Insets(2, 5, 0, 5));
         btnAdvanced.setMaximumSize(new java.awt.Dimension(90, 93));
         btnAdvanced.setMinimumSize(new java.awt.Dimension(71, 93));
-        btnAdvanced.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/purchaseIcon1.png"))); // NOI18N
+        btnAdvanced.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/serverBkpIcon1.png"))); // NOI18N
         btnAdvanced.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/purchaseIcon1.png"))); // NOI18N
         btnAdvanced.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnAdvanced.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -150,15 +150,15 @@ public class AnarTrading extends javax.swing.JFrame {
 
         btnReceiptVoucher.setBackground(new java.awt.Color(255, 255, 255));
         btnReceiptVoucher.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
-        btnReceiptVoucher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/SearchIcon.png"))); // NOI18N
-        btnReceiptVoucher.setText("3");
+        btnReceiptVoucher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/serverBkpIcon.png"))); // NOI18N
+        btnReceiptVoucher.setText("Receipt");
         btnReceiptVoucher.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnReceiptVoucher.setFocusable(false);
         btnReceiptVoucher.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnReceiptVoucher.setMargin(new java.awt.Insets(2, 5, 0, 5));
         btnReceiptVoucher.setMaximumSize(new java.awt.Dimension(90, 93));
         btnReceiptVoucher.setMinimumSize(new java.awt.Dimension(71, 93));
-        btnReceiptVoucher.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/SearchIcon1.png"))); // NOI18N
+        btnReceiptVoucher.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/serverBkpIcon1.png"))); // NOI18N
         btnReceiptVoucher.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/SearchIcon1.png"))); // NOI18N
         btnReceiptVoucher.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnReceiptVoucher.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -173,30 +173,30 @@ public class AnarTrading extends javax.swing.JFrame {
         });
         jToolBar1.add(btnReceiptVoucher);
 
-        btnPaymentVoucher.setBackground(new java.awt.Color(255, 255, 255));
-        btnPaymentVoucher.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
-        btnPaymentVoucher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/StockIcon.png"))); // NOI18N
-        btnPaymentVoucher.setText("4");
-        btnPaymentVoucher.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnPaymentVoucher.setFocusable(false);
-        btnPaymentVoucher.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnPaymentVoucher.setMargin(new java.awt.Insets(2, 5, 0, 5));
-        btnPaymentVoucher.setMaximumSize(new java.awt.Dimension(90, 93));
-        btnPaymentVoucher.setMinimumSize(new java.awt.Dimension(71, 93));
-        btnPaymentVoucher.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/StockIcon1.png"))); // NOI18N
-        btnPaymentVoucher.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/StockIcon1.png"))); // NOI18N
-        btnPaymentVoucher.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnPaymentVoucher.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnPayment.setBackground(new java.awt.Color(255, 255, 255));
+        btnPayment.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnPayment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/serverBkpIcon.png"))); // NOI18N
+        btnPayment.setText("Payment");
+        btnPayment.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPayment.setFocusable(false);
+        btnPayment.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPayment.setMargin(new java.awt.Insets(2, 5, 0, 5));
+        btnPayment.setMaximumSize(new java.awt.Dimension(90, 93));
+        btnPayment.setMinimumSize(new java.awt.Dimension(71, 93));
+        btnPayment.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/serverBkpIcon1.png"))); // NOI18N
+        btnPayment.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/StockIcon1.png"))); // NOI18N
+        btnPayment.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnPayment.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnPaymentVoucherMouseEntered(evt);
+                btnPaymentMouseEntered(evt);
             }
         });
-        btnPaymentVoucher.addActionListener(new java.awt.event.ActionListener() {
+        btnPayment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPaymentVoucherActionPerformed(evt);
+                btnPaymentActionPerformed(evt);
             }
         });
-        jToolBar1.add(btnPaymentVoucher);
+        jToolBar1.add(btnPayment);
 
         btnStudent.setBackground(new java.awt.Color(255, 255, 255));
         btnStudent.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
@@ -537,9 +537,9 @@ public class AnarTrading extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnEmployeeMouseEntered
 
-    private void btnPaymentVoucherMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPaymentVoucherMouseEntered
+    private void btnPaymentMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPaymentMouseEntered
 
-    }//GEN-LAST:event_btnPaymentVoucherMouseEntered
+    }//GEN-LAST:event_btnPaymentMouseEntered
 
     private void btnStudentMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStudentMouseEntered
 
@@ -634,14 +634,14 @@ public class AnarTrading extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_menuMouseClicked
 
-    private void btnPaymentVoucherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaymentVoucherActionPerformed
+    private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaymentActionPerformed
         // TODO add your handling code here:
         paymentVoucher PV = new paymentVoucher();
         AnarTrading.desktopPane.add(PV);
         PV.setVisible(true);
-        AnarTrading.btnPaymentVoucher.setEnabled(false);
+        AnarTrading.btnPayment.setEnabled(false);
         AnarTrading.menuItemPaymentVoucher.setEnabled(false);
-    }//GEN-LAST:event_btnPaymentVoucherActionPerformed
+    }//GEN-LAST:event_btnPaymentActionPerformed
 
     private void btnEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeeActionPerformed
          //TODO add your handling code here:
@@ -721,7 +721,7 @@ public class AnarTrading extends javax.swing.JFrame {
         paymentVoucher PV = new paymentVoucher();
         AnarTrading.desktopPane.add(PV);
         PV.setVisible(true);
-        AnarTrading.btnPaymentVoucher.setEnabled(false);
+        AnarTrading.btnPayment.setEnabled(false);
         AnarTrading.menuItemPaymentVoucher.setEnabled(false);
     }//GEN-LAST:event_menuItemPaymentVoucherActionPerformed
 
@@ -775,7 +775,7 @@ public class AnarTrading extends javax.swing.JFrame {
     public static javax.swing.JButton btnAdvanced;
     public static javax.swing.JButton btnEmployee;
     private javax.swing.JButton btnExcel;
-    public static javax.swing.JButton btnPaymentVoucher;
+    public static javax.swing.JButton btnPayment;
     public static javax.swing.JButton btnReceiptVoucher;
     private javax.swing.JButton btnServerBkp;
     public static javax.swing.JButton btnStudent;
