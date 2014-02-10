@@ -158,7 +158,7 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
         Connection con=c.conn();
         try
         {
-            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_advancepayment(empId,empName,pMonth,pYear,amount,comments,paidBy,paidDate) VALUES(?,upper(?),upper(?),?,?,upper(?),upper(?),?)");           
+            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_advancepayment(empId,empName,pMonth,pYear,amount,comments,paidBy,paidDate) VALUES(?,upper(?),?,?,?,upper(?),upper(?),?)");           
             ps.setInt(1, empId);
             ps.setString(2, cmbEmployeeName.getSelectedItem().toString());
             ps.setString(3, cmbMonth.getSelectedItem().toString());
@@ -187,7 +187,7 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
         Connection con=c.conn();
         try
         {
-            PreparedStatement ps=con.prepareStatement("UPDATE tbl_advancepayment SET empId=?,empName=upper(?),pMonth=upper(?),pYear=?,amount=?,comments=upper(?),paidBy=upper(?),paidDate=? where advancePaymentId=?");
+            PreparedStatement ps=con.prepareStatement("UPDATE tbl_advancepayment SET empId=?,empName=upper(?),pMonth=?,pYear=?,amount=?,comments=upper(?),paidBy=upper(?),paidDate=? where advancePaymentId=?");
             ps.setInt(1,empId);
             ps.setString(2,cmbEmployeeName.getSelectedItem().toString());
             ps.setString(3,cmbMonth.getSelectedItem().toString());
@@ -244,7 +244,7 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
         jLabel37 = new javax.swing.JLabel();
         cmbPaidBy = new javax.swing.JComboBox();
         txtComment = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        lblSearch = new javax.swing.JLabel();
 
         setTitle("Advance Payment");
 
@@ -410,10 +410,15 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 51, 255));
-        jLabel1.setText("Search>>");
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblSearch.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        lblSearch.setForeground(new java.awt.Color(255, 51, 255));
+        lblSearch.setText("Search>>");
+        lblSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblSearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSearchMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -453,7 +458,7 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
                         .addComponent(cmbPaidBy, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel1)))
+                        .addComponent(lblSearch)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -485,7 +490,7 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
                     .addComponent(cmbPaidBy, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel37))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
+                .addComponent(lblSearch)
                 .addGap(25, 25, 25))
         );
 
@@ -596,6 +601,14 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbPaidByActionPerformed
 
+    private void lblSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSearchMouseClicked
+        // TODO add your handling code here:
+        AdvancedPaymentSearch advPaySearch = new AdvancedPaymentSearch();
+        AnarTrading.desktopPane.add(advPaySearch);
+        advPaySearch.setVisible(true);
+        advPaySearch.show();  
+    }//GEN-LAST:event_lblSearchMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
@@ -608,7 +621,6 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox cmbMonth;
     private javax.swing.JComboBox cmbPaidBy;
     private javax.swing.JComboBox cmbYear;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
@@ -620,6 +632,7 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblEmployeeName;
+    private javax.swing.JLabel lblSearch;
     private javax.swing.JTextField txtAmount;
     private javax.swing.JTextField txtComment;
     private javax.swing.JTextField txtDate;
