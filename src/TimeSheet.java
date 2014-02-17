@@ -73,6 +73,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             txtNetAmount.setText("0.0");
             
             int rowNo=jtableTimeSheet.getSelectedRow();
+            timeSheetId=Integer.parseInt(jtableTimeSheet.getValueAt(rowNo,0).toString());
             cmbMonth.setSelectedItem(jtableTimeSheet.getValueAt(rowNo,2).toString());
             cmbYear.setSelectedItem(jtableTimeSheet.getValueAt(rowNo,3).toString());
             txtDate1.setText(jtableTimeSheet.getValueAt(rowNo,4).toString());
@@ -349,8 +350,8 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
     }
     public void salaryCalculation()
     {
-        double totalAddition=round(Double.parseDouble(txtFoodAddition.getText())+Double.parseDouble(txtDues.getText())+Double.parseDouble(txtBonus.getText())+Double.parseDouble(txtOtherAddition.getText()),2);
-        double totalDeduction=round(Double.parseDouble(txtAbsentDeduction.getText())+Double.parseDouble(txtAdvanceDeduction.getText())+Double.parseDouble(txtFoodDeduction.getText())+Double.parseDouble(txtOtherDeduction.getText()),2);
+        double totalAddition=Math.round(Double.parseDouble(txtFoodAddition.getText())+Double.parseDouble(txtDues.getText())+Double.parseDouble(txtBonus.getText())+Double.parseDouble(txtOtherAddition.getText()));
+        double totalDeduction=Math.round(Double.parseDouble(txtAbsentDeduction.getText())+Double.parseDouble(txtAdvanceDeduction.getText())+Double.parseDouble(txtFoodDeduction.getText())+Double.parseDouble(txtOtherDeduction.getText()));
         double grossAmount=Double.parseDouble(txtGrossAmount.getText());
         txtTotalAddition.setText(Double.toString(totalAddition));
         txtTotalDeduction.setText(Double.toString(totalDeduction));
@@ -1159,6 +1160,85 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             ps.executeUpdate();
             con.close();
             dispose();
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(rootPane,e+"Error SA001");
+            System.out.println(e);
+        }
+    }
+     public void updateDb()
+    {
+        connection c=new connection();
+        Connection con=c.conn();
+        try
+        {
+            PreparedStatement ps=con.prepareStatement("update tbl_timesheet set timeSheetMonth=?,timeSheetYear=?,f1=?,f2=?,f3=?,f4=?,f5=?,f6=?,f7=?,f8=?,f9=?,f10=?,f11=?,f12=?,f13=?,f14=?,f15=?,f16=?,f17=?,f18=?,f19=?,f20=?,f21=?,f22=?,f23=?,f24=?,f25=?,f26=?,f27=?,f28=?,f29=?,f30=?,f31=?,totalNormal=?,toalOT=?,totalHOT=?,normalRatePerHour=?,otRatePerHour=?,hotRatePerHour=?,grossAmountNormal=?,grossAmountOT=?,grossAmountHOT=?,countLeave=?,countAbsent=?,grossAmount=?,foodAddition=?,dueAddition=?,bonusAddition=?,otherAddition=?,absentDeduction=?,advanceDeduction=?,foodDeduction=?,otherDeduction=? where timeSheetId=?");
+            ps.setString(1,cmbMonth.getSelectedItem().toString());
+            ps.setInt(2,Integer.parseInt(cmbYear.getSelectedItem().toString()));
+            ps.setString(3,txtDate1.getText());
+            ps.setString(4,txtDate2.getText());
+            ps.setString(5,txtDate3.getText());
+            ps.setString(6,txtDate4.getText());
+            ps.setString(7,txtDate5.getText());
+            ps.setString(8,txtDate6.getText());
+            ps.setString(9,txtDate7.getText());
+            ps.setString(10,txtDate8.getText());
+            ps.setString(11,txtDate9.getText());
+            ps.setString(12,txtDate10.getText());
+            ps.setString(13,txtDate11.getText());
+            ps.setString(14,txtDate12.getText());
+            ps.setString(15,txtDate13.getText());
+            ps.setString(16,txtDate14.getText());
+            ps.setString(17,txtDate15.getText());
+            ps.setString(18,txtDate16.getText());
+            ps.setString(19,txtDate17.getText());
+            ps.setString(20,txtDate18.getText());
+            ps.setString(21,txtDate19.getText());
+            ps.setString(22,txtDate20.getText());
+            ps.setString(23,txtDate21.getText());
+            ps.setString(24,txtDate22.getText());
+            ps.setString(25,txtDate23.getText());
+            ps.setString(26,txtDate24.getText());
+            ps.setString(27,txtDate25.getText());
+            ps.setString(28,txtDate26.getText());
+            ps.setString(29,txtDate27.getText());
+            ps.setString(30,txtDate28.getText());
+            ps.setString(31,txtDate29.getText());
+            ps.setString(32,txtDate30.getText());
+            ps.setString(33,txtDate31.getText());
+            ps.setDouble(34,Double.parseDouble(txtTotalNormal.getText()));
+            ps.setDouble(35,Double.parseDouble(txtTotalOT.getText()));
+            ps.setDouble(36,Double.parseDouble(txtTotalHot.getText()));
+            ps.setDouble(37,Double.parseDouble(txtNormalRatePerHour.getText()));
+            ps.setDouble(38,Double.parseDouble(txtOtRatePerHour.getText()));
+            ps.setDouble(39,Double.parseDouble(txtHotRatePerHour.getText()));
+            ps.setDouble(40,Double.parseDouble(txtGrossAmountNormal.getText()));
+            ps.setDouble(41,Double.parseDouble(txtGrossAmountOT.getText()));
+            ps.setDouble(42,Double.parseDouble(txtGrossAmountHOT.getText()));
+            ps.setInt(43,Integer.parseInt(txtCountLeave.getText()));
+            ps.setInt(44,Integer.parseInt(txtCountAbsent.getText()));
+            ps.setDouble(45,Double.parseDouble(txtGrossAmount.getText()));
+            ps.setDouble(46,Double.parseDouble(txtFoodAddition.getText()));
+            ps.setDouble(47,Double.parseDouble(txtDues.getText()));
+            ps.setDouble(48,Double.parseDouble(txtBonus.getText()));
+            ps.setDouble(49,Double.parseDouble(txtOtherAddition.getText()));
+            ps.setDouble(50,Double.parseDouble(txtAbsentDeduction.getText()));
+            ps.setDouble(51,Double.parseDouble(txtAdvanceDeduction.getText()));
+            ps.setDouble(52,Double.parseDouble(txtFoodDeduction.getText()));
+            ps.setDouble(53,Double.parseDouble(txtOtherDeduction.getText()));
+            ps.setInt(54, timeSheetId);
+            int i=ps.executeUpdate();
+            if(i!=0)
+            {
+               dispose();
+               TimeSheet TS = new TimeSheet(empId);
+               AnarTrading.desktopPane.add(TS);
+               TS.setVisible(true);
+               TS.show();
+            } 
+            con.close();
+            
         }
         catch(Exception e)
         {
@@ -3427,7 +3507,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-
+        updateDb();
         
     }//GEN-LAST:event_btnUpdateActionPerformed
 
@@ -4084,7 +4164,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
     Point middle = new Point(80,0);
     int year,month;
-    int empId,countLeave=0,countAbsent=0;
+    int empId,countLeave=0,countAbsent=0,timeSheetId;
     double totalHOT,totalOT;
 }    
     

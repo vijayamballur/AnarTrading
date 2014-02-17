@@ -56,6 +56,7 @@ public class AnarTrading extends javax.swing.JFrame {
         menuItemExit = new javax.swing.JMenuItem();
         menuCourse = new javax.swing.JMenu();
         menuItemLabourDetails = new javax.swing.JMenuItem();
+        menuItemContractEmployee = new javax.swing.JMenuItem();
         menuItemHoliday = new javax.swing.JMenuItem();
         menuItemAdvancePayment = new javax.swing.JMenuItem();
         menuTransaction = new javax.swing.JMenu();
@@ -401,7 +402,7 @@ public class AnarTrading extends javax.swing.JFrame {
             }
         });
 
-        menuItemLabourDetails.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        menuItemLabourDetails.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         menuItemLabourDetails.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
         menuItemLabourDetails.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/menuIcons/company.png"))); // NOI18N
         menuItemLabourDetails.setText("Employee");
@@ -412,6 +413,16 @@ public class AnarTrading extends javax.swing.JFrame {
             }
         });
         menuCourse.add(menuItemLabourDetails);
+
+        menuItemContractEmployee.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        menuItemContractEmployee.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        menuItemContractEmployee.setText("Contract Employee");
+        menuItemContractEmployee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemContractEmployeeActionPerformed(evt);
+            }
+        });
+        menuCourse.add(menuItemContractEmployee);
 
         menuItemHoliday.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         menuItemHoliday.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
@@ -521,12 +532,12 @@ public class AnarTrading extends javax.swing.JFrame {
 
     private void btnAdvancedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdvancedActionPerformed
 
-        AdvancedView av = new AdvancedView();
+        AdvancedEmployeeSearch av = new AdvancedEmployeeSearch();
         AnarTrading.desktopPane.add(av);
         av.setVisible(true);
         av.show();
-        btnAdvanced.setEnabled(false);
-        menuItemReceiptVoucher.setEnabled(false);
+//        btnAdvanced.setEnabled(false);
+//        menuItemReceiptVoucher.setEnabled(false);
     }//GEN-LAST:event_btnAdvancedActionPerformed
 
     private void btnAdvancedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdvancedMouseClicked
@@ -725,6 +736,14 @@ public class AnarTrading extends javax.swing.JFrame {
         AnarTrading.menuItemPaymentVoucher.setEnabled(false);
     }//GEN-LAST:event_menuItemPaymentVoucherActionPerformed
 
+    private void menuItemContractEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemContractEmployeeActionPerformed
+        // TODO add your handling code here:
+        ContractEmployeeDetails CE = new ContractEmployeeDetails();
+        AnarTrading.desktopPane.add(CE);
+        CE.setVisible(true);
+        AnarTrading.menuItemContractEmployee.setEnabled(false);
+    }//GEN-LAST:event_menuItemContractEmployeeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -791,6 +810,7 @@ public class AnarTrading extends javax.swing.JFrame {
     private javax.swing.JMenu menuFile;
     private javax.swing.JMenu menuHelp;
     public static javax.swing.JMenuItem menuItemAdvancePayment;
+    public static javax.swing.JMenuItem menuItemContractEmployee;
     private javax.swing.JMenuItem menuItemExit;
     public static javax.swing.JMenuItem menuItemHoliday;
     public static javax.swing.JMenuItem menuItemLabourDetails;

@@ -25,26 +25,24 @@ import net.proteanit.sql.DbUtils;
  *
  * @author user
  */
-public final class LabourDetails extends javax.swing.JInternalFrame {
+public final class ContractEmployeeDetails extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Accession
      */
-    public LabourDetails() {
+    public ContractEmployeeDetails() {
         initComponents();
         cmbProfessionFill();
         cmbNationalityFill();
         cmbCurrentSiteFill();
-        cmbfirstPartyFill();
-        cmbSecondPartyFill();
-        cmbContractCompanyFill();
+        cmbParentFill();
+        cmbContractFill();
         cmbProfession.setEditable(true);
         cmbNationality.setEditable(true);
         cmbCurrentSite.setEditable(true);
-        cmbfirstParty.setEditable(true);
-        cmbSecondParty.setEditable(true);
+        cmbParentCompany.setEditable(true);
+        cmbConCompany.setEditable(true);
         cmbEmployeeName.setEditable(true);
-        cmbContracting.setEditable(true);
         
         lblEmployeeName.setEnabled(false);
         cmbEmployeeName.setEnabled(false);
@@ -63,26 +61,23 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         cmbNationality.addItem("");
         cmbProfession.addItem("");
         cmbCurrentSite.addItem("");
-        cmbfirstParty.addItem("");
-        cmbSecondParty.addItem("");
-        cmbContracting.addItem("");
+        cmbParentCompany.addItem("");
+        cmbConCompany.addItem("");
         cmbEmployeeName.addItem("--select employee name--");
         
         cmbNationality.setSelectedItem("");
         cmbProfession.setSelectedItem("");
         cmbCurrentSite.setSelectedItem("");
-        cmbfirstParty.setSelectedItem("");
-        cmbSecondParty.setSelectedItem("");
-        cmbContracting.setSelectedItem("");
+        cmbParentCompany.setSelectedItem("");
+        cmbConCompany.setSelectedItem("");
         cmbEmployeeName.setSelectedItem("--select employee name--");
         
         AutoCompleteDecorator.decorate(cmbNationality);
         AutoCompleteDecorator.decorate(cmbProfession);
-        AutoCompleteDecorator.decorate(cmbfirstParty);
-        AutoCompleteDecorator.decorate(cmbSecondParty);
+        AutoCompleteDecorator.decorate(cmbParentCompany);
+        AutoCompleteDecorator.decorate(cmbConCompany);
         AutoCompleteDecorator.decorate(cmbCurrentSite);
         AutoCompleteDecorator.decorate(cmbEmployeeName);
-        AutoCompleteDecorator.decorate(cmbContracting);
  
         
         btnUpdate.setEnabled(false);
@@ -138,19 +133,17 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
             
             empId=Integer.parseInt(jTable1.getValueAt(rowNo, 0).toString());
             txtEmpName.setText(jTable1.getValueAt(rowNo,1).toString());
-            cmbNationality.setSelectedItem(jTable1.getValueAt(rowNo,2).toString());
-            cmbProfession.setSelectedItem(jTable1.getValueAt(rowNo,3).toString());
-            txtPassportNumber.setText(jTable1.getValueAt(rowNo,4).toString());
-            txtPassportExpiry.setText(jTable1.getValueAt(rowNo,5).toString());
-            txtVisaExpiry.setText(jTable1.getValueAt(rowNo,6).toString());
-            txtIdNumber.setText(jTable1.getValueAt(rowNo,7).toString());
-            txtdate.setText(jTable1.getValueAt(rowNo,8).toString());
+            txtdate.setText(jTable1.getValueAt(rowNo,2).toString());
+            cmbNationality.setSelectedItem(jTable1.getValueAt(rowNo,3).toString());
+            cmbProfession.setSelectedItem(jTable1.getValueAt(rowNo,4).toString());
+            txtPassportNumber.setText(jTable1.getValueAt(rowNo,5).toString());
+            txtIdNumber.setText(jTable1.getValueAt(rowNo,6).toString());
+            txtPassportExpiry.setText(jTable1.getValueAt(rowNo,7).toString());
+            txtVisaExpiry.setText(jTable1.getValueAt(rowNo,8).toString()); 
             txtDOB.setText(jTable1.getValueAt(rowNo,9).toString());       
             cmbCurrentSite.setSelectedItem(jTable1.getValueAt(rowNo,10).toString()); 
-            cmbfirstParty.setSelectedItem(jTable1.getValueAt(rowNo,11).toString()); 
-            cmbSecondParty.setSelectedItem(jTable1.getValueAt(rowNo,12).toString()); 
-            cmbContracting.setSelectedItem(jTable1.getValueAt(rowNo,13).toString());
-            txtBasicSalary.setText(jTable1.getValueAt(rowNo,14).toString());
+            cmbParentCompany.setSelectedItem(jTable1.getValueAt(rowNo,11).toString()); 
+            cmbConCompany.setSelectedItem(jTable1.getValueAt(rowNo,12).toString()); 
             }
         });
         
@@ -160,7 +153,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
             connection c = new connection();
             Connection con = c.conn();
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT DISTINCT profession FROM tbl_labourdetails order by profession asc");
+            ResultSet rs = stmt.executeQuery("SELECT DISTINCT profession FROM tbl_conemployee order by profession asc");
             while (rs.next()) {
                 cmbProfession.addItem(rs.getString(1));
             }
@@ -174,7 +167,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
             connection c = new connection();
             Connection con = c.conn();
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT DISTINCT nationality FROM tbl_labourdetails order by nationality asc");
+            ResultSet rs = stmt.executeQuery("SELECT DISTINCT nationality FROM tbl_conemployee order by nationality asc");
             while (rs.next()) {
                 cmbNationality.addItem(rs.getString(1));
             }
@@ -188,7 +181,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
             connection c = new connection();
             Connection con = c.conn();
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT DISTINCT currentSite FROM tbl_labourdetails order by currentSite asc");
+            ResultSet rs = stmt.executeQuery("SELECT DISTINCT site FROM tbl_conemployee order by site asc");
             while (rs.next()) {
                 cmbCurrentSite.addItem(rs.getString(1));
             }
@@ -197,28 +190,28 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
             
         }
     }
-    public void cmbfirstPartyFill() {
+    public void cmbParentFill() {
         try {
             connection c = new connection();
             Connection con = c.conn();
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT DISTINCT firstParty FROM tbl_labourdetails order by firstParty asc");
+            ResultSet rs = stmt.executeQuery("SELECT DISTINCT parentCompany FROM tbl_conemployee order by parentCompany asc");
             while (rs.next()) {
-                cmbfirstParty.addItem(rs.getString(1));
+                cmbParentCompany.addItem(rs.getString(1));
             }
             con.close();
         } catch (SQLException ex) {
             
         }
     }
-    public void cmbSecondPartyFill() {
+    public void cmbContractFill() {
         try {
             connection c = new connection();
             Connection con = c.conn();
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT DISTINCT secondParty FROM tbl_labourdetails order by secondParty asc");
+            ResultSet rs = stmt.executeQuery("SELECT DISTINCT contractingCompany FROM tbl_conemployee order by contractingCompany asc");
             while (rs.next()) {
-                cmbSecondParty.addItem(rs.getString(1));
+                cmbConCompany.addItem(rs.getString(1));
             }
             con.close();
         } catch (SQLException ex) {
@@ -230,23 +223,9 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
             connection c = new connection();
             Connection con = c.conn();
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT empName FROM tbl_labourdetails order by empName asc");
+            ResultSet rs = stmt.executeQuery("SELECT empName FROM tbl_conemployee order by empName asc");
             while (rs.next()) {
                 cmbEmployeeName.addItem(rs.getString(1));
-            }
-            con.close();
-        } catch (SQLException ex) {
-            
-        }
-    }
-    public void cmbContractCompanyFill() {
-        try {
-            connection c = new connection();
-            Connection con = c.conn();
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT DISTINCT contractingCompany FROM tbl_labourdetails order by contractingCompany asc");
-            while (rs.next()) {
-                cmbContracting.addItem(rs.getString(1));
             }
             con.close();
         } catch (SQLException ex) {
@@ -260,7 +239,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         try
         {
             Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("select empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails order by empId desc");
+            ResultSet rs=stmt.executeQuery("select empId '"+"ID"+"',empName'"+"NAME"+"',joinDate '"+"DATE"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber'"+"PASSPORT#"+"',idNumber'"+"ID#"+"',passportExpiry '"+"P.EXPIRY"+"',idExpiry'"+"ID.EXPIRY"+"',dob'"+"DOB"+"',site '"+"SITE"+"',parentCompany '"+"PARENT COMPANY"+"',contractingCompany '"+"CON.COMPANY"+"',contractingCompany '"+"CONT.COMAPNY"+"' from tbl_conemployee order by empId desc");
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             con.close();
             jTable1.getColumnModel().getColumn(0).setMinWidth(0);
@@ -393,24 +372,19 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         txtDOB = new javax.swing.JTextField();
         btnDOB = new net.sourceforge.jcalendarbutton.JCalendarButton();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         txtdate = new javax.swing.JTextField();
         btndate = new net.sourceforge.jcalendarbutton.JCalendarButton();
         jLabel15 = new javax.swing.JLabel();
-        cmbfirstParty = new javax.swing.JComboBox();
-        cmbSecondParty = new javax.swing.JComboBox();
+        cmbParentCompany = new javax.swing.JComboBox();
+        cmbConCompany = new javax.swing.JComboBox();
         jLabel16 = new javax.swing.JLabel();
         cmbCurrentSite = new javax.swing.JComboBox();
         lblEmployeeName = new javax.swing.JLabel();
         cmbEmployeeName = new javax.swing.JComboBox();
         lblEditEmployeeDetails = new javax.swing.JLabel();
-        cmbContracting = new javax.swing.JComboBox();
-        jLabel14 = new javax.swing.JLabel();
-        lbladdTimesheet = new javax.swing.JLabel();
         lblShowDocuments = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        txtBasicSalary = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
@@ -438,7 +412,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         });
         jtablePopUp.add(jMenuItemTimeSheet);
 
-        setTitle("Employee Details");
+        setTitle("Contract Employee Details");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/Library.png"))); // NOI18N
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Employee Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gabriola", 0, 18))); // NOI18N
@@ -500,9 +474,6 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         jLabel9.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
         jLabel9.setText("Date Of Birth");
 
-        jLabel10.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
-        jLabel10.setText("Current Site");
-
         jLabel13.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
         jLabel13.setText("Parent Company");
 
@@ -514,7 +485,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         jLabel15.setText("Date");
 
         jLabel16.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
-        jLabel16.setText("Child Company");
+        jLabel16.setText("Con.Company");
 
         lblEmployeeName.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
         lblEmployeeName.setText("Employee Name");
@@ -535,19 +506,6 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel14.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
-        jLabel14.setText("Contracting Company");
-
-        lbladdTimesheet.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
-        lbladdTimesheet.setForeground(new java.awt.Color(204, 0, 204));
-        lbladdTimesheet.setText("Add TIme Sheet>>");
-        lbladdTimesheet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lbladdTimesheet.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbladdTimesheetMouseClicked(evt);
-            }
-        });
-
         lblShowDocuments.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblShowDocuments.setForeground(new java.awt.Color(204, 0, 204));
         lblShowDocuments.setText("View Documents>>");
@@ -558,10 +516,8 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel17.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
-        jLabel17.setText("Basic Salary");
-
-        txtBasicSalary.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel18.setText("Current Site");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -600,20 +556,13 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
                             .addComponent(jLabel8)
                             .addComponent(jLabel9)
                             .addComponent(jLabel13)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel10))
-                        .addGap(54, 54, 54)
+                            .addComponent(jLabel16))
+                        .addGap(84, 84, 84)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblShowDocuments)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 466, Short.MAX_VALUE)
-                                .addComponent(lbladdTimesheet))
-                            .addComponent(cmbfirstParty, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cmbContracting, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmbParentCompany, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtDOB)
+                                    .addComponent(txtDOB, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
                                     .addComponent(txtPassportExpiry))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -622,93 +571,87 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel11)
-                                    .addComponent(jLabel17))
+                                    .addComponent(jLabel18))
                                 .addGap(43, 43, 43)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(txtVisaExpiry, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btnVisaExpiry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(txtBasicSalary)))
+                                    .addComponent(cmbCurrentSite, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addComponent(txtIdNumber)
-                            .addComponent(cmbSecondParty, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cmbCurrentSite, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(cmbConCompany, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblShowDocuments)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(lblEditEmployeeDetails)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtdate, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbEmployeeName, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblEmployeeName, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btndate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtEmpName, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbNationality, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbProfession, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPassportNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtIdNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtVisaExpiry, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnPassportExpiry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtPassportExpiry, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnVisaExpiry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtdate, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cmbEmployeeName, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblEmployeeName, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btndate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtEmpName, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(8, 8, 8)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbNationality, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbProfession, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPassportNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtIdNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtVisaExpiry, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnPassportExpiry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtPassportExpiry, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(btnVisaExpiry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(3, 3, 3)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(txtDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtBasicSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(7, 7, 7)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbContracting, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cmbCurrentSite, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbfirstParty, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbParentCompany, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbSecondParty, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbConCompany, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbCurrentSite, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblShowDocuments)
-                    .addComponent(lbladdTimesheet, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7))
+                .addGap(18, 18, 18)
+                .addComponent(lblShowDocuments)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -829,13 +772,13 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -855,10 +798,10 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSaveActionPerformed
     public void ViewLabourForm()
     {
-        LabourDetails  labour=new LabourDetails();
-        AnarTrading.desktopPane.add(labour);
-        labour.setVisible(true);
-        labour.show();
+        ContractEmployeeDetails  CE=new ContractEmployeeDetails();
+        AnarTrading.desktopPane.add(CE);
+        CE.setVisible(true);
+        CE.show();
     }
     public void updateDb()
     {
@@ -867,33 +810,25 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         Connection con=c.conn();
         try
         {
-            PreparedStatement ps=con.prepareStatement("UPDATE tbl_labourdetails SET empName=upper(?),nationality=upper(?),profession=upper(?),passportNumber=?,passportExpiry=?,visaExpiry=?,idNumber=upper(?),todayDate=?,dob=?,currentSite=upper(?),firstParty=upper(?),secondParty=upper(?),contractingCompany=upper(?),basicSalary=? where empId=?");
+            PreparedStatement ps=con.prepareStatement("UPDATE tbl_conemployee SET empName=upper(?),joinDate=?,nationality=upper(?),profession=upper(?),passportNumber=?,idNumber=?,passportExpiry=?,idExpiry=?,dob=?,site=upper(?),parentCompany=upper(?),contractingCompany=upper(?)where empId=?");
             ps.setString(1,txtEmpName.getText());
-            ps.setString(2,cmbNationality.getSelectedItem().toString());
-            ps.setString(3,cmbProfession.getSelectedItem().toString());
-            ps.setString(4,txtPassportNumber.getText());
-            ps.setString(5,txtPassportExpiry.getText());
-            ps.setString(6,txtVisaExpiry.getText());
-            ps.setString(7,txtIdNumber.getText());
-            ps.setString(8,txtdate.getText());
+            ps.setString(2,txtdate.getText());
+            ps.setString(3,cmbNationality.getSelectedItem().toString());
+            ps.setString(4,cmbProfession.getSelectedItem().toString());
+            ps.setString(5,txtPassportNumber.getText());
+            ps.setString(6,txtIdNumber.getText());
+            ps.setString(7,txtPassportExpiry.getText());
+            ps.setString(8,txtVisaExpiry.getText());
             ps.setString(9,txtDOB.getText());
             ps.setString(10,cmbCurrentSite.getSelectedItem().toString());
-            ps.setString(11,cmbfirstParty.getSelectedItem().toString());
-            ps.setString(12,cmbSecondParty.getSelectedItem().toString());
-            ps.setString(13,cmbContracting.getSelectedItem().toString());
-            ps.setString(14,txtBasicSalary.getText());
-            ps.setInt(15, empId);
+            ps.setString(11,cmbParentCompany.getSelectedItem().toString());
+            ps.setString(12,cmbConCompany.getSelectedItem().toString());
+            ps.setInt(13, empId);
             int i=ps.executeUpdate();
             if(i!=0)
             {
-                PreparedStatement ps1=con.prepareStatement("INSERT INTO tbl_currentSite(empId,currentSite,fromDate,contractingCompany,basicSalary)SELECT empId,currentSite,todayDate,contractingCompany,basicSalary FROM tbl_labourdetails where empId=?");
-                ps1.setInt(1, empId);
-                int j=ps1.executeUpdate();
-                if(j!=0)
-                {
                     dispose();
                     ViewLabourForm();
-                }
             }
             con.close();  
         }
@@ -914,8 +849,8 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         txtVisaExpiry.setText("1111-11-11");
         txtDOB.setText("1111-11-11");
         cmbCurrentSite.setSelectedItem("");
-        cmbfirstParty.setSelectedItem("");
-        cmbSecondParty.setSelectedItem("");
+        cmbParentCompany.setSelectedItem("");
+        cmbConCompany.setSelectedItem("");
         
         
     }
@@ -925,31 +860,24 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         Connection con=c.conn();
         try
         {
-            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_labourdetails(empName,nationality,profession,passportNumber,passportExpiry,visaExpiry,idNumber,todayDate,dob,currentSite,firstParty,secondParty,contractingCompany,basicSalary) VALUES(upper(?),upper(?),upper(?),?,?,?,?,?,?,upper(?),upper(?),upper(?),upper(?),?)");           
+            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_conemployee(empName,joinDate,nationality,profession,passportNumber,idNumber,passportExpiry,idExpiry,dob,site,parentCompany,contractingCompany) VALUES(upper(?),?,upper(?),upper(?),?,?,?,?,?,upper(?),upper(?),upper(?))");           
             ps.setString(1, txtEmpName.getText());
-            ps.setString(2, cmbNationality.getSelectedItem().toString());
-            ps.setString(3, cmbProfession.getSelectedItem().toString());
-            ps.setString(4, txtPassportNumber.getText());
-            ps.setString(5, txtPassportExpiry.getText());
-            ps.setString(6, txtVisaExpiry.getText());
-            ps.setString(7, txtIdNumber.getText());
-            ps.setString(8, txtdate.getText());
+            ps.setString(2, txtdate.getText());
+            ps.setString(3, cmbNationality.getSelectedItem().toString());
+            ps.setString(4, cmbProfession.getSelectedItem().toString());
+            ps.setString(5, txtPassportNumber.getText());
+            ps.setString(6, txtIdNumber.getText());
+            ps.setString(7, txtPassportExpiry.getText());
+            ps.setString(8, txtVisaExpiry.getText()); 
             ps.setString(9, txtDOB.getText());
             ps.setString(10, cmbCurrentSite.getSelectedItem().toString());
-            ps.setString(11, cmbfirstParty.getSelectedItem().toString());
-            ps.setString(12, cmbSecondParty.getSelectedItem().toString());
-            ps.setString(13, cmbContracting.getSelectedItem().toString());
-            ps.setString(14, txtBasicSalary.getText());
+            ps.setString(11, cmbParentCompany.getSelectedItem().toString());
+            ps.setString(12, cmbConCompany.getSelectedItem().toString());
             int i=ps.executeUpdate();
             if(i!=0)
-            {
-                PreparedStatement ps1=con.prepareStatement("INSERT INTO tbl_currentSite(empId,currentSite,fromDate,contractingCompany,basicSalary)SELECT MAX(empId),currentSite,todayDate,contractingCompany,basicSalary FROM tbl_labourdetails");
-                int j=ps1.executeUpdate();
-                if(j!=0)
-                {
+            {    
                     dispose();
                     ViewLabourForm();
-                }
             }
             con.close();
         }
@@ -986,7 +914,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
                     connection c=new connection();
                     Connection con=c.conn();
                     Statement stmt1=con.createStatement();
-                    int i=stmt1.executeUpdate("delete from tbl_labourdetails  where empId="+empId);
+                    int i=stmt1.executeUpdate("delete from tbl_conemployee  where empId="+empId);
                     dispose();
                     ViewLabourForm();
                 }
@@ -1108,12 +1036,8 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
                  txtdate.setText(rs.getString(9));
                  txtDOB.setText(rs.getString(10));
                  cmbCurrentSite.setSelectedItem(rs.getString(11));
-                 cmbfirstParty.setSelectedItem(rs.getString(12));
-                 cmbSecondParty.setSelectedItem(rs.getString(13));
-                 cmbContracting.setSelectedItem(rs.getString(14));
-                 txtBasicSalary.setText(rs.getString(15));
-                 
-                 
+                 cmbParentCompany.setSelectedItem(rs.getString(12));
+                 cmbConCompany.setSelectedItem(rs.getString(13));        
             }
         }
         catch(Exception e)
@@ -1121,14 +1045,6 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
 
         }
     }//GEN-LAST:event_cmbEmployeeNameActionPerformed
-
-    private void lbladdTimesheetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbladdTimesheetMouseClicked
-        // TODO add your handling code here:
-        TimeSheet TS = new TimeSheet(empId);
-        AnarTrading.desktopPane.add(TS);
-        TS.setVisible(true);
-        TS.show();
-    }//GEN-LAST:event_lbladdTimesheetMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Nationality;
@@ -1141,21 +1057,18 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnUpdate;
     private net.sourceforge.jcalendarbutton.JCalendarButton btnVisaExpiry;
     private net.sourceforge.jcalendarbutton.JCalendarButton btndate;
-    private javax.swing.JComboBox cmbContracting;
+    private javax.swing.JComboBox cmbConCompany;
     private javax.swing.JComboBox cmbCurrentSite;
     private javax.swing.JComboBox cmbEmployeeName;
     private javax.swing.JComboBox cmbNationality;
+    private javax.swing.JComboBox cmbParentCompany;
     private javax.swing.JComboBox cmbProfession;
-    private javax.swing.JComboBox cmbSecondParty;
-    private javax.swing.JComboBox cmbfirstParty;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
@@ -1171,8 +1084,6 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblEditEmployeeDetails;
     private javax.swing.JLabel lblEmployeeName;
     private javax.swing.JLabel lblShowDocuments;
-    private javax.swing.JLabel lbladdTimesheet;
-    private javax.swing.JTextField txtBasicSalary;
     private javax.swing.JTextField txtDOB;
     private javax.swing.JTextField txtEmpName;
     private javax.swing.JTextField txtIdNumber;

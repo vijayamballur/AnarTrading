@@ -247,6 +247,7 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
         lblSearch = new javax.swing.JLabel();
 
         setTitle("Advance Payment");
+        setPreferredSize(new java.awt.Dimension(947, 582));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Controls", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gabriola", 0, 18))); // NOI18N
 
@@ -439,7 +440,7 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtAmount)
-                                    .addComponent(cmbMonth, 0, 214, Short.MAX_VALUE))
+                                    .addComponent(cmbMonth, 0, 382, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel34, javax.swing.GroupLayout.Alignment.TRAILING)
