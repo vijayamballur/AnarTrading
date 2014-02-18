@@ -239,7 +239,7 @@ public final class ContractEmployeeDetails extends javax.swing.JInternalFrame {
         try
         {
             Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("select empId '"+"ID"+"',empName'"+"NAME"+"',joinDate '"+"DATE"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber'"+"PASSPORT#"+"',idNumber'"+"ID#"+"',passportExpiry '"+"P.EXPIRY"+"',idExpiry'"+"ID.EXPIRY"+"',dob'"+"DOB"+"',site '"+"SITE"+"',parentCompany '"+"PARENT COMPANY"+"',contractingCompany '"+"CON.COMPANY"+"',contractingCompany '"+"CONT.COMAPNY"+"' from tbl_conemployee order by empId desc");
+            ResultSet rs=stmt.executeQuery("select empId '"+"ID"+"',empName'"+"NAME"+"',joinDate '"+"DATE"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber'"+"PASSPORT#"+"',idNumber'"+"ID#"+"',passportExpiry '"+"P.EXPIRY"+"',idExpiry'"+"ID.EXPIRY"+"',dob'"+"DOB"+"',site '"+"SITE"+"',parentCompany '"+"PARENT COMPANY"+"',contractingCompany '"+"CON.COMPANY"+"' from tbl_conemployee order by empId desc");
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             con.close();
             jTable1.getColumnModel().getColumn(0).setMinWidth(0);
