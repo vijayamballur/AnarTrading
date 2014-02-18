@@ -1033,20 +1033,20 @@ public final class ContractEmployeeDetails extends javax.swing.JInternalFrame {
         Connection con=c.conn();
         try
         {
-            PreparedStatement ps=con.prepareStatement("SELECT * FROM tbl_labourdetails WHERE empName=?");
+            PreparedStatement ps=con.prepareStatement("SELECT * FROM tbl_conemployee WHERE empName=?");
             ps.setString(1, cmbEmployeeName.getSelectedItem().toString());
             ResultSet rs = ps.executeQuery();
             while(rs.next())
             {
                  empId=rs.getInt(1);
                  txtEmpName.setText(rs.getString(2));
-                 cmbNationality.setSelectedItem(rs.getString(3));
-                 cmbProfession.setSelectedItem(rs.getString(4));
-                 txtPassportNumber.setText(rs.getString(5));
-                 txtPassportExpiry.setText(rs.getString(6));
-                 txtVisaExpiry.setText(rs.getString(7));
-                 txtIdNumber.setText(rs.getString(8));
-                 txtdate.setText(rs.getString(9));
+                 txtdate.setText(rs.getString(3));
+                 cmbNationality.setSelectedItem(rs.getString(4));
+                 cmbProfession.setSelectedItem(rs.getString(5));
+                 txtPassportNumber.setText(rs.getString(6));
+                 txtIdNumber.setText(rs.getString(7));
+                 txtPassportExpiry.setText(rs.getString(8));
+                 txtVisaExpiry.setText(rs.getString(9));
                  txtDOB.setText(rs.getString(10));
                  cmbCurrentSite.setSelectedItem(rs.getString(11));
                  cmbParentCompany.setSelectedItem(rs.getString(12));
