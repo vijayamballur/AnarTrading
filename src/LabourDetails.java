@@ -411,6 +411,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         lblShowDocuments = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         txtBasicSalary = new javax.swing.JTextField();
+        lblSearch = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
@@ -548,7 +549,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
             }
         });
 
-        lblShowDocuments.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblShowDocuments.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
         lblShowDocuments.setForeground(new java.awt.Color(204, 0, 204));
         lblShowDocuments.setText("View Documents>>");
         lblShowDocuments.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -562,6 +563,16 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         jLabel17.setText("Basic Salary");
 
         txtBasicSalary.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        lblSearch.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        lblSearch.setForeground(new java.awt.Color(204, 0, 204));
+        lblSearch.setText("Search>>");
+        lblSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblSearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSearchMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -607,13 +618,16 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblShowDocuments)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 466, Short.MAX_VALUE)
-                                .addComponent(lbladdTimesheet))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblSearch)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbladdTimesheet)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(cmbfirstParty, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cmbContracting, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtDOB)
+                                    .addComponent(txtDOB, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
                                     .addComponent(txtPassportExpiry))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -704,10 +718,11 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbCurrentSite, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblShowDocuments)
-                    .addComponent(lbladdTimesheet, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbladdTimesheet, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSearch))
                 .addGap(7, 7, 7))
         );
 
@@ -1130,6 +1145,14 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         TS.show();
     }//GEN-LAST:event_lbladdTimesheetMouseClicked
 
+    private void lblSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSearchMouseClicked
+        // TODO add your handling code here:
+        AdvancedEmployeeSearch AE = new AdvancedEmployeeSearch();
+        AnarTrading.desktopPane.add(AE);
+        AE.setVisible(true);
+        AE.show();
+    }//GEN-LAST:event_lblSearchMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Nationality;
     private javax.swing.JButton btnCancel;
@@ -1170,6 +1193,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
     private javax.swing.JPopupMenu jtablePopUp;
     private javax.swing.JLabel lblEditEmployeeDetails;
     private javax.swing.JLabel lblEmployeeName;
+    private javax.swing.JLabel lblSearch;
     private javax.swing.JLabel lblShowDocuments;
     private javax.swing.JLabel lbladdTimesheet;
     private javax.swing.JTextField txtBasicSalary;

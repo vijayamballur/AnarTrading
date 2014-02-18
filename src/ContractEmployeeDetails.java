@@ -385,6 +385,7 @@ public final class ContractEmployeeDetails extends javax.swing.JInternalFrame {
         lblEditEmployeeDetails = new javax.swing.JLabel();
         lblShowDocuments = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        lblSearch = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
@@ -519,6 +520,16 @@ public final class ContractEmployeeDetails extends javax.swing.JInternalFrame {
         jLabel18.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
         jLabel18.setText("Current Site");
 
+        lblSearch.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblSearch.setForeground(new java.awt.Color(204, 0, 204));
+        lblSearch.setText("Search>>");
+        lblSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblSearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSearchMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -583,7 +594,8 @@ public final class ContractEmployeeDetails extends javax.swing.JInternalFrame {
                             .addComponent(cmbConCompany, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblShowDocuments)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblSearch)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -650,7 +662,9 @@ public final class ContractEmployeeDetails extends javax.swing.JInternalFrame {
                     .addComponent(cmbConCompany, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(lblShowDocuments)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblShowDocuments)
+                    .addComponent(lblSearch))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -933,8 +947,7 @@ public final class ContractEmployeeDetails extends javax.swing.JInternalFrame {
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
         dispose();
-        AnarTrading.btnEmployee.setEnabled(true);
-        AnarTrading.menuItemLabourDetails.setEnabled(true);
+        AnarTrading.menuItemContractEmployee.setEnabled(true);
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
@@ -1046,6 +1059,14 @@ public final class ContractEmployeeDetails extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_cmbEmployeeNameActionPerformed
 
+    private void lblSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSearchMouseClicked
+        // TODO add your handling code here:
+        AdvancedContractEmployeeSearch ACE = new AdvancedContractEmployeeSearch();
+        AnarTrading.desktopPane.add(ACE);
+        ACE.setVisible(true);
+        ACE.show();
+    }//GEN-LAST:event_lblSearchMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Nationality;
     private javax.swing.JButton btnCancel;
@@ -1083,6 +1104,7 @@ public final class ContractEmployeeDetails extends javax.swing.JInternalFrame {
     private javax.swing.JPopupMenu jtablePopUp;
     private javax.swing.JLabel lblEditEmployeeDetails;
     private javax.swing.JLabel lblEmployeeName;
+    private javax.swing.JLabel lblSearch;
     private javax.swing.JLabel lblShowDocuments;
     private javax.swing.JTextField txtDOB;
     private javax.swing.JTextField txtEmpName;
