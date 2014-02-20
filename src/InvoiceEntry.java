@@ -264,6 +264,7 @@ public class InvoiceEntry extends javax.swing.JInternalFrame {
         lblEmployeeName9 = new javax.swing.JLabel();
         txtRemarks = new javax.swing.JTextField();
         txtTerms = new javax.swing.JTextField();
+        lblSearch = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         btnSave = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
@@ -374,6 +375,16 @@ public class InvoiceEntry extends javax.swing.JInternalFrame {
             }
         });
 
+        lblSearch.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        lblSearch.setForeground(new java.awt.Color(255, 51, 255));
+        lblSearch.setText("Search>>");
+        lblSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblSearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSearchMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -422,6 +433,9 @@ public class InvoiceEntry extends javax.swing.JInternalFrame {
                         .addComponent(cmbYear, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtRemarks))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblSearch))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -462,7 +476,9 @@ public class InvoiceEntry extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblEmployeeName9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblSearch)
+                .addContainerGap())
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Controls", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gabriola", 0, 18))); // NOI18N
@@ -702,6 +718,14 @@ public class InvoiceEntry extends javax.swing.JInternalFrame {
         ID.show();
     }//GEN-LAST:event_menuItemDocumentActionPerformed
 
+    private void lblSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSearchMouseClicked
+        // TODO add your handling code here:
+        AdvancedInvoiceSearch AIS = new AdvancedInvoiceSearch();
+        AnarTrading.desktopPane.add(AIS);
+        AIS.setVisible(true);
+        AIS.show();
+    }//GEN-LAST:event_lblSearchMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
@@ -728,6 +752,7 @@ public class InvoiceEntry extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblEmployeeName7;
     private javax.swing.JLabel lblEmployeeName8;
     private javax.swing.JLabel lblEmployeeName9;
+    private javax.swing.JLabel lblSearch;
     private javax.swing.JMenuItem menuItemDocument;
     private javax.swing.JTextField txtAmount;
     private javax.swing.JTextField txtDate;
