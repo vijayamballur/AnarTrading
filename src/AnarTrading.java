@@ -59,6 +59,7 @@ public class AnarTrading extends javax.swing.JFrame {
         menuItemContractEmployee = new javax.swing.JMenuItem();
         menuItemHoliday = new javax.swing.JMenuItem();
         menuItemAdvancePayment = new javax.swing.JMenuItem();
+        menuItemInvoiceEntry = new javax.swing.JMenuItem();
         menuTransaction = new javax.swing.JMenu();
         menuItemReceiptVoucher = new javax.swing.JMenuItem();
         menuItemPaymentVoucher = new javax.swing.JMenuItem();
@@ -413,7 +414,7 @@ public class AnarTrading extends javax.swing.JFrame {
         menuItemLabourDetails.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
         menuItemLabourDetails.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/menuIcons/company.png"))); // NOI18N
         menuItemLabourDetails.setMnemonic('E');
-        menuItemLabourDetails.setText("Employee");
+        menuItemLabourDetails.setText("Employee Entry");
         menuItemLabourDetails.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuItemLabourDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -425,7 +426,7 @@ public class AnarTrading extends javax.swing.JFrame {
         menuItemContractEmployee.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         menuItemContractEmployee.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
         menuItemContractEmployee.setMnemonic('C');
-        menuItemContractEmployee.setText("Contract Employee");
+        menuItemContractEmployee.setText("Contract Employee Entry");
         menuItemContractEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemContractEmployeeActionPerformed(evt);
@@ -436,7 +437,7 @@ public class AnarTrading extends javax.swing.JFrame {
         menuItemHoliday.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         menuItemHoliday.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
         menuItemHoliday.setMnemonic('H');
-        menuItemHoliday.setText("Holiday");
+        menuItemHoliday.setText("Holiday Entry");
         menuItemHoliday.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemHolidayActionPerformed(evt);
@@ -447,13 +448,24 @@ public class AnarTrading extends javax.swing.JFrame {
         menuItemAdvancePayment.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         menuItemAdvancePayment.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
         menuItemAdvancePayment.setMnemonic('A');
-        menuItemAdvancePayment.setText("Advance Payment");
+        menuItemAdvancePayment.setText("Advance Payment Entry");
         menuItemAdvancePayment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemAdvancePaymentActionPerformed(evt);
             }
         });
         menuCourse.add(menuItemAdvancePayment);
+
+        menuItemInvoiceEntry.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        menuItemInvoiceEntry.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        menuItemInvoiceEntry.setMnemonic('I');
+        menuItemInvoiceEntry.setText("Invoice Entry");
+        menuItemInvoiceEntry.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemInvoiceEntryActionPerformed(evt);
+            }
+        });
+        menuCourse.add(menuItemInvoiceEntry);
 
         jMenuBar1.add(menuCourse);
 
@@ -642,15 +654,6 @@ public class AnarTrading extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnReceiptVoucherMouseEntered
 
-    private void menuCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCourseActionPerformed
-        // TODO add your handling code here:
-       
-    }//GEN-LAST:event_menuCourseActionPerformed
-
-    private void menuCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuCourseMouseClicked
-
-    }//GEN-LAST:event_menuCourseMouseClicked
-
     private void menuFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuFileMouseClicked
 
     }//GEN-LAST:event_menuFileMouseClicked
@@ -664,15 +667,6 @@ public class AnarTrading extends javax.swing.JFrame {
         AnarTrading.menuItemReceiptVoucher.setEnabled(false);
        
     }//GEN-LAST:event_menuItemReceiptVoucherActionPerformed
-
-    private void menuItemLabourDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemLabourDetailsActionPerformed
-
-        LabourDetails labour = new LabourDetails();
-        AnarTrading.desktopPane.add(labour);
-        labour.setVisible(true);
-        labour.show();
-        btnEmployee.setEnabled(false);
-    }//GEN-LAST:event_menuItemLabourDetailsActionPerformed
 
     private void menuWindowMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuWindowMouseEntered
         // TODO add your handling code here:
@@ -769,24 +763,6 @@ public class AnarTrading extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAccount2MouseEntered
 
-    private void menuItemHolidayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemHolidayActionPerformed
-        // TODO add your handling code here:
-        HolidayDetails holiday = new HolidayDetails();
-        AnarTrading.desktopPane.add(holiday);
-        holiday.setVisible(true);
-        holiday.show();
-        AnarTrading.menuItemHoliday.setEnabled(false);
-    }//GEN-LAST:event_menuItemHolidayActionPerformed
-
-    private void menuItemAdvancePaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAdvancePaymentActionPerformed
-        // TODO add your handling code here:
-        AdvancePayment advance = new AdvancePayment();
-        AnarTrading.desktopPane.add(advance);
-        advance.setVisible(true);
-        advance.show();
-        AnarTrading.menuItemAdvancePayment.setEnabled(false);
-    }//GEN-LAST:event_menuItemAdvancePaymentActionPerformed
-
     private void btnReceiptVoucherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReceiptVoucherActionPerformed
         // TODO add your handling code here:
         ReceiptVoucher RV = new ReceiptVoucher();
@@ -804,14 +780,6 @@ public class AnarTrading extends javax.swing.JFrame {
         AnarTrading.btnPayment.setEnabled(false);
         AnarTrading.menuItemPaymentVoucher.setEnabled(false);
     }//GEN-LAST:event_menuItemPaymentVoucherActionPerformed
-
-    private void menuItemContractEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemContractEmployeeActionPerformed
-        // TODO add your handling code here:
-        ContractEmployeeDetails CE = new ContractEmployeeDetails();
-        AnarTrading.desktopPane.add(CE);
-        CE.setVisible(true);
-        AnarTrading.menuItemContractEmployee.setEnabled(false);
-    }//GEN-LAST:event_menuItemContractEmployeeActionPerformed
 
     private void menuHelp1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuHelp1MouseClicked
         // TODO add your handling code here:
@@ -844,6 +812,58 @@ public class AnarTrading extends javax.swing.JFrame {
         ACE.setVisible(true);
         AnarTrading.menuItemSearchConEmployee.setEnabled(false);
     }//GEN-LAST:event_menuItemSearchConEmployeeActionPerformed
+
+    private void menuCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCourseActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_menuCourseActionPerformed
+
+    private void menuCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuCourseMouseClicked
+
+    }//GEN-LAST:event_menuCourseMouseClicked
+
+    private void menuItemInvoiceEntryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemInvoiceEntryActionPerformed
+        // TODO add your handling code here:
+        InvoiceEntry IE = new InvoiceEntry();
+        AnarTrading.desktopPane.add(IE);
+        IE.setVisible(true);
+        AnarTrading.menuItemInvoiceEntry.setEnabled(false);
+    }//GEN-LAST:event_menuItemInvoiceEntryActionPerformed
+
+    private void menuItemAdvancePaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAdvancePaymentActionPerformed
+        // TODO add your handling code here:
+        AdvancePayment advance = new AdvancePayment();
+        AnarTrading.desktopPane.add(advance);
+        advance.setVisible(true);
+        advance.show();
+        AnarTrading.menuItemAdvancePayment.setEnabled(false);
+    }//GEN-LAST:event_menuItemAdvancePaymentActionPerformed
+
+    private void menuItemHolidayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemHolidayActionPerformed
+        // TODO add your handling code here:
+        HolidayDetails holiday = new HolidayDetails();
+        AnarTrading.desktopPane.add(holiday);
+        holiday.setVisible(true);
+        holiday.show();
+        AnarTrading.menuItemHoliday.setEnabled(false);
+    }//GEN-LAST:event_menuItemHolidayActionPerformed
+
+    private void menuItemContractEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemContractEmployeeActionPerformed
+        // TODO add your handling code here:
+        ContractEmployeeDetails CE = new ContractEmployeeDetails();
+        AnarTrading.desktopPane.add(CE);
+        CE.setVisible(true);
+        AnarTrading.menuItemContractEmployee.setEnabled(false);
+    }//GEN-LAST:event_menuItemContractEmployeeActionPerformed
+
+    private void menuItemLabourDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemLabourDetailsActionPerformed
+
+        LabourDetails labour = new LabourDetails();
+        AnarTrading.desktopPane.add(labour);
+        labour.setVisible(true);
+        labour.show();
+        btnEmployee.setEnabled(false);
+    }//GEN-LAST:event_menuItemLabourDetailsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -916,6 +936,7 @@ public class AnarTrading extends javax.swing.JFrame {
     public static javax.swing.JMenuItem menuItemContractEmployee;
     private javax.swing.JMenuItem menuItemExit;
     public static javax.swing.JMenuItem menuItemHoliday;
+    public static javax.swing.JMenuItem menuItemInvoiceEntry;
     public static javax.swing.JMenuItem menuItemLabourDetails;
     public static javax.swing.JMenuItem menuItemPaymentVoucher;
     public static javax.swing.JMenuItem menuItemReceiptVoucher;
