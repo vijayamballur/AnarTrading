@@ -59,7 +59,9 @@ public class AnarTrading extends javax.swing.JFrame {
         menuItemContractEmployee = new javax.swing.JMenuItem();
         menuItemHoliday = new javax.swing.JMenuItem();
         menuItemAdvancePayment = new javax.swing.JMenuItem();
-        menuItemInvoiceEntry = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        menuItemInvoice = new javax.swing.JMenuItem();
+        menuItemInvoiceReceived = new javax.swing.JMenuItem();
         menuTransaction = new javax.swing.JMenu();
         menuItemReceiptVoucher = new javax.swing.JMenuItem();
         menuItemPaymentVoucher = new javax.swing.JMenuItem();
@@ -456,16 +458,33 @@ public class AnarTrading extends javax.swing.JFrame {
         });
         menuCourse.add(menuItemAdvancePayment);
 
-        menuItemInvoiceEntry.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        menuItemInvoiceEntry.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
-        menuItemInvoiceEntry.setMnemonic('I');
-        menuItemInvoiceEntry.setText("Invoice Entry");
-        menuItemInvoiceEntry.addActionListener(new java.awt.event.ActionListener() {
+        jMenu1.setMnemonic('I');
+        jMenu1.setText("Invoice");
+        jMenu1.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+
+        menuItemInvoice.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        menuItemInvoice.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        menuItemInvoice.setMnemonic('I');
+        menuItemInvoice.setText("Invoice");
+        menuItemInvoice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemInvoiceEntryActionPerformed(evt);
+                menuItemInvoiceActionPerformed(evt);
             }
         });
-        menuCourse.add(menuItemInvoiceEntry);
+        jMenu1.add(menuItemInvoice);
+
+        menuItemInvoiceReceived.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        menuItemInvoiceReceived.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        menuItemInvoiceReceived.setMnemonic('R');
+        menuItemInvoiceReceived.setText("Invoice Received");
+        menuItemInvoiceReceived.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemInvoiceReceivedActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuItemInvoiceReceived);
+
+        menuCourse.add(jMenu1);
 
         jMenuBar1.add(menuCourse);
 
@@ -822,13 +841,13 @@ public class AnarTrading extends javax.swing.JFrame {
 
     }//GEN-LAST:event_menuCourseMouseClicked
 
-    private void menuItemInvoiceEntryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemInvoiceEntryActionPerformed
+    private void menuItemInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemInvoiceActionPerformed
         // TODO add your handling code here:
         InvoiceEntry IE = new InvoiceEntry();
         AnarTrading.desktopPane.add(IE);
         IE.setVisible(true);
-        AnarTrading.menuItemInvoiceEntry.setEnabled(false);
-    }//GEN-LAST:event_menuItemInvoiceEntryActionPerformed
+        AnarTrading.menuItemInvoice.setEnabled(false);
+    }//GEN-LAST:event_menuItemInvoiceActionPerformed
 
     private void menuItemAdvancePaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAdvancePaymentActionPerformed
         // TODO add your handling code here:
@@ -864,6 +883,10 @@ public class AnarTrading extends javax.swing.JFrame {
         labour.show();
         btnEmployee.setEnabled(false);
     }//GEN-LAST:event_menuItemLabourDetailsActionPerformed
+
+    private void menuItemInvoiceReceivedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemInvoiceReceivedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuItemInvoiceReceivedActionPerformed
 
     /**
      * @param args the command line arguments
@@ -920,6 +943,7 @@ public class AnarTrading extends javax.swing.JFrame {
     private javax.swing.JButton btnServerBkp;
     public static javax.swing.JButton btnStudent;
     public static javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -936,7 +960,8 @@ public class AnarTrading extends javax.swing.JFrame {
     public static javax.swing.JMenuItem menuItemContractEmployee;
     private javax.swing.JMenuItem menuItemExit;
     public static javax.swing.JMenuItem menuItemHoliday;
-    public static javax.swing.JMenuItem menuItemInvoiceEntry;
+    public static javax.swing.JMenuItem menuItemInvoice;
+    public static javax.swing.JMenuItem menuItemInvoiceReceived;
     public static javax.swing.JMenuItem menuItemLabourDetails;
     public static javax.swing.JMenuItem menuItemPaymentVoucher;
     public static javax.swing.JMenuItem menuItemReceiptVoucher;

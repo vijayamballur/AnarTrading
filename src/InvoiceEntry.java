@@ -1,8 +1,10 @@
 
 import java.awt.Point;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -35,6 +37,8 @@ public class InvoiceEntry extends javax.swing.JInternalFrame {
     public InvoiceEntry() {
         initComponents();
         setLocation(middle);
+        cmbFromFill();
+        cmbToFill();
         viewDbEmployeeDetails();
         btnDate.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
 
@@ -196,6 +200,36 @@ public class InvoiceEntry extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, e);
         }
     }
+    public void cmbFromFill()
+    {
+        try {
+            connection c = new connection();
+            Connection con = c.conn();
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT DISTINCT fromAdd FROM tbl_invoicedetails order by fromAdd asc");
+            while (rs.next()) {
+                cmbFrom.addItem(rs.getString(1));
+            }
+            con.close();
+        } catch (SQLException ex) {
+            
+        }
+    }
+    public void cmbToFill()
+    {
+        try {
+            connection c = new connection();
+            Connection con = c.conn();
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT DISTINCT toAdd FROM tbl_invoicedetails order by toAdd asc");
+            while (rs.next()) {
+                cmbTo.addItem(rs.getString(1));
+            }
+            con.close();
+        } catch (SQLException ex) {
+            
+        }
+    }
     
 
     /**
@@ -207,6 +241,8 @@ public class InvoiceEntry extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jtablePopUp = new javax.swing.JPopupMenu();
+        menuItemDocument = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         lblEmployeeName = new javax.swing.JLabel();
         cmbFrom = new javax.swing.JComboBox();
@@ -236,6 +272,15 @@ public class InvoiceEntry extends javax.swing.JInternalFrame {
         btnRefresh = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+
+        menuItemDocument.setText("Add Document");
+        menuItemDocument.setToolTipText("");
+        menuItemDocument.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemDocumentActionPerformed(evt);
+            }
+        });
+        jtablePopUp.add(menuItemDocument);
 
         setTitle("Invoice Details");
 
@@ -512,6 +557,11 @@ public class InvoiceEntry extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -628,6 +678,30 @@ public class InvoiceEntry extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTermsFocusGained
 
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int rowNo=jTable1.getSelectedRow();
+        if(rowNo==-1)
+        {
+            
+        }
+        else
+        {
+            if(evt.getButton()==MouseEvent.BUTTON3)
+            {
+                jtablePopUp.show(evt.getComponent(), evt.getX(),evt.getY());
+            }
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void menuItemDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDocumentActionPerformed
+        // TODO add your handling code here:
+        InvoiceDocument ID = new InvoiceDocument(invoiceId);
+        AnarTrading.desktopPane.add(ID);
+        ID.setVisible(true);
+        ID.show();
+    }//GEN-LAST:event_menuItemDocumentActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
@@ -644,6 +718,7 @@ public class InvoiceEntry extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JPopupMenu jtablePopUp;
     private javax.swing.JLabel lblEmployeeName;
     private javax.swing.JLabel lblEmployeeName2;
     private javax.swing.JLabel lblEmployeeName3;
@@ -653,6 +728,7 @@ public class InvoiceEntry extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblEmployeeName7;
     private javax.swing.JLabel lblEmployeeName8;
     private javax.swing.JLabel lblEmployeeName9;
+    private javax.swing.JMenuItem menuItemDocument;
     private javax.swing.JTextField txtAmount;
     private javax.swing.JTextField txtDate;
     private javax.swing.JTextField txtInvoiceNumber;
