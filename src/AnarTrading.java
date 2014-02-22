@@ -462,10 +462,10 @@ public class AnarTrading extends javax.swing.JFrame {
         jMenu1.setText("Invoice");
         jMenu1.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
 
-        menuItemInvoice.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        menuItemInvoice.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         menuItemInvoice.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
         menuItemInvoice.setMnemonic('I');
-        menuItemInvoice.setText("Invoice");
+        menuItemInvoice.setText("Send");
         menuItemInvoice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemInvoiceActionPerformed(evt);
@@ -476,7 +476,7 @@ public class AnarTrading extends javax.swing.JFrame {
         menuItemInvoiceReceived.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         menuItemInvoiceReceived.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
         menuItemInvoiceReceived.setMnemonic('R');
-        menuItemInvoiceReceived.setText("Invoice Received");
+        menuItemInvoiceReceived.setText("Received");
         menuItemInvoiceReceived.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemInvoiceReceivedActionPerformed(evt);
@@ -886,6 +886,10 @@ public class AnarTrading extends javax.swing.JFrame {
 
     private void menuItemInvoiceReceivedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemInvoiceReceivedActionPerformed
         // TODO add your handling code here:
+        InvoiceReceived IR = new InvoiceReceived();
+        AnarTrading.desktopPane.add(IR);
+        IR.setVisible(true);
+        IR.show();
     }//GEN-LAST:event_menuItemInvoiceReceivedActionPerformed
 
     /**

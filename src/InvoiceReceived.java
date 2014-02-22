@@ -29,12 +29,12 @@ import net.proteanit.sql.DbUtils;
  *
  * @author MAC
  */
-public class InvoiceEntry extends javax.swing.JInternalFrame {
+public class InvoiceReceived extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form InvoiceEntry
      */
-    public InvoiceEntry() {
+    public InvoiceReceived() {
         initComponents();
         setLocation(middle);
         cmbFromFill();
@@ -66,7 +66,7 @@ public class InvoiceEntry extends javax.swing.JInternalFrame {
             btnUpdate.setEnabled(true);
             btnDelete.setEnabled(true);
             
-            invoiceId=Integer.parseInt(jTable1.getValueAt(rowNo, 1).toString());
+            receivedId=Integer.parseInt(jTable1.getValueAt(rowNo, 1).toString());
             cmbFrom.setSelectedItem(jTable1.getValueAt(rowNo,2).toString());
             cmbTo.setSelectedItem(jTable1.getValueAt(rowNo,3).toString());
             txtInvoiceNumber.setText(jTable1.getValueAt(rowNo,4).toString());
@@ -111,10 +111,10 @@ public class InvoiceEntry extends javax.swing.JInternalFrame {
       }
      public void ViewInvoiceDetailsForm()
     {
-        InvoiceEntry  IE=new InvoiceEntry();
-        AnarTrading.desktopPane.add(IE);
-        IE.setVisible(true);
-        IE.show();
+        InvoiceReceived  IR=new InvoiceReceived();
+        AnarTrading.desktopPane.add(IR);
+        IR.setVisible(true);
+        IR.show();
     }
      public void insertIntoDb()
     {
@@ -122,7 +122,7 @@ public class InvoiceEntry extends javax.swing.JInternalFrame {
         Connection con=c.conn();
         try
         {
-            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_invoiceDetails(fromAdd,toAdd,invoiceNumber,invoiceDate,amount,InvoiceMonth,invoiceYear,terms,paymentDate,remark) VALUES(upper(?),upper(?),upper(?),?,?,?,?,?,?,upper(?))");           
+            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_invoicereceived(fromAdd,toAdd,invoiceNumber,invoiceDate,amount,InvoiceMonth,invoiceYear,terms,paymentDate,remark) VALUES(upper(?),upper(?),upper(?),?,?,?,?,?,?,upper(?))");           
             ps.setString(1, cmbFrom.getSelectedItem().toString());
             ps.setString(2, cmbTo.getSelectedItem().toString());
             ps.setString(3, txtInvoiceNumber.getText());
@@ -153,7 +153,7 @@ public class InvoiceEntry extends javax.swing.JInternalFrame {
         try
         {
             Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp order by invoiceId desc");
+            ResultSet rs=stmt.executeQuery("select @i := @i + 1 '"+"SL.NO"+"',receivedId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"' from tbl_invoicereceived,(SELECT @i := 0) temp order by receivedId desc");
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             con.close();
             jTable1.getColumnModel().getColumn(1).setMinWidth(0);
@@ -175,7 +175,7 @@ public class InvoiceEntry extends javax.swing.JInternalFrame {
         Connection con=c.conn();
         try
         {
-            PreparedStatement ps=con.prepareStatement("UPDATE tbl_invoiceDetails SET fromAdd=upper(?),toAdd=upper(?),invoiceNumber=upper(?),invoiceDate=?,amount=?,InvoiceMonth=?,invoiceYear=?,terms=?,paymentDate=?,remark=upper(?)where invoiceId=?");
+            PreparedStatement ps=con.prepareStatement("UPDATE tbl_invoicereceived SET fromAdd=upper(?),toAdd=upper(?),invoiceNumber=upper(?),invoiceDate=?,amount=?,InvoiceMonth=?,invoiceYear=?,terms=?,paymentDate=?,remark=upper(?)where receivedId=?");
             ps.setString(1,cmbFrom.getSelectedItem().toString());
             ps.setString(2,cmbTo.getSelectedItem().toString());
             ps.setString(3,txtInvoiceNumber.getText());
@@ -186,7 +186,7 @@ public class InvoiceEntry extends javax.swing.JInternalFrame {
             ps.setString(8,txtTerms.getText());
             ps.setString(9,txtPaymentDate.getText());
             ps.setString(10,txtRemarks.getText());
-            ps.setInt(11, invoiceId);
+            ps.setInt(11, receivedId);
             int i=ps.executeUpdate();
             if(i!=0)
             {       
@@ -206,7 +206,7 @@ public class InvoiceEntry extends javax.swing.JInternalFrame {
             connection c = new connection();
             Connection con = c.conn();
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT DISTINCT fromAdd FROM tbl_invoicedetails order by fromAdd asc");
+            ResultSet rs = stmt.executeQuery("SELECT DISTINCT fromAdd FROM tbl_invoicereceived order by fromAdd asc");
             while (rs.next()) {
                 cmbFrom.addItem(rs.getString(1));
             }
@@ -221,7 +221,7 @@ public class InvoiceEntry extends javax.swing.JInternalFrame {
             connection c = new connection();
             Connection con = c.conn();
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT DISTINCT toAdd FROM tbl_invoicedetails order by toAdd asc");
+            ResultSet rs = stmt.executeQuery("SELECT DISTINCT toAdd FROM tbl_invoicereceived order by toAdd asc");
             while (rs.next()) {
                 cmbTo.addItem(rs.getString(1));
             }
@@ -283,7 +283,7 @@ public class InvoiceEntry extends javax.swing.JInternalFrame {
         });
         jtablePopUp.add(menuItemDocument);
 
-        setTitle("Invoice Details");
+        setTitle("Invoice Received Details");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -593,7 +593,7 @@ public class InvoiceEntry extends javax.swing.JInternalFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -654,7 +654,7 @@ public class InvoiceEntry extends javax.swing.JInternalFrame {
                     connection c=new connection();
                     Connection con=c.conn();
                     Statement stmt1=con.createStatement();
-                    int i=stmt1.executeUpdate("delete from tbl_invoiceDetails where invoiceId="+invoiceId);
+                    int i=stmt1.executeUpdate("delete from tbl_invoicereceived where receivedId="+receivedId);
                     dispose();
                     ViewInvoiceDetailsForm();
                 }
@@ -684,7 +684,14 @@ public class InvoiceEntry extends javax.swing.JInternalFrame {
 
     private void txtTermsFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTermsFocusLost
         try {
-            addDaysToDate(txtDate.getText(),Integer.parseInt(txtTerms.getText()));
+            if(txtDate.getText().equals("1111-11-11"))
+            {
+                
+            }
+            else
+            {
+                addDaysToDate(txtDate.getText(),Integer.parseInt(txtTerms.getText()));
+            }
         } catch (Exception ex) {
             Logger.getLogger(InvoiceEntry.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -712,10 +719,10 @@ public class InvoiceEntry extends javax.swing.JInternalFrame {
 
     private void menuItemDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDocumentActionPerformed
         // TODO add your handling code here:
-        InvoiceDocument ID = new InvoiceDocument(invoiceId);
-        AnarTrading.desktopPane.add(ID);
-        ID.setVisible(true);
-        ID.show();
+        InvoiceReceivedDocument IRD = new InvoiceReceivedDocument(receivedId);
+        AnarTrading.desktopPane.add(IRD);
+        IRD.setVisible(true);
+        IRD.show();
     }//GEN-LAST:event_menuItemDocumentActionPerformed
 
     private void lblSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSearchMouseClicked
@@ -765,5 +772,5 @@ public class InvoiceEntry extends javax.swing.JInternalFrame {
    public static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
    DateFormat defaultDate = new SimpleDateFormat("yyyy-MM-dd");
    String dateString = "";
-   int invoiceId;
+   int receivedId;
 }
