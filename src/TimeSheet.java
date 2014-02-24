@@ -587,10 +587,10 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
         double otRatePerHour=round((Double.parseDouble(txtBasic.getText())/days/8)*1.25,2);
         double hotRatePerHour=round((Double.parseDouble(txtBasic.getText())/days/8)*1.5,2);
         
-        double normalGrossAmount=Double.parseDouble(txtBasic.getText());
+        double normalGrossAmount=round(Double.parseDouble(txtBasic.getText()),2);
         double otGrossAmount=round(totalOT*otRatePerHour,2);
         double hotGrossamount=round(totalHOT*hotRatePerHour,2);
-        double grossAmount=normalGrossAmount+otGrossAmount+hotGrossamount;
+        double grossAmount=round(normalGrossAmount+otGrossAmount+hotGrossamount,2);
         double absentDeduction=round((Double.parseDouble(txtBasic.getText()))/days*Integer.parseInt(txtCountAbsent.getText()),2);
         
         txtNormalRatePerHour.setText(Double.toString(normalRateperHour));
@@ -924,7 +924,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
     public void textFieldValueCheck(JTextField txtFiled,java.awt.event.KeyEvent evt)
     {
         int charCode= evt.getKeyCode();
-            if (((charCode >=KeyEvent.VK_0) && (charCode<=KeyEvent.VK_9))||((charCode >=KeyEvent.VK_NUMPAD0) && (charCode<=KeyEvent.VK_NUMPAD9))|| charCode==KeyEvent.VK_BACK_SPACE || charCode==KeyEvent.VK_DELETE|| charCode==KeyEvent.VK_A||charCode==KeyEvent.VK_H||charCode==KeyEvent.VK_L||charCode==KeyEvent.VK_O||charCode==KeyEvent.VK_F||charCode==KeyEvent.VK_DECIMAL)
+            if (((charCode >=KeyEvent.VK_0) && (charCode<=KeyEvent.VK_9))||((charCode >=KeyEvent.VK_NUMPAD0) && (charCode<=KeyEvent.VK_NUMPAD9))|| charCode==KeyEvent.VK_BACK_SPACE || charCode==KeyEvent.VK_DELETE|| charCode==KeyEvent.VK_A||charCode==KeyEvent.VK_H||charCode==KeyEvent.VK_L||charCode==KeyEvent.VK_O||charCode==KeyEvent.VK_F||charCode==KeyEvent.VK_DECIMAL||charCode==KeyEvent.VK_CAPS_LOCK||charCode==KeyEvent.VK_TAB||charCode==KeyEvent.VK_ALT)
             {
 
             }

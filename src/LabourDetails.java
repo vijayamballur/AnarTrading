@@ -726,6 +726,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
                 .addGap(7, 7, 7))
         );
 
+        jTable1.setFont(new java.awt.Font("Verdana", 0, 9)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
