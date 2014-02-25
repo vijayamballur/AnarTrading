@@ -123,15 +123,20 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
      public void insertIntoDb()
     {   
         if(radioPaid.isSelected())
+        {
             status=1;
+            txtBalance.setText("0.0");
+        }
         else
+        {
             status=0;
+        }
         
         connection c=new connection();
         Connection con=c.conn();
         try
         {
-            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_invoiceDetails(fromAdd,toAdd,invoiceNumber,invoiceDate,amount,InvoiceMonth,invoiceYear,terms,paymentDate,remark,balance,status) VALUES(upper(?),upper(?),upper(?),?,?,?,?,?,?,upper(?),?,?)");           
+            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_invoiceDetails(fromAdd,toAdd,invoiceNumber,invoiceDate,amount,InvoiceMonth,invoiceYear,terms,paymentDate,remark,balance,status,deduction) VALUES(upper(?),upper(?),upper(?),?,?,?,?,?,?,upper(?),?,?,?)");           
             ps.setString(1, cmbFrom.getSelectedItem().toString());
             ps.setString(2, cmbTo.getSelectedItem().toString());
             ps.setString(3, txtInvoiceNumber.getText());
@@ -144,6 +149,7 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
             ps.setString(10, txtRemarks.getText());
             ps.setString(11, txtBalance.getText());
             ps.setInt(12, status);
+            ps.setString(13, txtDeduction.getText());
             int i=ps.executeUpdate();
             if(i!=0)
             {
@@ -159,20 +165,32 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
     }
     public void viewDbEmployeeDetails()
     {
+        if(radioAll.isSelected()==true)
+        {
+             query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',status,deduction '"+"DEDUCTION"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp order by invoiceId desc";
+        }
+        if(radioNotPaidView.isSelected()==true)
+        {
+            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',status,deduction '"+"DEDUCTION"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp  where status=0 order by invoiceId desc";
+        }
+        if(radioPaidView.isSelected()==true)
+        {
+            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',status,deduction '"+"DEDUCTION"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp  where status=1 order by invoiceId desc";
+        }
         connection c=new connection();
         Connection con=c.conn();
         try
         {
             Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',status from tbl_invoiceDetails,(SELECT @i := 0) temp order by invoiceId desc");
+            ResultSet rs=stmt.executeQuery(query);
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             con.close();
             jTable1.getColumnModel().getColumn(1).setMinWidth(0);
             jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
             jTable1.getColumnModel().getColumn(1).setWidth(0);
-            jTable1.getColumnModel().getColumn(14).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(14).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(14).setWidth(0);
+            jTable1.getColumnModel().getColumn(13).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(13).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(13).setWidth(0);
             jTable1.setShowHorizontalLines( false );
             jTable1.setRowSelectionAllowed( true );
 
@@ -185,7 +203,10 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
     public void updateDb()
     {
         if(radioPaid.isSelected())
+        {
             status=1;
+            txtBalance.setText("0.0");
+        }
         else
             status=0;
         
@@ -193,7 +214,7 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
         Connection con=c.conn();
         try
         {
-            PreparedStatement ps=con.prepareStatement("UPDATE tbl_invoiceDetails SET fromAdd=upper(?),toAdd=upper(?),invoiceNumber=upper(?),invoiceDate=?,amount=?,InvoiceMonth=?,invoiceYear=?,terms=?,paymentDate=?,remark=upper(?),balance=?,status=? where invoiceId=?");
+            PreparedStatement ps=con.prepareStatement("UPDATE tbl_invoiceDetails SET fromAdd=upper(?),toAdd=upper(?),invoiceNumber=upper(?),invoiceDate=?,amount=?,InvoiceMonth=?,invoiceYear=?,terms=?,paymentDate=?,remark=upper(?),balance=?,status=?,deduction=? where invoiceId=?");
             ps.setString(1,cmbFrom.getSelectedItem().toString());
             ps.setString(2,cmbTo.getSelectedItem().toString());
             ps.setString(3,txtInvoiceNumber.getText());
@@ -206,7 +227,8 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
             ps.setString(10,txtRemarks.getText());
             ps.setString(11,txtBalance.getText());
             ps.setInt(12,status);
-            ps.setInt(13, invoiceId);
+            ps.setString(13,txtDeduction.getText());
+            ps.setInt(14, invoiceId);
             int i=ps.executeUpdate();
             if(i!=0)
             {       
@@ -264,6 +286,7 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
         jtablePopUp = new javax.swing.JPopupMenu();
         menuItemDocument = new javax.swing.JMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
+        btnGroupView = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         lblEmployeeName = new javax.swing.JLabel();
         cmbFrom = new javax.swing.JComboBox();
@@ -301,6 +324,9 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
         btnRefresh = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        radioPaidView = new javax.swing.JRadioButton();
+        radioNotPaidView = new javax.swing.JRadioButton();
+        radioAll = new javax.swing.JRadioButton();
 
         menuItemDocument.setText("Add Document");
         menuItemDocument.setToolTipText("");
@@ -676,17 +702,67 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        btnGroupView.add(radioPaidView);
+        radioPaidView.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        radioPaidView.setText("Paid View");
+        radioPaidView.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                radioPaidViewItemStateChanged(evt);
+            }
+        });
+        radioPaidView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioPaidViewActionPerformed(evt);
+            }
+        });
+
+        btnGroupView.add(radioNotPaidView);
+        radioNotPaidView.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        radioNotPaidView.setText("Not Paid View");
+        radioNotPaidView.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                radioNotPaidViewItemStateChanged(evt);
+            }
+        });
+        radioNotPaidView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioNotPaidViewActionPerformed(evt);
+            }
+        });
+
+        radioAll.setSelected(true);
+        btnGroupView.add(radioAll);
+        radioAll.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        radioAll.setText("All");
+        radioAll.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                radioAllItemStateChanged(evt);
+            }
+        });
+        radioAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioAllActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(radioPaidView)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(radioNotPaidView)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(radioAll)))
                 .addContainerGap(129, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -697,8 +773,13 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radioPaidView)
+                    .addComponent(radioNotPaidView)
+                    .addComponent(radioAll))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -833,11 +914,39 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
         txtBalance.setText(txtAmount.getText());
     }//GEN-LAST:event_txtAmountFocusLost
 
+    private void radioAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioAllActionPerformed
+  
+    }//GEN-LAST:event_radioAllActionPerformed
+
+    private void radioPaidViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioPaidViewActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioPaidViewActionPerformed
+
+    private void radioNotPaidViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioNotPaidViewActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioNotPaidViewActionPerformed
+
+    private void radioPaidViewItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_radioPaidViewItemStateChanged
+        // TODO add your handling code here:
+        viewDbEmployeeDetails();
+    }//GEN-LAST:event_radioPaidViewItemStateChanged
+
+    private void radioNotPaidViewItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_radioNotPaidViewItemStateChanged
+        // TODO add your handling code here:
+        viewDbEmployeeDetails();
+    }//GEN-LAST:event_radioNotPaidViewItemStateChanged
+
+    private void radioAllItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_radioAllItemStateChanged
+        // TODO add your handling code here:
+        viewDbEmployeeDetails();
+    }//GEN-LAST:event_radioAllItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private net.sourceforge.jcalendarbutton.JCalendarButton btnDate;
     private javax.swing.JButton btnDelete;
+    private javax.swing.ButtonGroup btnGroupView;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;
@@ -865,8 +974,11 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblEmployeeName9;
     private javax.swing.JLabel lblSearch;
     private javax.swing.JMenuItem menuItemDocument;
+    private javax.swing.JRadioButton radioAll;
     private javax.swing.JRadioButton radioNotPaid;
+    private javax.swing.JRadioButton radioNotPaidView;
     private javax.swing.JRadioButton radioPaid;
+    private javax.swing.JRadioButton radioPaidView;
     private javax.swing.JTextField txtAmount;
     private javax.swing.JTextField txtBalance;
     private javax.swing.JTextField txtDate;
@@ -879,6 +991,6 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
    Point middle = new Point(100,0);
    public static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
    DateFormat defaultDate = new SimpleDateFormat("yyyy-MM-dd");
-   String dateString = "";
+   String dateString = "",query;
    int invoiceId,status;
 }

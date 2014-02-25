@@ -53,167 +53,518 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         
         
         if(chkPayment.isSelected()==false && chkFrom.isSelected()==false && chkTo.isSelected()==false && chkMonth.isSelected()==false && chkYear.isSelected()==false)
-        {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where status=0";
+        {   if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where status=1";
+            }   
             search(query);
         }
         if(chkPayment.isSelected()==false && chkFrom.isSelected()==false && chkTo.isSelected()==false && chkMonth.isSelected()==false && chkYear.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where invoiceYear=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where invoiceYear=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where invoiceYear=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where invoiceYear=? and status=1";
+            }   
             search(query,year);
         }
         if(chkPayment.isSelected()==false && chkFrom.isSelected()==false && chkTo.isSelected()==false && chkMonth.isSelected()==true && chkYear.isSelected()==false)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where InvoiceMonth=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where InvoiceMonth=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where InvoiceMonth=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where InvoiceMonth=? and status=1";
+            }   
             search(query,month);
         }
         if(chkPayment.isSelected()==false && chkFrom.isSelected()==false && chkTo.isSelected()==false && chkMonth.isSelected()==true && chkYear.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where InvoiceMonth=? and invoiceYear=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where InvoiceMonth=? and invoiceYear=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where InvoiceMonth=? and invoiceYear=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where InvoiceMonth=? and invoiceYear=? and status=1";
+            }   
             search(query,month,year);
         }
         if(chkPayment.isSelected()==false && chkFrom.isSelected()==false && chkTo.isSelected()==true && chkMonth.isSelected()==false && chkYear.isSelected()==false)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and status=1";
+            }  
             search(query,to);
         }
         if(chkPayment.isSelected()==false && chkFrom.isSelected()==false && chkTo.isSelected()==true && chkMonth.isSelected()==false && chkYear.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and invoiceYear=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and invoiceYear=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and invoiceYear=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and invoiceYear=? and status=1";
+            }  
             search(query,to,year);
         }
         if(chkPayment.isSelected()==false && chkFrom.isSelected()==false && chkTo.isSelected()==true && chkMonth.isSelected()==true && chkYear.isSelected()==false)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and InvoiceMonth=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and InvoiceMonth=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and InvoiceMonth=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and InvoiceMonth=? and status=1";
+            }  
             search(query,to,month);
         }
         if(chkPayment.isSelected()==false && chkFrom.isSelected()==false && chkTo.isSelected()==true && chkMonth.isSelected()==true && chkYear.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and InvoiceMonth=? and invoiceYear=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and InvoiceMonth=? and invoiceYear=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and InvoiceMonth=? and invoiceYear=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and InvoiceMonth=? and invoiceYear=? and status=1";
+            }  
             search(query,to,month,year);
         }
         
         if(chkPayment.isSelected()==false && chkFrom.isSelected()==true && chkTo.isSelected()==false && chkMonth.isSelected()==false && chkYear.isSelected()==false)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and status=1";
+            }  
             search(query,from);
         }
         if(chkPayment.isSelected()==false && chkFrom.isSelected()==true && chkTo.isSelected()==false && chkMonth.isSelected()==false && chkYear.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and invoiceYear=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and invoiceYear=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and invoiceYear=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and invoiceYear=? and status=1";
+            }  
             search(query,from,year);
         }
         if(chkPayment.isSelected()==false && chkFrom.isSelected()==true && chkTo.isSelected()==false && chkMonth.isSelected()==true && chkYear.isSelected()==false)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and InvoiceMonth=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and InvoiceMonth=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and InvoiceMonth=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and InvoiceMonth=? and status=1";
+            } 
             search(query,from,month);
         }
         if(chkPayment.isSelected()==false && chkFrom.isSelected()==true && chkTo.isSelected()==false && chkMonth.isSelected()==true && chkYear.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and InvoiceMonth=? and invoiceYear=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and InvoiceMonth=? and invoiceYear=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and InvoiceMonth=? and invoiceYear=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and InvoiceMonth=? and invoiceYear=? and status=1";
+            } 
             search(query,from,month,year);
         }
         if(chkPayment.isSelected()==false && chkFrom.isSelected()==true && chkTo.isSelected()==true && chkMonth.isSelected()==false && chkYear.isSelected()==false)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and status=1";
+            } 
             search(query,from,to);
         }
         if(chkPayment.isSelected()==false && chkFrom.isSelected()==true && chkTo.isSelected()==true && chkMonth.isSelected()==false && chkYear.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and invoiceYear=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and invoiceYear=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and invoiceYear=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and invoiceYear=? and status=1";
+            } 
             search(query,from,to,year);
         }
         if(chkPayment.isSelected()==false && chkFrom.isSelected()==true && chkTo.isSelected()==true && chkMonth.isSelected()==true && chkYear.isSelected()==false)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and InvoiceMonth=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and InvoiceMonth=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and InvoiceMonth=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and InvoiceMonth=? and status=1";
+            } 
             search(query,from,to,month);
         }
         if(chkPayment.isSelected()==false && chkFrom.isSelected()==true && chkTo.isSelected()==true && chkMonth.isSelected()==true && chkYear.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and InvoiceMonth=? and invoiceYear=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and InvoiceMonth=? and invoiceYear=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and InvoiceMonth=? and invoiceYear=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and InvoiceMonth=? and invoiceYear=? and status=1";
+            } 
             search(query,from,to,month,year);
         }
         
         
         if(chkPayment.isSelected()==true && chkFrom.isSelected()==false && chkTo.isSelected()==false && chkMonth.isSelected()==false && chkYear.isSelected()==false)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and status=1";
+            } 
             search(query,payment);
         }
         if(chkPayment.isSelected()==true && chkFrom.isSelected()==false && chkTo.isSelected()==false && chkMonth.isSelected()==false && chkYear.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and invoiceYear=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and invoiceYear=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and invoiceYear=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and invoiceYear=? and status=1";
+            } 
             search(query,payment,year);
         }
         if(chkPayment.isSelected()==true && chkFrom.isSelected()==false && chkTo.isSelected()==false && chkMonth.isSelected()==true && chkYear.isSelected()==false)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and InvoiceMonth=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and InvoiceMonth=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and InvoiceMonth=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and InvoiceMonth=? and status=1";
+            } 
             search(query,payment,month);
         }
         if(chkPayment.isSelected()==true && chkFrom.isSelected()==false && chkTo.isSelected()==false && chkMonth.isSelected()==true && chkYear.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and InvoiceMonth=? and invoiceYear=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and InvoiceMonth=? and invoiceYear=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and InvoiceMonth=? and invoiceYear=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and InvoiceMonth=? and invoiceYear=? and status=1";
+            } 
             search(query,payment,month,year);
         }
         if(chkPayment.isSelected()==true && chkFrom.isSelected()==false && chkTo.isSelected()==true && chkMonth.isSelected()==false && chkYear.isSelected()==false)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and status=1";
+            } 
             search(query,payment,to);
         }
         if(chkPayment.isSelected()==true && chkFrom.isSelected()==false && chkTo.isSelected()==true && chkMonth.isSelected()==false && chkYear.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and invoiceYear=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and invoiceYear=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and invoiceYear=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and invoiceYear=? and status=1";
+            } 
             search(query,payment,to,year);
         }
         if(chkPayment.isSelected()==true && chkFrom.isSelected()==false && chkTo.isSelected()==true && chkMonth.isSelected()==true && chkYear.isSelected()==false)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and InvoiceMonth=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and InvoiceMonth=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and InvoiceMonth=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and InvoiceMonth=? and status=1";
+            } 
             search(query,payment,to,month);
         }
         if(chkPayment.isSelected()==true && chkFrom.isSelected()==false && chkTo.isSelected()==true && chkMonth.isSelected()==true && chkYear.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and InvoiceMonth=? and invoiceYear=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and InvoiceMonth=? and invoiceYear=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and InvoiceMonth=? and invoiceYear=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and InvoiceMonth=? and invoiceYear=? and status=1";
+            } 
             search(query,payment,to,month,year);
         }
         
         if(chkPayment.isSelected()==true && chkFrom.isSelected()==true && chkTo.isSelected()==false && chkMonth.isSelected()==false && chkYear.isSelected()==false)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and status=1";
+            } 
             search(query,payment,from);
         }
         if(chkPayment.isSelected()==true && chkFrom.isSelected()==true && chkTo.isSelected()==false && chkMonth.isSelected()==false && chkYear.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and invoiceYear=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and invoiceYear=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and invoiceYear=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and invoiceYear=? and status=1";
+            } 
             search(query,payment,from,year);
         }
         if(chkPayment.isSelected()==true && chkFrom.isSelected()==true && chkTo.isSelected()==false && chkMonth.isSelected()==true && chkYear.isSelected()==false)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and InvoiceMonth=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and InvoiceMonth=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and InvoiceMonth=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and InvoiceMonth=? and status=1";
+            } 
             search(query,payment,from,month);
         }
         if(chkPayment.isSelected()==true && chkFrom.isSelected()==true && chkTo.isSelected()==false && chkMonth.isSelected()==true && chkYear.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and InvoiceMonth=? and invoiceYear=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and InvoiceMonth=? and invoiceYear=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and InvoiceMonth=? and invoiceYear=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and InvoiceMonth=? and invoiceYear=? and status=1";
+            } 
             search(query,payment,from,month,year);
         }
         if(chkPayment.isSelected()==true && chkFrom.isSelected()==true && chkTo.isSelected()==true && chkMonth.isSelected()==false && chkYear.isSelected()==false)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and status=1";
+            } 
             search(query,payment,from,to);
         }
         if(chkPayment.isSelected()==true && chkFrom.isSelected()==true && chkTo.isSelected()==true && chkMonth.isSelected()==false && chkYear.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and invoiceYear=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and invoiceYear=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and invoiceYear=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and invoiceYear=? and status=1";
+            } 
             search(query,payment,from,to,year);
         }
         if(chkPayment.isSelected()==true && chkFrom.isSelected()==true && chkTo.isSelected()==true && chkMonth.isSelected()==true && chkYear.isSelected()==false)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and InvoiceMonth=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and InvoiceMonth=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and InvoiceMonth=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and InvoiceMonth=? and status=1";
+            } 
             search(query,payment,from,to,month);
         }
         if(chkPayment.isSelected()==true && chkFrom.isSelected()==true && chkTo.isSelected()==true && chkMonth.isSelected()==true && chkYear.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and InvoiceMonth=? and invoiceYear=? and status=0";
+            if(radioAll.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and InvoiceMonth=? and invoiceYear=?";
+            }
+            if(radioNotPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and InvoiceMonth=? and invoiceYear=? and status=0";
+            }
+            if(radioPaidView.isSelected()==true)
+            {
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and InvoiceMonth=? and invoiceYear=? and status=1";
+            } 
             search(query,payment,from,to,month,year);
         }
         
@@ -420,6 +771,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
 
         jtablePopUp = new javax.swing.JPopupMenu();
         menuItemDocument = new javax.swing.JMenuItem();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         chkFrom = new javax.swing.JCheckBox();
         cmbFrom = new javax.swing.JComboBox();
@@ -434,6 +786,9 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        radioPaidView = new javax.swing.JRadioButton();
+        radioNotPaidView = new javax.swing.JRadioButton();
+        radioAll = new javax.swing.JRadioButton();
 
         menuItemDocument.setText("Add Document");
         menuItemDocument.setToolTipText("");
@@ -615,6 +970,49 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             }
         });
 
+        buttonGroup1.add(radioPaidView);
+        radioPaidView.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        radioPaidView.setText("Paid View");
+        radioPaidView.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                radioPaidViewItemStateChanged(evt);
+            }
+        });
+        radioPaidView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioPaidViewActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(radioNotPaidView);
+        radioNotPaidView.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        radioNotPaidView.setText("Not Paid View");
+        radioNotPaidView.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                radioNotPaidViewItemStateChanged(evt);
+            }
+        });
+        radioNotPaidView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioNotPaidViewActionPerformed(evt);
+            }
+        });
+
+        radioAll.setSelected(true);
+        buttonGroup1.add(radioAll);
+        radioAll.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        radioAll.setText("All");
+        radioAll.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                radioAllItemStateChanged(evt);
+            }
+        });
+        radioAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioAllActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -625,13 +1023,26 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 10, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(radioPaidView)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(radioNotPaidView)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(radioAll)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radioPaidView)
+                    .addComponent(radioNotPaidView)
+                    .addComponent(radioAll))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 4, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 621, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1))
         );
@@ -775,8 +1186,37 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jTable1MouseClicked
 
+    private void radioPaidViewItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_radioPaidViewItemStateChanged
+        // TODO add your handling code here:
+        queryGenerator();
+
+    }//GEN-LAST:event_radioPaidViewItemStateChanged
+
+    private void radioPaidViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioPaidViewActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioPaidViewActionPerformed
+
+    private void radioNotPaidViewItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_radioNotPaidViewItemStateChanged
+        // TODO add your handling code here:
+        queryGenerator();
+    }//GEN-LAST:event_radioNotPaidViewItemStateChanged
+
+    private void radioNotPaidViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioNotPaidViewActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioNotPaidViewActionPerformed
+
+    private void radioAllItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_radioAllItemStateChanged
+        // TODO add your handling code here:
+        queryGenerator();
+    }//GEN-LAST:event_radioAllItemStateChanged
+
+    private void radioAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioAllActionPerformed
+
+    }//GEN-LAST:event_radioAllActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox chkFrom;
     private javax.swing.JCheckBox chkMonth;
     private javax.swing.JCheckBox chkPayment;
@@ -793,6 +1233,9 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JPopupMenu jtablePopUp;
     private javax.swing.JMenuItem menuItemDocument;
+    private javax.swing.JRadioButton radioAll;
+    private javax.swing.JRadioButton radioNotPaidView;
+    private javax.swing.JRadioButton radioPaidView;
     // End of variables declaration//GEN-END:variables
     Point middle = new Point(100,0);
     int invoiceId;
