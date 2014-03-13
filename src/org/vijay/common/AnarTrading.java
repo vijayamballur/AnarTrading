@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 import javax.swing.Box;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import org.vijay.receipt.ReceiptVoucherNew;
 
 /**
  *
@@ -778,12 +779,11 @@ public class AnarTrading extends javax.swing.JFrame {
 
     private void btnStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentActionPerformed
         // TODO add your handling code here:
-//        StudentDetails student = new StudentDetails();
-//        LibraryMdi.desktopPane.add(student);
-//        student.setVisible(true);
-//        student.show();
-//        btnStudent.setEnabled(false);
-//        menuItemStudent.setEnabled(false);
+        ReceiptVoucherNew RVN = new ReceiptVoucherNew();
+        AnarTrading.desktopPane.add(RVN);
+        RVN.setVisible(true);
+        RVN.show();
+
     }//GEN-LAST:event_btnStudentActionPerformed
 
     private void btnAccount1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAccount1MouseEntered

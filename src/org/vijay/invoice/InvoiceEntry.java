@@ -997,5 +997,5 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
    public static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
    DateFormat defaultDate = new SimpleDateFormat("yyyy-MM-dd");
    String dateString = "",query;
-   int invoiceId,status;
+   int invoiceId,status,i;
 }

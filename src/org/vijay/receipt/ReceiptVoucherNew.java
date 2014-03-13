@@ -1,5 +1,18 @@
 package org.vijay.receipt;
 
+import java.awt.Point;
+import java.awt.event.ItemEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import org.vijay.common.connection;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,15 +23,53 @@ package org.vijay.receipt;
  *
  * @author MAC
  */
-public class ReceiptVoucherNew extends javax.swing.JInternalFrame {
+public final class ReceiptVoucherNew extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form ReceiptVoucherNew
      */
     public ReceiptVoucherNew() {
         initComponents();
+        setLocation(middle);
+        cmbReceivedFromFill();
+        
     }
-
+    public void cmbReceivedFromFill()
+    {
+           
+        try {
+            connection c = new connection();
+            Connection con = c.conn();
+            PreparedStatement ps = con.prepareStatement("SELECT DISTINCT toAdd FROM tbl_invoicedetails where fromAdd='ANAR TRADING & CONTRACTING'");
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()) {
+                cmbReceivedFrom.addItem(rs.getString(1));
+            }
+            con.close();
+        } catch (SQLException ex) {
+            
+        }
+    }
+    
+//    public void cmbFieldFill()
+//    {
+//        try {
+//            connection c = new connection();
+//            Connection con = c.conn();
+//            PreparedStatement ps=con.prepareStatement("SELECT  invoiceDate,amount,balance FROM tbl_invoicedetails where invoiceNumber=?");
+//            ps.setString(1, cmbInvoiceNumber.getSelectedItem().toString());
+//            ResultSet rs=ps.executeQuery();
+//            
+//            while (rs.next()) {
+//                txtInvoiceDate.setText(rs.getString(1));
+//                txtInvoiceAmount.setText(rs.getString(2));
+//                txtpreviousBalance.setText(rs.getString(3));
+//            }
+//            con.close();
+//        } catch (SQLException ex) {
+//            
+//        }
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,17 +79,19 @@ public class ReceiptVoucherNew extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        cmbReceivedFrom = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
-        cmbInvoiceNumber = new javax.swing.JComboBox();
         txtInvoiceDate = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtInvoiceAmount = new javax.swing.JTextField();
         txtpreviousBalance = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        cmbReceivedFrom = new javax.swing.JComboBox();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        listInvoiceNumber = new javax.swing.JList();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         txtQatarRiyal = new javax.swing.JTextField();
@@ -70,16 +123,8 @@ public class ReceiptVoucherNew extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel1.setText("Received from Mr./M/s");
 
-        cmbReceivedFrom.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        cmbReceivedFrom.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel2.setText("Invoice Number");
-
-        cmbInvoiceNumber.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        cmbInvoiceNumber.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        txtInvoiceDate.setEditable(false);
 
         jLabel3.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel3.setText("Invoice Date");
@@ -89,10 +134,22 @@ public class ReceiptVoucherNew extends javax.swing.JInternalFrame {
 
         txtInvoiceDate.setEditable(false);
 
-        txtInvoiceDate.setEditable(false);
-
         jLabel5.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel5.setText("Balance Amount");
+
+        cmbReceivedFrom.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cmbReceivedFrom.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbReceivedFromItemStateChanged(evt);
+            }
+        });
+        cmbReceivedFrom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbReceivedFromActionPerformed(evt);
+            }
+        });
+
+        jScrollPane2.setViewportView(listInvoiceNumber);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -100,57 +157,55 @@ public class ReceiptVoucherNew extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(cmbInvoiceNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel3))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtInvoiceAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel5)))
-                        .addGap(10, 10, 10)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtInvoiceDate)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(txtpreviousBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(cmbReceivedFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 604, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                                .addGap(32, 32, 32)
+                                .addComponent(jLabel3)
+                                .addGap(10, 10, 10)
+                                .addComponent(txtInvoiceDate, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmbReceivedFrom, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                        .addComponent(txtInvoiceAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel5)
+                        .addGap(11, 11, 11)
+                        .addComponent(txtpreviousBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(cmbReceivedFrom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtInvoiceDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(cmbInvoiceNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(2, 2, 2)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(txtInvoiceAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtInvoiceDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtpreviousBalance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))))
-                .addContainerGap(31, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtpreviousBalance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5)))
+                .addContainerGap())
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Receipt Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 0, 12))); // NOI18N
@@ -327,7 +382,7 @@ public class ReceiptVoucherNew extends javax.swing.JInternalFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
-                .addGap(0, 72, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -342,13 +397,21 @@ public class ReceiptVoucherNew extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cmbReceivedFromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbReceivedFromActionPerformed
+
+    }//GEN-LAST:event_cmbReceivedFromActionPerformed
+
+    private void cmbReceivedFromItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbReceivedFromItemStateChanged
+
+    }//GEN-LAST:event_cmbReceivedFromItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private net.sourceforge.jcalendarbutton.JCalendarButton btnDate;
     private net.sourceforge.jcalendarbutton.JCalendarButton btnDate1;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox cmbAccountType;
     private javax.swing.JComboBox cmbBankName;
-    private javax.swing.JComboBox cmbInvoiceNumber;
     private javax.swing.JComboBox cmbReceivedFrom;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -368,7 +431,9 @@ public class ReceiptVoucherNew extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JList listInvoiceNumber;
     private javax.swing.JTextField txtDeductionAmount;
     private javax.swing.JTextField txtInvoiceAmount;
     private javax.swing.JTextField txtInvoiceDate;
@@ -381,4 +446,9 @@ public class ReceiptVoucherNew extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtTheSumOf;
     private javax.swing.JTextField txtpreviousBalance;
     // End of variables declaration//GEN-END:variables
+    Point middle = new Point(100,0);
+    public static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    DateFormat defaultDate = new SimpleDateFormat("yyyy-MM-dd");
+    String dateString = "",query;
+    String fromName;
 }
