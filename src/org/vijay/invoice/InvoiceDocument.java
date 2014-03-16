@@ -150,6 +150,11 @@ public class InvoiceDocument extends javax.swing.JInternalFrame {
 
         btnPassportUpdate.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
         btnPassportUpdate.setText("Update");
+        btnPassportUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPassportUpdateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -249,6 +254,10 @@ public class InvoiceDocument extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane,e);
         }     
     }//GEN-LAST:event_btnPassportPicActionPerformed
+
+    private void btnPassportUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPassportUpdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPassportUpdateActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
