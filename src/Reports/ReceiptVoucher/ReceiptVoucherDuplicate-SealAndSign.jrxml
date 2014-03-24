@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Voucher" language="groovy" pageWidth="595" pageHeight="421" orientation="Landscape" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d517996f-8e87-4ee3-95e6-81d7e0d71033">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="109"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="receiptId" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT
+     tbl_receipt.`receiptId` AS tbl_receipt_receiptId,
+     DATE_FORMAT(tbl_receipt.`voucherDate`,'%d %b %y') AS tbl_receipt_date,
+     tbl_receipt.`receivedFrom` AS tbl_receipt_receivedFrom,
+     tbl_receipt.`ByCashOrCheckNo` AS tbl_receipt_ByCashOrCheckNo,
+     CASE tbl_receipt.`dated`  WHEN '1111-11-11' THEN ' ' ELSE DATE_FORMAT(tbl_receipt.`dated`,'%d %b %y')END AS tbl_receipt_dated,
+     tbl_receipt.`bank` AS tbl_receipt_bank,
+     tbl_receipt.`being` AS tbl_receipt_being,
+     tbl_receipt.`amount` AS tbl_receipt_amount,
+     tbl_receipt.`theSumOf` AS tbl_receipt_theSumOf
+FROM
+     anar.`tbl_receipt` tbl_receipt where tbl_receipt.`receiptId`=$P{receiptId}]]>
+	</queryString>
+	<field name="tbl_receipt_receiptId" class="java.lang.Long"/>
+	<field name="tbl_receipt_date" class="java.lang.String"/>
+	<field name="tbl_receipt_receivedFrom" class="java.lang.String"/>
+	<field name="tbl_receipt_ByCashOrCheckNo" class="java.lang.String"/>
+	<field name="tbl_receipt_dated" class="java.lang.String"/>
+	<field name="tbl_receipt_bank" class="java.lang.String"/>
+	<field name="tbl_receipt_being" class="java.lang.String"/>
+	<field name="tbl_receipt_amount" class="java.math.BigDecimal"/>
+	<field name="tbl_receipt_theSumOf" class="java.lang.String"/>
+	<background>
+		<band height="381" splitType="Stretch">
+			<image>
+				<reportElement uuid="f0fbee9d-6ab0-4e59-8601-9f166d711287" x="380" y="228" width="196" height="92"/>
+				<imageExpression><![CDATA["D:\\Firms\\Anar\\ANAR TRADING & CONTRACTING WLL\\Sign Seal\\SIGN SEAL.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="a210b3dd-03c9-49b9-b57e-9a1f7a2063cd" x="0" y="0" width="555" height="381" forecolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="48"/>
+				</textElement>
+				<text><![CDATA[COPY]]></text>
+			</staticText>
+		</band>
+	</background>
+	<title>
+		<band height="77" splitType="Stretch">
+			<image>
+				<reportElement uuid="3f8d0be1-239a-4268-8066-4c9e19abb2f6" x="0" y="0" width="555" height="61"/>
+				<imageExpression><![CDATA["C:\\Users\\MAC\\Documents\\NetBeansProjects\\Payment Voucher\\src\\reports\\Anar.jpg"]]></imageExpression>
+			</image>
+			<rectangle>
+				<reportElement uuid="8ea75e3e-8a6d-420c-84d8-57ab87d0c272" x="0" y="73" width="529" height="2" forecolor="#74224A" backcolor="#74224A"/>
+			</rectangle>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="244" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="41336d84-fb57-4041-ba3f-df89b08e0faa" style="Column header" x="0" y="45" width="122" height="18" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="837cfc40-77dd-4c07-aa59-8e6f46c6db2a" style="Column header" x="0" y="98" width="122" height="18" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[The sum of QR]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="QR #,##0.00/-">
+				<reportElement uuid="943828d0-36dd-4844-ae75-a1646e7db6c7" style="Detail" positionType="Float" x="137" y="45" width="120" height="18"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_receipt_amount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="f03a77b2-f2e8-4c56-8d1b-57a9405afbc9" style="Detail" positionType="Float" x="137" y="98" width="418" height="18"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_receipt_theSumOf}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="773e5356-ed87-4e0d-96c9-d0b9317e7645" style="Column header" x="0" y="177" width="122" height="18" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Being]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="3a21d10b-f5da-4af3-94f9-4efce248e4d2" style="Detail" positionType="Float" x="137" y="177" width="418" height="18"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_receipt_being}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="3bf626ed-3445-4975-80e1-935e59b5d040" style="Column header" x="381" y="27" width="61" height="18" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a744c2a3-4d52-4e97-8826-b53424df5a47" style="Column header" x="381" y="45" width="61" height="18" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="087a8736-06c2-45f9-ab21-fa961b033dff" style="Detail" positionType="Float" x="442" y="27" width="113" height="18" forecolor="#FF0000"/>
+				<textElement>
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_receipt_receiptId}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd-MMM-yyyy">
+				<reportElement uuid="71a2f65b-9e33-49af-be14-2948d6e9d25f" style="Detail" positionType="Float" x="442" y="45" width="113" height="18"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_receipt_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="28eaa390-d267-4ed4-9adf-be001a82f029" style="Column header" x="0" y="71" width="137" height="18" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Received from Mr./M/s]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0430c6b5-8c6b-46b1-8635-3e218f6d49f1" style="Column header" x="0" y="126" width="122" height="18" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[By Cash or ChequeNo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c54ec2e1-c957-4af1-af8d-3f4988778870" style="Column header" x="381" y="126" width="44" height="18" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dated]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1bf7e569-ab9c-4ab1-a517-19905ebd72e7" style="Column header" x="0" y="152" width="122" height="18" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bank]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="284679bc-266c-4f0f-8486-01c3e1315438" style="Detail" positionType="Float" x="137" y="71" width="418" height="18"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_receipt_receivedFrom}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="70fcae25-01ad-4ade-8cb8-a1245fed5229" style="Detail" positionType="Float" x="137" y="126" width="244" height="18"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_receipt_ByCashOrCheckNo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd-MMM-yyyy">
+				<reportElement uuid="c0348961-2ff7-43ac-91c1-0d0dcf6ec948" style="Detail" positionType="Float" x="425" y="126" width="130" height="18"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_receipt_dated}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="649fdda0-1adb-4e4a-92e1-6bf7a259db69" style="Detail" positionType="Float" x="137" y="152" width="418" height="18"/>
+				<textElement>
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_receipt_bank}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="9e699f2c-8e55-402b-9d35-bb8e854f6481" x="137" y="89" width="418" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="ca32d990-5a89-4187-9d9c-68f09e63da93" x="137" y="114" width="418" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="5e49800b-6306-42fd-a606-9557eaedc05a" x="137" y="143" width="244" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="132f0ca7-362f-438a-9097-60b451a30be7" x="415" y="144" width="140" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="7c8b097a-a258-447c-b384-d4616e33eea3" x="137" y="170" width="418" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="c3d6a452-8f93-4748-a4a0-999e3df94565" x="137" y="195" width="418" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="257ec155-6c74-4e2d-bab5-30c417ddd028" x="442" y="63" width="113" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="8f8b3433-1453-4473-ae13-1af3b214a440" x="0" y="215" width="122" height="20"/>
+				<textElement>
+					<font fontName="Verdana" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Accountant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4f51db3a-fb07-4350-991b-6127028facef" x="325" y="215" width="100" height="18"/>
+				<textElement>
+					<font fontName="Verdana" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Receivers's Sign]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="05cc1121-1c55-4f50-a283-ddfb67a8d384" x="425" y="234" width="130" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="8d828d37-3128-44ab-a56c-29f97d09f435" x="127" y="233" width="130" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="29d8ab4a-7f96-4f81-bede-eb8f208e55da" x="137" y="62" width="120" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="5b28c21a-e41b-4c86-b904-245296d9f259" mode="Transparent" x="172" y="0" width="209" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Verdana" size="14" isBold="true" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[RECEIPT VOUCHER]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="58" splitType="Stretch">
+			<image>
+				<reportElement uuid="089483ba-320f-4cdf-9a8c-b859b0458e8d" x="0" y="5" width="555" height="53"/>
+				<imageExpression><![CDATA["D:\\Vijay\\reports\\Footer.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

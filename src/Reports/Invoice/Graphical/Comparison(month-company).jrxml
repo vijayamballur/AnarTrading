@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a94182ce-4708-481f-8c53-6c3758b4cc34">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString>
+		<![CDATA[SELECT
+     toAdd AS tbl_invoicedetails_fromAdd,
+     CONCAT(InvoiceMonth," ",invoiceYear) AS tbl_invoicedetails_InvoiceMonth,
+     invoiceYear AS tbl_invoicedetails_invoiceYear,
+     SUM(amount) AS tbl_invoicedetails_amount
+
+FROM
+     `tbl_invoicedetails` tbl_invoicedetails
+GROUP BY toAdd,InvoiceMonth,invoiceYear order by STR_TO_DATE(InvoiceMonth,'%M'),STR_TO_DATE(invoiceYear,'%Y')]]>
+	</queryString>
+	<field name="tbl_invoicedetails_fromAdd" class="java.lang.String"/>
+	<field name="tbl_invoicedetails_InvoiceMonth" class="java.lang.String"/>
+	<field name="tbl_invoicedetails_invoiceYear" class="java.lang.String"/>
+	<field name="tbl_invoicedetails_amount" class="java.math.BigDecimal"/>
+	<group name="tbl_invoicedetails_fromAdd">
+		<groupExpression><![CDATA[$F{tbl_invoicedetails_fromAdd}]]></groupExpression>
+	</group>
+	<group name="tbl_invoicedetails_InvoiceMonth">
+		<groupExpression><![CDATA[$F{tbl_invoicedetails_InvoiceMonth}]]></groupExpression>
+	</group>
+	<group name="tbl_invoicedetails_invoiceYear">
+		<groupExpression><![CDATA[$F{tbl_invoicedetails_invoiceYear}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="34" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="4d243567-f2e8-4179-be33-7a52ffefcc76" x="2" y="0" width="800" height="32" forecolor="#666666"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Verdana" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Comparison(Month wise-Company)]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnFooter>
+		<band height="413" splitType="Stretch">
+			<bar3DChart>
+				<chart>
+					<reportElement uuid="891aa60d-ca78-4b69-afce-9618506bbeea" x="2" y="3" width="800" height="183"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{tbl_invoicedetails_fromAdd}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{tbl_invoicedetails_InvoiceMonth}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{tbl_invoicedetails_amount}]]></valueExpression>
+						<labelExpression><![CDATA[$F{tbl_invoicedetails_amount}.toString()]]></labelExpression>
+					</categorySeries>
+				</categoryDataset>
+				<bar3DPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</bar3DPlot>
+			</bar3DChart>
+			<stackedBar3DChart>
+				<chart>
+					<reportElement uuid="45b7542f-3b1f-433a-8bef-d22326f8ff01" x="2" y="186" width="800" height="227"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{tbl_invoicedetails_fromAdd}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{tbl_invoicedetails_InvoiceMonth}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{tbl_invoicedetails_amount}]]></valueExpression>
+						<labelExpression><![CDATA[$F{tbl_invoicedetails_amount}.toString()]]></labelExpression>
+					</categorySeries>
+				</categoryDataset>
+				<bar3DPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</bar3DPlot>
+			</stackedBar3DChart>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement uuid="7680e7a4-8ce6-4b41-8aee-52674557cea8" mode="Opaque" x="0" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#000000"/>
+				<textField evaluationTime="Report">
+					<reportElement uuid="01d82636-9b99-4fa3-bb31-ac4e10d6963b" style="Column header" x="757" y="3" width="40" height="20" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="49d3b937-f779-4365-a277-49742241d918" style="Column header" x="677" y="3" width="80" height="20" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement uuid="e0ef4439-e7eb-432e-ac81-146e5c31cbeb" style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

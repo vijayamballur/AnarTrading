@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="InvoiceDetails_All" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6b825d57-d11e-45a0-9df7-6ee4d44fac1f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="PieChartDataset" uuid="eb3546d7-82ff-42e7-9964-aea353c2b458"/>
+	<queryString>
+		<![CDATA[SELECT
+     tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,
+     tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,
+     tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,
+     tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,
+     tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,
+     tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,
+     tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,
+     tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,
+     tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,
+     tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,
+     tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,
+     tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction,
+     tbl_invoicedetails.`status` AS tbl_invoicedetails_status
+FROM
+     `tbl_invoicedetails` tbl_invoicedetails
+where status=1
+order by STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')]]>
+	</queryString>
+	<field name="tbl_invoicedetails_fromAdd" class="java.lang.String"/>
+	<field name="tbl_invoicedetails_toAdd" class="java.lang.String"/>
+	<field name="tbl_invoicedetails_invoiceNumber" class="java.lang.String"/>
+	<field name="tbl_invoicedetails_invoiceDate" class="java.sql.Date"/>
+	<field name="tbl_invoicedetails_amount" class="java.math.BigDecimal"/>
+	<field name="tbl_invoicedetails_InvoiceMonth" class="java.lang.String"/>
+	<field name="tbl_invoicedetails_invoiceYear" class="java.lang.String"/>
+	<field name="tbl_invoicedetails_terms" class="java.lang.Integer"/>
+	<field name="tbl_invoicedetails_paymentDate" class="java.sql.Date"/>
+	<field name="tbl_invoicedetails_remark" class="java.lang.String"/>
+	<field name="tbl_invoicedetails_balance" class="java.math.BigDecimal"/>
+	<field name="tbl_invoicedetails_deduction" class="java.math.BigDecimal"/>
+	<field name="tbl_invoicedetails_status" class="java.lang.Integer"/>
+	<variable name="totalInvoiceAmount" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{tbl_invoicedetails_amount}]]></variableExpression>
+	</variable>
+	<variable name="totalDeduction" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{tbl_invoicedetails_deduction}]]></variableExpression>
+	</variable>
+	<background>
+		<band height="555" splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="94" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="5bb34850-4798-43fb-9218-0e19b9deeceb" style="SubTitle" x="-18" y="65" width="820" height="29" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right">
+					<font size="22" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Paid]]></text>
+			</staticText>
+			<frame>
+				<reportElement uuid="9a89b8e6-ee58-4554-95cc-30620afb934a" mode="Opaque" x="-20" y="0" width="843" height="65" forecolor="#006699" backcolor="#006699"/>
+				<staticText>
+					<reportElement uuid="91f7832a-fad7-4af6-a04f-e0405e1d23f4" style="Title" x="265" y="0" width="557" height="65"/>
+					<textElement textAlignment="Right">
+						<font size="54" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Invoice Details]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="33" splitType="Stretch">
+			<frame>
+				<reportElement uuid="2960d231-3e45-40a5-aabe-821e9c37ce3f" x="4" y="0" width="798" height="25"/>
+				<staticText>
+					<reportElement uuid="61dec08a-0cdc-4dae-9d20-6b217b43786e" style="Column header" positionType="Float" x="1" y="0" width="142" height="14" forecolor="#000000"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[From #]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="3d219bcb-cecc-47d1-b73d-267d001c1e10" style="Column header" positionType="Float" x="143" y="0" width="136" height="14" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[To #]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="49f13331-cab4-4251-af1c-ff41bf7f4bae" style="Column header" positionType="Float" x="279" y="0" width="75" height="14" forecolor="#000000"/>
+					<textElement textAlignment="Right">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Invoice #]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="8bfeb4c0-29ab-4c04-bc20-b377943c25a8" style="Column header" positionType="Float" x="358" y="0" width="45" height="14" forecolor="#000000"/>
+					<textElement textAlignment="Right">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Date]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="06b5181f-4269-4c22-b91a-593a4ce6efd7" style="Column header" positionType="Float" x="405" y="0" width="60" height="14" forecolor="#000000"/>
+					<textElement textAlignment="Right">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Amount]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="ed704cc1-99ca-4ca2-8efa-027210603849" style="Column header" positionType="Float" x="471" y="0" width="44" height="14" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Month]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="48f1bdb4-ae02-4ee7-b8e1-e57ba538dbfa" style="Column header" positionType="Float" x="520" y="0" width="30" height="14" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Year]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="1ae6a9c5-71f0-45b1-ad62-03e7b2d7a6eb" style="Column header" positionType="Float" x="559" y="0" width="42" height="14" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Terms]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9199c1b6-95c8-4c8f-aa7b-7a93443eeaac" style="Column header" positionType="Float" x="606" y="0" width="45" height="14" forecolor="#000000"/>
+					<textElement textAlignment="Right">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[P.Date]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="db092514-31cd-4b03-bd2b-e243cedfe06f" style="Column header" positionType="Float" x="656" y="0" width="53" height="14" forecolor="#000000"/>
+					<textElement textAlignment="Right">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Balance]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="b3c74152-a541-4c24-931e-d3373a4e69ef" style="Column header" positionType="Float" x="714" y="0" width="43" height="14" forecolor="#000000"/>
+					<textElement textAlignment="Right">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Dedu.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="a44cde61-2b94-4053-9168-bd60d4bb94f9" style="Column header" positionType="Float" x="761" y="0" width="37" height="14" forecolor="#000000"/>
+					<textElement textAlignment="Right">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Status]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<frame>
+				<reportElement uuid="5ebd07eb-6567-4563-a9f4-62d3e0432d27" x="5" y="0" width="797" height="14" backcolor="#CCCCCC"/>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="fb6be4c9-fd2a-4386-ba6e-a34fbb7156a7" style="Detail" positionType="Float" x="0" y="0" width="142" height="14"/>
+					<textElement>
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_invoicedetails_fromAdd}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="9db6e85d-ea8a-40ea-b7b0-3547b4023378" style="Detail" positionType="Float" x="142" y="0" width="136" height="14"/>
+					<textElement>
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_invoicedetails_toAdd}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="c07d45a2-f1fa-4ff2-9650-786027eca6bd" style="Detail" positionType="Float" x="279" y="0" width="74" height="14"/>
+					<textElement textAlignment="Right">
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_invoicedetails_invoiceNumber}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="dd-MMM-yy" isBlankWhenNull="true">
+					<reportElement uuid="29fb05d9-8672-4756-bbc5-7b81c6fd0870" style="Detail" positionType="Float" x="357" y="0" width="45" height="14"/>
+					<textElement textAlignment="Right">
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_invoicedetails_invoiceDate}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="6ee0b656-f64b-42ea-b4cb-169d07faf0d0" style="Detail" positionType="Float" x="405" y="0" width="56" height="14"/>
+					<textElement textAlignment="Right">
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_invoicedetails_amount}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="a7ac62a0-3ce8-4b01-a78b-8a7fd54a9617" style="Detail" positionType="Float" x="471" y="0" width="43" height="14"/>
+					<textElement>
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_invoicedetails_InvoiceMonth}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="b3da6d39-c265-42f0-9415-934e9c346216" style="Detail" positionType="Float" x="520" y="0" width="29" height="14"/>
+					<textElement>
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_invoicedetails_invoiceYear}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="dd-MMM-yy" isBlankWhenNull="true">
+					<reportElement uuid="7318de00-3f1b-40d9-b9be-7fa23ac37d4d" style="Detail" positionType="Float" x="605" y="0" width="45" height="14"/>
+					<textElement textAlignment="Right">
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_invoicedetails_paymentDate}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="0ae2c5e0-b17f-416b-aca0-e8dcfbb33480" style="Detail" positionType="Float" x="713" y="0" width="43" height="14"/>
+					<textElement textAlignment="Right">
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_invoicedetails_deduction}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="0a088896-6c22-4c26-a9f2-f97f317928db" style="Detail" positionType="Float" x="558" y="0" width="42" height="14"/>
+					<textElement textAlignment="Center">
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_invoicedetails_terms}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="61eb2bba-5153-47d2-9b15-71fc86a40abb" style="Detail" positionType="Float" x="655" y="0" width="53" height="14"/>
+					<textElement textAlignment="Right">
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_invoicedetails_balance}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="6692c1fc-5686-41c0-8c1e-80c944b764f2" style="Detail" positionType="Float" x="760" y="0" width="37" height="14"/>
+					<textElement textAlignment="Right">
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_invoicedetails_status}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="70b70d68-014f-43eb-a40c-dae72a37e95c" x="0" y="0" width="147" height="24"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Invoice Amount ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="15968075-9812-4d54-8b4b-07a3da4f4778" x="147" y="0" width="136" height="24"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalInvoiceAmount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="60d0936f-4d6a-4c7a-83d7-bd2a67339dd3" x="610" y="0" width="108" height="24"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Deduction ]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="a0d48025-1d04-49dd-b399-101c0c632046" x="718" y="0" width="84" height="24"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalDeduction}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="16" splitType="Stretch">
+			<frame>
+				<reportElement uuid="9e8e3e01-5cc5-4b25-895b-fb62d9d13d75" mode="Opaque" x="-20" y="0" width="843" height="16" forecolor="#D0B48E" backcolor="#006699"/>
+				<textField evaluationTime="Report">
+					<reportElement uuid="0a77134a-a936-4e94-a6a3-9518c4d5eafb" style="Column header" x="712" y="0" width="40" height="16" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="92c4f244-69a7-4160-9089-394351af89e2" style="Column header" x="608" y="0" width="104" height="16" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement uuid="900f7a9f-94ce-4444-a2ed-5d9d7ff9a4a9" style="Column header" x="2" y="0" width="197" height="16" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
