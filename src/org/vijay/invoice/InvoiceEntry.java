@@ -172,15 +172,15 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
     {
         if(radioAll.isSelected()==true)
         {
-             query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',status,deduction '"+"DEDUCTION"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp order by invoiceId desc";
+             query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',status,deduction '"+"DEDUCTION"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
         }
         if(radioNotPaidView.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',status,deduction '"+"DEDUCTION"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp  where status=0 order by invoiceId desc";
+            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',status,deduction '"+"DEDUCTION"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp  where status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
         }
         if(radioPaidView.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',status,deduction '"+"DEDUCTION"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp  where status=1 order by invoiceId desc";
+            query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',status,deduction '"+"DEDUCTION"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp  where status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
         }
         connection c=new connection();
         Connection con=c.conn();
@@ -920,31 +920,31 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtAmountFocusLost
 
     private void radioAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioAllActionPerformed
-  
+
     }//GEN-LAST:event_radioAllActionPerformed
 
-    private void radioPaidViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioPaidViewActionPerformed
+    private void radioAllItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_radioAllItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_radioPaidViewActionPerformed
+        viewDbEmployeeDetails();
+    }//GEN-LAST:event_radioAllItemStateChanged
 
     private void radioNotPaidViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioNotPaidViewActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_radioNotPaidViewActionPerformed
-
-    private void radioPaidViewItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_radioPaidViewItemStateChanged
-        // TODO add your handling code here:
-        viewDbEmployeeDetails();
-    }//GEN-LAST:event_radioPaidViewItemStateChanged
 
     private void radioNotPaidViewItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_radioNotPaidViewItemStateChanged
         // TODO add your handling code here:
         viewDbEmployeeDetails();
     }//GEN-LAST:event_radioNotPaidViewItemStateChanged
 
-    private void radioAllItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_radioAllItemStateChanged
+    private void radioPaidViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioPaidViewActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioPaidViewActionPerformed
+
+    private void radioPaidViewItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_radioPaidViewItemStateChanged
         // TODO add your handling code here:
         viewDbEmployeeDetails();
-    }//GEN-LAST:event_radioAllItemStateChanged
+    }//GEN-LAST:event_radioPaidViewItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -64,19 +64,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         if(chkPayment.isSelected()==false && chkFrom.isSelected()==false && chkTo.isSelected()==false && chkMonth.isSelected()==false && chkYear.isSelected()==false)
         {   if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails";
                 printValue="1.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where status=0";
                 printValue="1.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where status=1";
                 printValue="1.3";
             }   
@@ -87,19 +87,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where invoiceYear=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where invoiceYear=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where invoiceYear=?";
                 printValue="2.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where invoiceYear=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where invoiceYear=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where invoiceYear=? and status=0";
                 printValue="2.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where invoiceYear=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where invoiceYear=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where invoiceYear=? and status=1";
                 printValue="2.3";
             }   
@@ -110,19 +110,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where InvoiceMonth=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where InvoiceMonth=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where InvoiceMonth=?";
                 printValue="3.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where InvoiceMonth=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where InvoiceMonth=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where InvoiceMonth=? and status=0";
                 printValue="3.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where InvoiceMonth=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where InvoiceMonth=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where InvoiceMonth=? and status=1";
                 printValue="3.3";
             }   
@@ -133,19 +133,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where InvoiceMonth=? and invoiceYear=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where InvoiceMonth=? and invoiceYear=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where InvoiceMonth=? and invoiceYear=?";
                 printValue="4.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where InvoiceMonth=? and invoiceYear=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where InvoiceMonth=? and invoiceYear=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where InvoiceMonth=? and invoiceYear=? and status=0";
                 printValue="4.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where InvoiceMonth=? and invoiceYear=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where InvoiceMonth=? and invoiceYear=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where InvoiceMonth=? and invoiceYear=? and status=1";
                 printValue="4.3";
             }   
@@ -156,19 +156,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where toAdd=?";
                 printValue="5.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where toAdd=? and status=0";
                 printValue="5.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where toAdd=? and status=1";
                 printValue="5.3";
             }  
@@ -179,19 +179,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and invoiceYear=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and invoiceYear=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where toAdd=? and invoiceYear=?";
                 printValue="6.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and invoiceYear=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and invoiceYear=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where toAdd=? and invoiceYear=? and status=0";
                 printValue="6.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and invoiceYear=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and invoiceYear=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where toAdd=? and invoiceYear=? and status=1";
                 printValue="6.3";
             }  
@@ -202,20 +202,20 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and InvoiceMonth=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and InvoiceMonth=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where toAdd=? and InvoiceMonth=?";
                 printValue="7.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and InvoiceMonth=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and InvoiceMonth=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where toAdd=? and InvoiceMonth=? and status=0";
                 printValue="7.2";
                 
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and InvoiceMonth=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and InvoiceMonth=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where toAdd=? and InvoiceMonth=? and status=1";
                 printValue="7.3";
             }  
@@ -226,19 +226,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and InvoiceMonth=? and invoiceYear=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and InvoiceMonth=? and invoiceYear=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where toAdd=? and InvoiceMonth=? and invoiceYear=?";
                 printValue="8.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and InvoiceMonth=? and invoiceYear=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and InvoiceMonth=? and invoiceYear=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where toAdd=? and InvoiceMonth=? and invoiceYear=? and status=0";
                 printValue="8.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and InvoiceMonth=? and invoiceYear=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where toAdd=? and InvoiceMonth=? and invoiceYear=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where toAdd=? and InvoiceMonth=? and invoiceYear=? and status=1";
                 printValue="8.3";
             }   
@@ -250,19 +250,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where fromAdd=?";
                 printValue="9.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where fromAdd=? and status=0";
                 printValue="9.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where fromAdd=? and status=1";
                 printValue="9.3";
             }  
@@ -273,19 +273,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and invoiceYear=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and invoiceYear=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where fromAdd=? and invoiceYear=?";
                 printValue="10.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and invoiceYear=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and invoiceYear=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where fromAdd=? and invoiceYear=? and status=0";
                 printValue="10.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and invoiceYear=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and invoiceYear=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where fromAdd=? and invoiceYear=? and status=1";
                 printValue="10.3";
             }  
@@ -296,19 +296,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and InvoiceMonth=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and InvoiceMonth=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where fromAdd=? and InvoiceMonth=?";
                 printValue="11.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and InvoiceMonth=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and InvoiceMonth=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where fromAdd=? and InvoiceMonth=? and status=0";
                 printValue="11.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and InvoiceMonth=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and InvoiceMonth=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where fromAdd=? and InvoiceMonth=? and status=1";
                 printValue="11.3";
             } 
@@ -319,19 +319,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and InvoiceMonth=? and invoiceYear=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and InvoiceMonth=? and invoiceYear=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where fromAdd=? and InvoiceMonth=? and invoiceYear=?";
                 printValue="12.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and InvoiceMonth=? and invoiceYear=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and InvoiceMonth=? and invoiceYear=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where fromAdd=? and InvoiceMonth=? and invoiceYear=? and status=0";
                 printValue="12.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and InvoiceMonth=? and invoiceYear=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and InvoiceMonth=? and invoiceYear=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where fromAdd=? and InvoiceMonth=? and invoiceYear=? and status=1";
                 printValue="12.3";
             } 
@@ -342,19 +342,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where fromAdd=? and toAdd=?";
                 printValue="13.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where fromAdd=? and toAdd=? and status=0";
                 printValue="13.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where fromAdd=? and toAdd=? and status=1";
                 printValue="13.3";
             } 
@@ -365,19 +365,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and invoiceYear=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and invoiceYear=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where fromAdd=? and toAdd=? and invoiceYear=?";
                 printValue="14.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and invoiceYear=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and invoiceYear=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where fromAdd=? and toAdd=? and invoiceYear=? and status=0";
                 printValue="14.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and invoiceYear=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and invoiceYear=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where fromAdd=? and toAdd=? and invoiceYear=? and status=1";
                 printValue="14.3";
             } 
@@ -388,19 +388,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and InvoiceMonth=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and InvoiceMonth=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where fromAdd=? and toAdd=? and InvoiceMonth=?";
                 printValue="15.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and InvoiceMonth=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and InvoiceMonth=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where fromAdd=? and toAdd=? and InvoiceMonth=? and status=0";
                 printValue="15.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and InvoiceMonth=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and InvoiceMonth=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where fromAdd=? and toAdd=? and InvoiceMonth=? and status=1";
                 printValue="15.3";
             } 
@@ -411,19 +411,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and InvoiceMonth=? and invoiceYear=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and InvoiceMonth=? and invoiceYear=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where fromAdd=? and toAdd=? and InvoiceMonth=? and invoiceYear=?";
                 printValue="16.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and InvoiceMonth=? and invoiceYear=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and InvoiceMonth=? and invoiceYear=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where fromAdd=? and toAdd=? and InvoiceMonth=? and invoiceYear=? and status=0";
                 printValue="16.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and InvoiceMonth=? and invoiceYear=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where fromAdd=? and toAdd=? and InvoiceMonth=? and invoiceYear=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where fromAdd=? and toAdd=? and InvoiceMonth=? and invoiceYear=? and status=1";
                 printValue="16.3";
             } 
@@ -436,19 +436,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=?";
                 printValue="17.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and status=0";
                 printValue="17.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and status=1";
                 printValue="17.3";
             } 
@@ -459,19 +459,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and invoiceYear=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and invoiceYear=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and invoiceYear=?";
                 printValue="18.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and invoiceYear=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and invoiceYear=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and invoiceYear=? and status=0";
                 printValue="18.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and invoiceYear=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and invoiceYear=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and invoiceYear=? and status=1";
                 printValue="18.3";
             } 
@@ -482,19 +482,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and InvoiceMonth=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and InvoiceMonth=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and InvoiceMonth=?";
                 printValue="19.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and InvoiceMonth=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and InvoiceMonth=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and InvoiceMonth=? and status=0";
                 printValue="19.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and InvoiceMonth=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and InvoiceMonth=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and InvoiceMonth=? and status=1";
                 printValue="19.3";
             } 
@@ -505,19 +505,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and InvoiceMonth=? and invoiceYear=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and InvoiceMonth=? and invoiceYear=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and InvoiceMonth=? and invoiceYear=?";
                 printValue="20.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and InvoiceMonth=? and invoiceYear=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and InvoiceMonth=? and invoiceYear=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and InvoiceMonth=? and invoiceYear=? and status=0";
                 printValue="20.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and InvoiceMonth=? and invoiceYear=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and InvoiceMonth=? and invoiceYear=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and InvoiceMonth=? and invoiceYear=? and status=1";
                 printValue="20.3";
             } 
@@ -528,19 +528,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=?";
                 printValue="21.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and status=0";
                 printValue="21.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and status=1";
                 printValue="21.3";
             } 
@@ -551,19 +551,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and invoiceYear=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and invoiceYear=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and invoiceYear=?";
                 printValue="22.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and invoiceYear=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and invoiceYear=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and invoiceYear=? and status=0";
                 printValue="22.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and invoiceYear=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and invoiceYear=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and invoiceYear=? and status=1";
                 printValue="22.3";
             } 
@@ -574,19 +574,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and InvoiceMonth=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and InvoiceMonth=?order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and InvoiceMonth=?";
                 printValue="23.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and InvoiceMonth=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and InvoiceMonth=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and InvoiceMonth=? and status=0";
                 printValue="23.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and InvoiceMonth=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and InvoiceMonth=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and InvoiceMonth=? and status=1";
                 printValue="24.3";
             } 
@@ -597,19 +597,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and InvoiceMonth=? and invoiceYear=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and InvoiceMonth=? and invoiceYear=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and InvoiceMonth=? and invoiceYear=?";
                 printValue="24.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and InvoiceMonth=? and invoiceYear=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and InvoiceMonth=? and invoiceYear=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and InvoiceMonth=? and invoiceYear=? and status=0";
                 printValue="24.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and InvoiceMonth=? and invoiceYear=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and InvoiceMonth=? and invoiceYear=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and toAdd=? and InvoiceMonth=? and invoiceYear=? and status=1";
                 printValue="24.3";
             } 
@@ -621,19 +621,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=?";
                 printValue="25.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and status=0";
                 printValue="25.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and status=1";
                 printValue="25.3";
             } 
@@ -644,19 +644,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and invoiceYear=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and invoiceYear=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and invoiceYear=?";
                 printValue="26.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and invoiceYear=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and invoiceYear=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and invoiceYear=? and status=0";
                 printValue="26.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and invoiceYear=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and invoiceYear=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and invoiceYear=? and status=1";
                 printValue="26.3";
             } 
@@ -667,19 +667,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and InvoiceMonth=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and InvoiceMonth=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and InvoiceMonth=?";
                 printValue="27.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and InvoiceMonth=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and InvoiceMonth=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and InvoiceMonth=? and status=0";
                 printValue="27.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and InvoiceMonth=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and InvoiceMonth=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and InvoiceMonth=? and status=1";
                 printValue="27.3";
             } 
@@ -690,19 +690,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and InvoiceMonth=? and invoiceYear=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and InvoiceMonth=? and invoiceYear=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and InvoiceMonth=? and invoiceYear=?";
                 printValue="28.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and InvoiceMonth=? and invoiceYear=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and InvoiceMonth=? and invoiceYear=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and InvoiceMonth=? and invoiceYear=? and status=0";
                 printValue="28.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and InvoiceMonth=? and invoiceYear=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and InvoiceMonth=? and invoiceYear=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and InvoiceMonth=? and invoiceYear=? and status=1";
                 printValue="28.3";
             } 
@@ -713,19 +713,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=?";
                 printValue="29.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and status=0";
                 printValue="29.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and status=1";
                 printValue="29.3";
             } 
@@ -736,19 +736,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and invoiceYear=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and invoiceYear=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and invoiceYear=?";
                 printValue="30.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and invoiceYear=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and invoiceYear=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and invoiceYear=? and status=0";
                 printValue="30.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and invoiceYear=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and invoiceYear=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and invoiceYear=? and status=1";
                 printValue="30.3";
             } 
@@ -759,19 +759,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and InvoiceMonth=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and InvoiceMonth=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and InvoiceMonth=?";
                 printValue="31.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and InvoiceMonth=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and InvoiceMonth=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and InvoiceMonth=? and status=0";
                 printValue="31.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and InvoiceMonth=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and InvoiceMonth=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and InvoiceMonth=? and status=1";
                 printValue="31.3";
             } 
@@ -782,19 +782,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
             if(radioAll.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and InvoiceMonth=? and invoiceYear=?";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and InvoiceMonth=? and invoiceYear=? order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and InvoiceMonth=? and invoiceYear=?";
                 printValue="32.1";
             }
             if(radioNotPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and InvoiceMonth=? and invoiceYear=? and status=0";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',CASE WHEN DATEDIFF(paymentDate,CURDATE())>=0 THEN CONCAT(DATEDIFF(paymentDate,CURDATE()),' days left') ELSE CONCAT(ABS(DATEDIFF(paymentDate,CURDATE())),' days Due')END as STATUS from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and InvoiceMonth=? and invoiceYear=? and status=0 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and InvoiceMonth=? and invoiceYear=? and status=0";
                 printValue="32.2";
             }
             if(radioPaidView.isSelected()==true)
             {
-                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and InvoiceMonth=? and invoiceYear=? and status=1";
+                query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and InvoiceMonth=? and invoiceYear=? and status=1 order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
                 totalQuery="SELECT SUM(balance) FROM tbl_invoicedetails where DATE_FORMAT(paymentDate,'%M %Y')=? and fromAdd=? and toAdd=? and InvoiceMonth=? and invoiceYear=? and status=1";
                 printValue="32.3";
             } 
@@ -1650,82 +1650,322 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         {
 //            HashMap para=new HashMap();
 //            para.put("receiptId",paymentId);
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\InvoiceDetails_All.jasper");
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_All.jasper");
             re.setVisible(true);
         }
         if(printValue.equals("1.2"))
         {
 //            HashMap para=new HashMap();
 //            para.put("receiptId",paymentId);
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\InvoiceDetails_All_UnPaid.jasper");
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_All_UnPaid.jasper");
             re.setVisible(true);
         }
         if(printValue.equals("1.3"))
         {
 //            HashMap para=new HashMap();
 //            para.put("receiptId",paymentId);
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\InvoiceDetails_All_Paid.jasper");
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_All_Paid.jasper");
             re.setVisible(true);
         }
         if(printValue.equals("2.1"))
         {
             HashMap para=new HashMap();
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\InvoiceDetails_FFFFT.jasper",para);
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFFT.jasper",para);
             re.setVisible(true);
         }
         if(printValue.equals("2.2"))
         {
             HashMap para=new HashMap();
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\InvoiceDetails_FFFFT_0.jasper",para);
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFFT_0.jasper",para);
             re.setVisible(true);
         }
         if(printValue.equals("2.3"))
         {
             HashMap para=new HashMap();
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\InvoiceDetails_FFFFT_1.jasper",para);
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFFT_1.jasper",para);
             re.setVisible(true);
         }
         if(printValue.equals("3.1"))
         {
             HashMap para=new HashMap();
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\InvoiceDetails_FFFTF.jasper",para);
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTF.jasper",para);
             re.setVisible(true);
         }
         if(printValue.equals("3.2"))
         {
             HashMap para=new HashMap();
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\InvoiceDetails_FFFTF_0.jasper",para);
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTF_0.jasper",para);
             re.setVisible(true);
         }
         if(printValue.equals("3.3"))
         {
             HashMap para=new HashMap();
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\InvoiceDetails_FFFTF_1.jasper",para);
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTF_1.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("4.1"))
+        {
+            HashMap para=new HashMap();
+            para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
+            para.put("invoiceYear",cmbYear.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTT.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("4.2"))
+        {
+            HashMap para=new HashMap();
+            para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
+            para.put("invoiceYear",cmbYear.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTT_0.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("4.3"))
+        {
+            HashMap para=new HashMap();
+            para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
+            para.put("invoiceYear",cmbYear.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTT_1.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("5.1"))
+        {
+            HashMap para=new HashMap();
+            para.put("toAdd",cmbTo.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFF.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("5.2"))
+        {
+            HashMap para=new HashMap();
+            para.put("toAdd",cmbTo.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFF_0.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("5.3"))
+        {
+            HashMap para=new HashMap();
+            para.put("toAdd",cmbTo.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFF_1.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("6.1"))
+        {
+            HashMap para=new HashMap();
+            para.put("toAdd",cmbTo.getSelectedItem().toString());
+            para.put("invoiceYear",cmbYear.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFT.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("6.2"))
+        {
+            HashMap para=new HashMap();
+            para.put("toAdd",cmbTo.getSelectedItem().toString());
+            para.put("invoiceYear",cmbYear.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFT_0.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("6.3"))
+        {
+            HashMap para=new HashMap();
+            para.put("toAdd",cmbTo.getSelectedItem().toString());
+            para.put("invoiceYear",cmbYear.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFT_1.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("7.1"))
+        {
+            HashMap para=new HashMap();
+            para.put("toAdd",cmbTo.getSelectedItem().toString());
+            para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTF.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("7.2"))
+        {
+            HashMap para=new HashMap();
+            para.put("toAdd",cmbTo.getSelectedItem().toString());
+            para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTF_0.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("7.3"))
+        {
+            HashMap para=new HashMap();
+            para.put("toAdd",cmbTo.getSelectedItem().toString());
+            para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTF_1.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("8.1"))
+        {
+            HashMap para=new HashMap();
+            para.put("toAdd",cmbTo.getSelectedItem().toString());
+            para.put("invoiceYear",cmbYear.getSelectedItem().toString());
+            para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTT.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("8.2"))
+        {
+            HashMap para=new HashMap();
+            para.put("toAdd",cmbTo.getSelectedItem().toString());
+            para.put("invoiceYear",cmbYear.getSelectedItem().toString());
+            para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTT_0.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("8.3"))
+        {
+            HashMap para=new HashMap();
+            para.put("toAdd",cmbTo.getSelectedItem().toString());
+            para.put("invoiceYear",cmbYear.getSelectedItem().toString());
+            para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTT_1.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("9.1"))
+        {
+            HashMap para=new HashMap();
+            para.put("fromAdd",cmbFrom.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFF.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("9.2"))
+        {
+            HashMap para=new HashMap();
+            para.put("fromAdd",cmbFrom.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFF_0.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("9.3"))
+        {
+            HashMap para=new HashMap();
+            para.put("fromAdd",cmbFrom.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFF_1.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("10.1"))
+        {
+            HashMap para=new HashMap();
+            para.put("fromAdd",cmbFrom.getSelectedItem().toString());
+            para.put("invoiceYear",cmbYear.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFT.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("10.2"))
+        {
+            HashMap para=new HashMap();
+            para.put("fromAdd",cmbFrom.getSelectedItem().toString());
+            para.put("invoiceYear",cmbYear.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFT_0.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("10.3"))
+        {
+            HashMap para=new HashMap();
+            para.put("fromAdd",cmbFrom.getSelectedItem().toString());
+            para.put("invoiceYear",cmbYear.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFT_1.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("11.1"))
+        {
+            HashMap para=new HashMap();
+            para.put("fromAdd",cmbFrom.getSelectedItem().toString());
+            para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTF.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("11.2"))
+        {
+            HashMap para=new HashMap();
+            para.put("fromAdd",cmbFrom.getSelectedItem().toString());
+            para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTF_0.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("11.3"))
+        {
+            HashMap para=new HashMap();
+            para.put("fromAdd",cmbFrom.getSelectedItem().toString());
+            para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTF_1.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("12.1"))
+        {
+            HashMap para=new HashMap();
+            para.put("fromAdd",cmbFrom.getSelectedItem().toString());
+            para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
+            para.put("invoiceYear",cmbYear.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTT.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("12.2"))
+        {
+            HashMap para=new HashMap();
+            para.put("fromAdd",cmbFrom.getSelectedItem().toString());
+            para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
+            para.put("invoiceYear",cmbYear.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTT_0.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("12.3"))
+        {
+            HashMap para=new HashMap();
+            para.put("fromAdd",cmbFrom.getSelectedItem().toString());
+            para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
+            para.put("invoiceYear",cmbYear.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTT_1.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("13.1"))
+        {
+            HashMap para=new HashMap();
+            para.put("fromAdd",cmbFrom.getSelectedItem().toString());
+            para.put("toAdd",cmbTo.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTTFF.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("13.2"))
+        {
+            HashMap para=new HashMap();
+            para.put("fromAdd",cmbFrom.getSelectedItem().toString());
+            para.put("toAdd",cmbTo.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTTFF_0.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("13.3"))
+        {
+            HashMap para=new HashMap();
+            para.put("fromAdd",cmbFrom.getSelectedItem().toString());
+            para.put("toAdd",cmbTo.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTTFF_1.jasper",para);
             re.setVisible(true);
         }
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void menuItemMonthCompanyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemMonthCompanyActionPerformed
         // TODO add your handling code here:
-        ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Graphical\\Comparison(month-company).jasper");
+        ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\Graphical\\Comparison(month-company).jasper");
         re.setVisible(true);
     }//GEN-LAST:event_menuItemMonthCompanyActionPerformed
 
     private void menuItemCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCompleteActionPerformed
         // TODO add your handling code here:
-        ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Graphical\\All_G.jasper");
+        ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\Graphical\\All_G.jasper");
         re.setVisible(true);
     }//GEN-LAST:event_menuItemCompleteActionPerformed
 
     private void menuItemMonthInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemMonthInvoiceActionPerformed
         // TODO add your handling code here:
-        ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Graphical\\Comparison(month-Invoice).jasper");
+        ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\Graphical\\Comparison(month-Invoice).jasper");
         re.setVisible(true);
     }//GEN-LAST:event_menuItemMonthInvoiceActionPerformed
 

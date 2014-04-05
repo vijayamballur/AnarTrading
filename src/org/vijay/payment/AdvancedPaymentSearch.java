@@ -9,8 +9,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
+import org.vijay.report.ReportView;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -59,47 +61,56 @@ public final class AdvancedPaymentSearch extends javax.swing.JInternalFrame {
         String month=cmbMonth.getSelectedItem().toString();
         String year=cmbYear.getSelectedItem().toString();
         
-        
-        if(chkEmployeeName.isSelected()==true && chkMonth.isSelected()==false && chkYear.isSelected()==false )
+        if(chkEmployeeName.isSelected()==false && chkMonth.isSelected()==false && chkYear.isSelected()==false )
         {
-            query="select advancePaymentId '"+"ID"+"',empName'"+"NAME"+"',pMonth '"+"MONTH"+"',pYear '"+"YEAR"+"',amount '"+"AMOUNT"+"',comments'"+"COMMENTS"+"',paidBy'"+"PAID BY"+"',paidDate '"+"DATE"+"' from tbl_advancepayment where empName=?";
-            search(query,empName);
-        }
-        if(chkEmployeeName.isSelected()==false && chkMonth.isSelected()==true && chkYear.isSelected()==false )
-        {
-            query="select advancePaymentId '"+"ID"+"',empName'"+"NAME"+"',pMonth '"+"MONTH"+"',pYear '"+"YEAR"+"',amount '"+"AMOUNT"+"',comments'"+"COMMENTS"+"',paidBy'"+"PAID BY"+"',paidDate '"+"DATE"+"' from tbl_advancepayment where pMonth=?";
-            search(query,month);
+            query="select advancePaymentId '"+"ID"+"',empName'"+"NAME"+"',pMonth '"+"MONTH"+"',pYear '"+"YEAR"+"',amount '"+"AMOUNT"+"',comments'"+"COMMENTS"+"',paidBy'"+"PAID BY"+"',paidDate '"+"DATE"+"' from tbl_advancepayment";
+            search(query);
+            printValue="1";
         }
         if(chkEmployeeName.isSelected()==false && chkMonth.isSelected()==false && chkYear.isSelected()==true )
         {
             query="select advancePaymentId '"+"ID"+"',empName'"+"NAME"+"',pMonth '"+"MONTH"+"',pYear '"+"YEAR"+"',amount '"+"AMOUNT"+"',comments'"+"COMMENTS"+"',paidBy'"+"PAID BY"+"',paidDate '"+"DATE"+"' from tbl_advancepayment where pYear=?";
             search(query,year);
+            printValue="2";
         }
-        if(chkEmployeeName.isSelected()==true && chkMonth.isSelected()==true && chkYear.isSelected()==false )
+        if(chkEmployeeName.isSelected()==false && chkMonth.isSelected()==true && chkYear.isSelected()==false )
         {
-            query="select advancePaymentId '"+"ID"+"',empName'"+"NAME"+"',pMonth '"+"MONTH"+"',pYear '"+"YEAR"+"',amount '"+"AMOUNT"+"',comments'"+"COMMENTS"+"',paidBy'"+"PAID BY"+"',paidDate '"+"DATE"+"' from tbl_advancepayment where empName=? and pMonth=?";
-            search(query,empName,month);
-        }
-        if(chkEmployeeName.isSelected()==true && chkMonth.isSelected()==false && chkYear.isSelected()==true )
-        {
-            query="select advancePaymentId '"+"ID"+"',empName'"+"NAME"+"',pMonth '"+"MONTH"+"',pYear '"+"YEAR"+"',amount '"+"AMOUNT"+"',comments'"+"COMMENTS"+"',paidBy'"+"PAID BY"+"',paidDate '"+"DATE"+"' from tbl_advancepayment where empName=? and pYear=?";
-            search(query,empName,year);
+            query="select advancePaymentId '"+"ID"+"',empName'"+"NAME"+"',pMonth '"+"MONTH"+"',pYear '"+"YEAR"+"',amount '"+"AMOUNT"+"',comments'"+"COMMENTS"+"',paidBy'"+"PAID BY"+"',paidDate '"+"DATE"+"' from tbl_advancepayment where pMonth=?";
+            search(query,month);
+            printValue="3";
         }
         if(chkEmployeeName.isSelected()==false && chkMonth.isSelected()==true && chkYear.isSelected()==true )
         {
             query="select advancePaymentId '"+"ID"+"',empName'"+"NAME"+"',pMonth '"+"MONTH"+"',pYear '"+"YEAR"+"',amount '"+"AMOUNT"+"',comments'"+"COMMENTS"+"',paidBy'"+"PAID BY"+"',paidDate '"+"DATE"+"' from tbl_advancepayment where pMonth=? and pYear=?";
             search(query,month,year);
+            printValue="4";
         }
+        if(chkEmployeeName.isSelected()==true && chkMonth.isSelected()==false && chkYear.isSelected()==false )
+        {
+            query="select advancePaymentId '"+"ID"+"',empName'"+"NAME"+"',pMonth '"+"MONTH"+"',pYear '"+"YEAR"+"',amount '"+"AMOUNT"+"',comments'"+"COMMENTS"+"',paidBy'"+"PAID BY"+"',paidDate '"+"DATE"+"' from tbl_advancepayment where empName=?";
+            search(query,empName);
+            printValue="5";
+        }
+        if(chkEmployeeName.isSelected()==true && chkMonth.isSelected()==false && chkYear.isSelected()==true )
+        {
+            query="select advancePaymentId '"+"ID"+"',empName'"+"NAME"+"',pMonth '"+"MONTH"+"',pYear '"+"YEAR"+"',amount '"+"AMOUNT"+"',comments'"+"COMMENTS"+"',paidBy'"+"PAID BY"+"',paidDate '"+"DATE"+"' from tbl_advancepayment where empName=? and pYear=?";
+            search(query,empName,year);
+            printValue="6";
+        }
+        if(chkEmployeeName.isSelected()==true && chkMonth.isSelected()==true && chkYear.isSelected()==false )
+        {
+            query="select advancePaymentId '"+"ID"+"',empName'"+"NAME"+"',pMonth '"+"MONTH"+"',pYear '"+"YEAR"+"',amount '"+"AMOUNT"+"',comments'"+"COMMENTS"+"',paidBy'"+"PAID BY"+"',paidDate '"+"DATE"+"' from tbl_advancepayment where empName=? and pMonth=?";
+            search(query,empName,month);
+            printValue="7";
+        }
+        
         if(chkEmployeeName.isSelected()==true && chkMonth.isSelected()==true && chkYear.isSelected()==true )
         {
             query="select advancePaymentId '"+"ID"+"',empName'"+"NAME"+"',pMonth '"+"MONTH"+"',pYear '"+"YEAR"+"',amount '"+"AMOUNT"+"',comments'"+"COMMENTS"+"',paidBy'"+"PAID BY"+"',paidDate '"+"DATE"+"' from tbl_advancepayment where empName=? and pMonth=? and pYear=?";
             search(query,empName,month,year);
+            printValue="8";
         }
-        if(chkEmployeeName.isSelected()==false && chkMonth.isSelected()==false && chkYear.isSelected()==false )
-        {
-            query="select advancePaymentId '"+"ID"+"',empName'"+"NAME"+"',pMonth '"+"MONTH"+"',pYear '"+"YEAR"+"',amount '"+"AMOUNT"+"',comments'"+"COMMENTS"+"',paidBy'"+"PAID BY"+"',paidDate '"+"DATE"+"' from tbl_advancepayment";
-            search(query);
-        }
+        
     }
     public void search(String query,String field1)
     {
@@ -214,6 +225,7 @@ public final class AdvancedPaymentSearch extends javax.swing.JInternalFrame {
         cmbYear = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
         setTitle("Advance Payment Search");
@@ -328,6 +340,16 @@ public final class AdvancedPaymentSearch extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jLabel1.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 102, 255));
+        jLabel1.setText("Print>>");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -335,7 +357,10 @@ public final class AdvancedPaymentSearch extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -344,7 +369,9 @@ public final class AdvancedPaymentSearch extends javax.swing.JInternalFrame {
                 .addGap(7, 7, 7)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
                 .addContainerGap())
         );
 
@@ -424,6 +451,71 @@ public final class AdvancedPaymentSearch extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbEmployeeNameItemStateChanged
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        if(printValue.equals("1"))
+        {
+//            HashMap para=new HashMap();
+//            para.put("receiptId",paymentId);
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Deduction\\Deduction_All.jasper");
+            re.setVisible(true);
+        }
+        if(printValue.equals("2"))
+        {
+            HashMap para=new HashMap();
+            para.put("paidYear",cmbYear.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Deduction\\Deduction_001.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("3"))
+        {
+            HashMap para=new HashMap();
+            para.put("paidMonth",cmbMonth.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Deduction\\Deduction_010.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("4"))
+        {
+            HashMap para=new HashMap();
+            para.put("paidYear",cmbYear.getSelectedItem().toString());
+            para.put("paidMonth",cmbMonth.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Deduction\\Deduction_011.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("5"))
+        {
+            HashMap para=new HashMap();
+            para.put("empName",cmbEmployeeName.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Deduction\\Deduction_100.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("6"))
+        {
+            HashMap para=new HashMap();
+            para.put("empName",cmbEmployeeName.getSelectedItem().toString());
+            para.put("paidYear",cmbYear.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Deduction\\Deduction_101.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("7"))
+        {
+            HashMap para=new HashMap();
+            para.put("empName",cmbEmployeeName.getSelectedItem().toString());
+            para.put("paidMonth",cmbMonth.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Deduction\\Deduction_110.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("8"))
+        {
+            HashMap para=new HashMap();
+            para.put("empName",cmbEmployeeName.getSelectedItem().toString());
+            para.put("paidMonth",cmbMonth.getSelectedItem().toString());
+            para.put("paidYear",cmbYear.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Deduction\\Deduction_111.jasper",para);
+            re.setVisible(true);
+        }
+    }//GEN-LAST:event_jLabel1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox chkEmployeeName;
@@ -432,9 +524,11 @@ public final class AdvancedPaymentSearch extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox cmbEmployeeName;
     private javax.swing.JComboBox cmbMonth;
     private javax.swing.JComboBox cmbYear;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
     Point middle = new Point(100,0);
+    String printValue;
 }
