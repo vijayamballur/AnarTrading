@@ -10,7 +10,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 import net.proteanit.sql.DbUtils;
+import org.vijay.report.ReportView;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -46,41 +48,49 @@ public class AdvancedContractEmployeeSearch extends javax.swing.JInternalFrame {
         {
             query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',joinDate '"+"DATE"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber'"+"PASSPORT#"+"',idNumber'"+"ID#"+"',passportExpiry '"+"P.EXPIRY"+"',idExpiry'"+"ID.EXPIRY"+"',dob'"+"DOB"+"',site '"+"SITE"+"',parentCompany '"+"PARENT COMPANY"+"',contractingCompany '"+"CON.COMPANY"+"' from tbl_conemployee, (SELECT @i := 0) temp";
             search(query);
+            printValue="1";
         }
         if(chkParent.isSelected()==false  && chkContract.isSelected()==false && chkCurrentSite.isSelected()==true)
         {
             query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',joinDate '"+"DATE"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber'"+"PASSPORT#"+"',idNumber'"+"ID#"+"',passportExpiry '"+"P.EXPIRY"+"',idExpiry'"+"ID.EXPIRY"+"',dob'"+"DOB"+"',site '"+"SITE"+"',parentCompany '"+"PARENT COMPANY"+"',contractingCompany '"+"CON.COMPANY"+"' from tbl_conemployee, (SELECT @i := 0) temp where site=?";
             search(query,site);
+            printValue="2";
         }
         if(chkParent.isSelected()==false && chkContract.isSelected()==true && chkCurrentSite.isSelected()==false)
         {
             query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',joinDate '"+"DATE"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber'"+"PASSPORT#"+"',idNumber'"+"ID#"+"',passportExpiry '"+"P.EXPIRY"+"',idExpiry'"+"ID.EXPIRY"+"',dob'"+"DOB"+"',site '"+"SITE"+"',parentCompany '"+"PARENT COMPANY"+"',contractingCompany '"+"CON.COMPANY"+"' from tbl_conemployee, (SELECT @i := 0) temp where contractingCompany=?";
             search(query,contract);
+            printValue="3";
         }
         if(chkParent.isSelected()==false  && chkContract.isSelected()==true && chkCurrentSite.isSelected()==true)
         {
             query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',joinDate '"+"DATE"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber'"+"PASSPORT#"+"',idNumber'"+"ID#"+"',passportExpiry '"+"P.EXPIRY"+"',idExpiry'"+"ID.EXPIRY"+"',dob'"+"DOB"+"',site '"+"SITE"+"',parentCompany '"+"PARENT COMPANY"+"',contractingCompany '"+"CON.COMPANY"+"' from tbl_conemployee, (SELECT @i := 0) temp where contractingCompany=? and site=?";
             search(query,contract,site);
+            printValue="4";
         }
         if(chkParent.isSelected()==true && chkContract.isSelected()==false && chkCurrentSite.isSelected()==false)
         {
             query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',joinDate '"+"DATE"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber'"+"PASSPORT#"+"',idNumber'"+"ID#"+"',passportExpiry '"+"P.EXPIRY"+"',idExpiry'"+"ID.EXPIRY"+"',dob'"+"DOB"+"',site '"+"SITE"+"',parentCompany '"+"PARENT COMPANY"+"',contractingCompany '"+"CON.COMPANY"+"' from tbl_conemployee, (SELECT @i := 0) temp where parentCompany=?";
             search(query,parent);
+            printValue="5";
         }
         if(chkParent.isSelected()==true && chkContract.isSelected()==false && chkCurrentSite.isSelected()==true)
         {
             query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',joinDate '"+"DATE"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber'"+"PASSPORT#"+"',idNumber'"+"ID#"+"',passportExpiry '"+"P.EXPIRY"+"',idExpiry'"+"ID.EXPIRY"+"',dob'"+"DOB"+"',site '"+"SITE"+"',parentCompany '"+"PARENT COMPANY"+"',contractingCompany '"+"CON.COMPANY"+"' from tbl_conemployee, (SELECT @i := 0) temp where parentCompany=? and site=?";
             search(query,parent,site);
+            printValue="6";
         }
         if(chkParent.isSelected()==true  && chkContract.isSelected()==true && chkCurrentSite.isSelected()==false)
         {
             query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',joinDate '"+"DATE"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber'"+"PASSPORT#"+"',idNumber'"+"ID#"+"',passportExpiry '"+"P.EXPIRY"+"',idExpiry'"+"ID.EXPIRY"+"',dob'"+"DOB"+"',site '"+"SITE"+"',parentCompany '"+"PARENT COMPANY"+"',contractingCompany '"+"CON.COMPANY"+"' from tbl_conemployee, (SELECT @i := 0) temp where parentCompany=? and contractingCompany=?";
             search(query,parent,contract);
+            printValue="7";
         }
         if(chkParent.isSelected()==true && chkContract.isSelected()==true && chkCurrentSite.isSelected()==true)
         {
             query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',joinDate '"+"DATE"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber'"+"PASSPORT#"+"',idNumber'"+"ID#"+"',passportExpiry '"+"P.EXPIRY"+"',idExpiry'"+"ID.EXPIRY"+"',dob'"+"DOB"+"',site '"+"SITE"+"',parentCompany '"+"PARENT COMPANY"+"',contractingCompany '"+"CON.COMPANY"+"' from tbl_conemployee, (SELECT @i := 0) temp where parentCompany=? and contractingCompany=? and site=?";
             search(query,parent,contract,site);
+            printValue="8";
         }      
     }
     public void search(String query,String field1)
@@ -240,6 +250,7 @@ public class AdvancedContractEmployeeSearch extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setTitle("Contract Employee Search");
 
@@ -346,12 +357,22 @@ public class AdvancedContractEmployeeSearch extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel1.setText("*Click here to close*");
+        jLabel1.setForeground(new java.awt.Color(0, 102, 255));
+        jLabel1.setText("Print>>");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel2.setText("*Click here to close*");
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
             }
         });
 
@@ -362,17 +383,22 @@ public class AdvancedContractEmployeeSearch extends javax.swing.JInternalFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jScrollPane1)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addGap(21, 21, 21)
                 .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)))
         );
 
         pack();
@@ -446,9 +472,75 @@ public class AdvancedContractEmployeeSearch extends javax.swing.JInternalFrame {
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         // TODO add your handling code here:
+        if(printValue.equals("1"))
+        {
+//            HashMap para=new HashMap();
+//            para.put("receiptId",paymentId);
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\ContractEmployee\\contractEmployee_All.jasper");
+            re.setVisible(true);
+        }
+        if(printValue.equals("2"))
+        {
+            HashMap para=new HashMap();
+            para.put("site",cmbCurrentSite.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\ContractEmployee\\contractEmployee_001.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("3"))
+        {
+            HashMap para=new HashMap();
+            para.put("contract",cmbContract.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\ContractEmployee\\contractEmployee_010.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("4"))
+        {
+            HashMap para=new HashMap();
+            para.put("site",cmbCurrentSite.getSelectedItem().toString());
+            para.put("contract",cmbContract.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\ContractEmployee\\contractEmployee_011.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("5"))
+        {
+            HashMap para=new HashMap();
+            para.put("parent",cmbParent.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\ContractEmployee\\contractEmployee_100.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("6"))
+        {
+            HashMap para=new HashMap();
+            para.put("parent",cmbParent.getSelectedItem().toString());
+            para.put("site",cmbCurrentSite.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\ContractEmployee\\contractEmployee_101.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("7"))
+        {
+            HashMap para=new HashMap();
+            para.put("parent",cmbParent.getSelectedItem().toString());
+            para.put("contract",cmbContract.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\ContractEmployee\\contractEmployee_110.jasper",para);
+            re.setVisible(true);
+        }
+        if(printValue.equals("8"))
+        {
+            HashMap para=new HashMap();
+            para.put("parent",cmbParent.getSelectedItem().toString());
+            para.put("contract",cmbContract.getSelectedItem().toString());
+            para.put("site",cmbCurrentSite.getSelectedItem().toString());
+            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\ContractEmployee\\contractEmployee_111.jasper",para);
+            re.setVisible(true);
+        }
+        
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
         dispose();
         AnarTrading.menuItemSearchConEmployee.setEnabled(true);
-    }//GEN-LAST:event_jLabel1MouseClicked
+    }//GEN-LAST:event_jLabel2MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -459,10 +551,11 @@ public class AdvancedContractEmployeeSearch extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox cmbCurrentSite;
     private javax.swing.JComboBox cmbParent;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
     Point middle = new Point(100,0);
-    String blank=" ";
+    String blank=" ",printValue;
 }

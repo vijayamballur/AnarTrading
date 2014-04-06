@@ -55,10 +55,10 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         cmbEmployeeName.setEnabled(false);
 
         
-        txtPassportExpiry.setEditable(false);
-        txtVisaExpiry.setEditable(false);
+        //txtPassportExpiry.setEditable(false);
+        //txtVisaExpiry.setEditable(false);
         txtdate.setEditable(false);
-        txtDOB.setEditable(false);
+        //txtDOB.setEditable(false);
         
         txtdate.setText("1111-11-11");
         txtPassportExpiry.setText("1111-11-11");
