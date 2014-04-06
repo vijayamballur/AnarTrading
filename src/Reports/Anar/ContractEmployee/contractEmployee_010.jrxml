@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contractEmployee_All" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dd4e2ba2-d9ea-405c-9031-1497a00f657b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="36"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" forecolor="#000000" backcolor="#FFFFFF">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[($F{Status}=="Expired")]]></conditionExpression>
+			<style forecolor="#FF0033" backcolor="#FFFFFF" fill="Solid" scaleImage="FillFrame">
+				<pen lineWidth="3.0" lineStyle="Solid"/>
+			</style>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[($F{Status}=="Going to expire")]]></conditionExpression>
+			<style forecolor="#009966" fill="Solid">
+				<pen lineStyle="Double"/>
+			</style>
+		</conditionalStyle>
+	</style>
+	<parameter name="site" class="java.lang.String"/>
+	<parameter name="contract" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     tbl_conemployee.`empName` AS tbl_conemployee_empName,
+     tbl_conemployee.`nationality` AS tbl_conemployee_nationality,
+     tbl_conemployee.`profession` AS tbl_conemployee_profession,
+     tbl_conemployee.`passportNumber` AS tbl_conemployee_passportNumber,
+     tbl_conemployee.`idNumber` AS tbl_conemployee_idNumber,
+     tbl_conemployee.`passportExpiry` AS tbl_conemployee_passportExpiry,
+     tbl_conemployee.`idExpiry` AS tbl_conemployee_idExpiry,
+     tbl_conemployee.`site` AS tbl_conemployee_site,
+     tbl_conemployee.`parentCompany` AS tbl_conemployee_parentCompany,
+     tbl_conemployee.`contractingCompany` AS tbl_conemployee_contractingCompany,
+     CASE
+	WHEN DATEDIFF(idExpiry,CURDATE())<0
+	THEN 'Expired'
+	ELSE
+		CASE
+		WHEN DATEDIFF(idExpiry,CURDATE())>30
+		THEN 'Valid'
+		ELSE 'Going to expire'
+		END
+	END AS Status,
+     DATEDIFF(idExpiry,CURDATE()) as Days
+
+FROM
+     `tbl_conemployee` tbl_conemployee
+where tbl_conemployee.`contractingCompany`=$P{contract}
+order by tbl_conemployee.`empName`]]>
+	</queryString>
+	<field name="tbl_conemployee_empName" class="java.lang.String"/>
+	<field name="tbl_conemployee_nationality" class="java.lang.String"/>
+	<field name="tbl_conemployee_profession" class="java.lang.String"/>
+	<field name="tbl_conemployee_passportNumber" class="java.lang.String"/>
+	<field name="tbl_conemployee_idNumber" class="java.lang.String"/>
+	<field name="tbl_conemployee_passportExpiry" class="java.sql.Date"/>
+	<field name="tbl_conemployee_idExpiry" class="java.sql.Date"/>
+	<field name="tbl_conemployee_site" class="java.lang.String"/>
+	<field name="tbl_conemployee_parentCompany" class="java.lang.String"/>
+	<field name="tbl_conemployee_contractingCompany" class="java.lang.String"/>
+	<field name="Status" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Days" class="java.lang.Long"/>
+	<background>
+		<band height="555" splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="94" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="78d80186-eafa-4f92-b48e-8d102c64a240" style="SubTitle" x="336" y="65" width="449" height="29"/>
+				<textElement textAlignment="Right">
+					<font size="22" isBold="false"/>
+				</textElement>
+				<text><![CDATA[010]]></text>
+			</staticText>
+			<frame>
+				<reportElement uuid="3e33cf44-0b86-4cf5-9585-8d51a7f4a683" mode="Opaque" x="-20" y="0" width="822" height="65" forecolor="#006699" backcolor="#006699"/>
+				<staticText>
+					<reportElement uuid="eefcf8ff-5c94-45d3-a21d-d489aa2c98a6" style="Title" x="231" y="0" width="578" height="65"/>
+					<textElement textAlignment="Right">
+						<font size="54" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Contract Employees]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement uuid="efc7eb16-32c1-4ccd-8098-53401f4993f8" x="2" y="0" width="800" height="14"/>
+				<staticText>
+					<reportElement uuid="68448fe2-40b2-4f5b-bf53-6462d6954bf0" style="Column header" positionType="Float" x="0" y="0" width="93" height="14" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Name]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="26678d66-8712-422c-8701-5478b436b3e0" style="Column header" positionType="Float" x="99" y="0" width="67" height="14" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Nationality]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="22d23118-4199-45e5-95a5-c56e36a76125" style="Column header" positionType="Float" x="169" y="0" width="62" height="14" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Profession]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="d658c110-dc33-4a92-8621-0baa1af3de9f" style="Column header" positionType="Float" x="232" y="0" width="63" height="14" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Passport#]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="5151e97c-f83b-45ca-b85a-42dcd78982ec" style="Column header" positionType="Float" x="297" y="0" width="73" height="14" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[ID/Visa #]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="020f1fd0-1661-4df8-9911-378246aae0f5" style="Column header" positionType="Float" x="371" y="0" width="63" height="14" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[PP Ex.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="197313ed-be28-42de-8a73-1bbbc6fdde7f" style="Column header" positionType="Float" x="433" y="0" width="56" height="14" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[ID Ex.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="0f7daf1a-b8f7-4245-b2bd-ee6bf55a114d" style="Column header" positionType="Float" x="490" y="0" width="50" height="14" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Site]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="d1feb620-f58a-4421-b017-5953d6dec2ee" style="Column header" positionType="Float" x="540" y="0" width="80" height="14" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[P.Company]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="666f85b6-510c-4ae6-abad-c8f6bb546e32" style="Column header" positionType="Float" x="620" y="0" width="74" height="14" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[C.Company]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="952f0acb-3846-44f8-bbdf-9aa5ac40c2d3" style="Column header" positionType="Float" x="696" y="0" width="57" height="14" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Status]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="52045b52-0816-46f9-9cbf-f5c0d1e102f6" style="Column header" positionType="Float" x="759" y="0" width="41" height="14" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Status]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement uuid="b833bbd0-9915-4221-9e3e-189355ea1bd7" x="0" y="0" width="802" height="14"/>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="24de9499-1243-42f1-b60d-dd55a507223f" style="Row" positionType="Float" x="0" y="0" width="95" height="14"/>
+					<textElement>
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_conemployee_empName}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="d36d8dd4-8897-492f-8298-a9c20fcb0296" style="Row" positionType="Float" x="99" y="0" width="69" height="14"/>
+					<textElement>
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_conemployee_nationality}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="69693c74-72ad-4a47-97d5-b2a9eef9efd9" style="Row" positionType="Float" x="169" y="0" width="64" height="14"/>
+					<textElement>
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_conemployee_profession}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="853f8321-9a4e-4168-bf21-09c4c3537dd9" style="Row" positionType="Float" x="232" y="0" width="65" height="14"/>
+					<textElement>
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_conemployee_passportNumber}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="b3128efa-b73c-478a-aa0b-90a23fc2809e" style="Row" positionType="Float" x="297" y="0" width="75" height="14"/>
+					<textElement>
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_conemployee_idNumber}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="dd-MMM-yy" isBlankWhenNull="true">
+					<reportElement uuid="c453ee98-5f4c-4816-a558-4d11941fd644" style="Row" positionType="Float" x="371" y="0" width="65" height="14"/>
+					<textElement>
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_conemployee_passportExpiry}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="dd-MMM-yy" isBlankWhenNull="true">
+					<reportElement uuid="5eb7401b-da94-4ee5-a326-ee3a526e74ce" style="Row" positionType="Float" x="433" y="0" width="58" height="14"/>
+					<textElement>
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_conemployee_idExpiry}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="c5bbf4cf-ba60-4c5d-a7a9-a603689bfe05" style="Row" positionType="Float" x="490" y="0" width="52" height="14"/>
+					<textElement>
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_conemployee_site}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="7df27e51-82cc-4a10-99c6-a1c7ae470fdf" style="Row" positionType="Float" x="542" y="0" width="80" height="14"/>
+					<textElement>
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_conemployee_parentCompany}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="7c15b38d-8569-499e-b1e6-f744d42143d6" style="Row" positionType="Float" x="622" y="0" width="72" height="14"/>
+					<textElement>
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_conemployee_contractingCompany}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="174a84c7-08a8-4ba3-8e41-08cdaf2ec618" style="Row" positionType="Float" x="696" y="0" width="77" height="14"/>
+					<textElement>
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Status}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="8d12c28c-5cc3-45a6-98a6-3172ca6a71a0" style="Row" positionType="Float" x="773" y="0" width="29" height="14"/>
+					<textElement>
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Days}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="16" splitType="Stretch">
+			<frame>
+				<reportElement uuid="62022cbb-b398-4bb8-a2f3-7456799dd03b" mode="Opaque" x="2" y="0" width="800" height="16" forecolor="#D0B48E" backcolor="#006699"/>
+				<textField evaluationTime="Report">
+					<reportElement uuid="6d952085-5479-4dd4-858c-4e6116ef8c0c" style="Column header" x="753" y="0" width="40" height="16" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="93fac8dd-65e8-41ea-9330-dd2f00ac90f5" style="Column header" x="673" y="0" width="80" height="16" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement uuid="7c68df13-0218-4d62-86c3-580156fc7d47" style="Column header" x="2" y="0" width="197" height="16" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

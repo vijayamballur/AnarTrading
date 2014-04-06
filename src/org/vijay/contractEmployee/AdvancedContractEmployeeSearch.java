@@ -1,6 +1,7 @@
 package org.vijay.contractEmployee;
 
 
+import common.CurrentWorkingDirectory;
 import org.vijay.common.AnarTrading;
 import org.vijay.common.connection;
 import org.vijay.common.AutoCompleteDecorator;
@@ -36,6 +37,7 @@ public class AdvancedContractEmployeeSearch extends javax.swing.JInternalFrame {
         cmbContractFill();
         cmbCurrentSiteFill();
         queryGenerator();
+
     }
     public void queryGenerator()
     {
@@ -472,25 +474,27 @@ public class AdvancedContractEmployeeSearch extends javax.swing.JInternalFrame {
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         // TODO add your handling code here:
+        CurrentWorkingDirectory CWD=new CurrentWorkingDirectory();
+        String path=CWD.getpath();
+        
         if(printValue.equals("1"))
         {
-//            HashMap para=new HashMap();
-//            para.put("receiptId",paymentId);
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\ContractEmployee\\contractEmployee_All.jasper");
+            
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\ContractEmployee\\contractEmployee_All.jasper"));
             re.setVisible(true);
         }
         if(printValue.equals("2"))
         {
             HashMap para=new HashMap();
             para.put("site",cmbCurrentSite.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\ContractEmployee\\contractEmployee_001.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\ContractEmployee\\contractEmployee_001.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("3"))
         {
             HashMap para=new HashMap();
             para.put("contract",cmbContract.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\ContractEmployee\\contractEmployee_010.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\ContractEmployee\\contractEmployee_010.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("4"))
@@ -498,14 +502,14 @@ public class AdvancedContractEmployeeSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("site",cmbCurrentSite.getSelectedItem().toString());
             para.put("contract",cmbContract.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\ContractEmployee\\contractEmployee_011.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\ContractEmployee\\contractEmployee_011.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("5"))
         {
             HashMap para=new HashMap();
             para.put("parent",cmbParent.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\ContractEmployee\\contractEmployee_100.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\ContractEmployee\\contractEmployee_100.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("6"))
@@ -513,7 +517,7 @@ public class AdvancedContractEmployeeSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("parent",cmbParent.getSelectedItem().toString());
             para.put("site",cmbCurrentSite.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\ContractEmployee\\contractEmployee_101.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\ContractEmployee\\contractEmployee_101.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("7"))
@@ -521,7 +525,7 @@ public class AdvancedContractEmployeeSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("parent",cmbParent.getSelectedItem().toString());
             para.put("contract",cmbContract.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\ContractEmployee\\contractEmployee_110.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\ContractEmployee\\contractEmployee_110.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("8"))
@@ -530,10 +534,9 @@ public class AdvancedContractEmployeeSearch extends javax.swing.JInternalFrame {
             para.put("parent",cmbParent.getSelectedItem().toString());
             para.put("contract",cmbContract.getSelectedItem().toString());
             para.put("site",cmbCurrentSite.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\ContractEmployee\\contractEmployee_111.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\ContractEmployee\\contractEmployee_111.jasper"),para);
             re.setVisible(true);
         }
-        
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
@@ -558,4 +561,5 @@ public class AdvancedContractEmployeeSearch extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
     Point middle = new Point(100,0);
     String blank=" ",printValue;
+    
 }

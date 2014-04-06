@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Deduction_All" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="37361fca-d415-42c6-89e1-ccd2af941745">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="26"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="PieChartDataset" uuid="1774e1f1-c936-4541-92eb-534307960a53"/>
+	<parameter name="paidYear" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     tbl_advancepayment.`empName` AS tbl_advancepayment_empName,
+     tbl_advancepayment.`pMonth` AS tbl_advancepayment_pMonth,
+     tbl_advancepayment.`pYear` AS tbl_advancepayment_pYear,
+     tbl_advancepayment.`amount` AS tbl_advancepayment_amount,
+     tbl_advancepayment.`comments` AS tbl_advancepayment_comments,
+     tbl_advancepayment.`paidBy` AS tbl_advancepayment_paidBy,
+   CASE tbl_advancepayment.`paidDate`  WHEN '1111-11-11' THEN' 'ELSE                  tbl_advancepayment.`paidDate` END
+     AS tbl_advancepayment_paidDate,
+     tbl_labourdetails.`empId` AS tbl_labourdetails_empId,
+     tbl_labourdetails.`firstParty` AS tbl_labourdetails_firstParty
+FROM
+     `tbl_labourdetails` tbl_labourdetails INNER JOIN `tbl_advancepayment` tbl_advancepayment ON tbl_labourdetails.`empId` = tbl_advancepayment.`empId`
+
+where tbl_advancepayment.`pYear`=$P{paidYear}
+order by
+STR_TO_DATE(tbl_advancepayment.`pYear`,'%Y')  ,STR_TO_DATE(tbl_advancepayment.`pMonth`,'%M')desc
+
+]]>
+	</queryString>
+	<field name="tbl_advancepayment_empName" class="java.lang.String"/>
+	<field name="tbl_advancepayment_pMonth" class="java.lang.String"/>
+	<field name="tbl_advancepayment_pYear" class="java.lang.String"/>
+	<field name="tbl_advancepayment_amount" class="java.math.BigDecimal"/>
+	<field name="tbl_advancepayment_comments" class="java.lang.String"/>
+	<field name="tbl_advancepayment_paidBy" class="java.lang.String"/>
+	<field name="tbl_advancepayment_paidDate" class="java.lang.String"/>
+	<field name="tbl_labourdetails_empId" class="java.lang.Long"/>
+	<field name="tbl_labourdetails_firstParty" class="java.lang.String"/>
+	<background>
+		<band height="555" splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="94" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="a104ed52-b7cb-4f0e-a6e8-6672abdee993" style="SubTitle" x="336" y="65" width="449" height="29"/>
+				<textElement textAlignment="Right">
+					<font size="22" isBold="false"/>
+				</textElement>
+				<text><![CDATA[001]]></text>
+			</staticText>
+			<frame>
+				<reportElement uuid="a1d75bbe-6698-4c97-9f9a-32535e6eee41" mode="Opaque" x="-20" y="0" width="822" height="65" forecolor="#006699" backcolor="#006699"/>
+				<staticText>
+					<reportElement uuid="a985ba51-44de-4455-9ec3-90954f18b6af" style="Title" x="231" y="0" width="578" height="65"/>
+					<textElement textAlignment="Right">
+						<font size="54" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Deduction Details]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement uuid="22f84b63-1798-4463-b52c-7b5df925276a" x="0" y="0" width="802" height="14"/>
+				<staticText>
+					<reportElement uuid="3c2551a8-b784-4c81-9751-8854516e3dec" style="Column header" positionType="Float" x="3" y="0" width="160" height="14" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Employee Name]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="24141080-8e1d-4a36-9597-630ab06f0574" style="Column header" positionType="Float" x="336" y="0" width="77" height="14" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[For Month]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="3ef910ae-47c7-403b-8ac3-f40fa3528622" style="Column header" positionType="Float" x="415" y="0" width="62" height="14" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[For Year]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9682f332-4d66-4144-9c1f-4877128bdc06" style="Column header" positionType="Float" x="477" y="0" width="59" height="14" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Amount]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="317ce9ca-f4b2-48e0-a991-89a1aa84051f" style="Column header" positionType="Float" x="536" y="0" width="139" height="14" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Comments]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="dfca6eb8-d480-4c8c-8ae0-0b195b69c6c3" style="Column header" positionType="Float" x="675" y="0" width="60" height="14" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Paid By]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="7847ed7f-aebf-4871-9fc5-0c47cc2e256d" style="Column header" positionType="Float" x="735" y="0" width="67" height="14" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Date]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="7d30048d-0138-4c9c-9811-4586dea79c52" style="Column header" positionType="Float" x="163" y="0" width="173" height="14" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Verdana" size="10" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Company Name]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="19" splitType="Stretch">
+			<frame>
+				<reportElement uuid="5b08e197-9b08-4bd7-bf6a-67c8fc74908d" x="0" y="0" width="802" height="14"/>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="aecdb2d7-1b68-47c5-a9ef-6a83e991e896" style="Detail" positionType="Float" x="3" y="0" width="160" height="14"/>
+					<textElement>
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_advancepayment_empName}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="59232eef-350a-4461-8f3d-25561904705d" style="Detail" positionType="Float" x="336" y="0" width="77" height="14"/>
+					<textElement>
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_advancepayment_pMonth}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="de7d935b-6e82-4cc0-9de3-a77876f584cd" style="Detail" positionType="Float" x="415" y="0" width="62" height="14"/>
+					<textElement>
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_advancepayment_pYear}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="01d837ce-b7c0-4226-9abf-315fbf9f6c7e" style="Detail" positionType="Float" x="477" y="0" width="59" height="14"/>
+					<textElement>
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_advancepayment_amount}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="a75f6062-0b22-48cd-b99b-e6acd35772c6" style="Detail" positionType="Float" x="536" y="0" width="139" height="14"/>
+					<textElement>
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_advancepayment_comments}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="1d506827-db83-486a-b002-03d122d1e5bd" style="Detail" positionType="Float" x="675" y="0" width="60" height="14"/>
+					<textElement>
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_advancepayment_paidBy}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="dd-MMM-yy" isBlankWhenNull="true">
+					<reportElement uuid="5aa00b06-ecdf-453a-80c8-7a5de13510ba" style="Detail" positionType="Float" x="735" y="0" width="67" height="14"/>
+					<textElement>
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_advancepayment_paidDate}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="cd0a8e78-9ca3-4caf-8035-b9b97f7544e3" style="Detail" positionType="Float" x="163" y="0" width="173" height="14"/>
+					<textElement>
+						<font fontName="Verdana" size="8" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_labourdetails_firstParty}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="16" splitType="Stretch">
+			<frame>
+				<reportElement uuid="55848dd3-d55b-4537-84f5-8bb2dfb8bb32" mode="Opaque" x="2" y="0" width="800" height="16" forecolor="#D0B48E" backcolor="#006699"/>
+				<textField evaluationTime="Report">
+					<reportElement uuid="12500163-70ef-4712-838c-506f618ddc6b" style="Column header" x="753" y="0" width="40" height="16" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="495a3fc8-df59-4db0-b05e-b43507eebf72" style="Column header" x="673" y="0" width="80" height="16" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement uuid="5be4ecc7-980d-4bc9-80c5-eaf4c6ce1666" style="Column header" x="2" y="0" width="197" height="16" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
