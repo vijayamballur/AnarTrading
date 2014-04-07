@@ -265,7 +265,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         try
         {
             Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("select empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails order by empId desc");
+            ResultSet rs=stmt.executeQuery("select empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails order by empName");
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             con.close();
             jTable1.getColumnModel().getColumn(0).setMinWidth(0);
@@ -428,7 +428,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
 
         jtablePopUp.setLabel("PopUp");
 
-        jMenuItemViewDocuments.setText("View Documents");
+        jMenuItemViewDocuments.setText("Add Passport Copy");
         jMenuItemViewDocuments.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemViewDocumentsActionPerformed(evt);
@@ -1079,10 +1079,10 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
 
     private void jMenuItemViewDocumentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemViewDocumentsActionPerformed
         // TODO add your handling code here:
-        viewDocuments vd = new viewDocuments(empId);
-        AnarTrading.desktopPane.add(vd);
-        vd.setVisible(true);
-        vd.show();
+        PassportDocument PD = new PassportDocument(empId);
+        AnarTrading.desktopPane.add(PD);
+        PD.setVisible(true);
+        PD.show();
     }//GEN-LAST:event_jMenuItemViewDocumentsActionPerformed
 
     private void jMenuItemTimeSheetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTimeSheetActionPerformed

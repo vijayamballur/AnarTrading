@@ -1,6 +1,7 @@
 package org.vijay.invoice;
 
 
+import common.CurrentWorkingDirectory;
 import org.vijay.invoice.InvoiceDocument;
 import org.vijay.common.AnarTrading;
 import org.vijay.common.connection;
@@ -49,6 +50,8 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             invoiceId=Integer.parseInt(jTable1.getValueAt(rowNo, 1).toString());
             }
         });
+        CurrentWorkingDirectory CWD=new CurrentWorkingDirectory();
+        path=CWD.getpath();
     }
     public void queryGenerator()
     {
@@ -1646,67 +1649,68 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
+        
         if(printValue.equals("1.1"))
         {
 //            HashMap para=new HashMap();
 //            para.put("receiptId",paymentId);
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_All.jasper");
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_All.jasper"));
             re.setVisible(true);
         }
         if(printValue.equals("1.2"))
         {
 //            HashMap para=new HashMap();
 //            para.put("receiptId",paymentId);
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_All_UnPaid.jasper");
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_All_UnPaid.jasper"));
             re.setVisible(true);
         }
         if(printValue.equals("1.3"))
         {
 //            HashMap para=new HashMap();
 //            para.put("receiptId",paymentId);
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_All_Paid.jasper");
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_All_Paid.jasper"));
             re.setVisible(true);
         }
         if(printValue.equals("2.1"))
         {
             HashMap para=new HashMap();
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFFT.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFFT.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("2.2"))
         {
             HashMap para=new HashMap();
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFFT_0.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFFT_0.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("2.3"))
         {
             HashMap para=new HashMap();
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFFT_1.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFFT_1.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("3.1"))
         {
             HashMap para=new HashMap();
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTF.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTF.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("3.2"))
         {
             HashMap para=new HashMap();
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTF_0.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTF_0.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("3.3"))
         {
             HashMap para=new HashMap();
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTF_1.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTF_1.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("4.1"))
@@ -1714,7 +1718,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTT.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTT.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("4.2"))
@@ -1722,7 +1726,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTT_0.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTT_0.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("4.3"))
@@ -1730,28 +1734,28 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTT_1.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTT_1.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("5.1"))
         {
             HashMap para=new HashMap();
             para.put("toAdd",cmbTo.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFF.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFF.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("5.2"))
         {
             HashMap para=new HashMap();
             para.put("toAdd",cmbTo.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFF_0.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFF_0.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("5.3"))
         {
             HashMap para=new HashMap();
             para.put("toAdd",cmbTo.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFF_1.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFF_1.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("6.1"))
@@ -1759,7 +1763,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("toAdd",cmbTo.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFT.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFT.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("6.2"))
@@ -1767,7 +1771,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("toAdd",cmbTo.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFT_0.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFT_0.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("6.3"))
@@ -1775,7 +1779,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("toAdd",cmbTo.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFT_1.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFT_1.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("7.1"))
@@ -1783,7 +1787,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("toAdd",cmbTo.getSelectedItem().toString());
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTF.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTF.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("7.2"))
@@ -1791,7 +1795,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("toAdd",cmbTo.getSelectedItem().toString());
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTF_0.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTF_0.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("7.3"))
@@ -1799,7 +1803,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("toAdd",cmbTo.getSelectedItem().toString());
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTF_1.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTF_1.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("8.1"))
@@ -1808,7 +1812,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             para.put("toAdd",cmbTo.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTT.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTT.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("8.2"))
@@ -1817,7 +1821,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             para.put("toAdd",cmbTo.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTT_0.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTT_0.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("8.3"))
@@ -1826,28 +1830,28 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             para.put("toAdd",cmbTo.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTT_1.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTT_1.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("9.1"))
         {
             HashMap para=new HashMap();
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFF.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFF.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("9.2"))
         {
             HashMap para=new HashMap();
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFF_0.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFF_0.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("9.3"))
         {
             HashMap para=new HashMap();
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFF_1.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFF_1.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("10.1"))
@@ -1855,7 +1859,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFT.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFT.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("10.2"))
@@ -1863,7 +1867,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFT_0.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFT_0.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("10.3"))
@@ -1871,7 +1875,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFT_1.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFT_1.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("11.1"))
@@ -1879,7 +1883,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTF.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTF.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("11.2"))
@@ -1887,7 +1891,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTF_0.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTF_0.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("11.3"))
@@ -1895,7 +1899,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTF_1.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTF_1.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("12.1"))
@@ -1904,7 +1908,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTT.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTT.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("12.2"))
@@ -1913,7 +1917,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTT_0.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTT_0.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("12.3"))
@@ -1922,7 +1926,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTT_1.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTT_1.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("13.1"))
@@ -1930,7 +1934,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
             para.put("toAdd",cmbTo.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTTFF.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTTFF.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("13.2"))
@@ -1938,7 +1942,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
             para.put("toAdd",cmbTo.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTTFF_0.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTTFF_0.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("13.3"))
@@ -1946,26 +1950,26 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
             para.put("toAdd",cmbTo.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTTFF_1.jasper",para);
+            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTTFF_1.jasper"),para);
             re.setVisible(true);
         }
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void menuItemMonthCompanyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemMonthCompanyActionPerformed
         // TODO add your handling code here:
-        ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\Graphical\\Comparison(month-company).jasper");
+        ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\Graphical\\Comparison(month-company).jasper"));
         re.setVisible(true);
     }//GEN-LAST:event_menuItemMonthCompanyActionPerformed
 
     private void menuItemCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCompleteActionPerformed
         // TODO add your handling code here:
-        ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\Graphical\\All_G.jasper");
+        ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\Graphical\\All_G.jasper"));
         re.setVisible(true);
     }//GEN-LAST:event_menuItemCompleteActionPerformed
 
     private void menuItemMonthInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemMonthInvoiceActionPerformed
         // TODO add your handling code here:
-        ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Invoice\\Invoice_send\\Graphical\\Comparison(month-Invoice).jasper");
+        ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\Graphical\\Comparison(month-Invoice).jasper"));
         re.setVisible(true);
     }//GEN-LAST:event_menuItemMonthInvoiceActionPerformed
 
@@ -2002,5 +2006,5 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
     Point middle = new Point(100,0);
     int invoiceId;
-    String printValue;
+    String printValue,path;
 }

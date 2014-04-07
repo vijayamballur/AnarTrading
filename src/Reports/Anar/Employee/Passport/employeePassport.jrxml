@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="employeePassport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="81215b6a-deee-4975-af67-90bdf7f73582">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="PieChartDataset" uuid="adca9a89-081a-4f4f-a772-1745dfbc0bb1"/>
+	<parameter name="empId" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     tbl_passport_employee.`passport` AS tbl_passport_employee_passport
+FROM
+     `tbl_passport_employee` tbl_passport_employee
+where empId=$P{empId}]]>
+	</queryString>
+	<field name="tbl_passport_employee_passport" class="java.awt.Image"/>
+	<detail>
+		<band height="640" splitType="Stretch">
+			<image>
+				<reportElement uuid="8cc93d9d-5b74-438b-8e21-789c701e1024" x="0" y="45" width="555" height="555"/>
+				<imageExpression><![CDATA[$F{tbl_passport_employee_passport}]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>

@@ -13,7 +13,7 @@
       <SubComponents>
         <MenuItem class="javax.swing.JMenuItem" name="jMenuItemViewDocuments">
           <Properties>
-            <Property name="text" type="java.lang.String" value="View Documents"/>
+            <Property name="text" type="java.lang.String" value="Add Passport Copy"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemViewDocumentsActionPerformed"/>
