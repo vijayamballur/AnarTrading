@@ -93,7 +93,7 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
             jTable1.getColumnModel().getColumn(0).setMinWidth(0);
             jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
             jTable1.getColumnModel().getColumn(0).setWidth(0);
-            jTable1.setShowHorizontalLines( false );
+            jTable1.setShowHorizontalLines( true );
             jTable1.setRowSelectionAllowed( true );
 
         }
@@ -338,6 +338,7 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Time Sheet", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gabriola", 0, 18))); // NOI18N
 
+        jTable1.setFont(new java.awt.Font("Verdana", 0, 9)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

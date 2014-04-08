@@ -818,9 +818,13 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
                 ResultSet rs=ps.executeQuery();
                 jTable1.setModel(DbUtils.resultSetToTableModel(rs));
                 con.close();
-                jTable1.getColumnModel().getColumn(1).setMinWidth(0);
-                jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
-                jTable1.getColumnModel().getColumn(1).setWidth(0);
+                jTable1.getColumnModel().getColumn(0).setMaxWidth(35);
+                jTable1.getColumnModel().getColumn(1).setMaxWidth(35);
+                jTable1.getColumnModel().getColumn(5).setMaxWidth(70);
+                jTable1.getColumnModel().getColumn(7).setMaxWidth(60);
+                jTable1.getColumnModel().getColumn(8).setMaxWidth(35);
+                jTable1.getColumnModel().getColumn(9).setMaxWidth(30);
+                jTable1.getColumnModel().getColumn(10).setMaxWidth(70);
                 jTable1.setShowHorizontalLines( true );
                 jTable1.setRowSelectionAllowed( true );
 
@@ -842,9 +846,13 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
                 ResultSet rs=ps.executeQuery();
                 jTable1.setModel(DbUtils.resultSetToTableModel(rs));
                 con.close();
-                jTable1.getColumnModel().getColumn(1).setMinWidth(0);
-                jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
-                jTable1.getColumnModel().getColumn(1).setWidth(0);
+                jTable1.getColumnModel().getColumn(0).setMaxWidth(35);
+                jTable1.getColumnModel().getColumn(1).setMaxWidth(35);
+                jTable1.getColumnModel().getColumn(5).setMaxWidth(70);
+                jTable1.getColumnModel().getColumn(7).setMaxWidth(60);
+                jTable1.getColumnModel().getColumn(8).setMaxWidth(35);
+                jTable1.getColumnModel().getColumn(9).setMaxWidth(30);
+                jTable1.getColumnModel().getColumn(10).setMaxWidth(70);
                 jTable1.setShowHorizontalLines( true );
                 jTable1.setRowSelectionAllowed( true );
 
@@ -864,9 +872,13 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
                 ResultSet rs=ps.executeQuery();
                 jTable1.setModel(DbUtils.resultSetToTableModel(rs));
                 con.close();
-                jTable1.getColumnModel().getColumn(1).setMinWidth(0);
-                jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
-                jTable1.getColumnModel().getColumn(1).setWidth(0);
+                jTable1.getColumnModel().getColumn(0).setMaxWidth(35);
+                jTable1.getColumnModel().getColumn(1).setMaxWidth(35);
+                jTable1.getColumnModel().getColumn(5).setMaxWidth(70);
+                jTable1.getColumnModel().getColumn(7).setMaxWidth(60);
+                jTable1.getColumnModel().getColumn(8).setMaxWidth(35);
+                jTable1.getColumnModel().getColumn(9).setMaxWidth(30);
+                jTable1.getColumnModel().getColumn(10).setMaxWidth(70);
                 jTable1.setShowHorizontalLines( true );
                 jTable1.setRowSelectionAllowed( true );
 
@@ -889,9 +901,13 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
                 ResultSet rs=ps.executeQuery();
                 jTable1.setModel(DbUtils.resultSetToTableModel(rs));
                 con.close();
-                jTable1.getColumnModel().getColumn(1).setMinWidth(0);
-                jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
-                jTable1.getColumnModel().getColumn(1).setWidth(0);
+                jTable1.getColumnModel().getColumn(0).setMaxWidth(35);
+                jTable1.getColumnModel().getColumn(1).setMaxWidth(35);
+                jTable1.getColumnModel().getColumn(5).setMaxWidth(70);
+                jTable1.getColumnModel().getColumn(7).setMaxWidth(60);
+                jTable1.getColumnModel().getColumn(8).setMaxWidth(35);
+                jTable1.getColumnModel().getColumn(9).setMaxWidth(30);
+                jTable1.getColumnModel().getColumn(10).setMaxWidth(70);
                 jTable1.setShowHorizontalLines( true );
                 jTable1.setRowSelectionAllowed( true );
 
@@ -915,9 +931,13 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
                 ResultSet rs=ps.executeQuery();
                 jTable1.setModel(DbUtils.resultSetToTableModel(rs));
                 con.close();
-                jTable1.getColumnModel().getColumn(1).setMinWidth(0);
-                jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
-                jTable1.getColumnModel().getColumn(1).setWidth(0);
+                jTable1.getColumnModel().getColumn(0).setMaxWidth(35);
+                jTable1.getColumnModel().getColumn(1).setMaxWidth(35);
+                jTable1.getColumnModel().getColumn(5).setMaxWidth(70);
+                jTable1.getColumnModel().getColumn(7).setMaxWidth(60);
+                jTable1.getColumnModel().getColumn(8).setMaxWidth(35);
+                jTable1.getColumnModel().getColumn(9).setMaxWidth(30);
+                jTable1.getColumnModel().getColumn(10).setMaxWidth(70);
                 jTable1.setShowHorizontalLines( true );
                 jTable1.setRowSelectionAllowed( true );
 
@@ -942,9 +962,13 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
                 ResultSet rs=ps.executeQuery();
                 jTable1.setModel(DbUtils.resultSetToTableModel(rs));
                 con.close();
-                jTable1.getColumnModel().getColumn(1).setMinWidth(0);
-                jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
-                jTable1.getColumnModel().getColumn(1).setWidth(0);
+                jTable1.getColumnModel().getColumn(0).setMaxWidth(35);
+                jTable1.getColumnModel().getColumn(1).setMaxWidth(35);
+                jTable1.getColumnModel().getColumn(5).setMaxWidth(70);
+                jTable1.getColumnModel().getColumn(7).setMaxWidth(60);
+                jTable1.getColumnModel().getColumn(8).setMaxWidth(35);
+                jTable1.getColumnModel().getColumn(9).setMaxWidth(30);
+                jTable1.getColumnModel().getColumn(10).setMaxWidth(70);
                 jTable1.setShowHorizontalLines( true );
                 jTable1.setRowSelectionAllowed( true );
 
@@ -1160,6 +1184,9 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         radioAll = new javax.swing.JRadioButton();
         txtTotal = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        txtInvoiceId = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuItemComplete = new javax.swing.JMenuItem();
@@ -1277,27 +1304,28 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(chkFrom)
                     .addComponent(chkMonth))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(cmbMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(chkYear)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbYear, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cmbYear, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(cmbFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(chkPayment)
                     .addComponent(chkTo))
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cmbTo, 0, 325, Short.MAX_VALUE)
-                    .addComponent(cmbPayment, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(cmbTo, 0, 411, Short.MAX_VALUE)
+                    .addComponent(cmbPayment, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1402,6 +1430,17 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/SEARCH.PNG"))); // NOI18N
+        jButton1.setText("Search");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel3.setText("Invoice Id");
+
         jMenu1.setText("Graphical Reports");
         jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
@@ -1443,24 +1482,29 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 10, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(radioPaidView)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(radioNotPaidView)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(radioAll)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(radioPaidView)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(radioNotPaidView)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(radioAll)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtInvoiceId, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1470,7 +1514,10 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(radioPaidView)
                     .addComponent(radioNotPaidView)
-                    .addComponent(radioAll))
+                    .addComponent(radioAll)
+                    .addComponent(txtInvoiceId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1)
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 621, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1652,65 +1699,59 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         
         if(printValue.equals("1.1"))
         {
-//            HashMap para=new HashMap();
-//            para.put("receiptId",paymentId);
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_All.jasper"));
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_All.jasper"));
             re.setVisible(true);
         }
         if(printValue.equals("1.2"))
         {
-//            HashMap para=new HashMap();
-//            para.put("receiptId",paymentId);
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_All_UnPaid.jasper"));
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_All_UnPaid.jasper"));
             re.setVisible(true);
         }
         if(printValue.equals("1.3"))
         {
-//            HashMap para=new HashMap();
-//            para.put("receiptId",paymentId);
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_All_Paid.jasper"));
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_All_Paid.jasper"));
             re.setVisible(true);
         }
         if(printValue.equals("2.1"))
         {
             HashMap para=new HashMap();
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFFT.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFFT.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("2.2"))
         {
             HashMap para=new HashMap();
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFFT_0.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFFT_0.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("2.3"))
         {
             HashMap para=new HashMap();
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFFT_1.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFFT_1.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("3.1"))
         {
             HashMap para=new HashMap();
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTF.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTF.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("3.2"))
         {
             HashMap para=new HashMap();
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTF_0.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTF_0.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("3.3"))
         {
             HashMap para=new HashMap();
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTF_1.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTF_1.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("4.1"))
@@ -1718,7 +1759,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTT.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTT.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("4.2"))
@@ -1726,7 +1767,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTT_0.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTT_0.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("4.3"))
@@ -1734,28 +1775,28 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTT_1.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFFTT_1.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("5.1"))
         {
             HashMap para=new HashMap();
             para.put("toAdd",cmbTo.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFF.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFF.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("5.2"))
         {
             HashMap para=new HashMap();
             para.put("toAdd",cmbTo.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFF_0.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFF_0.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("5.3"))
         {
             HashMap para=new HashMap();
             para.put("toAdd",cmbTo.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFF_1.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFF_1.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("6.1"))
@@ -1763,7 +1804,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("toAdd",cmbTo.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFT.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFT.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("6.2"))
@@ -1771,7 +1812,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("toAdd",cmbTo.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFT_0.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFT_0.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("6.3"))
@@ -1779,7 +1820,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("toAdd",cmbTo.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFT_1.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTFT_1.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("7.1"))
@@ -1787,7 +1828,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("toAdd",cmbTo.getSelectedItem().toString());
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTF.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTF.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("7.2"))
@@ -1795,7 +1836,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("toAdd",cmbTo.getSelectedItem().toString());
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTF_0.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTF_0.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("7.3"))
@@ -1803,7 +1844,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("toAdd",cmbTo.getSelectedItem().toString());
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTF_1.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTF_1.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("8.1"))
@@ -1812,7 +1853,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             para.put("toAdd",cmbTo.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTT.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTT.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("8.2"))
@@ -1821,7 +1862,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             para.put("toAdd",cmbTo.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTT_0.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTT_0.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("8.3"))
@@ -1830,28 +1871,28 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             para.put("toAdd",cmbTo.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTT_1.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FFTTT_1.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("9.1"))
         {
             HashMap para=new HashMap();
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFF.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFF.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("9.2"))
         {
             HashMap para=new HashMap();
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFF_0.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFF_0.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("9.3"))
         {
             HashMap para=new HashMap();
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFF_1.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFF_1.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("10.1"))
@@ -1859,7 +1900,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFT.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFT.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("10.2"))
@@ -1867,7 +1908,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFT_0.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFT_0.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("10.3"))
@@ -1875,7 +1916,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFT_1.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFFT_1.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("11.1"))
@@ -1883,7 +1924,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTF.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTF.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("11.2"))
@@ -1891,7 +1932,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTF_0.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTF_0.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("11.3"))
@@ -1899,7 +1940,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTF_1.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTF_1.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("12.1"))
@@ -1908,7 +1949,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTT.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTT.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("12.2"))
@@ -1917,7 +1958,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTT_0.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTT_0.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("12.3"))
@@ -1926,7 +1967,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
             para.put("invoiceMonth",cmbMonth.getSelectedItem().toString());
             para.put("invoiceYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTT_1.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTFTT_1.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("13.1"))
@@ -1934,7 +1975,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
             para.put("toAdd",cmbTo.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTTFF.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTTFF.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("13.2"))
@@ -1942,7 +1983,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
             para.put("toAdd",cmbTo.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTTFF_0.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTTFF_0.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("13.3"))
@@ -1950,28 +1991,36 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("fromAdd",cmbFrom.getSelectedItem().toString());
             para.put("toAdd",cmbTo.getSelectedItem().toString());
-            ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTTFF_1.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\InvoiceDetails_FTTFF_1.jasper"),para);
             re.setVisible(true);
         }
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void menuItemMonthCompanyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemMonthCompanyActionPerformed
         // TODO add your handling code here:
-        ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\Graphical\\Comparison(month-company).jasper"));
+        ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\Graphical\\Comparison(month-company).jasper"));
         re.setVisible(true);
     }//GEN-LAST:event_menuItemMonthCompanyActionPerformed
 
     private void menuItemCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCompleteActionPerformed
         // TODO add your handling code here:
-        ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\Graphical\\All_G.jasper"));
+        ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\Graphical\\All_G.jasper"));
         re.setVisible(true);
     }//GEN-LAST:event_menuItemCompleteActionPerformed
 
     private void menuItemMonthInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemMonthInvoiceActionPerformed
         // TODO add your handling code here:
-        ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Invoice\\Invoice_send\\Graphical\\Comparison(month-Invoice).jasper"));
+        ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\Graphical\\Comparison(month-Invoice).jasper"));
         re.setVisible(true);
     }//GEN-LAST:event_menuItemMonthInvoiceActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        InvoiceDocument ID = new InvoiceDocument(Integer.parseInt(txtInvoiceId.getText().toString()));
+        AnarTrading.desktopPane.add(ID);
+        ID.setVisible(true);
+        ID.show();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1986,8 +2035,10 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox cmbPayment;
     private javax.swing.JComboBox cmbTo;
     private javax.swing.JComboBox cmbYear;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -2002,6 +2053,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton radioAll;
     private javax.swing.JRadioButton radioNotPaidView;
     private javax.swing.JRadioButton radioPaidView;
+    private javax.swing.JTextField txtInvoiceId;
     private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
     Point middle = new Point(100,0);

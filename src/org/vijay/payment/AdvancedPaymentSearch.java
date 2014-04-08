@@ -1,6 +1,7 @@
 package org.vijay.payment;
 
 
+import common.CurrentWorkingDirectory;
 import org.vijay.common.connection;
 import org.vijay.common.AutoCompleteDecorator;
 import java.awt.Point;
@@ -39,6 +40,8 @@ public final class AdvancedPaymentSearch extends javax.swing.JInternalFrame {
         cmbYear.setEnabled(false);
         cmbEmployeeNameFill();
         queryGenerator();
+        CurrentWorkingDirectory CWD=new CurrentWorkingDirectory();
+        path=CWD.getpath();
     }
     public void cmbEmployeeNameFill() {
         try {
@@ -126,7 +129,7 @@ public final class AdvancedPaymentSearch extends javax.swing.JInternalFrame {
                 jTable1.getColumnModel().getColumn(0).setMinWidth(0);
                 jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
                 jTable1.getColumnModel().getColumn(0).setWidth(0);
-                jTable1.setShowHorizontalLines( false );
+                jTable1.setShowHorizontalLines( true );
                 jTable1.setRowSelectionAllowed( true );
 
             }
@@ -150,7 +153,7 @@ public final class AdvancedPaymentSearch extends javax.swing.JInternalFrame {
                 jTable1.getColumnModel().getColumn(0).setMinWidth(0);
                 jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
                 jTable1.getColumnModel().getColumn(0).setWidth(0);
-                jTable1.setShowHorizontalLines( false );
+                jTable1.setShowHorizontalLines( true );
                 jTable1.setRowSelectionAllowed( true );
 
             }
@@ -175,7 +178,7 @@ public final class AdvancedPaymentSearch extends javax.swing.JInternalFrame {
                 jTable1.getColumnModel().getColumn(0).setMinWidth(0);
                 jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
                 jTable1.getColumnModel().getColumn(0).setWidth(0);
-                jTable1.setShowHorizontalLines( false );
+                jTable1.setShowHorizontalLines( true );
                 jTable1.setRowSelectionAllowed( true );
 
             }
@@ -197,7 +200,7 @@ public final class AdvancedPaymentSearch extends javax.swing.JInternalFrame {
                 jTable1.getColumnModel().getColumn(0).setMinWidth(0);
                 jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
                 jTable1.getColumnModel().getColumn(0).setWidth(0);
-                jTable1.setShowHorizontalLines( false );
+                jTable1.setShowHorizontalLines( true );
                 jTable1.setRowSelectionAllowed( true );
 
             }
@@ -327,6 +330,7 @@ public final class AdvancedPaymentSearch extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        jTable1.setFont(new java.awt.Font("Verdana", 0, 9)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -455,23 +459,21 @@ public final class AdvancedPaymentSearch extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         if(printValue.equals("1"))
         {
-//            HashMap para=new HashMap();
-//            para.put("receiptId",paymentId);
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Deduction\\Deduction_All.jasper");
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Deduction\\Deduction_All.jasper"));
             re.setVisible(true);
         }
         if(printValue.equals("2"))
         {
             HashMap para=new HashMap();
             para.put("paidYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Deduction\\Deduction_001.jasper",para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Deduction\\Deduction_001.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("3"))
         {
             HashMap para=new HashMap();
             para.put("paidMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Deduction\\Deduction_010.jasper",para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Deduction\\Deduction_010.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("4"))
@@ -479,14 +481,14 @@ public final class AdvancedPaymentSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("paidYear",cmbYear.getSelectedItem().toString());
             para.put("paidMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Deduction\\Deduction_011.jasper",para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Deduction\\Deduction_011.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("5"))
         {
             HashMap para=new HashMap();
             para.put("empName",cmbEmployeeName.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Deduction\\Deduction_100.jasper",para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Deduction\\Deduction_100.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("6"))
@@ -494,7 +496,7 @@ public final class AdvancedPaymentSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("empName",cmbEmployeeName.getSelectedItem().toString());
             para.put("paidYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Deduction\\Deduction_101.jasper",para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Deduction\\Deduction_101.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("7"))
@@ -502,7 +504,7 @@ public final class AdvancedPaymentSearch extends javax.swing.JInternalFrame {
             HashMap para=new HashMap();
             para.put("empName",cmbEmployeeName.getSelectedItem().toString());
             para.put("paidMonth",cmbMonth.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Deduction\\Deduction_110.jasper",para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Deduction\\Deduction_110.jasper"),para);
             re.setVisible(true);
         }
         if(printValue.equals("8"))
@@ -511,7 +513,7 @@ public final class AdvancedPaymentSearch extends javax.swing.JInternalFrame {
             para.put("empName",cmbEmployeeName.getSelectedItem().toString());
             para.put("paidMonth",cmbMonth.getSelectedItem().toString());
             para.put("paidYear",cmbYear.getSelectedItem().toString());
-            ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\Deduction\\Deduction_111.jasper",para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Deduction\\Deduction_111.jasper"),para);
             re.setVisible(true);
         }
     }//GEN-LAST:event_jLabel1MouseClicked
@@ -530,5 +532,5 @@ public final class AdvancedPaymentSearch extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
     Point middle = new Point(100,0);
-    String printValue;
+    String printValue,path;
 }

@@ -1,6 +1,7 @@
 package org.vijay.receipt;
 
 
+import common.CurrentWorkingDirectory;
 import org.vijay.report.ReportView;
 import org.vijay.common.EnglishNumberToWords;
 import org.vijay.common.AnarTrading;
@@ -82,6 +83,8 @@ public class ReceiptVoucher extends javax.swing.JInternalFrame {
             txtTheSumOfQR.setText(jTable1.getValueAt(rowNo,8).toString()); 
             }
         });
+        CurrentWorkingDirectory CWD=new CurrentWorkingDirectory();
+        path=CWD.getpath();
     }
     public void todayDate(String dateString)
     {
@@ -653,7 +656,7 @@ public class ReceiptVoucher extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         HashMap para=new HashMap();
         para.put("receiptId",paymentId);
-        ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\ReceiptVoucher\\ReceiptVoucher.jasper",para);
+        ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\ReceiptVoucher\\ReceiptVoucher.jasper"),para);
         re.setVisible(true);
     }//GEN-LAST:event_jPopUpPrintActionPerformed
 
@@ -661,7 +664,7 @@ public class ReceiptVoucher extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         HashMap para=new HashMap();
         para.put("receiptId",paymentId);
-        ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\ReceiptVoucher\\ReceiptVoucher-SealAndSign.jasper",para);
+        ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\ReceiptVoucher\\ReceiptVoucher-SealAndSign.jasper"),para);
         re.setVisible(true);
     }//GEN-LAST:event_jPopUpPrintSealSignActionPerformed
 
@@ -669,7 +672,7 @@ public class ReceiptVoucher extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         HashMap para=new HashMap();
         para.put("receiptId",paymentId);
-        ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\ReceiptVoucher\\ReceiptVoucherDuplicate.jasper",para);
+        ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\ReceiptVoucher\\ReceiptVoucherDuplicate.jasper"),para);
         re.setVisible(true);
     }//GEN-LAST:event_jPopUpPrintDuplicateActionPerformed
 
@@ -677,7 +680,7 @@ public class ReceiptVoucher extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         HashMap para=new HashMap();
         para.put("receiptId",paymentId);
-        ReportView re=new ReportView("D:\\Vijay\\reports\\Anar\\ReceiptVoucher\\ReceiptVoucherDuplicate-SealAndSign.jasper",para);
+        ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\ReceiptVoucher\\ReceiptVoucherDuplicate-SealAndSign.jasper"),para);
         re.setVisible(true);
     }//GEN-LAST:event_jPopUpPrintDuplicateWithSealSignActionPerformed
 
@@ -719,7 +722,7 @@ public class ReceiptVoucher extends javax.swing.JInternalFrame {
     Point middle = new Point(100,0);
     public static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     DateFormat defaultDate = new SimpleDateFormat("yyyy-MM-dd");
-    String dateString = "";
+    String dateString = "",path;
     int paymentId,ipaymentId;
     connection c=new connection();
     Connection con=c.conn();

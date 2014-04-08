@@ -252,7 +252,7 @@ public final class ContractEmployeeDetails extends javax.swing.JInternalFrame {
             jTable1.getColumnModel().getColumn(0).setMinWidth(0);
             jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
             jTable1.getColumnModel().getColumn(0).setWidth(0);
-            jTable1.setShowHorizontalLines( false );
+            jTable1.setShowHorizontalLines( true );
             jTable1.setRowSelectionAllowed( true );
 
         }

@@ -190,13 +190,19 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
             ResultSet rs=stmt.executeQuery(query);
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             con.close();
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(30);
+            jTable1.getColumnModel().getColumn(5).setMaxWidth(70);
+            jTable1.getColumnModel().getColumn(7).setMaxWidth(60);
+            jTable1.getColumnModel().getColumn(8).setMaxWidth(35);
+            jTable1.getColumnModel().getColumn(9).setMaxWidth(30);
+            jTable1.getColumnModel().getColumn(10).setMaxWidth(70);
+            
             jTable1.getColumnModel().getColumn(1).setMinWidth(0);
             jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(1).setWidth(0);
+
             jTable1.getColumnModel().getColumn(13).setMinWidth(0);
             jTable1.getColumnModel().getColumn(13).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(13).setWidth(0);
-            jTable1.setShowHorizontalLines( false );
+            jTable1.setShowHorizontalLines( true );
             jTable1.setRowSelectionAllowed( true );
 
         }
@@ -755,6 +761,7 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
@@ -768,7 +775,7 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
                         .addComponent(radioNotPaidView)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(radioAll)))
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

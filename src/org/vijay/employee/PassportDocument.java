@@ -327,7 +327,7 @@ public class PassportDocument extends javax.swing.JInternalFrame {
         String path=CWD.getpath();
         HashMap para=new HashMap();
         para.put("empId",empId);
-        ReportView re=new ReportView(path.concat("\\src\\Reports\\Anar\\Employee\\Passport\\employeePassport.jasper"),para);
+        ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Employee\\Passport\\employeePassport.jasper"),para);
         re.setVisible(true);
     }//GEN-LAST:event_btnPrintActionPerformed
 
@@ -349,6 +349,6 @@ public class PassportDocument extends javax.swing.JInternalFrame {
     String pathPassport;
     File filePassport;
     FileInputStream finPassport;
-    JFileChooser fc=new JFileChooser(new File("D:\\Vijay\\Works\\Employees-Optimized"));
+    JFileChooser fc=new JFileChooser(new File("Desktop"));
     Point middle = new Point(80,0);
 }
