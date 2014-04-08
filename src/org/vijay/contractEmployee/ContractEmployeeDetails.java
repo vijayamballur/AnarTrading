@@ -5,7 +5,6 @@ import org.vijay.common.AnarTrading;
 import org.vijay.common.connection;
 import org.vijay.common.AutoCompleteDecorator;
 import org.vijay.employee.TimeSheet;
-import org.vijay.employee.viewDocuments;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
@@ -999,18 +998,10 @@ public final class ContractEmployeeDetails extends javax.swing.JInternalFrame {
 
     private void lblShowDocumentsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblShowDocumentsMouseClicked
         // TODO add your handling code here:
-        viewDocuments vd = new viewDocuments(empId);
-        AnarTrading.desktopPane.add(vd);
-        vd.setVisible(true);
-        vd.show();
     }//GEN-LAST:event_lblShowDocumentsMouseClicked
 
     private void jMenuItemViewDocumentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemViewDocumentsActionPerformed
         // TODO add your handling code here:
-        viewDocuments vd = new viewDocuments(empId);
-        AnarTrading.desktopPane.add(vd);
-        vd.setVisible(true);
-        vd.show();
     }//GEN-LAST:event_jMenuItemViewDocumentsActionPerformed
 
     private void jMenuItemTimeSheetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTimeSheetActionPerformed

@@ -23,7 +23,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import org.vijay.common.connection;
-import static org.vijay.employee.viewDocuments.resize;
 import org.vijay.report.ReportView;
 import common.CurrentWorkingDirectory;
 

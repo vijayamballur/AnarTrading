@@ -143,12 +143,11 @@
                           <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="lblShowDocuments" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblViewPassport" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="lblSearch" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="lbladdTimesheet" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                               <Component id="cmbfirstParty" alignment="1" max="32767" attributes="0"/>
                               <Component id="cmbContracting" alignment="1" max="32767" attributes="0"/>
@@ -278,11 +277,15 @@
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblShowDocuments" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbladdTimesheet" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
+                      <Component id="lblViewPassport" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblSearch" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Component id="lbladdTimesheet" min="-2" pref="15" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -570,7 +573,7 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbladdTimesheetMouseClicked"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblShowDocuments">
+        <Component class="javax.swing.JLabel" name="lblViewPassport">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Gabriola" size="18" style="0"/>
@@ -578,13 +581,13 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="0" red="cc" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="View Documents&gt;&gt;"/>
+            <Property name="text" type="java.lang.String" value="View Passport&gt;&gt;"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblShowDocumentsMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblViewPassportMouseClicked"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel17">

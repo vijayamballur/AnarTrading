@@ -139,7 +139,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
             btnSave.setEnabled(false);
             btnUpdate.setEnabled(true);
             btnDelete.setEnabled(true);
-            lblShowDocuments.setEnabled(true);
+            lblViewPassport.setEnabled(true);
             
             empId=Integer.parseInt(jTable1.getValueAt(rowNo, 0).toString());
             txtEmpName.setText(jTable1.getValueAt(rowNo,1).toString());
@@ -413,7 +413,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         cmbContracting = new javax.swing.JComboBox();
         jLabel14 = new javax.swing.JLabel();
         lbladdTimesheet = new javax.swing.JLabel();
-        lblShowDocuments = new javax.swing.JLabel();
+        lblViewPassport = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         txtBasicSalary = new javax.swing.JTextField();
         lblSearch = new javax.swing.JLabel();
@@ -554,13 +554,13 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
             }
         });
 
-        lblShowDocuments.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
-        lblShowDocuments.setForeground(new java.awt.Color(204, 0, 204));
-        lblShowDocuments.setText("View Documents>>");
-        lblShowDocuments.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblShowDocuments.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblViewPassport.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        lblViewPassport.setForeground(new java.awt.Color(204, 0, 204));
+        lblViewPassport.setText("View Passport>>");
+        lblViewPassport.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblViewPassport.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblShowDocumentsMouseClicked(evt);
+                lblViewPassportMouseClicked(evt);
             }
         });
 
@@ -622,12 +622,11 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
                         .addGap(54, 54, 54)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblShowDocuments)
+                                .addComponent(lblViewPassport)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblSearch)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbladdTimesheet)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lbladdTimesheet))
                             .addComponent(cmbfirstParty, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cmbContracting, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -725,10 +724,13 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
                     .addComponent(cmbCurrentSite, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblShowDocuments)
-                    .addComponent(lbladdTimesheet, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblViewPassport)
                     .addComponent(lblSearch))
                 .addGap(7, 7, 7))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lbladdTimesheet, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jTable1.setFont(new java.awt.Font("Verdana", 0, 9)); // NOI18N
@@ -1067,13 +1069,13 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
   
     }//GEN-LAST:event_jTable1MouseClicked
 
-    private void lblShowDocumentsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblShowDocumentsMouseClicked
+    private void lblViewPassportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblViewPassportMouseClicked
         // TODO add your handling code here:
-        viewDocuments vd = new viewDocuments(empId);
-        AnarTrading.desktopPane.add(vd);
-        vd.setVisible(true);
-        vd.show();
-    }//GEN-LAST:event_lblShowDocumentsMouseClicked
+        PassportDocument PD = new PassportDocument(empId);
+        AnarTrading.desktopPane.add(PD);
+        PD.setVisible(true);
+        PD.show();
+    }//GEN-LAST:event_lblViewPassportMouseClicked
 
     private void jMenuItemViewDocumentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemViewDocumentsActionPerformed
         // TODO add your handling code here:
@@ -1094,7 +1096,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
     private void lblEditEmployeeDetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEditEmployeeDetailsMouseClicked
         // TODO add your handling code here:
         clearFields();
-        lblShowDocuments.setEnabled(true);
+        lblViewPassport.setEnabled(true);
         lblEmployeeName.setEnabled(true);
         cmbEmployeeName.setEnabled(true);    
         cmbEmployeeNameFill();
@@ -1198,7 +1200,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblEditEmployeeDetails;
     private javax.swing.JLabel lblEmployeeName;
     private javax.swing.JLabel lblSearch;
-    private javax.swing.JLabel lblShowDocuments;
+    private javax.swing.JLabel lblViewPassport;
     private javax.swing.JLabel lbladdTimesheet;
     private javax.swing.JTextField txtBasicSalary;
     private javax.swing.JTextField txtDOB;
