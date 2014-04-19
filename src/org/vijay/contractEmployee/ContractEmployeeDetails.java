@@ -422,34 +422,35 @@ public final class ContractEmployeeDetails extends javax.swing.JInternalFrame {
         setTitle("Contract Employee Details");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/Library.png"))); // NOI18N
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Employee Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gabriola", 0, 18))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Employee Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 0, 10))); // NOI18N
+        jPanel1.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel3.setText("Employee Name");
 
-        Nationality.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        Nationality.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         Nationality.setText("Nationality");
 
-        jLabel5.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel5.setText("Profession");
 
-        jLabel7.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel7.setText("Passport Number");
 
-        txtPassportNumber.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtPassportNumber.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel8.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel8.setText("Passport Expiry");
 
-        txtPassportExpiry.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtPassportExpiry.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel11.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel11.setText("ID/Visa Expiry");
 
-        jLabel12.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel12.setText("Id Number");
 
-        txtIdNumber.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtIdNumber.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtIdNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdNumberActionPerformed(evt);
@@ -461,9 +462,13 @@ public final class ContractEmployeeDetails extends javax.swing.JInternalFrame {
             }
         });
 
-        txtVisaExpiry.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtVisaExpiry.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        txtEmpName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cmbNationality.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+
+        cmbProfession.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+
+        txtEmpName.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtEmpName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtEmpNameKeyPressed(evt);
@@ -474,36 +479,43 @@ public final class ContractEmployeeDetails extends javax.swing.JInternalFrame {
 
         btnVisaExpiry.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/calendar-icon.png"))); // NOI18N
 
-        txtDOB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtDOB.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
         btnDOB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/calendar-icon.png"))); // NOI18N
 
-        jLabel9.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel9.setText("Date Of Birth");
 
-        jLabel13.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel13.setText("Parent Company");
 
-        txtdate.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtdate.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
         btndate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/calendar-icon.png"))); // NOI18N
 
-        jLabel15.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel15.setText("Date");
 
-        jLabel16.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        cmbParentCompany.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+
+        cmbConCompany.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+
+        jLabel16.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel16.setText("Con.Company");
 
-        lblEmployeeName.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        cmbCurrentSite.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+
+        lblEmployeeName.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         lblEmployeeName.setText("Employee Name");
 
+        cmbEmployeeName.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         cmbEmployeeName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbEmployeeNameActionPerformed(evt);
             }
         });
 
-        lblEditEmployeeDetails.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        lblEditEmployeeDetails.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         lblEditEmployeeDetails.setForeground(new java.awt.Color(204, 0, 204));
         lblEditEmployeeDetails.setText("Edit Employee Details>>");
         lblEditEmployeeDetails.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -513,7 +525,7 @@ public final class ContractEmployeeDetails extends javax.swing.JInternalFrame {
             }
         });
 
-        lblShowDocuments.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblShowDocuments.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         lblShowDocuments.setForeground(new java.awt.Color(204, 0, 204));
         lblShowDocuments.setText("View Documents>>");
         lblShowDocuments.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -523,10 +535,10 @@ public final class ContractEmployeeDetails extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel18.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel18.setText("Current Site");
 
-        lblSearch.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblSearch.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         lblSearch.setForeground(new java.awt.Color(204, 0, 204));
         lblSearch.setText("Search>>");
         lblSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -693,9 +705,10 @@ public final class ContractEmployeeDetails extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Controls", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gabriola", 0, 18))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Controls", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 0, 10))); // NOI18N
+        jPanel3.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        btnSave.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnSave.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/SAVE.PNG"))); // NOI18N
         btnSave.setText("Save");
         btnSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -705,7 +718,7 @@ public final class ContractEmployeeDetails extends javax.swing.JInternalFrame {
             }
         });
 
-        btnUpdate.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnUpdate.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/MODIFY.PNG"))); // NOI18N
         btnUpdate.setText("Update");
         btnUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -715,7 +728,7 @@ public final class ContractEmployeeDetails extends javax.swing.JInternalFrame {
             }
         });
 
-        btnDelete.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnDelete.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/DELETE.PNG"))); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -725,7 +738,7 @@ public final class ContractEmployeeDetails extends javax.swing.JInternalFrame {
             }
         });
 
-        btnCancel.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnCancel.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/CANCEL.PNG"))); // NOI18N
         btnCancel.setText("Cancel");
         btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -735,7 +748,7 @@ public final class ContractEmployeeDetails extends javax.swing.JInternalFrame {
             }
         });
 
-        btnRefresh.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnRefresh.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/clear.png"))); // NOI18N
         btnRefresh.setText("Refresh");
         btnRefresh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -763,15 +776,15 @@ public final class ContractEmployeeDetails extends javax.swing.JInternalFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnSave)
-                .addGap(18, 18, 18)
-                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnDelete)
-                .addGap(18, 18, 18)
-                .addComponent(btnRefresh)
-                .addGap(18, 18, 18)
-                .addComponent(btnCancel)
+                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -787,19 +800,17 @@ public final class ContractEmployeeDetails extends javax.swing.JInternalFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 1, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

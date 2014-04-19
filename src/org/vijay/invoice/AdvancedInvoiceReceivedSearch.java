@@ -1,7 +1,7 @@
 package org.vijay.invoice;
 
 
-import common.CurrentWorkingDirectory;
+import org.vijay.common.CurrentWorkingDirectory;
 import org.vijay.invoice.InvoiceDocument;
 import org.vijay.common.AnarTrading;
 import org.vijay.common.connection;
@@ -1248,7 +1248,7 @@ public final class AdvancedInvoiceReceivedSearch extends javax.swing.JInternalFr
         cmbMonth.addItem("--select month--");
         cmbMonth.setSelectedItem("--select month--");
         cmbMonth.setEnabled(false);
-        cmbMonth.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "January", "February", "March", "april", "May", "June", "July", "August", "September", "October", "November", "December", " " }));
+        cmbMonth.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "January", "February", "March", "april", "May", "June", "July", "August", "September", "October", "November", "December", "" }));
         cmbMonth.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbMonthActionPerformed(evt);

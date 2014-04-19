@@ -1,4 +1,4 @@
-package common;
+package org.vijay.common;
 
 
 import java.io.File;

@@ -7,7 +7,7 @@ package org.vijay.common;
 import org.vijay.contractEmployee.AdvancedContractEmployeeSearch;
 import org.vijay.contractEmployee.ContractEmployeeDetails;
 import org.vijay.holiday.HolidayDetails;
-import org.vijay.payment.AdvancePayment;
+import org.vijay.payment.SalaryDeductions;
 import org.vijay.payment.paymentVoucher;
 import org.vijay.invoice.InvoiceReceived;
 import org.vijay.invoice.InvoiceEntry;
@@ -16,6 +16,7 @@ import org.vijay.employee.AdvancedEmployeeSearch;
 import org.vijay.employee.LabourDetails;
 import com.nilo.plaf.nimrod.NimRODLookAndFeel;
 import com.nilo.plaf.nimrod.NimRODTheme;
+import com.vijay.reports.SiteWorkingHr;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -72,6 +73,7 @@ public class AnarTrading extends javax.swing.JFrame {
         menuItemContractEmployee = new javax.swing.JMenuItem();
         menuItemHoliday = new javax.swing.JMenuItem();
         menuItemAdvancePayment = new javax.swing.JMenuItem();
+        menuItemSiteWorkingHr = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         menuItemInvoice = new javax.swing.JMenuItem();
         menuItemInvoiceReceived = new javax.swing.JMenuItem();
@@ -113,7 +115,7 @@ public class AnarTrading extends javax.swing.JFrame {
         });
 
         btnEmployee.setBackground(new java.awt.Color(255, 255, 255));
-        btnEmployee.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnEmployee.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/serverBkpIcon.png"))); // NOI18N
         btnEmployee.setText("Employee");
         btnEmployee.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -139,7 +141,7 @@ public class AnarTrading extends javax.swing.JFrame {
         jToolBar1.add(btnEmployee);
 
         btnAdvanced.setBackground(new java.awt.Color(255, 255, 255));
-        btnAdvanced.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnAdvanced.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnAdvanced.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/serverBkpIcon.png"))); // NOI18N
         btnAdvanced.setText("Adavanced");
         btnAdvanced.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -170,7 +172,7 @@ public class AnarTrading extends javax.swing.JFrame {
         jToolBar1.add(btnAdvanced);
 
         btnReceiptVoucher.setBackground(new java.awt.Color(255, 255, 255));
-        btnReceiptVoucher.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnReceiptVoucher.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnReceiptVoucher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/serverBkpIcon.png"))); // NOI18N
         btnReceiptVoucher.setText("Receipt");
         btnReceiptVoucher.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -195,7 +197,7 @@ public class AnarTrading extends javax.swing.JFrame {
         jToolBar1.add(btnReceiptVoucher);
 
         btnPayment.setBackground(new java.awt.Color(255, 255, 255));
-        btnPayment.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnPayment.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnPayment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/serverBkpIcon.png"))); // NOI18N
         btnPayment.setText("Payment");
         btnPayment.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -220,7 +222,7 @@ public class AnarTrading extends javax.swing.JFrame {
         jToolBar1.add(btnPayment);
 
         btnStudent.setBackground(new java.awt.Color(255, 255, 255));
-        btnStudent.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnStudent.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnStudent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/ServiceIcon.png"))); // NOI18N
         btnStudent.setText("5");
         btnStudent.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -245,7 +247,7 @@ public class AnarTrading extends javax.swing.JFrame {
         jToolBar1.add(btnStudent);
 
         btnExcel.setBackground(new java.awt.Color(255, 255, 255));
-        btnExcel.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnExcel.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnExcel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/ExcelBkpIcon.png"))); // NOI18N
         btnExcel.setText("6");
         btnExcel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -264,7 +266,7 @@ public class AnarTrading extends javax.swing.JFrame {
         jToolBar1.add(btnExcel);
 
         btnServerBkp.setBackground(new java.awt.Color(255, 255, 255));
-        btnServerBkp.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnServerBkp.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnServerBkp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/serverBkpIcon.png"))); // NOI18N
         btnServerBkp.setText("7");
         btnServerBkp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -284,7 +286,7 @@ public class AnarTrading extends javax.swing.JFrame {
         jToolBar1.add(btnServerBkp);
 
         btnAccount.setBackground(new java.awt.Color(255, 255, 255));
-        btnAccount.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnAccount.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/AccountIcon.png"))); // NOI18N
         btnAccount.setText("8");
         btnAccount.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -304,7 +306,7 @@ public class AnarTrading extends javax.swing.JFrame {
         jToolBar1.add(btnAccount);
 
         btnAccount1.setBackground(new java.awt.Color(255, 255, 255));
-        btnAccount1.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnAccount1.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnAccount1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/AccountIcon.png"))); // NOI18N
         btnAccount1.setText("9");
         btnAccount1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -324,7 +326,7 @@ public class AnarTrading extends javax.swing.JFrame {
         jToolBar1.add(btnAccount1);
 
         btnAccount2.setBackground(new java.awt.Color(255, 255, 255));
-        btnAccount2.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnAccount2.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnAccount2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/AccountIcon.png"))); // NOI18N
         btnAccount2.setText("10");
         btnAccount2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -394,14 +396,14 @@ public class AnarTrading extends javax.swing.JFrame {
         menuFile.setMnemonic('F');
         menuFile.setText("File");
         menuFile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuFile.setFont(new java.awt.Font("Gabriola", 0, 20)); // NOI18N
+        menuFile.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         menuFile.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 menuFileMouseClicked(evt);
             }
         });
 
-        menuItemExit.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        menuItemExit.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         menuItemExit.setMnemonic('E');
         menuItemExit.setText("Exit");
         menuItemExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -413,7 +415,7 @@ public class AnarTrading extends javax.swing.JFrame {
         menuCourse.setMnemonic('U');
         menuCourse.setText("Tune-Up");
         menuCourse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuCourse.setFont(new java.awt.Font("Gabriola", 0, 20)); // NOI18N
+        menuCourse.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         menuCourse.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 menuCourseMouseClicked(evt);
@@ -426,7 +428,7 @@ public class AnarTrading extends javax.swing.JFrame {
         });
 
         menuItemLabourDetails.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        menuItemLabourDetails.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        menuItemLabourDetails.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         menuItemLabourDetails.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/menuIcons/company.png"))); // NOI18N
         menuItemLabourDetails.setMnemonic('E');
         menuItemLabourDetails.setText("Employee Entry");
@@ -439,7 +441,7 @@ public class AnarTrading extends javax.swing.JFrame {
         menuCourse.add(menuItemLabourDetails);
 
         menuItemContractEmployee.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        menuItemContractEmployee.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        menuItemContractEmployee.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         menuItemContractEmployee.setMnemonic('C');
         menuItemContractEmployee.setText("Contract Employee Entry");
         menuItemContractEmployee.addActionListener(new java.awt.event.ActionListener() {
@@ -450,7 +452,7 @@ public class AnarTrading extends javax.swing.JFrame {
         menuCourse.add(menuItemContractEmployee);
 
         menuItemHoliday.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        menuItemHoliday.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        menuItemHoliday.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         menuItemHoliday.setMnemonic('H');
         menuItemHoliday.setText("Holiday Entry");
         menuItemHoliday.addActionListener(new java.awt.event.ActionListener() {
@@ -461,7 +463,7 @@ public class AnarTrading extends javax.swing.JFrame {
         menuCourse.add(menuItemHoliday);
 
         menuItemAdvancePayment.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        menuItemAdvancePayment.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        menuItemAdvancePayment.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         menuItemAdvancePayment.setMnemonic('A');
         menuItemAdvancePayment.setText("Advance Payment Entry");
         menuItemAdvancePayment.addActionListener(new java.awt.event.ActionListener() {
@@ -471,12 +473,21 @@ public class AnarTrading extends javax.swing.JFrame {
         });
         menuCourse.add(menuItemAdvancePayment);
 
+        menuItemSiteWorkingHr.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        menuItemSiteWorkingHr.setText("Site Working Hr./Invoice Working Hr.");
+        menuItemSiteWorkingHr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemSiteWorkingHrActionPerformed(evt);
+            }
+        });
+        menuCourse.add(menuItemSiteWorkingHr);
+
         jMenu1.setMnemonic('I');
         jMenu1.setText("Invoice");
-        jMenu1.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jMenu1.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
         menuItemInvoice.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        menuItemInvoice.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        menuItemInvoice.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         menuItemInvoice.setMnemonic('I');
         menuItemInvoice.setText("Send");
         menuItemInvoice.addActionListener(new java.awt.event.ActionListener() {
@@ -487,7 +498,7 @@ public class AnarTrading extends javax.swing.JFrame {
         jMenu1.add(menuItemInvoice);
 
         menuItemInvoiceReceived.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        menuItemInvoiceReceived.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        menuItemInvoiceReceived.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         menuItemInvoiceReceived.setMnemonic('R');
         menuItemInvoiceReceived.setText("Received");
         menuItemInvoiceReceived.addActionListener(new java.awt.event.ActionListener() {
@@ -505,9 +516,9 @@ public class AnarTrading extends javax.swing.JFrame {
         menuTransaction.setMnemonic('T');
         menuTransaction.setText("Transaction");
         menuTransaction.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuTransaction.setFont(new java.awt.Font("Gabriola", 0, 20)); // NOI18N
+        menuTransaction.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        menuItemReceiptVoucher.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        menuItemReceiptVoucher.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         menuItemReceiptVoucher.setMnemonic('R');
         menuItemReceiptVoucher.setText("Receipt Voucher");
         menuItemReceiptVoucher.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -518,7 +529,7 @@ public class AnarTrading extends javax.swing.JFrame {
         });
         menuTransaction.add(menuItemReceiptVoucher);
 
-        menuItemPaymentVoucher.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        menuItemPaymentVoucher.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         menuItemPaymentVoucher.setText("Payment Voucher");
         menuItemPaymentVoucher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -533,7 +544,7 @@ public class AnarTrading extends javax.swing.JFrame {
         menuHelp1.setMnemonic('S');
         menuHelp1.setText("Search");
         menuHelp1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuHelp1.setFont(new java.awt.Font("Gabriola", 0, 20)); // NOI18N
+        menuHelp1.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         menuHelp1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 menuHelp1MouseClicked(evt);
@@ -548,7 +559,7 @@ public class AnarTrading extends javax.swing.JFrame {
         menuHelp2.setMnemonic('A');
         menuHelp2.setText("Advanced");
         menuHelp2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuHelp2.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        menuHelp2.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         menuHelp2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 menuHelp2MouseClicked(evt);
@@ -560,7 +571,7 @@ public class AnarTrading extends javax.swing.JFrame {
             }
         });
 
-        menuItemSearchEmployee.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        menuItemSearchEmployee.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         menuItemSearchEmployee.setMnemonic('E');
         menuItemSearchEmployee.setText("Employee");
         menuItemSearchEmployee.addActionListener(new java.awt.event.ActionListener() {
@@ -570,7 +581,7 @@ public class AnarTrading extends javax.swing.JFrame {
         });
         menuHelp2.add(menuItemSearchEmployee);
 
-        menuItemSearchConEmployee.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        menuItemSearchConEmployee.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         menuItemSearchConEmployee.setMnemonic('C');
         menuItemSearchConEmployee.setText("Contract Employee");
         menuItemSearchConEmployee.addActionListener(new java.awt.event.ActionListener() {
@@ -588,7 +599,7 @@ public class AnarTrading extends javax.swing.JFrame {
         menuHelp.setMnemonic('H');
         menuHelp.setText("Help");
         menuHelp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuHelp.setFont(new java.awt.Font("Gabriola", 0, 20)); // NOI18N
+        menuHelp.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         menuHelp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 menuHelpMouseClicked(evt);
@@ -863,7 +874,7 @@ public class AnarTrading extends javax.swing.JFrame {
 
     private void menuItemAdvancePaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAdvancePaymentActionPerformed
         // TODO add your handling code here:
-        AdvancePayment advance = new AdvancePayment();
+        SalaryDeductions advance = new SalaryDeductions();
         AnarTrading.desktopPane.add(advance);
         advance.setVisible(true);
         advance.show();
@@ -903,6 +914,13 @@ public class AnarTrading extends javax.swing.JFrame {
         IR.setVisible(true);
         IR.show();
     }//GEN-LAST:event_menuItemInvoiceReceivedActionPerformed
+
+    private void menuItemSiteWorkingHrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSiteWorkingHrActionPerformed
+        // TODO add your handling code here:
+        SiteWorkingHr SWH=new SiteWorkingHr();
+        AnarTrading.desktopPane.add(SWH);
+        SWH.setVisible(true);
+    }//GEN-LAST:event_menuItemSiteWorkingHrActionPerformed
 
     /**
      * @param args the command line arguments
@@ -983,6 +1001,7 @@ public class AnarTrading extends javax.swing.JFrame {
     public static javax.swing.JMenuItem menuItemReceiptVoucher;
     public static javax.swing.JMenuItem menuItemSearchConEmployee;
     public static javax.swing.JMenuItem menuItemSearchEmployee;
+    public static javax.swing.JMenuItem menuItemSiteWorkingHr;
     private javax.swing.JMenu menuTransaction;
     private javax.swing.JMenu menuWindow;
     // End of variables declaration//GEN-END:variables

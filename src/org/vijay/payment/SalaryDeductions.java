@@ -1,7 +1,7 @@
 package org.vijay.payment;
 
 
-import org.vijay.payment.AdvancedPaymentSearch;
+import org.vijay.payment.AdvancedSalaryDeductionSearch;
 import org.vijay.common.AnarTrading;
 import org.vijay.common.connection;
 import org.vijay.common.AutoCompleteDecorator;
@@ -29,12 +29,12 @@ import net.proteanit.sql.DbUtils;
  *
  * @author MAC
  */
-public final class AdvancePayment extends javax.swing.JInternalFrame {
+public final class SalaryDeductions extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form AdvancePayment
      */
-    public AdvancePayment() {
+    public SalaryDeductions() {
         initComponents();
         setLocation(middle);
         cmbEmployeeName.setEditable(true);
@@ -153,7 +153,7 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
     }
     public void ViewAdvancedPaymentForm()
     {
-        AdvancePayment  advance=new AdvancePayment();
+        SalaryDeductions  advance=new SalaryDeductions();
         AnarTrading.desktopPane.add(advance);
         advance.setVisible(true);
         advance.show();
@@ -252,12 +252,12 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
         txtComment = new javax.swing.JTextField();
         lblSearch = new javax.swing.JLabel();
 
-        setTitle("Advance Payment");
+        setTitle("Salary Deductions");
         setPreferredSize(new java.awt.Dimension(947, 582));
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Controls", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gabriola", 0, 18))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Controls", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 0, 10))); // NOI18N
 
-        btnSave.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnSave.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/SAVE.PNG"))); // NOI18N
         btnSave.setText("Save");
         btnSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -267,7 +267,7 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
             }
         });
 
-        btnUpdate.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnUpdate.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/MODIFY.PNG"))); // NOI18N
         btnUpdate.setText("Update");
         btnUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -277,7 +277,7 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
             }
         });
 
-        btnDelete.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnDelete.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/DELETE.PNG"))); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -287,7 +287,7 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
             }
         });
 
-        btnCancel.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnCancel.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/CANCEL.PNG"))); // NOI18N
         btnCancel.setText("Cancel");
         btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -297,7 +297,7 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
             }
         });
 
-        btnRefresh.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnRefresh.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/clear.png"))); // NOI18N
         btnRefresh.setText("Refresh");
         btnRefresh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -324,19 +324,19 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(btnSave)
+                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnDelete)
+                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRefresh)
+                .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCancel)
+                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Time Sheet", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gabriola", 0, 18))); // NOI18N
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Controls", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 0, 10))); // NOI18N
 
         jTable1.setFont(new java.awt.Font("Verdana", 0, 9)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -354,9 +354,10 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        lblEmployeeName.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        lblEmployeeName.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         lblEmployeeName.setText("Employee Name");
 
+        cmbEmployeeName.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         cmbEmployeeName.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cmbEmployeeName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -364,10 +365,10 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel33.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel33.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel33.setText("Month");
 
-        cmbMonth.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        cmbMonth.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         cmbMonth.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
         cmbMonth.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cmbMonth.addItemListener(new java.awt.event.ItemListener() {
@@ -381,9 +382,10 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel34.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel34.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel34.setText("Year");
 
+        cmbYear.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         cmbYear.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2014", "2015", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2021", "2022" }));
         cmbYear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cmbYear.addItemListener(new java.awt.event.ItemListener() {
@@ -397,20 +399,25 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel35.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel35.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel35.setText("Amount");
 
-        jLabel38.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        txtAmount.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+
+        jLabel38.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel38.setText("Date");
+
+        txtDate.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
         btnDate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/calendar-icon.png"))); // NOI18N
 
-        jLabel36.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel36.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel36.setText("Comments");
 
-        jLabel37.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel37.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel37.setText("Paid By");
 
+        cmbPaidBy.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         cmbPaidBy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cmbPaidBy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -418,7 +425,9 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
             }
         });
 
-        lblSearch.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        txtComment.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+
+        lblSearch.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         lblSearch.setForeground(new java.awt.Color(255, 51, 255));
         lblSearch.setText("Search>>");
         lblSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -447,7 +456,7 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtAmount)
-                                    .addComponent(cmbMonth, 0, 365, Short.MAX_VALUE))
+                                    .addComponent(cmbMonth, 0, 364, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel34, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -493,7 +502,7 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtComment, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel36))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbPaidBy, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel37))
@@ -519,13 +528,13 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -611,7 +620,7 @@ public final class AdvancePayment extends javax.swing.JInternalFrame {
 
     private void lblSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSearchMouseClicked
         // TODO add your handling code here:
-        AdvancedPaymentSearch advPaySearch = new AdvancedPaymentSearch();
+        AdvancedSalaryDeductionSearch advPaySearch = new AdvancedSalaryDeductionSearch();
         AnarTrading.desktopPane.add(advPaySearch);
         advPaySearch.setVisible(true);
         advPaySearch.show();  

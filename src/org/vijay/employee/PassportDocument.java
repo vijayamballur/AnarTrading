@@ -24,7 +24,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import org.vijay.common.connection;
 import org.vijay.report.ReportView;
-import common.CurrentWorkingDirectory;
+import org.vijay.common.CurrentWorkingDirectory;
 
 /**
  *

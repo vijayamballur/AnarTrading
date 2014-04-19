@@ -38,7 +38,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="696" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="713" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -54,7 +54,7 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder title="Search Critiria">
-              <Font PropertyName="font" name="Gabriola" size="18" style="0"/>
+              <Font PropertyName="font" name="Verdana" size="10" style="0"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -98,7 +98,7 @@
         <Component class="javax.swing.JCheckBox" name="chkParent">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Gabriola" size="18" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Parent Company"/>
           </Properties>
@@ -108,6 +108,9 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbParent">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Verdana" size="10" style="0"/>
+            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
             </Property>
@@ -123,7 +126,7 @@
         <Component class="javax.swing.JCheckBox" name="chkContract">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Gabriola" size="18" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Con.Company"/>
           </Properties>
@@ -134,7 +137,7 @@
         <Component class="javax.swing.JCheckBox" name="chkCurrentSite">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Gabriola" size="18" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Current Site"/>
           </Properties>
@@ -144,6 +147,9 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbCurrentSite">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Verdana" size="10" style="0"/>
+            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
             </Property>
@@ -157,6 +163,9 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbContract">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Verdana" size="10" style="0"/>
+            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
             </Property>

@@ -1490,12 +1490,12 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
 
         setForeground(new java.awt.Color(153, 153, 255));
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Employee Details"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Time Sheet Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 0, 10))); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel1.setText("Employee Name");
 
-        lblEmpName.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        lblEmpName.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         lblEmpName.setText("Name");
 
         jLabel34.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
@@ -1513,7 +1513,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        cmbMonth.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        cmbMonth.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         cmbMonth.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
         cmbMonth.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1526,7 +1526,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel33.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel33.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel33.setText("Month");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -1563,7 +1563,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Time Sheet", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gabriola", 0, 18))); // NOI18N
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Time Sheet", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 0, 10))); // NOI18N
 
         jtableTimeSheet.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1578,9 +1578,9 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jtableTimeSheet);
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Controls", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gabriola", 0, 18))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Controls", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 0, 10))); // NOI18N
 
-        btnSave.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnSave.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/SAVE.PNG"))); // NOI18N
         btnSave.setText("Save");
         btnSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1590,7 +1590,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        btnUpdate.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnUpdate.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/MODIFY.PNG"))); // NOI18N
         btnUpdate.setText("Update");
         btnUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1600,7 +1600,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        btnDelete.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnDelete.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/DELETE.PNG"))); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1610,7 +1610,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        btnCancel.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnCancel.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/CANCEL.PNG"))); // NOI18N
         btnCancel.setText("Cancel");
         btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1620,7 +1620,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        btnRefresh.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnRefresh.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/clear.png"))); // NOI18N
         btnRefresh.setText("Refresh");
         btnRefresh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1650,19 +1650,20 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSave)
-                    .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRefresh)
-                    .addComponent(btnDelete)
-                    .addComponent(btnCancel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnSave)
+                        .addComponent(btnRefresh)
+                        .addComponent(btnDelete)
+                        .addComponent(btnCancel)))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Time Sheet Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gabriola", 0, 18))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Time Sheet Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 0, 10))); // NOI18N
         jPanel1.setToolTipText("");
 
-        txtDate1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate1.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate1.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -1675,7 +1676,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        txtDate2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate2.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate2.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -1688,7 +1689,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        txtDate3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate3.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate3.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1706,7 +1707,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        txtDate4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate4.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate4.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate4.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -1719,7 +1720,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        txtDate5.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate5.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate5.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate5.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -1732,7 +1733,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        txtDate6.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate6.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate6.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate6.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -1745,7 +1746,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        txtDate7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate7.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate7.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate7.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -1758,7 +1759,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        txtDate8.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate8.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate8.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate8.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -1771,7 +1772,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        txtDate9.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate9.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate9.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate9.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -1784,7 +1785,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        txtDate10.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate10.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate10.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate10.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -1797,7 +1798,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        txtDate11.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate11.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate11.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate11.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -1810,7 +1811,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        txtDate12.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate12.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate12.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate12.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -1823,7 +1824,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        txtDate13.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate13.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate13.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate13.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -1836,7 +1837,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        txtDate14.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate14.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate14.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate14.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -1849,7 +1850,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        txtDate15.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate15.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate15.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate15.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -1862,7 +1863,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        txtDate16.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate16.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate16.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate16.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -1875,7 +1876,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        txtDate17.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate17.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate17.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate17.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -1888,7 +1889,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        txtDate18.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate18.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate18.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate18.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -1901,7 +1902,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        txtDate19.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate19.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate19.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate19.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -1914,7 +1915,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        txtDate20.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate20.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate20.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate20.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -1927,7 +1928,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        txtDate21.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate21.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate21.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate21.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -1982,7 +1983,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
 
         jLabel22.setText("21");
 
-        txtDate22.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate22.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate22.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate22.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -1995,7 +1996,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        txtDate23.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate23.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate23.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate23.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -2008,7 +2009,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        txtDate24.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate24.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate24.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate24.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -2027,7 +2028,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
 
         jLabel25.setText("24");
 
-        txtDate25.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate25.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate25.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate25.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -2040,7 +2041,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        txtDate26.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate26.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate26.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate26.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -2056,7 +2057,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        txtDate27.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate27.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate27.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate27.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -2069,7 +2070,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        txtDate28.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate28.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate28.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate28.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -2094,7 +2095,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
 
         jLabel31.setText("30");
 
-        txtDate29.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate29.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate29.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate29.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -2107,7 +2108,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        txtDate31.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate31.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate31.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate31.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2125,7 +2126,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             }
         });
 
-        txtDate30.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtDate30.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDate30.setMinimumSize(new java.awt.Dimension(6, 25));
         txtDate30.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -2141,7 +2142,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
         jLabel32.setText("31");
 
         txtOT1.setEditable(false);
-        txtOT1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT1.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT1.setMinimumSize(new java.awt.Dimension(6, 25));
         txtOT1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2150,7 +2151,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
         });
 
         txtOT2.setEditable(false);
-        txtOT2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT2.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT2.setMinimumSize(new java.awt.Dimension(6, 25));
         txtOT2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2159,7 +2160,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
         });
 
         txtOT3.setEditable(false);
-        txtOT3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT3.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT3.setMinimumSize(new java.awt.Dimension(6, 25));
         txtOT3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2168,119 +2169,119 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
         });
 
         txtOT4.setEditable(false);
-        txtOT4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT4.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT4.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtOT5.setEditable(false);
-        txtOT5.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT5.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT5.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtOT6.setEditable(false);
-        txtOT6.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT6.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT6.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtOT7.setEditable(false);
-        txtOT7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT7.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT7.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtOT8.setEditable(false);
-        txtOT8.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT8.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT8.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtOT9.setEditable(false);
-        txtOT9.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT9.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT9.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtOT10.setEditable(false);
-        txtOT10.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT10.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT10.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtOT11.setEditable(false);
-        txtOT11.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT11.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT11.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtOT12.setEditable(false);
-        txtOT12.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT12.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT12.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtOT13.setEditable(false);
-        txtOT13.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT13.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT13.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtOT14.setEditable(false);
-        txtOT14.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT14.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT14.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtOT15.setEditable(false);
-        txtOT15.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT15.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT15.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtOT16.setEditable(false);
-        txtOT16.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT16.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT16.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtOT17.setEditable(false);
-        txtOT17.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT17.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT17.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtOT18.setEditable(false);
-        txtOT18.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT18.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT18.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtOT19.setEditable(false);
-        txtOT19.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT19.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT19.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtOT20.setEditable(false);
-        txtOT20.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT20.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT20.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtOT21.setEditable(false);
-        txtOT21.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT21.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT21.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtOT22.setEditable(false);
-        txtOT22.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT22.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT22.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtOT23.setEditable(false);
-        txtOT23.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT23.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT23.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtOT24.setEditable(false);
-        txtOT24.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT24.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT24.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtOT25.setEditable(false);
-        txtOT25.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT25.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT25.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtOT26.setEditable(false);
-        txtOT26.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT26.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT26.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtOT27.setEditable(false);
-        txtOT27.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT27.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT27.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtOT28.setEditable(false);
-        txtOT28.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT28.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT28.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtOT29.setEditable(false);
-        txtOT29.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT29.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT29.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtOT30.setEditable(false);
-        txtOT30.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT30.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT30.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtOT31.setEditable(false);
-        txtOT31.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtOT31.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOT31.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtNormalDate1.setEditable(false);
-        txtNormalDate1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate1.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate1.setMinimumSize(new java.awt.Dimension(6, 25));
         txtNormalDate1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2289,7 +2290,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
         });
 
         txtNormalDate2.setEditable(false);
-        txtNormalDate2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate2.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate2.setMinimumSize(new java.awt.Dimension(6, 25));
         txtNormalDate2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2298,7 +2299,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
         });
 
         txtNormalDate3.setEditable(false);
-        txtNormalDate3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate3.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate3.setMinimumSize(new java.awt.Dimension(6, 25));
         txtNormalDate3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2307,119 +2308,119 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
         });
 
         txtNormalDate4.setEditable(false);
-        txtNormalDate4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate4.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate4.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtNormalDate5.setEditable(false);
-        txtNormalDate5.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate5.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate5.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtNormalDate6.setEditable(false);
-        txtNormalDate6.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate6.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate6.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtNormalDate7.setEditable(false);
-        txtNormalDate7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate7.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate7.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtNormalDate8.setEditable(false);
-        txtNormalDate8.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate8.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate8.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtNormalDate9.setEditable(false);
-        txtNormalDate9.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate9.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate9.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtNormalDate10.setEditable(false);
-        txtNormalDate10.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate10.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate10.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtNormalDate11.setEditable(false);
-        txtNormalDate11.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate11.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate11.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtNormalDate12.setEditable(false);
-        txtNormalDate12.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate12.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate12.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtNormalDate13.setEditable(false);
-        txtNormalDate13.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate13.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate13.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtNormalDate14.setEditable(false);
-        txtNormalDate14.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate14.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate14.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtNormalDate15.setEditable(false);
-        txtNormalDate15.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate15.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate15.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtNormalDate16.setEditable(false);
-        txtNormalDate16.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate16.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate16.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtNormalDate17.setEditable(false);
-        txtNormalDate17.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate17.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate17.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtNormalDate18.setEditable(false);
-        txtNormalDate18.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate18.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate18.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtNormalDate19.setEditable(false);
-        txtNormalDate19.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate19.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate19.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtNormalDate20.setEditable(false);
-        txtNormalDate20.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate20.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate20.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtNormalDate21.setEditable(false);
-        txtNormalDate21.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate21.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate21.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtNormalDate22.setEditable(false);
-        txtNormalDate22.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate22.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate22.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtNormalDate23.setEditable(false);
-        txtNormalDate23.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate23.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate23.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtNormalDate24.setEditable(false);
-        txtNormalDate24.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate24.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate24.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtNormalDate25.setEditable(false);
-        txtNormalDate25.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate25.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate25.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtNormalDate26.setEditable(false);
-        txtNormalDate26.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate26.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate26.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtNormalDate27.setEditable(false);
-        txtNormalDate27.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate27.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate27.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtNormalDate28.setEditable(false);
-        txtNormalDate28.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate28.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate28.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtNormalDate29.setEditable(false);
-        txtNormalDate29.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate29.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate29.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtNormalDate30.setEditable(false);
-        txtNormalDate30.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate30.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate30.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtNormalDate31.setEditable(false);
-        txtNormalDate31.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtNormalDate31.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtNormalDate31.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtHot1.setEditable(false);
-        txtHot1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot1.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot1.setMinimumSize(new java.awt.Dimension(6, 25));
         txtHot1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2428,7 +2429,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
         });
 
         txtHot2.setEditable(false);
-        txtHot2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot2.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot2.setMinimumSize(new java.awt.Dimension(6, 25));
         txtHot2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2437,7 +2438,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
         });
 
         txtHot3.setEditable(false);
-        txtHot3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot3.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot3.setMinimumSize(new java.awt.Dimension(6, 25));
         txtHot3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2446,127 +2447,127 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
         });
 
         txtHot4.setEditable(false);
-        txtHot4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot4.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot4.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtHot5.setEditable(false);
-        txtHot5.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot5.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot5.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtHot6.setEditable(false);
-        txtHot6.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot6.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot6.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtHot7.setEditable(false);
-        txtHot7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot7.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot7.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtHot8.setEditable(false);
-        txtHot8.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot8.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot8.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtHot9.setEditable(false);
-        txtHot9.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot9.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot9.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtHot10.setEditable(false);
-        txtHot10.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot10.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot10.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtHot11.setEditable(false);
-        txtHot11.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot11.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot11.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtHot12.setEditable(false);
-        txtHot12.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot12.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot12.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtHot13.setEditable(false);
-        txtHot13.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot13.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot13.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtHot14.setEditable(false);
-        txtHot14.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot14.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot14.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtHot15.setEditable(false);
-        txtHot15.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot15.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot15.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtHot16.setEditable(false);
-        txtHot16.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot16.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot16.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtHot17.setEditable(false);
-        txtHot17.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot17.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot17.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtHot18.setEditable(false);
-        txtHot18.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot18.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot18.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtHot19.setEditable(false);
-        txtHot19.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot19.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot19.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtHot20.setEditable(false);
-        txtHot20.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot20.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot20.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtHot21.setEditable(false);
-        txtHot21.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot21.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot21.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtHot22.setEditable(false);
-        txtHot22.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot22.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot22.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtHot23.setEditable(false);
-        txtHot23.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot23.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot23.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtHot24.setEditable(false);
-        txtHot24.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot24.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot24.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtHot25.setEditable(false);
-        txtHot25.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot25.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot25.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtHot26.setEditable(false);
-        txtHot26.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot26.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot26.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtHot27.setEditable(false);
-        txtHot27.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot27.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot27.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtHot28.setEditable(false);
-        txtHot28.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot28.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot28.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtHot29.setEditable(false);
-        txtHot29.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot29.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot29.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtHot30.setEditable(false);
-        txtHot30.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot30.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot30.setMinimumSize(new java.awt.Dimension(6, 25));
 
         txtHot31.setEditable(false);
-        txtHot31.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtHot31.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtHot31.setMinimumSize(new java.awt.Dimension(6, 25));
 
-        jLabel37.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel37.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel37.setText("OT.Hrs");
 
-        jLabel38.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel38.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel38.setText("HOT.hrs");
 
-        jLabel39.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel39.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel39.setText("N.Hrs");
 
-        jLabel40.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel40.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel40.setText("Hrs.");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -2937,7 +2938,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
                     .addComponent(jLabel32))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDate1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtDate1, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                     .addComponent(txtDate2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtDate3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtDate4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -3005,7 +3006,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
                     .addComponent(jLabel39))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtOT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtOT1, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                     .addComponent(txtOT2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtOT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtOT4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -3041,11 +3042,11 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtHot1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtHot1, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                             .addComponent(txtHot2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(31, 31, 31))
+                        .addContainerGap())
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtHot3, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                        .addComponent(txtHot3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtHot4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtHot5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtHot6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -3102,131 +3103,152 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
         jLabel28.getAccessibleContext().setAccessibleName("30");
         jLabel29.getAccessibleContext().setAccessibleName("30");
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Calculations", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gabriola", 0, 18))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Calculations", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 0, 10))); // NOI18N
 
-        jLabel41.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel41.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel41.setText("Total OT Hrs.");
 
-        jLabel42.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel42.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel42.setText("Total Normal Hrs.");
 
-        jLabel43.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel43.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel43.setText("Total HOT Hrs.");
 
         txtTotalNormal.setEditable(false);
+        txtTotalNormal.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
         txtTotalOT.setEditable(false);
+        txtTotalOT.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
         txtTotalHot.setEditable(false);
+        txtTotalHot.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel44.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel44.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel44.setText("Total No.Leave");
 
-        jLabel45.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel45.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel45.setText("Total No.Absent");
 
         txtCountAbsent.setEditable(false);
+        txtCountAbsent.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
         txtCountLeave.setEditable(false);
+        txtCountLeave.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel46.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel46.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel46.setText("Normal Rate/Hr");
 
         txtNormalRatePerHour.setEditable(false);
+        txtNormalRatePerHour.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel47.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel47.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel47.setText("OT Rate/Hr");
 
         txtOtRatePerHour.setEditable(false);
+        txtOtRatePerHour.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel48.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel48.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel48.setText("HOT Rate/Hr");
 
         txtHotRatePerHour.setEditable(false);
+        txtHotRatePerHour.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel49.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel49.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel49.setText("Gross Amount Normal");
 
         txtGrossAmountNormal.setEditable(false);
+        txtGrossAmountNormal.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel50.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel50.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel50.setText("Gross Amount OT");
 
         txtGrossAmountOT.setEditable(false);
+        txtGrossAmountOT.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel51.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel51.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel51.setText("Gross Amount HOT");
 
         txtGrossAmountHOT.setEditable(false);
+        txtGrossAmountHOT.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel52.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel52.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel52.setText("Basic Salary");
 
         txtBasic.setEditable(false);
+        txtBasic.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel53.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel53.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel53.setText("Gross Amount ");
 
         txtGrossAmount.setEditable(false);
+        txtGrossAmount.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel54.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel54.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel54.setText("Food");
 
+        txtFoodAddition.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtFoodAddition.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFoodAdditionFocusLost(evt);
             }
         });
 
-        jLabel55.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel55.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel55.setText("Dues");
 
+        txtDues.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtDues.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtDuesFocusLost(evt);
             }
         });
 
-        Bonus.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        Bonus.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         Bonus.setText("Bonus");
 
         txtBonus.setEditable(false);
+        txtBonus.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        Bonus1.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        Bonus1.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         Bonus1.setText("Other");
 
+        txtOtherAddition.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOtherAddition.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtOtherAdditionFocusLost(evt);
             }
         });
 
-        jLabel56.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel56.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel56.setText("Absent");
 
-        jLabel58.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel58.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel58.setText("Advance");
 
-        Bonus4.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        Bonus4.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         Bonus4.setText("Food");
 
-        Bonus5.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        Bonus5.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         Bonus5.setText("Other");
 
         txtAbsentDeduction.setEditable(false);
+        txtAbsentDeduction.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
+        txtAdvanceDeduction.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtAdvanceDeduction.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtAdvanceDeductionFocusLost(evt);
             }
         });
 
+        txtFoodDeduction.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtFoodDeduction.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFoodDeductionFocusLost(evt);
             }
         });
 
+        txtOtherDeduction.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtOtherDeduction.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtOtherDeductionFocusLost(evt);
@@ -3239,15 +3261,17 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
         jLabel59.setFont(new java.awt.Font("Gabriola", 1, 24)); // NOI18N
         jLabel59.setText("Deductions");
 
-        jLabel60.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel60.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel60.setText("Total Addition");
 
         txtTotalAddition.setEditable(false);
+        txtTotalAddition.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel61.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel61.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel61.setText("Total Deduction");
 
         txtTotalDeduction.setEditable(false);
+        txtTotalDeduction.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
         jLabel35.setFont(new java.awt.Font("Gabriola", 1, 24)); // NOI18N
         jLabel35.setText("NET AMOUNT");
@@ -3271,7 +3295,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel55)
                                 .addComponent(Bonus)
                                 .addComponent(Bonus1))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtDues, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtBonus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3405,7 +3429,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel59, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(24, 24, 24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -3475,9 +3499,9 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE))
         );
 
         pack();

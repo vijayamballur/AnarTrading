@@ -135,13 +135,18 @@
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="30" max="32767" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="621" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtTotal" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="txtTotal" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
       </Group>
@@ -169,13 +174,13 @@
                       <Component id="chkMonth" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Component id="cmbMonth" min="-2" pref="193" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="chkYear" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="cmbYear" max="32767" attributes="0"/>
+                          <Component id="cmbYear" min="-2" pref="118" max="-2" attributes="0"/>
                       </Group>
                       <Component id="cmbFrom" min="-2" pref="370" max="-2" attributes="0"/>
                   </Group>
@@ -184,7 +189,7 @@
                       <Component id="chkPayment" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="chkTo" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="14" max="32767" attributes="0"/>
+                  <EmptySpace pref="16" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="cmbTo" pref="411" max="32767" attributes="0"/>
                       <Component id="cmbPayment" max="32767" attributes="0"/>
@@ -220,7 +225,7 @@
         <Component class="javax.swing.JCheckBox" name="chkFrom">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Gabriola" size="18" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="From"/>
           </Properties>
@@ -230,6 +235,9 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbFrom">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Verdana" size="10" style="0"/>
+            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
             </Property>
@@ -245,7 +253,7 @@
         <Component class="javax.swing.JCheckBox" name="chkTo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Gabriola" size="18" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="To"/>
           </Properties>
@@ -255,6 +263,9 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbTo">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Verdana" size="10" style="0"/>
+            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
             </Property>
@@ -269,7 +280,7 @@
         <Component class="javax.swing.JCheckBox" name="chkMonth">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Gabriola" size="18" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Month"/>
           </Properties>
@@ -280,7 +291,7 @@
         <Component class="javax.swing.JCheckBox" name="chkYear">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Gabriola" size="18" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Year"/>
           </Properties>
@@ -290,6 +301,9 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbYear">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Verdana" size="10" style="0"/>
+            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="11">
                 <StringItem index="0" value="2013"/>
@@ -315,6 +329,9 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbMonth">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Verdana" size="10" style="0"/>
+            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="13">
                 <StringItem index="0" value="January"/>
@@ -343,7 +360,7 @@
         <Component class="javax.swing.JCheckBox" name="chkPayment">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Gabriola" size="18" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Payment"/>
           </Properties>
@@ -353,6 +370,9 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbPayment">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Verdana" size="10" style="0"/>
+            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
             </Property>
@@ -402,7 +422,7 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Gabriola" size="18" style="0"/>
+          <Font name="Verdana" size="10" style="0"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="ff" type="rgb"/>
@@ -422,7 +442,7 @@
           <ComponentRef name="buttonGroup1"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Verdana" size="12" style="0"/>
+          <Font name="Verdana" size="10" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Paid View"/>
       </Properties>
@@ -437,7 +457,7 @@
           <ComponentRef name="buttonGroup1"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Verdana" size="12" style="0"/>
+          <Font name="Verdana" size="10" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Not Paid View"/>
       </Properties>
@@ -452,7 +472,7 @@
           <ComponentRef name="buttonGroup1"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Verdana" size="12" style="0"/>
+          <Font name="Verdana" size="10" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="All"/>
       </Properties>
@@ -465,6 +485,11 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="txtTotal">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="10" style="0"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -487,6 +512,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="10" style="0"/>
+        </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/images/Icons/SEARCH.PNG"/>
         </Property>
@@ -499,7 +527,7 @@
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Verdana" size="12" style="0"/>
+          <Font name="Verdana" size="10" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Invoice Id"/>
       </Properties>

@@ -346,13 +346,14 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
 
         setTitle("Invoice Received Details");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 0, 10))); // NOI18N
 
-        lblEmployeeName.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lblEmployeeName.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         lblEmployeeName.setText("From");
 
         cmbFrom.setEditable(true);
         AutoCompleteDecorator.decorate(cmbFrom);
+        cmbFrom.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         cmbFrom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbFromActionPerformed(evt);
@@ -361,33 +362,34 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
 
         cmbTo.setEditable(true);
         AutoCompleteDecorator.decorate(cmbTo);
+        cmbTo.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         cmbTo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbToActionPerformed(evt);
             }
         });
 
-        lblEmployeeName2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lblEmployeeName2.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         lblEmployeeName2.setText("Invoice#");
 
-        txtInvoiceNumber.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtInvoiceNumber.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
         txtDate.setEditable(false);
         txtDate.setText("1111-11-11");
-        txtDate.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtDate.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
         btnDate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/calendar-icon.png"))); // NOI18N
 
-        lblEmployeeName3.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lblEmployeeName3.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         lblEmployeeName3.setText("Amount");
 
-        lblEmployeeName4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lblEmployeeName4.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         lblEmployeeName4.setText("Month of");
 
-        lblEmployeeName5.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lblEmployeeName5.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         lblEmployeeName5.setText("Date");
 
-        txtAmount.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtAmount.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtAmount.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtAmountFocusLost(evt);
@@ -396,7 +398,7 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
 
         cmbMonth.setEditable(true);
         AutoCompleteDecorator.decorate(cmbMonth);
-        cmbMonth.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cmbMonth.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         cmbMonth.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
         cmbMonth.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -404,11 +406,12 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
             }
         });
 
-        lblEmployeeName6.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lblEmployeeName6.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         lblEmployeeName6.setText("To");
 
         cmbYear.setEditable(true);
         AutoCompleteDecorator.decorate(cmbYear);
+        cmbYear.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         cmbYear.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023" }));
         cmbYear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -416,20 +419,20 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
             }
         });
 
-        lblEmployeeName7.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lblEmployeeName7.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         lblEmployeeName7.setText("Terms");
 
-        lblEmployeeName8.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lblEmployeeName8.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         lblEmployeeName8.setText("Payment Date");
 
         txtPaymentDate.setEditable(false);
-        txtPaymentDate.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtPaymentDate.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        lblEmployeeName9.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lblEmployeeName9.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         lblEmployeeName9.setText("Details");
 
         txtPaymentDate.setEnabled(false);
-        txtTerms.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtTerms.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtTerms.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtTermsFocusGained(evt);
@@ -439,7 +442,7 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
             }
         });
 
-        lblSearch.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        lblSearch.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         lblSearch.setForeground(new java.awt.Color(255, 51, 255));
         lblSearch.setText("Search>>");
         lblSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -449,26 +452,26 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
             }
         });
 
-        lblEmployeeName11.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lblEmployeeName11.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         lblEmployeeName11.setText("Status");
 
         txtDeduction.setText("0.0");
-        txtDeduction.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtDeduction.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
         radioNotPaid.setSelected(true);
         buttonGroup1.add(radioNotPaid);
-        radioNotPaid.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        radioNotPaid.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         radioNotPaid.setText("Not Paid");
 
         buttonGroup1.add(radioPaid);
-        radioPaid.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        radioPaid.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         radioPaid.setText("Paid");
 
-        lblEmployeeName10.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lblEmployeeName10.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         lblEmployeeName10.setText("Balance");
 
         txtBalance.setText("0.0");
-        txtBalance.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtBalance.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtBalance.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtBalanceFocusGained(evt);
@@ -478,10 +481,11 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
             }
         });
 
-        lblEmployeeName13.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lblEmployeeName13.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         lblEmployeeName13.setText("Dedu.");
 
         txtRemarks.setColumns(20);
+        txtRemarks.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         txtRemarks.setRows(5);
         jScrollPane2.setViewportView(txtRemarks);
 
@@ -527,12 +531,11 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
                                     .addComponent(cmbFrom, 0, 300, Short.MAX_VALUE)
                                     .addComponent(txtInvoiceNumber))
                                 .addGap(57, 57, 57)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblEmployeeName4)
-                                        .addComponent(lblEmployeeName5)
-                                        .addComponent(lblEmployeeName6)
-                                        .addComponent(lblEmployeeName10, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblEmployeeName4)
+                                    .addComponent(lblEmployeeName5)
+                                    .addComponent(lblEmployeeName6)
+                                    .addComponent(lblEmployeeName10)
                                     .addComponent(lblEmployeeName9)))))
                     .addComponent(lblSearch))
                 .addGap(18, 18, 18)
@@ -547,7 +550,7 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
                         .addComponent(cmbMonth, 0, 256, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbYear, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -589,34 +592,32 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblEmployeeName10, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(lblEmployeeName9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtDeduction, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblEmployeeName13, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtDeduction, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblEmployeeName13, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(radioPaid)
-                                    .addComponent(radioNotPaid)
-                                    .addComponent(lblEmployeeName11, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblSearch)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addGap(51, 51, 51))))))
+                                .addGap(5, 5, 5)
+                                .addComponent(lblEmployeeName9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(radioPaid)
+                            .addComponent(radioNotPaid)
+                            .addComponent(lblEmployeeName11, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblSearch)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGap(51, 51, 51))))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Controls", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gabriola", 0, 18))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 0, 10))); // NOI18N
 
-        btnSave.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnSave.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/SAVE.PNG"))); // NOI18N
         btnSave.setText("Save");
         btnSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -627,7 +628,7 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
         });
 
         btnUpdate.setEnabled(false);
-        btnUpdate.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnUpdate.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/MODIFY.PNG"))); // NOI18N
         btnUpdate.setText("Update");
         btnUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -638,7 +639,7 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
         });
 
         btnDelete.setEnabled(false);
-        btnDelete.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnDelete.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/DELETE.PNG"))); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -648,7 +649,7 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
             }
         });
 
-        btnCancel.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnCancel.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/CANCEL.PNG"))); // NOI18N
         btnCancel.setText("Cancel");
         btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -658,7 +659,7 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
             }
         });
 
-        btnRefresh.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnRefresh.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/clear.png"))); // NOI18N
         btnRefresh.setText("Refresh");
         btnRefresh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -685,16 +686,16 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(btnSave)
+                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnDelete)
+                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRefresh)
+                .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCancel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         jTable1.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
@@ -717,7 +718,7 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTable1);
 
         buttonGroup2.add(radioPaidView);
-        radioPaidView.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        radioPaidView.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         radioPaidView.setText("Paid View");
         radioPaidView.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -731,7 +732,7 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
         });
 
         buttonGroup2.add(radioNotPaidView);
-        radioNotPaidView.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        radioNotPaidView.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         radioNotPaidView.setText("Not Paid View");
         radioNotPaidView.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -746,7 +747,7 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
 
         radioAll.setSelected(true);
         buttonGroup2.add(radioAll);
-        radioAll.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        radioAll.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         radioAll.setText("All");
         radioAll.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -777,23 +778,22 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
                         .addComponent(radioNotPaidView)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(radioAll)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(radioPaidView)
                     .addComponent(radioNotPaidView)
                     .addComponent(radioAll))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

@@ -1,7 +1,7 @@
 package org.vijay.contractEmployee;
 
 
-import common.CurrentWorkingDirectory;
+import org.vijay.common.CurrentWorkingDirectory;
 import org.vijay.common.AnarTrading;
 import org.vijay.common.connection;
 import org.vijay.common.AutoCompleteDecorator;
@@ -256,9 +256,9 @@ public class AdvancedContractEmployeeSearch extends javax.swing.JInternalFrame {
 
         setTitle("Contract Employee Search");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Search Critiria", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gabriola", 0, 18))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Search Critiria", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 0, 10))); // NOI18N
 
-        chkParent.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        chkParent.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         chkParent.setText("Parent Company");
         chkParent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -269,6 +269,7 @@ public class AdvancedContractEmployeeSearch extends javax.swing.JInternalFrame {
         cmbParent.addItem("--select name--");
         cmbParent.setSelectedItem("--select name--");
         cmbParent.setEnabled(false);
+        cmbParent.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         cmbParent.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbParentItemStateChanged(evt);
@@ -280,7 +281,7 @@ public class AdvancedContractEmployeeSearch extends javax.swing.JInternalFrame {
             }
         });
 
-        chkContract.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        chkContract.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         chkContract.setText("Con.Company");
         chkContract.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -288,7 +289,7 @@ public class AdvancedContractEmployeeSearch extends javax.swing.JInternalFrame {
             }
         });
 
-        chkCurrentSite.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        chkCurrentSite.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         chkCurrentSite.setText("Current Site");
         chkCurrentSite.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -299,6 +300,7 @@ public class AdvancedContractEmployeeSearch extends javax.swing.JInternalFrame {
         cmbCurrentSite.addItem("--select site--");
         cmbCurrentSite.setSelectedItem("--select site--");
         cmbCurrentSite.setEnabled(false);
+        cmbCurrentSite.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         cmbCurrentSite.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbCurrentSiteActionPerformed(evt);
@@ -308,6 +310,7 @@ public class AdvancedContractEmployeeSearch extends javax.swing.JInternalFrame {
         cmbContract.addItem("--select name--");
         cmbContract.setSelectedItem("--select name--");
         cmbContract.setEnabled(false);
+        cmbContract.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         cmbContract.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbContractActionPerformed(evt);
@@ -396,7 +399,7 @@ public class AdvancedContractEmployeeSearch extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 713, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)

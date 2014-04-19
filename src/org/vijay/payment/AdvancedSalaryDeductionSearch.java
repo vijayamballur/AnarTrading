@@ -1,7 +1,7 @@
 package org.vijay.payment;
 
 
-import common.CurrentWorkingDirectory;
+import org.vijay.common.CurrentWorkingDirectory;
 import org.vijay.common.connection;
 import org.vijay.common.AutoCompleteDecorator;
 import java.awt.Point;
@@ -25,12 +25,12 @@ import org.vijay.report.ReportView;
  *
  * @author MAC
  */
-public final class AdvancedPaymentSearch extends javax.swing.JInternalFrame {
+public final class AdvancedSalaryDeductionSearch extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form AdvancedPaymentSearch
      */
-    public AdvancedPaymentSearch() {
+    public AdvancedSalaryDeductionSearch() {
         initComponents();
         setLocation(middle);
         cmbEmployeeName.setEnabled(false);

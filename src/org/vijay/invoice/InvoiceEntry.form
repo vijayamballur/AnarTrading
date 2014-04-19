@@ -64,7 +64,7 @@
                       <Component id="radioAll" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="41" max="32767" attributes="0"/>
+              <EmptySpace pref="54" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -72,13 +72,13 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel1" max="32767" attributes="0"/>
                   </Group>
+                  <Component id="jPanel3" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="12" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="radioPaidView" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="radioNotPaidView" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -244,7 +244,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="0" pref="22" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Component id="lblSearch" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
@@ -267,13 +267,16 @@
         <Component class="javax.swing.JLabel" name="lblEmployeeName">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="12" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="From"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbFrom">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Verdana" size="10" style="0"/>
+            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
             </Property>
@@ -287,6 +290,9 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbTo">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Verdana" size="10" style="0"/>
+            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
             </Property>
@@ -301,7 +307,7 @@
         <Component class="javax.swing.JLabel" name="lblEmployeeName2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="12" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Invoice#"/>
           </Properties>
@@ -309,14 +315,14 @@
         <Component class="javax.swing.JTextField" name="txtInvoiceNumber">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="12" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtDate">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="12" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
           </Properties>
           <AuxValues>
@@ -333,7 +339,7 @@
         <Component class="javax.swing.JLabel" name="lblEmployeeName3">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="12" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Amount"/>
           </Properties>
@@ -341,7 +347,7 @@
         <Component class="javax.swing.JLabel" name="lblEmployeeName4">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="12" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Month of"/>
           </Properties>
@@ -349,7 +355,7 @@
         <Component class="javax.swing.JLabel" name="lblEmployeeName5">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="12" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Date"/>
           </Properties>
@@ -357,7 +363,7 @@
         <Component class="javax.swing.JTextField" name="txtAmount">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="12" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
           </Properties>
           <Events>
@@ -367,7 +373,7 @@
         <Component class="javax.swing.JComboBox" name="cmbMonth">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="12" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="12">
@@ -396,13 +402,16 @@
         <Component class="javax.swing.JLabel" name="lblEmployeeName6">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="12" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="To"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbYear">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Verdana" size="10" style="0"/>
+            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="11">
                 <StringItem index="0" value="2013"/>
@@ -429,7 +438,7 @@
         <Component class="javax.swing.JLabel" name="lblEmployeeName7">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="12" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Terms"/>
           </Properties>
@@ -437,7 +446,7 @@
         <Component class="javax.swing.JLabel" name="lblEmployeeName8">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="12" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Payment Date"/>
           </Properties>
@@ -445,7 +454,7 @@
         <Component class="javax.swing.JTextField" name="txtPaymentDate">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="12" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
           </Properties>
           <AuxValues>
@@ -455,7 +464,7 @@
         <Component class="javax.swing.JLabel" name="lblEmployeeName9">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="12" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Remark"/>
           </Properties>
@@ -463,14 +472,14 @@
         <Component class="javax.swing.JTextField" name="txtRemarks">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="12" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTerms">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="12" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
           </Properties>
           <Events>
@@ -484,7 +493,7 @@
         <Component class="javax.swing.JLabel" name="lblSearch">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Gabriola" size="18" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="33" red="ff" type="rgb"/>
@@ -501,7 +510,7 @@
         <Component class="javax.swing.JLabel" name="lblEmployeeName10">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="12" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Balance"/>
           </Properties>
@@ -509,7 +518,7 @@
         <Component class="javax.swing.JTextField" name="txtBalance">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="12" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
           </Properties>
           <Events>
@@ -526,7 +535,7 @@
               <ComponentRef name="buttonGroup1"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="12" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Paid"/>
           </Properties>
@@ -537,7 +546,7 @@
               <ComponentRef name="buttonGroup1"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="12" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Not Paid"/>
           </Properties>
@@ -548,7 +557,7 @@
         <Component class="javax.swing.JLabel" name="lblEmployeeName11">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="12" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Status"/>
           </Properties>
@@ -556,7 +565,7 @@
         <Component class="javax.swing.JLabel" name="lblEmployeeName12">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="12" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Dedu."/>
           </Properties>
@@ -564,7 +573,7 @@
         <Component class="javax.swing.JTextField" name="txtDeduction">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="12" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
           </Properties>
           <AuxValues>
@@ -578,7 +587,7 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder title="Controls">
-              <Font PropertyName="font" name="Gabriola" size="18" style="0"/>
+              <Font PropertyName="font" name="Verdana" size="10" style="0"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -603,15 +612,15 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="btnSave" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnSave" min="-2" pref="36" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnUpdate" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="btnUpdate" min="-2" pref="36" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnDelete" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnDelete" min="-2" pref="36" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnRefresh" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnRefresh" min="-2" pref="36" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnCancel" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnCancel" min="-2" pref="36" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -621,7 +630,7 @@
         <Component class="javax.swing.JButton" name="btnSave">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Gabriola" size="18" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/images/Icons/SAVE.PNG"/>
@@ -638,7 +647,7 @@
         <Component class="javax.swing.JButton" name="btnUpdate">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Gabriola" size="18" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/images/Icons/MODIFY.PNG"/>
@@ -658,7 +667,7 @@
         <Component class="javax.swing.JButton" name="btnDelete">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Gabriola" size="18" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/images/Icons/DELETE.PNG"/>
@@ -678,7 +687,7 @@
         <Component class="javax.swing.JButton" name="btnCancel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Gabriola" size="18" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/images/Icons/CANCEL.PNG"/>
@@ -695,7 +704,7 @@
         <Component class="javax.swing.JButton" name="btnRefresh">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Gabriola" size="18" style="0"/>
+              <Font name="Verdana" size="10" style="0"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/images/Icons/clear.png"/>
@@ -744,7 +753,7 @@
           <ComponentRef name="btnGroupView"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Verdana" size="12" style="0"/>
+          <Font name="Verdana" size="10" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Paid View"/>
       </Properties>
@@ -759,7 +768,7 @@
           <ComponentRef name="btnGroupView"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Verdana" size="12" style="0"/>
+          <Font name="Verdana" size="10" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Not Paid View"/>
       </Properties>
@@ -774,7 +783,7 @@
           <ComponentRef name="btnGroupView"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Verdana" size="12" style="0"/>
+          <Font name="Verdana" size="10" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="All"/>
       </Properties>

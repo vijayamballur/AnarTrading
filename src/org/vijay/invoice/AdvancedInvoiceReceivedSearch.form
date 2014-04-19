@@ -320,7 +320,7 @@
                 <StringItem index="9" value="October"/>
                 <StringItem index="10" value="November"/>
                 <StringItem index="11" value="December"/>
-                <StringItem index="12" value=" "/>
+                <StringItem index="12" value=""/>
               </StringArray>
             </Property>
           </Properties>
