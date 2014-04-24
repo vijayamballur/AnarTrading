@@ -200,7 +200,6 @@ public class ReceiptVoucher extends javax.swing.JInternalFrame {
         ReceiptVoucher RV = new ReceiptVoucher();
         AnarTrading.desktopPane.add(RV);
         RV.setVisible(true);
-        AnarTrading.btnReceiptVoucher.setEnabled(false);
         AnarTrading.menuItemReceiptVoucher.setEnabled(false);
     }
      public void viewDbEmployeeDetails()
@@ -647,7 +646,6 @@ public class ReceiptVoucher extends javax.swing.JInternalFrame {
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
         dispose();
-        AnarTrading.btnReceiptVoucher.setEnabled(true);
         AnarTrading.menuItemReceiptVoucher.setEnabled(true);
     }//GEN-LAST:event_btnCancelActionPerformed
 

@@ -2067,7 +2067,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtInvoiceId;
     private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
-    Point middle = new Point(100,0);
+    Point middle = new Point(10,0);
     int invoiceId;
     String printValue,path;
 }

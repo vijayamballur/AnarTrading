@@ -600,7 +600,6 @@ public class paymentVoucher extends javax.swing.JInternalFrame {
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
         dispose();
-        AnarTrading.btnPayment.setEnabled(true);
         AnarTrading.menuItemPaymentVoucher.setEnabled(true);
     }//GEN-LAST:event_btnCancelActionPerformed
 

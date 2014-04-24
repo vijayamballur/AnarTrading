@@ -110,7 +110,6 @@ public class PassportDocument extends javax.swing.JInternalFrame {
 
         lblPassport = new javax.swing.JLabel();
         lblEmployeeName = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btnBrowse = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
@@ -118,15 +117,13 @@ public class PassportDocument extends javax.swing.JInternalFrame {
         btnPrint = new javax.swing.JButton();
 
         setClosable(true);
+        setTitle("Passport");
 
         lblPassport.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lblEmployeeName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Employee Name");
-
-        btnBrowse.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnBrowse.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnBrowse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/SEARCH.PNG"))); // NOI18N
         btnBrowse.setText("Browse");
         btnBrowse.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +132,7 @@ public class PassportDocument extends javax.swing.JInternalFrame {
             }
         });
 
-        btnSave.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnSave.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/SAVE.PNG"))); // NOI18N
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -144,7 +141,7 @@ public class PassportDocument extends javax.swing.JInternalFrame {
             }
         });
 
-        btnUpdate.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnUpdate.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/MODIFY.PNG"))); // NOI18N
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -153,7 +150,7 @@ public class PassportDocument extends javax.swing.JInternalFrame {
             }
         });
 
-        btnPrint.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnPrint.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/view.png"))); // NOI18N
         btnPrint.setText("Print");
         btnPrint.addActionListener(new java.awt.event.ActionListener() {
@@ -201,11 +198,8 @@ public class PassportDocument extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(156, 156, 156)
-                                .addComponent(lblEmployeeName, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(156, 156, 156)
+                        .addComponent(lblEmployeeName, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -213,14 +207,12 @@ public class PassportDocument extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(lblEmployeeName, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lblEmployeeName, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblPassport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -336,7 +328,6 @@ public class PassportDocument extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnPrint;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblEmployeeName;
     private javax.swing.JLabel lblPassport;
@@ -349,5 +340,5 @@ public class PassportDocument extends javax.swing.JInternalFrame {
     File filePassport;
     FileInputStream finPassport;
     JFileChooser fc=new JFileChooser(new File("Desktop"));
-    Point middle = new Point(80,0);
+    Point middle = new Point(0,0);
 }

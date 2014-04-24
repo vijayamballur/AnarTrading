@@ -1003,7 +1003,7 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtRemarks;
     private javax.swing.JTextField txtTerms;
     // End of variables declaration//GEN-END:variables
-   Point middle = new Point(100,0);
+   Point middle = new Point(10,0);
    public static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
    DateFormat defaultDate = new SimpleDateFormat("yyyy-MM-dd");
    String dateString = "",query;
