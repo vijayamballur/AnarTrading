@@ -23,6 +23,7 @@ import java.util.logging.Logger;
 import javax.swing.Box;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import org.vijay.cheque.ChequePrinting;
 import org.vijay.receipt.ReceiptVoucherNew;
 
 /**
@@ -63,6 +64,7 @@ public class AnarTrading extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         menuItemInvoice = new javax.swing.JMenuItem();
         menuItemInvoiceReceived = new javax.swing.JMenuItem();
+        menuItemChequePrinting = new javax.swing.JMenuItem();
         menuTransaction = new javax.swing.JMenu();
         menuItemReceiptVoucher = new javax.swing.JMenuItem();
         menuItemPaymentVoucher = new javax.swing.JMenuItem();
@@ -227,6 +229,18 @@ public class AnarTrading extends javax.swing.JFrame {
 
         menuCourse.add(jMenu1);
 
+        menuItemChequePrinting.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        menuItemChequePrinting.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        menuItemChequePrinting.setMnemonic('E');
+        menuItemChequePrinting.setText("Cheque Printing");
+        menuItemChequePrinting.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuItemChequePrinting.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemChequePrintingActionPerformed(evt);
+            }
+        });
+        menuCourse.add(menuItemChequePrinting);
+
         jMenuBar1.add(menuCourse);
 
         menuTransaction.setForeground(new java.awt.Color(255, 255, 255));
@@ -349,7 +363,7 @@ public class AnarTrading extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1058, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1111, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -525,6 +539,13 @@ public class AnarTrading extends javax.swing.JFrame {
         SWH.setVisible(true);
     }//GEN-LAST:event_menuItemSiteWorkingHrActionPerformed
 
+    private void menuItemChequePrintingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemChequePrintingActionPerformed
+        // TODO add your handling code here:
+        ChequePrinting CP=new ChequePrinting();
+        AnarTrading.desktopPane.add(CP);
+        CP.setVisible(true);
+    }//GEN-LAST:event_menuItemChequePrintingActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -581,6 +602,7 @@ public class AnarTrading extends javax.swing.JFrame {
     private javax.swing.JMenu menuHelp1;
     private javax.swing.JMenu menuHelp2;
     public static javax.swing.JMenuItem menuItemAdvancePayment;
+    public static javax.swing.JMenuItem menuItemChequePrinting;
     public static javax.swing.JMenuItem menuItemContractEmployee;
     private javax.swing.JMenuItem menuItemExit;
     public static javax.swing.JMenuItem menuItemHoliday;

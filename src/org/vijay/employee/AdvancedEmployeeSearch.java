@@ -358,6 +358,11 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
         JtablePopUP.add(menuItemViewPP);
 
         menuItemViewRP.setText("View RP");
+        menuItemViewRP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemViewRPActionPerformed(evt);
+            }
+        });
         JtablePopUP.add(menuItemViewRP);
 
         menuItemViewID.setText("View ID");
@@ -388,6 +393,11 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setTitle("Employee Search");
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
 
         chkParent.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         chkParent.setText("Parent Company");
@@ -522,6 +532,11 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
+            }
+        });
+        jTable1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTable1FocusGained(evt);
             }
         });
         jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -731,6 +746,22 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
 
             }
     }//GEN-LAST:event_menuItemDeleteActionPerformed
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formFocusGained
+
+    private void jTable1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1FocusGained
+        // TODO add your handling code here:
+        queryGenerator();
+    }//GEN-LAST:event_jTable1FocusGained
+
+    private void menuItemViewRPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemViewRPActionPerformed
+        // TODO add your handling code here:
+        RPDocument RD = new RPDocument(empId);
+        AnarTrading.desktopPane.add(RD);
+        RD.setVisible(true);
+    }//GEN-LAST:event_menuItemViewRPActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

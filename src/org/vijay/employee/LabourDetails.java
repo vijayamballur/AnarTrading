@@ -8,15 +8,21 @@ import java.awt.Dimension;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -38,6 +44,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
      */
     public LabourDetails() {
         initComponents();
+        setSize(Toolkit.getDefaultToolkit().getScreenSize());
         cmbProfessionFill();
         cmbNationalityFill();
         cmbCurrentSiteFill();
@@ -55,16 +62,8 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         btnViewRP.setEnabled(false);
         btnViewPP.setEnabled(false);
         btnViewID.setEnabled(false);
-        
-        //txtPassportExpiry.setEditable(false);
-        //txtVisaExpiry.setEditable(false);
-        txtdate.setEditable(false);
-        //txtDOB.setEditable(false);
-        
-        txtdate.setText("1111-11-11");
-        txtPassportExpiry.setText("1111-11-11");
-        txtVisaExpiry.setText("1111-11-11");
-        txtDOB.setText("1111-11-11");
+        btnUpdate.setEnabled(false);
+        btnDelete.setEnabled(false);
         
         cmbNationality.addItem("");
         cmbProfession.addItem("");
@@ -73,7 +72,6 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         cmbSecondParty.addItem("");
         cmbContracting.addItem("");
 
-        
         cmbNationality.setSelectedItem("");
         cmbProfession.setSelectedItem("");
         cmbCurrentSite.setSelectedItem("");
@@ -89,48 +87,49 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         AutoCompleteDecorator.decorate(cmbCurrentSite);
 
         AutoCompleteDecorator.decorate(cmbContracting);
-        
+        viewDbEmployeeDetails();
         setLocation(middle);
-        btnPassportExpiry.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+         jDateChooserDate.addPropertyChangeListener(new PropertyChangeListener() {
 
-                @Override
-                public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                    if (evt.getNewValue() instanceof Date) {
-                        passportExpiry((Date) evt.getNewValue());
-                    }
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                if (evt.getPropertyName().equals("date")) {
+                    todaydate = new SimpleDateFormat("yyyy-MM-dd").format(jDateChooserDate.getDate());
                 }
-            });
-        btnVisaExpiry.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            }  
+        });
+         jDateChooserDOB.addPropertyChangeListener(new PropertyChangeListener() {
 
-                @Override
-                public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                    if (evt.getNewValue() instanceof Date) {
-                        visaExpiry((Date) evt.getNewValue());
-                    }
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                if (evt.getPropertyName().equals("date")) {
+                    dob = new SimpleDateFormat("yyyy-MM-dd").format(jDateChooserDOB.getDate());
                 }
-            });
-         btnDOB.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            }  
+        });
+         jDateChooserPPExpiry.addPropertyChangeListener(new PropertyChangeListener() {
 
-                @Override
-                public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                    if (evt.getNewValue() instanceof Date) {
-                        dob((Date) evt.getNewValue());
-                    }
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                if (evt.getPropertyName().equals("date")) {
+                    ppExpiry = new SimpleDateFormat("yyyy-MM-dd").format(jDateChooserPPExpiry.getDate());
                 }
-            });
-         btndate.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            }  
+        });
+         jDateChooserRPExpiry.addPropertyChangeListener(new PropertyChangeListener() {
 
-                @Override
-                public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                    if (evt.getNewValue() instanceof Date) {
-                        todayDate((Date) evt.getNewValue());
-                    }
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                if (evt.getPropertyName().equals("date")) {
+                    rpExpiry = new SimpleDateFormat("yyyy-MM-dd").format(jDateChooserRPExpiry.getDate());
                 }
-            });
+            }  
+        });
+         jtableSelection();
     }
-    public LabourDetails(int empId) {
+    public LabourDetails(int empId1) {
         initComponents();
-        this.empId=empId;
+        this.empId=empId1;
         cmbProfessionFill();
         cmbNationalityFill();
         cmbCurrentSiteFill();
@@ -151,16 +150,6 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         btnSave.setEnabled(false);
         btnView.setEnabled(false);
         
-        //txtPassportExpiry.setEditable(false);
-        //txtVisaExpiry.setEditable(false);
-        txtdate.setEditable(false);
-        //txtDOB.setEditable(false);
-        
-        txtdate.setText("1111-11-11");
-        txtPassportExpiry.setText("1111-11-11");
-        txtVisaExpiry.setText("1111-11-11");
-        txtDOB.setText("1111-11-11");
-        
         cmbNationality.addItem("");
         cmbProfession.addItem("");
         cmbCurrentSite.addItem("");
@@ -176,7 +165,6 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         cmbSecondParty.setSelectedItem("");
         cmbContracting.setSelectedItem("");
 
-        
         AutoCompleteDecorator.decorate(cmbNationality);
         AutoCompleteDecorator.decorate(cmbProfession);
         AutoCompleteDecorator.decorate(cmbfirstParty);
@@ -184,45 +172,94 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         AutoCompleteDecorator.decorate(cmbCurrentSite);
 
         AutoCompleteDecorator.decorate(cmbContracting);
-        
+        viewDbEmployeeDetails();
         setLocation(middle);
-        btnPassportExpiry.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+       
+        jDateChooserDate.addPropertyChangeListener(new PropertyChangeListener() {
 
-                @Override
-                public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                    if (evt.getNewValue() instanceof Date) {
-                        passportExpiry((Date) evt.getNewValue());
-                    }
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                if (evt.getPropertyName().equals("date")) {
+                    todaydate = new SimpleDateFormat("yyyy-MM-dd").format(jDateChooserDate.getDate());
                 }
-            });
-        btnVisaExpiry.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            }  
+        });
+         jDateChooserDOB.addPropertyChangeListener(new PropertyChangeListener() {
 
-                @Override
-                public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                    if (evt.getNewValue() instanceof Date) {
-                        visaExpiry((Date) evt.getNewValue());
-                    }
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                if (evt.getPropertyName().equals("date")) {
+                    dob = new SimpleDateFormat("yyyy-MM-dd").format(jDateChooserDOB.getDate());
                 }
-            });
-         btnDOB.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            }  
+        });
+         jDateChooserPPExpiry.addPropertyChangeListener(new PropertyChangeListener() {
 
-                @Override
-                public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                    if (evt.getNewValue() instanceof Date) {
-                        dob((Date) evt.getNewValue());
-                    }
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                if (evt.getPropertyName().equals("date")) {
+                    ppExpiry = new SimpleDateFormat("yyyy-MM-dd").format(jDateChooserPPExpiry.getDate());
                 }
-            });
-         btndate.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            }  
+        });
+         jDateChooserRPExpiry.addPropertyChangeListener(new PropertyChangeListener() {
 
-                @Override
-                public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                    if (evt.getNewValue() instanceof Date) {
-                        todayDate((Date) evt.getNewValue());
-                    }
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                if (evt.getPropertyName().equals("date")) {
+                    rpExpiry = new SimpleDateFormat("yyyy-MM-dd").format(jDateChooserRPExpiry.getDate());
                 }
-            });
+            }  
+        });
+         jtableSelection();
          getDetailsUsingEmpId();
+         
+    }
+    public void jtableSelection()
+    {
+        jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+            int rowNo=jTable1.getSelectedRow();
+            btnSave.setEnabled(false);
+            btnUpdate.setEnabled(true);
+            btnDelete.setEnabled(true);
+            btnViewPP.setEnabled(true);
+            btnViewRP.setEnabled(true);
+            btnViewID.setEnabled(true);
+            
+            empId=Integer.parseInt(jTable1.getValueAt(rowNo,1).toString());
+            txtEmpName.setText(jTable1.getValueAt(rowNo,2).toString());
+            cmbNationality.setSelectedItem(jTable1.getValueAt(rowNo,3).toString());
+            cmbProfession.setSelectedItem(jTable1.getValueAt(rowNo,4).toString());
+            txtPassportNumber.setText(jTable1.getValueAt(rowNo,5).toString());
+            try 
+            {
+                    jDateChooserPPExpiry.setDate(defaultDate.parse(jTable1.getValueAt(rowNo,6).toString()));
+                    jDateChooserRPExpiry.setDate(defaultDate.parse(jTable1.getValueAt(rowNo,7).toString()));
+            } 
+            catch (ParseException ex) 
+            {
+                    Logger.getLogger(LabourDetails.class.getName()).log(Level.SEVERE, null, ex);
+            }  
+            txtIdNumber.setText(jTable1.getValueAt(rowNo,8).toString());
+            try 
+            {
+                    jDateChooserDate.setDate(defaultDate.parse(jTable1.getValueAt(rowNo,9).toString()));
+                    jDateChooserDOB.setDate(defaultDate.parse(jTable1.getValueAt(rowNo,10).toString()));
+            } 
+            catch (ParseException ex) 
+            {
+                    Logger.getLogger(LabourDetails.class.getName()).log(Level.SEVERE, null, ex);
+            }     
+            cmbCurrentSite.setSelectedItem(jTable1.getValueAt(rowNo,11).toString()); 
+            cmbfirstParty.setSelectedItem(jTable1.getValueAt(rowNo,12).toString()); 
+            cmbSecondParty.setSelectedItem(jTable1.getValueAt(rowNo,13).toString()); 
+            cmbContracting.setSelectedItem(jTable1.getValueAt(rowNo,14).toString()); 
+            txtBasicSalary.setText(jTable1.getValueAt(rowNo,15).toString());
+            }
+        });
     }
     public void cmbProfessionFill() {
         try {
@@ -308,90 +345,6 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
             
         }
     }
-    public void passportExpiry(String dateString)
-    {
-		Date date = null;
-		try
-                {
-                    if ((dateString != null) && (dateString.length() > 0))
-                        date = dateFormat.parse(dateString);
-		}
-                catch (Exception e)
-                {
-                    date = null;
-		}
-                this.passportExpiry(date);
-    }
-     public void passportExpiry(Date date)
-     {
-        if (date != null)
-        dateString = dateFormat.format(date);
-        txtPassportExpiry.setText(dateString);
-        btnPassportExpiry.setTargetDate(date);
-     }
-     public void dob(String dateString)
-    {
-		Date date = null;
-		try
-                {
-                    if ((dateString != null) && (dateString.length() > 0))
-                        date = dateFormat.parse(dateString);
-		}
-                catch (Exception e)
-                {
-                    date = null;
-		}
-                this.passportExpiry(date);
-    }
-     public void dob(Date date)
-     {
-        if (date != null)
-        dateString = dateFormat.format(date);
-        txtDOB.setText(dateString);
-        btnDOB.setTargetDate(date);
-     }
-      public void todayDate(String dateString)
-    {
-		Date date = null;
-		try
-                {
-                    if ((dateString != null) && (dateString.length() > 0))
-                        date = dateFormat.parse(dateString);
-		}
-                catch (Exception e)
-                {
-                    date = null;
-		}
-                this.passportExpiry(date);
-    }
-     public void todayDate(Date date)
-     {
-        if (date != null)
-        dateString = dateFormat.format(date);
-        txtdate.setText(dateString);
-        btndate.setTargetDate(date);
-     }
-     public void visaExpiry(String dateString)
-    {
-		Date date = null;
-		try
-                {
-                    if ((dateString != null) && (dateString.length() > 0))
-                        date = dateFormat.parse(dateString);
-		}
-                catch (Exception e)
-                {
-                    date = null;
-		}
-                this.passportExpiry(date);
-    }
-     public void visaExpiry(Date date)
-     {
-        if (date != null)
-        dateString = dateFormat.format(date);
-        txtVisaExpiry.setText(dateString);
-        btnVisaExpiry.setTargetDate(date);
-     }
      public void getDetailsUsingEmpId()
      {
          try {
@@ -404,11 +357,25 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
                 cmbNationality.setSelectedItem(rs.getString("nationality"));
                 cmbProfession.setSelectedItem(rs.getString("profession"));
                 txtPassportNumber.setText(rs.getString("passportNumber"));
-                txtPassportExpiry.setText(rs.getString("passportExpiry"));
-                txtVisaExpiry.setText(rs.getString("visaExpiry"));
+                try 
+                {
+                    jDateChooserPPExpiry.setDate(dateFormat.parse(rs.getString("passportExpiry")));
+                    jDateChooserRPExpiry.setDate(dateFormat.parse(rs.getString("visaExpiry")));
+                } 
+                catch (ParseException ex) 
+                {
+                    Logger.getLogger(LabourDetails.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 txtIdNumber.setText(rs.getString("idNumber"));
-                txtdate.setText(rs.getString("todayDate"));
-                txtDOB.setText(rs.getString("dob"));
+                try 
+                {
+                    jDateChooserDate.setDate(dateFormat.parse(rs.getString("todayDate")));
+                    jDateChooserDOB.setDate(dateFormat.parse(rs.getString("dob")));
+                } 
+                catch (ParseException ex) 
+                {
+                    Logger.getLogger(LabourDetails.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 cmbCurrentSite.setSelectedItem(rs.getString("currentSite"));
                 cmbfirstParty.setSelectedItem(rs.getString("firstParty"));
                 cmbSecondParty.setSelectedItem(rs.getString("secondParty"));
@@ -419,6 +386,61 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         } catch (SQLException ex) {
             
         }
+     }
+     public void viewDbEmployeeDetails()
+    {
+        connection c=new connection();
+        Connection con=c.conn();
+        try
+        {
+            Statement stmt=con.createStatement();
+            ResultSet rs=stmt.executeQuery("select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp order by empId desc limit 25");
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+            jTable1.setAutoCreateRowSorter(true);
+            con.close();
+            jTable1.getColumnModel().getColumn(1).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(1).setWidth(0);
+            jTable1.setShowHorizontalLines( true );
+            jTable1.setRowSelectionAllowed( true );
+
+        }
+        catch(Exception e)
+        {
+
+        }
+    }
+     public void deleteAction()
+     {
+         int response=JOptionPane.showConfirmDialog(null,"Do you want to Delete ?","Confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+            if(response==JOptionPane.NO_OPTION)
+            {
+
+            }
+            else if(response==JOptionPane.YES_OPTION)
+            {
+                try
+                {
+                    connection c=new connection();
+                    Connection con=c.conn();
+                    Statement stmt1=con.createStatement();
+                    int i=stmt1.executeUpdate("delete from tbl_labourdetails  where empId="+empId);
+                    if(i!=0)
+                    {
+                        dispose();
+                        ViewLabourForm();
+                    }
+                    dispose();
+                }
+                catch(Exception e)
+                {
+                    JOptionPane.showMessageDialog(rootPane, e, "ERROR!!", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            else if(response==JOptionPane.CLOSED_OPTION)
+            {
+
+            }
      }
      
 
@@ -432,8 +454,11 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jtablePopUp = new javax.swing.JPopupMenu();
-        jMenuItemViewDocuments = new javax.swing.JMenuItem();
-        jMenuItemTimeSheet = new javax.swing.JMenuItem();
+        menuItemViewPP = new javax.swing.JMenuItem();
+        menuItemViewRP = new javax.swing.JMenuItem();
+        menuItemViewID = new javax.swing.JMenuItem();
+        menuItemPrint = new javax.swing.JMenuItem();
+        menuItemDelete = new javax.swing.JMenuItem();
         jPanel3 = new javax.swing.JPanel();
         btnSave = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
@@ -453,16 +478,10 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         txtPassportNumber = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        txtPassportExpiry = new javax.swing.JTextField();
-        btnPassportExpiry = new net.sourceforge.jcalendarbutton.JCalendarButton();
         jLabel12 = new javax.swing.JLabel();
         txtIdNumber = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        txtVisaExpiry = new javax.swing.JTextField();
-        btnVisaExpiry = new net.sourceforge.jcalendarbutton.JCalendarButton();
         jLabel9 = new javax.swing.JLabel();
-        txtDOB = new javax.swing.JTextField();
-        btnDOB = new net.sourceforge.jcalendarbutton.JCalendarButton();
         jLabel17 = new javax.swing.JLabel();
         txtBasicSalary = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
@@ -474,26 +493,55 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         jLabel16 = new javax.swing.JLabel();
         cmbSecondParty = new javax.swing.JComboBox();
         jLabel15 = new javax.swing.JLabel();
-        txtdate = new javax.swing.JTextField();
-        btndate = new net.sourceforge.jcalendarbutton.JCalendarButton();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jDateChooserDate = new com.toedter.calendar.JDateChooser();
+        jDateChooserDOB = new com.toedter.calendar.JDateChooser();
+        jDateChooserPPExpiry = new com.toedter.calendar.JDateChooser();
+        jDateChooserRPExpiry = new com.toedter.calendar.JDateChooser();
 
         jtablePopUp.setLabel("PopUp");
 
-        jMenuItemViewDocuments.setText("Add Passport Copy");
-        jMenuItemViewDocuments.addActionListener(new java.awt.event.ActionListener() {
+        menuItemViewPP.setText("View PP");
+        menuItemViewPP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemViewDocumentsActionPerformed(evt);
+                menuItemViewPPActionPerformed(evt);
             }
         });
-        jtablePopUp.add(jMenuItemViewDocuments);
+        jtablePopUp.add(menuItemViewPP);
 
-        jMenuItemTimeSheet.setText("Add Time Sheet");
-        jMenuItemTimeSheet.addActionListener(new java.awt.event.ActionListener() {
+        menuItemViewRP.setText("View RP");
+        menuItemViewRP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemTimeSheetActionPerformed(evt);
+                menuItemViewRPActionPerformed(evt);
             }
         });
-        jtablePopUp.add(jMenuItemTimeSheet);
+        jtablePopUp.add(menuItemViewRP);
+
+        menuItemViewID.setText("View ID");
+        menuItemViewID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemViewIDActionPerformed(evt);
+            }
+        });
+        jtablePopUp.add(menuItemViewID);
+
+        menuItemPrint.setText("Print");
+        menuItemPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemPrintActionPerformed(evt);
+            }
+        });
+        jtablePopUp.add(menuItemPrint);
+
+        menuItemDelete.setText("Delete");
+        menuItemDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemDeleteActionPerformed(evt);
+            }
+        });
+        jtablePopUp.add(menuItemDelete);
 
         setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         setClosable(true);
@@ -675,10 +723,6 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         jLabel8.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel8.setText("Passport Expiry");
 
-        txtPassportExpiry.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-
-        btnPassportExpiry.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/calendar-icon.png"))); // NOI18N
-
         jLabel12.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel12.setText("Id Number");
 
@@ -697,16 +741,8 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         jLabel11.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel11.setText("ID/Visa Expiry");
 
-        txtVisaExpiry.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-
-        btnVisaExpiry.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/calendar-icon.png"))); // NOI18N
-
         jLabel9.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel9.setText("Date Of Birth");
-
-        txtDOB.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-
-        btnDOB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/calendar-icon.png"))); // NOI18N
 
         jLabel17.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel17.setText("Basic Salary");
@@ -736,9 +772,48 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         jLabel15.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel15.setText("Date");
 
-        txtdate.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jLabel1.setText("Last 25 Entries");
 
-        btndate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/calendar-icon.png"))); // NOI18N
+        jTable1.setFont(new java.awt.Font("Verdana", 0, 9)); // NOI18N
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTable1KeyPressed(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        jDateChooserDate.setDateFormatString("yyyy-MM-dd");
+        jDateChooserDate.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jDateChooserDate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/calendar-icon.png")));
+
+        jDateChooserDOB.setDateFormatString("yyyy-MM-dd");
+        jDateChooserDOB.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jDateChooserDOB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/calendar-icon.png")));
+
+        jDateChooserPPExpiry.setDateFormatString("yyyy-MM-dd");
+        jDateChooserPPExpiry.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jDateChooserPPExpiry.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/calendar-icon.png")));
+
+        jDateChooserRPExpiry.setDateFormatString("yyyy-MM-dd");
+        jDateChooserRPExpiry.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jDateChooserRPExpiry.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/calendar-icon.png")));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -747,76 +822,68 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(Nationality)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel16)
-                    .addComponent(jLabel15))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cmbfirstParty, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbContracting, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cmbNationality, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtPassportExpiry, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                                    .addComponent(txtDOB))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(Nationality)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel13)
+                                    .addComponent(jLabel16)
+                                    .addComponent(jLabel15))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnPassportExpiry, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnDOB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel17))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtBasicSalary)
-                            .addComponent(cmbProfession, 0, 180, Short.MAX_VALUE)
-                            .addComponent(txtIdNumber))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtVisaExpiry, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnVisaExpiry, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cmbCurrentSite, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtPassportNumber)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtdate, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btndate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtEmpName)
-                    .addComponent(cmbSecondParty, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(cmbfirstParty, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel14)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cmbContracting, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cmbNationality, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jDateChooserDOB, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                                            .addComponent(jDateChooserPPExpiry, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel5)
+                                            .addComponent(jLabel12)
+                                            .addComponent(jLabel17))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtBasicSalary)
+                                            .addComponent(cmbProfession, 0, 180, Short.MAX_VALUE)
+                                            .addComponent(txtIdNumber))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel7)
+                                            .addComponent(jLabel11)
+                                            .addComponent(jLabel10))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(cmbCurrentSite, 0, 264, Short.MAX_VALUE)
+                                            .addComponent(txtPassportNumber)
+                                            .addComponent(jDateChooserRPExpiry, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)))
+                                    .addComponent(txtEmpName)
+                                    .addComponent(cmbSecondParty, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jDateChooserDate, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btndate, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDateChooserDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -831,41 +898,44 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
                             .addComponent(txtPassportNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtPassportExpiry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnPassportExpiry, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(txtIdNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jDateChooserPPExpiry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(txtBasicSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cmbCurrentSite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jDateChooserDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtIdNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(btnVisaExpiry, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addComponent(txtVisaExpiry, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtBasicSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cmbCurrentSite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbfirstParty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbContracting, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbSecondParty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 692, Short.MAX_VALUE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                                    .addComponent(cmbfirstParty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cmbContracting, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cmbSecondParty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jDateChooserRPExpiry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         pack();
@@ -901,11 +971,11 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
             ps.setString(2,cmbNationality.getSelectedItem().toString());
             ps.setString(3,cmbProfession.getSelectedItem().toString());
             ps.setString(4,txtPassportNumber.getText());
-            ps.setString(5,txtPassportExpiry.getText());
-            ps.setString(6,txtVisaExpiry.getText());
+            ps.setString(5,ppExpiry);
+            ps.setString(6,rpExpiry);
             ps.setString(7,txtIdNumber.getText());
-            ps.setString(8,txtdate.getText());
-            ps.setString(9,txtDOB.getText());
+            ps.setString(8,todaydate);
+            ps.setString(9,dob);
             ps.setString(10,cmbCurrentSite.getSelectedItem().toString());
             ps.setString(11,cmbfirstParty.getSelectedItem().toString());
             ps.setString(12,cmbSecondParty.getSelectedItem().toString());
@@ -921,6 +991,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
                 if(j!=0)
                 {
                     dispose();
+                    ViewLabourForm();
                 }
             }
             con.close();  
@@ -932,15 +1003,11 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
     }
     public void clearFields()
     {
-        txtdate.setText("1111-11-11");
         txtEmpName.setText("");
         cmbNationality.setSelectedItem("");
         cmbProfession.setSelectedItem("");
         txtPassportNumber.setText("");
         txtIdNumber.setText("");
-        txtPassportExpiry.setText("1111-11-11");
-        txtVisaExpiry.setText("1111-11-11");
-        txtDOB.setText("1111-11-11");
         cmbCurrentSite.setSelectedItem("");
         cmbfirstParty.setSelectedItem("");
         cmbSecondParty.setSelectedItem("");
@@ -958,11 +1025,11 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
             ps.setString(2, cmbNationality.getSelectedItem().toString());
             ps.setString(3, cmbProfession.getSelectedItem().toString());
             ps.setString(4, txtPassportNumber.getText());
-            ps.setString(5, txtPassportExpiry.getText());
-            ps.setString(6, txtVisaExpiry.getText());
+            ps.setString(5, ppExpiry);
+            ps.setString(6, rpExpiry);
             ps.setString(7, txtIdNumber.getText());
-            ps.setString(8, txtdate.getText());
-            ps.setString(9, txtDOB.getText());
+            ps.setString(8, todaydate);
+            ps.setString(9, dob);
             ps.setString(10, cmbCurrentSite.getSelectedItem().toString());
             ps.setString(11, cmbfirstParty.getSelectedItem().toString());
             ps.setString(12, cmbSecondParty.getSelectedItem().toString());
@@ -1013,21 +1080,19 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdNumberActionPerformed
 
-    private void jMenuItemViewDocumentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemViewDocumentsActionPerformed
+    private void menuItemViewPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemViewPPActionPerformed
         // TODO add your handling code here:
         PassportDocument PD = new PassportDocument(empId);
         AnarTrading.desktopPane.add(PD);
         PD.setVisible(true);
-        PD.show();
-    }//GEN-LAST:event_jMenuItemViewDocumentsActionPerformed
+    }//GEN-LAST:event_menuItemViewPPActionPerformed
 
-    private void jMenuItemTimeSheetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTimeSheetActionPerformed
+    private void menuItemViewRPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemViewRPActionPerformed
         // TODO add your handling code here:
-        TimeSheet TS = new TimeSheet(empId);
-        AnarTrading.desktopPane.add(TS);
-        TS.setVisible(true);
-        TS.show();
-    }//GEN-LAST:event_jMenuItemTimeSheetActionPerformed
+        RPDocument RD = new RPDocument(empId);
+        AnarTrading.desktopPane.add(RD);
+        RD.setVisible(true);
+    }//GEN-LAST:event_menuItemViewRPActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
@@ -1059,6 +1124,9 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
 
     private void btnViewRPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRPActionPerformed
         // TODO add your handling code here:
+        RPDocument RD = new RPDocument(empId);
+        AnarTrading.desktopPane.add(RD);
+        RD.setVisible(true);
     }//GEN-LAST:event_btnViewRPActionPerformed
 
     private void btnViewIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewIDActionPerformed
@@ -1067,7 +1135,37 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        int response=JOptionPane.showConfirmDialog(null,"Do you want to Delete ?","Confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+        deleteAction(); 
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int rowNo=jTable1.getSelectedRow();
+        if(rowNo==-1)
+        {
+
+        }
+        else
+        {
+            if(evt.getButton()==MouseEvent.BUTTON3)
+            {
+                jtablePopUp.show(evt.getComponent(), evt.getX(),evt.getY());
+            }
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
+        // TODO add your handling code here:
+        int keyCode = evt.getKeyCode();
+        if(keyCode == KeyEvent.VK_ENTER)
+        {
+            LabourDetails LD = new LabourDetails(empId);
+            AnarTrading.desktopPane.add(LD);
+            LD.setVisible(true);
+        }
+        if(keyCode == KeyEvent.VK_DELETE)
+        {
+            int response=JOptionPane.showConfirmDialog(null,"Do you want to Delete ?","Confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
             if(response==JOptionPane.NO_OPTION)
             {
 
@@ -1084,21 +1182,33 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
                 }
                 catch(Exception e)
                 {
-                    JOptionPane.showMessageDialog(rootPane, e, "ERROR!!", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(rootPane,e, "ERROR!!", JOptionPane.ERROR_MESSAGE);
                 }
             }
             else if(response==JOptionPane.CLOSED_OPTION)
             {
 
             }
-    }//GEN-LAST:event_btnDeleteActionPerformed
+        }
+    }//GEN-LAST:event_jTable1KeyPressed
+
+    private void menuItemViewIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemViewIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuItemViewIDActionPerformed
+
+    private void menuItemPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemPrintActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuItemPrintActionPerformed
+
+    private void menuItemDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDeleteActionPerformed
+        // TODO add your handling code here:
+        deleteAction();
+    }//GEN-LAST:event_menuItemDeleteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Nationality;
     private javax.swing.JButton btnCancel;
-    private net.sourceforge.jcalendarbutton.JCalendarButton btnDOB;
     private javax.swing.JButton btnDelete;
-    private net.sourceforge.jcalendarbutton.JCalendarButton btnPassportExpiry;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;
@@ -1106,14 +1216,17 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnViewID;
     private javax.swing.JButton btnViewPP;
     private javax.swing.JButton btnViewRP;
-    private net.sourceforge.jcalendarbutton.JCalendarButton btnVisaExpiry;
-    private net.sourceforge.jcalendarbutton.JCalendarButton btndate;
     private javax.swing.JComboBox cmbContracting;
     private javax.swing.JComboBox cmbCurrentSite;
     private javax.swing.JComboBox cmbNationality;
     private javax.swing.JComboBox cmbProfession;
     private javax.swing.JComboBox cmbSecondParty;
     private javax.swing.JComboBox cmbfirstParty;
+    private com.toedter.calendar.JDateChooser jDateChooserDOB;
+    private com.toedter.calendar.JDateChooser jDateChooserDate;
+    private com.toedter.calendar.JDateChooser jDateChooserPPExpiry;
+    private com.toedter.calendar.JDateChooser jDateChooserRPExpiry;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1127,24 +1240,25 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenuItem jMenuItemTimeSheet;
-    private javax.swing.JMenuItem jMenuItemViewDocuments;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JPopupMenu jtablePopUp;
+    private javax.swing.JMenuItem menuItemDelete;
+    private javax.swing.JMenuItem menuItemPrint;
+    private javax.swing.JMenuItem menuItemViewID;
+    private javax.swing.JMenuItem menuItemViewPP;
+    private javax.swing.JMenuItem menuItemViewRP;
     private javax.swing.JTextField txtBasicSalary;
-    private javax.swing.JTextField txtDOB;
     private javax.swing.JTextField txtEmpName;
     private javax.swing.JTextField txtIdNumber;
-    private javax.swing.JTextField txtPassportExpiry;
     private javax.swing.JTextField txtPassportNumber;
-    private javax.swing.JTextField txtVisaExpiry;
-    private javax.swing.JTextField txtdate;
     // End of variables declaration//GEN-END:variables
 
    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
    Point middle = new Point(0,0);
    public static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
    DateFormat defaultDate = new SimpleDateFormat("yyyy-MM-dd");
-   String dateString = "";
+   String dateString = "",todaydate,dob,ppExpiry,rpExpiry;
    public int empId;
 }
