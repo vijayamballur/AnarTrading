@@ -35,16 +35,13 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuFile">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
             <Property name="mnemonic" type="int" value="70"/>
             <Property name="text" type="java.lang.String" value="File"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
+              <Font name="Verdana" size="11" style="0"/>
             </Property>
           </Properties>
           <Events>
@@ -54,7 +51,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="menuItemExit">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Verdana" size="10" style="0"/>
+                  <Font name="Verdana" size="11" style="0"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="69"/>
                 <Property name="text" type="java.lang.String" value="Exit"/>
@@ -67,16 +64,13 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuCourse">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
             <Property name="mnemonic" type="int" value="85"/>
             <Property name="text" type="java.lang.String" value="Tune-Up"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
+              <Font name="Verdana" size="11" style="0"/>
             </Property>
           </Properties>
           <Events>
@@ -90,7 +84,7 @@
                   <KeyStroke key="Ctrl+Alt+E"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Verdana" size="10" style="0"/>
+                  <Font name="Verdana" size="11" style="0"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/images/Icons/menuIcons/company.png"/>
@@ -114,7 +108,7 @@
                   <KeyStroke key="Ctrl+Alt+C"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Verdana" size="10" style="0"/>
+                  <Font name="Verdana" size="11" style="0"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="67"/>
                 <Property name="text" type="java.lang.String" value="Contract Employee Entry"/>
@@ -132,7 +126,7 @@
                   <KeyStroke key="Ctrl+Alt+H"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Verdana" size="10" style="0"/>
+                  <Font name="Verdana" size="11" style="0"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="72"/>
                 <Property name="text" type="java.lang.String" value="Holiday Entry"/>
@@ -150,7 +144,7 @@
                   <KeyStroke key="Ctrl+Alt+A"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Verdana" size="10" style="0"/>
+                  <Font name="Verdana" size="11" style="0"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="65"/>
                 <Property name="text" type="java.lang.String" value="Advance Payment Entry"/>
@@ -165,7 +159,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="menuItemSiteWorkingHr">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Verdana" size="10" style="0"/>
+                  <Font name="Verdana" size="11" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Site Working Hr./Invoice Working Hr."/>
               </Properties>
@@ -181,7 +175,7 @@
                 <Property name="mnemonic" type="int" value="73"/>
                 <Property name="text" type="java.lang.String" value="Invoice"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Verdana" size="10" style="0"/>
+                  <Font name="Verdana" size="11" style="0"/>
                 </Property>
               </Properties>
               <SubComponents>
@@ -191,7 +185,7 @@
                       <KeyStroke key="Ctrl+Alt+S"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Verdana" size="10" style="0"/>
+                      <Font name="Verdana" size="11" style="0"/>
                     </Property>
                     <Property name="mnemonic" type="int" value="73"/>
                     <Property name="text" type="java.lang.String" value="Send"/>
@@ -209,7 +203,7 @@
                       <KeyStroke key="Ctrl+Alt+R"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Verdana" size="10" style="0"/>
+                      <Font name="Verdana" size="11" style="0"/>
                     </Property>
                     <Property name="mnemonic" type="int" value="82"/>
                     <Property name="text" type="java.lang.String" value="Received"/>
@@ -229,7 +223,7 @@
                   <KeyStroke key="Ctrl+Alt+P"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Verdana" size="10" style="0"/>
+                  <Font name="Verdana" size="11" style="0"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="69"/>
                 <Property name="text" type="java.lang.String" value="Cheque Printing"/>
@@ -248,23 +242,20 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuTransaction">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
             <Property name="mnemonic" type="int" value="84"/>
             <Property name="text" type="java.lang.String" value="Transaction"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
+              <Font name="Verdana" size="11" style="0"/>
             </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemReceiptVoucher">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Verdana" size="10" style="0"/>
+                  <Font name="Verdana" size="11" style="0"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="82"/>
                 <Property name="text" type="java.lang.String" value="Receipt Voucher"/>
@@ -282,7 +273,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="menuItemPaymentVoucher">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Verdana" size="10" style="0"/>
+                  <Font name="Verdana" size="11" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Payment Voucher"/>
               </Properties>
@@ -297,16 +288,13 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuHelp1">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
             <Property name="mnemonic" type="int" value="83"/>
             <Property name="text" type="java.lang.String" value="Search"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
+              <Font name="Verdana" size="11" style="0"/>
             </Property>
           </Properties>
           <Events>
@@ -322,7 +310,7 @@
                   <Color id="Hand Cursor"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Verdana" size="10" style="0"/>
+                  <Font name="Verdana" size="11" style="0"/>
                 </Property>
               </Properties>
               <Events>
@@ -333,7 +321,7 @@
                 <MenuItem class="javax.swing.JMenuItem" name="menuItemSearchEmployee">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Verdana" size="10" style="0"/>
+                      <Font name="Verdana" size="11" style="0"/>
                     </Property>
                     <Property name="mnemonic" type="int" value="69"/>
                     <Property name="text" type="java.lang.String" value="Employee"/>
@@ -348,7 +336,7 @@
                 <MenuItem class="javax.swing.JMenuItem" name="menuItemSearchConEmployee">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Verdana" size="10" style="0"/>
+                      <Font name="Verdana" size="11" style="0"/>
                     </Property>
                     <Property name="mnemonic" type="int" value="67"/>
                     <Property name="text" type="java.lang.String" value="Contract Employee"/>
@@ -366,22 +354,39 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuHelp">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
             <Property name="mnemonic" type="int" value="72"/>
             <Property name="text" type="java.lang.String" value="Help"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
+              <Font name="Verdana" size="11" style="0"/>
             </Property>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="menuHelpMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuHelpActionPerformed"/>
           </Events>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemCalender">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Alt+C"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Verdana" size="11" style="0"/>
+                </Property>
+                <Property name="mnemonic" type="int" value="67"/>
+                <Property name="text" type="java.lang.String" value="Calender"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemCalenderActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="menu">
           <Properties>
@@ -446,6 +451,11 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JDesktopPane" name="desktopPane">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="cc" red="cc" type="rgb"/>
+        </Property>
+      </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
       </AuxValues>

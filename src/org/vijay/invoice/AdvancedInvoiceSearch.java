@@ -7,6 +7,7 @@ import org.vijay.common.AnarTrading;
 import org.vijay.common.connection;
 import org.vijay.common.AutoCompleteDecorator;
 import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -37,6 +38,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
      */
     public AdvancedInvoiceSearch() {
         initComponents();
+        setSize(Toolkit.getDefaultToolkit().getScreenSize());
         setLocation(middle);
         cmbFromFill();
         cmbToFill();
@@ -1203,6 +1205,9 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         });
         jtablePopUp.add(menuItemDocument);
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Invoice Search");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Search Critiria", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gabriola", 0, 18))); // NOI18N
@@ -2067,7 +2072,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtInvoiceId;
     private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
-    Point middle = new Point(10,0);
+    Point middle = new Point(0,0);
     int invoiceId;
     String printValue,path;
 }

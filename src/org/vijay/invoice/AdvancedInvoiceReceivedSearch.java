@@ -1180,7 +1180,7 @@ public final class AdvancedInvoiceReceivedSearch extends javax.swing.JInternalFr
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Search Critiria", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gabriola", 0, 18))); // NOI18N
 
-        chkFrom.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        chkFrom.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         chkFrom.setText("From");
         chkFrom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1191,6 +1191,7 @@ public final class AdvancedInvoiceReceivedSearch extends javax.swing.JInternalFr
         cmbFrom.addItem("--select name--");
         cmbFrom.setSelectedItem("--select name--");
         cmbFrom.setEnabled(false);
+        cmbFrom.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         cmbFrom.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbFromItemStateChanged(evt);
@@ -1202,7 +1203,7 @@ public final class AdvancedInvoiceReceivedSearch extends javax.swing.JInternalFr
             }
         });
 
-        chkTo.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        chkTo.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         chkTo.setText("To");
         chkTo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1213,13 +1214,14 @@ public final class AdvancedInvoiceReceivedSearch extends javax.swing.JInternalFr
         cmbTo.addItem("--select name--");
         cmbTo.setSelectedItem("--select name--");
         cmbTo.setEnabled(false);
+        cmbTo.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         cmbTo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbToActionPerformed(evt);
             }
         });
 
-        chkMonth.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        chkMonth.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         chkMonth.setText("Month");
         chkMonth.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1227,7 +1229,7 @@ public final class AdvancedInvoiceReceivedSearch extends javax.swing.JInternalFr
             }
         });
 
-        chkYear.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        chkYear.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         chkYear.setText("Year");
         chkYear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1238,6 +1240,7 @@ public final class AdvancedInvoiceReceivedSearch extends javax.swing.JInternalFr
         cmbYear.addItem("--select year--");
         cmbYear.setSelectedItem("--select year--");
         cmbYear.setEnabled(false);
+        cmbYear.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         cmbYear.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", " " }));
         cmbYear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1248,6 +1251,7 @@ public final class AdvancedInvoiceReceivedSearch extends javax.swing.JInternalFr
         cmbMonth.addItem("--select month--");
         cmbMonth.setSelectedItem("--select month--");
         cmbMonth.setEnabled(false);
+        cmbMonth.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         cmbMonth.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "January", "February", "March", "april", "May", "June", "July", "August", "September", "October", "November", "December", "" }));
         cmbMonth.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1255,7 +1259,7 @@ public final class AdvancedInvoiceReceivedSearch extends javax.swing.JInternalFr
             }
         });
 
-        chkPayment.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        chkPayment.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         chkPayment.setText("Payment");
         chkPayment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1266,6 +1270,7 @@ public final class AdvancedInvoiceReceivedSearch extends javax.swing.JInternalFr
         cmbPayment.addItem("--select month & year--");
         cmbPayment.setSelectedItem("--select month & year--");
         cmbPayment.setEnabled(false);
+        cmbPayment.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         cmbPayment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbPaymentActionPerformed(evt);
@@ -1350,7 +1355,7 @@ public final class AdvancedInvoiceReceivedSearch extends javax.swing.JInternalFr
         });
 
         buttonGroup1.add(radioPaidView);
-        radioPaidView.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        radioPaidView.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         radioPaidView.setText("Paid View");
         radioPaidView.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1364,7 +1369,7 @@ public final class AdvancedInvoiceReceivedSearch extends javax.swing.JInternalFr
         });
 
         buttonGroup1.add(radioNotPaidView);
-        radioNotPaidView.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        radioNotPaidView.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         radioNotPaidView.setText("Not Paid View");
         radioNotPaidView.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1379,7 +1384,7 @@ public final class AdvancedInvoiceReceivedSearch extends javax.swing.JInternalFr
 
         radioAll.setSelected(true);
         buttonGroup1.add(radioAll);
-        radioAll.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        radioAll.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         radioAll.setText("All");
         radioAll.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1452,7 +1457,7 @@ public final class AdvancedInvoiceReceivedSearch extends javax.swing.JInternalFr
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 10, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(radioPaidView)

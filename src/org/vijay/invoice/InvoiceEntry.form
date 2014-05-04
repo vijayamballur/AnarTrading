@@ -25,6 +25,9 @@
     </Component>
   </NonVisualComponents>
   <Properties>
+    <Property name="closable" type="boolean" value="true"/>
+    <Property name="iconifiable" type="boolean" value="true"/>
+    <Property name="maximizable" type="boolean" value="true"/>
     <Property name="title" type="java.lang.String" value="Invoice Details"/>
   </Properties>
   <SyntheticProperties>
@@ -45,22 +48,91 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Component id="radioPaidView" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="radioNotPaidView" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="radioAll" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="1034" max="32767" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jPanel3" min="-2" pref="136" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblEmployeeName7" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblEmployeeName" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblEmployeeName2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblEmployeeName9" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="cmbFrom" max="32767" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="lblEmployeeName6" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="txtTerms" alignment="0" pref="108" max="32767" attributes="0"/>
+                                                  <Component id="txtInvoiceNumber" alignment="0" max="32767" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lblEmployeeName8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblEmployeeName5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="txtDate" min="-2" pref="86" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="btnDate" min="-2" pref="24" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="txtPaymentDate" max="32767" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lblEmployeeName10" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblEmployeeName3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="txtAmount" min="-2" pref="86" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="lblEmployeeName4" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="cmbMonth" min="-2" pref="124" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="cmbYear" pref="98" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="txtBalance" min="-2" pref="86" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="lblEmployeeName12" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                              <Component id="txtDeduction" min="-2" pref="124" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="cmbTo" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="lblEmployeeName11" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="radioPaid" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="radioNotPaid" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="0" pref="452" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="jScrollPane1" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                      <Component id="jToolBar1" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -70,573 +142,100 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblEmployeeName" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="cmbFrom" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblEmployeeName6" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="cmbTo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblEmployeeName2" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="txtInvoiceNumber" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblEmployeeName5" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="txtDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblEmployeeName3" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="txtAmount" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblEmployeeName4" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="cmbMonth" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbYear" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Component id="btnDate" min="-2" pref="24" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblEmployeeName7" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="txtTerms" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblEmployeeName8" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="txtPaymentDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblEmployeeName10" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="txtBalance" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblEmployeeName12" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="txtDeduction" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblEmployeeName9" min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="251" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="radioPaidView" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="radioNotPaidView" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="radioAll" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="386" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblEmployeeName11" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="radioPaid" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="radioNotPaid" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jToolBar1" min="-2" pref="25" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="389" max="-2" attributes="0"/>
+              <EmptySpace pref="36" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="jPanel1">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder/>
-          </Border>
-        </Property>
-      </Properties>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
 
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="lblEmployeeName" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lblEmployeeName3" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblEmployeeName7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblEmployeeName12" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblEmployeeName2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="lblSearch" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="txtTerms" max="32767" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="lblEmployeeName8" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtPaymentDate" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Component id="txtAmount" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="cmbFrom" alignment="0" pref="300" max="32767" attributes="0"/>
-                                      <Component id="txtInvoiceNumber" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtDeduction" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblEmployeeName4" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblEmployeeName5" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblEmployeeName6" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblEmployeeName10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblEmployeeName9" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtRemarks" max="32767" attributes="0"/>
-                                      <Component id="cmbTo" alignment="1" max="32767" attributes="0"/>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="txtDate" max="32767" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btnDate" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="cmbMonth" pref="206" max="32767" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="cmbYear" min="-2" pref="98" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="txtBalance" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lblEmployeeName11" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="radioPaid" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="radioNotPaid" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblEmployeeName" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                      <Component id="cmbFrom" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cmbTo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblEmployeeName6" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                  <Component id="lblEmployeeName5" min="-2" pref="23" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                                          <Component id="lblEmployeeName4" min="-2" pref="23" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="lblEmployeeName3" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtDate" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnDate" alignment="0" min="-2" pref="24" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="cmbMonth" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cmbYear" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtBalance" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblEmployeeName10" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtRemarks" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblEmployeeName9" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtInvoiceNumber" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblEmployeeName2" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtAmount" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtTerms" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblEmployeeName7" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtPaymentDate" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblEmployeeName8" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtDeduction" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblEmployeeName12" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="radioPaid" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="radioNotPaid" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="lblEmployeeName11" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="lblSearch" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="lblEmployeeName">
+        <Component class="javax.swing.JTable" name="jTable1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
+              <Font name="Verdana" size="9" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="From"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="cmbFrom">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
-            </Property>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+              <Table columnCount="4" rowCount="4">
+                <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                <Column editable="true" title="Title 4" type="java.lang.Object"/>
+              </Table>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbFromActionPerformed"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable1MouseClicked"/>
           </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="cmbFrom.setEditable(true);&#xa;AutoCompleteDecorator.decorate(cmbFrom);"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="cmbTo">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
-            </Property>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbToActionPerformed"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="cmbTo.setEditable(true);&#xa;AutoCompleteDecorator.decorate(cmbTo);"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblEmployeeName2">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Invoice#"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtInvoiceNumber">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtDate">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtDate.setText(&quot;1111-11-11&quot;);"/>
-          </AuxValues>
-        </Component>
-        <Component class="net.sourceforge.jcalendarbutton.JCalendarButton" name="btnDate">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Icons/calendar-icon.png"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblEmployeeName3">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Amount"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblEmployeeName4">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Month of"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblEmployeeName5">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Date"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtAmount">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtAmountFocusLost"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="cmbMonth">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
-            </Property>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="12">
-                <StringItem index="0" value="January"/>
-                <StringItem index="1" value="February"/>
-                <StringItem index="2" value="March"/>
-                <StringItem index="3" value="April"/>
-                <StringItem index="4" value="May"/>
-                <StringItem index="5" value="June"/>
-                <StringItem index="6" value="July"/>
-                <StringItem index="7" value="August"/>
-                <StringItem index="8" value="September"/>
-                <StringItem index="9" value="October"/>
-                <StringItem index="10" value="November"/>
-                <StringItem index="11" value="December"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbMonthActionPerformed"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="cmbMonth.setEditable(true);&#xa;AutoCompleteDecorator.decorate(cmbMonth);"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblEmployeeName6">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="To"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="cmbYear">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
-            </Property>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="11">
-                <StringItem index="0" value="2013"/>
-                <StringItem index="1" value="2014"/>
-                <StringItem index="2" value="2015"/>
-                <StringItem index="3" value="2016"/>
-                <StringItem index="4" value="2017"/>
-                <StringItem index="5" value="2018"/>
-                <StringItem index="6" value="2019"/>
-                <StringItem index="7" value="2020"/>
-                <StringItem index="8" value="2021"/>
-                <StringItem index="9" value="2022"/>
-                <StringItem index="10" value="2023"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbYearActionPerformed"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="cmbYear.setEditable(true);&#xa;AutoCompleteDecorator.decorate(cmbYear);"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblEmployeeName7">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Terms"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblEmployeeName8">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Payment Date"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtPaymentDate">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtPaymentDate.setEditable(false);"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblEmployeeName9">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Remark"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtRemarks">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtTerms">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtTermsFocusGained"/>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtTermsFocusLost"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtPaymentDate.setEnabled(false);"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblSearch">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="33" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Search&gt;&gt;"/>
-            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblSearchMouseClicked"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblEmployeeName10">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Balance"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtBalance">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtBalanceFocusGained"/>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtBalanceFocusLost"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtBalance.setText(&quot;0.0&quot;);"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="radioPaid">
-          <Properties>
-            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="buttonGroup1"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Paid"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="radioNotPaid">
-          <Properties>
-            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="buttonGroup1"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Not Paid"/>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="radioNotPaid.setSelected(true);"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblEmployeeName11">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Status"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblEmployeeName12">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Dedu."/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtDeduction">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtDeduction.setText(&quot;0.0&quot;);"/>
-          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel3">
+    <Container class="javax.swing.JToolBar" name="jToolBar1">
       <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Controls">
-              <Font PropertyName="font" name="Verdana" size="10" style="0"/>
-            </TitledBorder>
-          </Border>
-        </Property>
+        <Property name="floatable" type="boolean" value="false"/>
+        <Property name="rollover" type="boolean" value="true"/>
       </Properties>
 
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="btnDelete" alignment="1" max="32767" attributes="1"/>
-                      <Component id="btnUpdate" alignment="1" max="32767" attributes="0"/>
-                      <Component id="btnSave" alignment="1" max="32767" attributes="0"/>
-                      <Component id="btnCancel" alignment="1" max="32767" attributes="1"/>
-                      <Component id="btnRefresh" alignment="0" pref="104" max="32767" attributes="1"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="btnSave" min="-2" pref="36" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnUpdate" min="-2" pref="36" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnDelete" min="-2" pref="36" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnRefresh" min="-2" pref="36" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnCancel" min="-2" pref="36" max="-2" attributes="0"/>
-                  <EmptySpace pref="18" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
       <SubComponents>
         <Component class="javax.swing.JButton" name="btnSave">
           <Properties>
@@ -675,6 +274,23 @@
             <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="btnUpdate.setEnabled(false);"/>
           </AuxValues>
         </Component>
+        <Component class="javax.swing.JButton" name="View">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Verdana" size="10" style="0"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/Icons/view.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="View"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ViewActionPerformed"/>
+          </Events>
+        </Component>
         <Component class="javax.swing.JButton" name="btnDelete">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -695,23 +311,6 @@
             <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="btnDelete.setEnabled(false);"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="btnCancel">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
-            </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Icons/CANCEL.PNG"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Cancel"/>
-            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="btnRefresh">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -729,81 +328,330 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRefreshActionPerformed"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JButton" name="btnCancel">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Verdana" size="10" style="0"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/Icons/CANCEL.PNG"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Cancel"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+    <Component class="javax.swing.JLabel" name="lblEmployeeName">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="10" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="From"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmbFrom">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="10" style="0"/>
+        </Property>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbFromActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="cmbFrom.setEditable(true);&#xa;AutoCompleteDecorator.decorate(cmbFrom);"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblEmployeeName6">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="10" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="To"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmbTo">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="10" style="0"/>
+        </Property>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbToActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="cmbTo.setEditable(true);&#xa;AutoCompleteDecorator.decorate(cmbTo);"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblEmployeeName2">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="10" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Invoice#"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtInvoiceNumber">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="10" style="0"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblEmployeeName5">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="10" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Date"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtDate">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="10" style="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtDate.setText(&quot;1111-11-11&quot;);"/>
+      </AuxValues>
+    </Component>
+    <Component class="net.sourceforge.jcalendarbutton.JCalendarButton" name="btnDate">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/images/Icons/calendar-icon.png"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblEmployeeName3">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="10" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Amount"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtAmount">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="10" style="0"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtAmountFocusLost"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblEmployeeName4">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="10" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Month of"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmbMonth">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="10" style="0"/>
+        </Property>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="12">
+            <StringItem index="0" value="January"/>
+            <StringItem index="1" value="February"/>
+            <StringItem index="2" value="March"/>
+            <StringItem index="3" value="April"/>
+            <StringItem index="4" value="May"/>
+            <StringItem index="5" value="June"/>
+            <StringItem index="6" value="July"/>
+            <StringItem index="7" value="August"/>
+            <StringItem index="8" value="September"/>
+            <StringItem index="9" value="October"/>
+            <StringItem index="10" value="November"/>
+            <StringItem index="11" value="December"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbMonthActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="cmbMonth.setEditable(true);&#xa;AutoCompleteDecorator.decorate(cmbMonth);"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmbYear">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="10" style="0"/>
+        </Property>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="11">
+            <StringItem index="0" value="2013"/>
+            <StringItem index="1" value="2014"/>
+            <StringItem index="2" value="2015"/>
+            <StringItem index="3" value="2016"/>
+            <StringItem index="4" value="2017"/>
+            <StringItem index="5" value="2018"/>
+            <StringItem index="6" value="2019"/>
+            <StringItem index="7" value="2020"/>
+            <StringItem index="8" value="2021"/>
+            <StringItem index="9" value="2022"/>
+            <StringItem index="10" value="2023"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbYearActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="cmbYear.setEditable(true);&#xa;AutoCompleteDecorator.decorate(cmbYear);"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblEmployeeName7">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="10" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Terms"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtTerms">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="10" style="0"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtTermsFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtTermsFocusLost"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtPaymentDate.setEnabled(false);"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblEmployeeName8">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="10" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="P.Date"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtPaymentDate">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="10" style="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtPaymentDate.setEditable(false);"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblEmployeeName10">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="10" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Balance"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtBalance">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="10" style="0"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtBalanceFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtBalanceFocusLost"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtBalance.setText(&quot;0.0&quot;);"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblEmployeeName12">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="10" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Dedu."/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtDeduction">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="10" style="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtDeduction.setText(&quot;0.0&quot;);"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblEmployeeName9">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="10" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Remark"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTable1">
+        <Component class="javax.swing.JTextArea" name="txtRemarks">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="9" style="0"/>
-            </Property>
-            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="4" rowCount="4">
-                <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                <Column editable="true" title="Title 4" type="java.lang.Object"/>
-              </Table>
-            </Property>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable1MouseClicked"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JRadioButton" name="radioPaidView">
+    <Component class="javax.swing.JLabel" name="lblEmployeeName11">
       <Properties>
-        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-          <ComponentRef name="btnGroupView"/>
-        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Verdana" size="10" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Paid View"/>
+        <Property name="text" type="java.lang.String" value="Status"/>
       </Properties>
-      <Events>
-        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="radioPaidViewItemStateChanged"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioPaidViewActionPerformed"/>
-      </Events>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="radioNotPaidView">
+    <Component class="javax.swing.JRadioButton" name="radioPaid">
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-          <ComponentRef name="btnGroupView"/>
+          <ComponentRef name="buttonGroup1"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Verdana" size="10" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Not Paid View"/>
+        <Property name="text" type="java.lang.String" value="Paid"/>
       </Properties>
-      <Events>
-        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="radioNotPaidViewItemStateChanged"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioNotPaidViewActionPerformed"/>
-      </Events>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="radioAll">
+    <Component class="javax.swing.JRadioButton" name="radioNotPaid">
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-          <ComponentRef name="btnGroupView"/>
+          <ComponentRef name="buttonGroup1"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Verdana" size="10" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="All"/>
+        <Property name="text" type="java.lang.String" value="Not Paid"/>
       </Properties>
-      <Events>
-        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="radioAllItemStateChanged"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioAllActionPerformed"/>
-      </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="radioAll.setSelected(true);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="radioNotPaid.setSelected(true);"/>
       </AuxValues>
     </Component>
   </SubComponents>

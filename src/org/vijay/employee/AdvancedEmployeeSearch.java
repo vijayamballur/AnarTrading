@@ -674,7 +674,10 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
                     Connection con=c.conn();
                     Statement stmt1=con.createStatement();
                     int i=stmt1.executeUpdate("delete from tbl_labourdetails  where empId="+empId);
-                    dispose();
+                    if(i!=0)
+                    {
+                        JOptionPane.showMessageDialog(null, "Deleted", "SUCCESS!!", JOptionPane.INFORMATION_MESSAGE);
+                    }
                 }
                 catch(Exception e)
                 {
@@ -690,6 +693,9 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
 
     private void menuItemViewIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemViewIDActionPerformed
         // TODO add your handling code here:
+        ID id = new ID(empId);
+        AnarTrading.desktopPane.add(id);
+        id.setVisible(true);
     }//GEN-LAST:event_menuItemViewIDActionPerformed
 
     private void menuItemPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemPrintActionPerformed
