@@ -5,6 +5,7 @@ import org.vijay.common.connection;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.RenderingHints;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -40,6 +41,7 @@ public class InvoiceReceivedDocument extends javax.swing.JInternalFrame {
      public InvoiceReceivedDocument(int invoiceId) {
         this.receivedId=invoiceId;
         initComponents();
+        setSize(Toolkit.getDefaultToolkit().getScreenSize());
         setLocation(middle);
         viewDocuments();
         //viewEmployeeDetails();
@@ -106,26 +108,26 @@ public class InvoiceReceivedDocument extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         lblInvoice = new javax.swing.JLabel();
-        btnCancel = new javax.swing.JButton();
-        btnPassportPic = new javax.swing.JButton();
-        btnSave = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        jToolBar1 = new javax.swing.JToolBar();
+        btnPassportPic = new javax.swing.JButton();
         btnPassportUpdate = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
         setTitle("View Details");
 
         lblInvoice.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        btnCancel.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
-        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/CANCEL.PNG"))); // NOI18N
-        btnCancel.setText("Cancel");
-        btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelActionPerformed(evt);
-            }
-        });
+        jLabel6.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        jLabel6.setText("Invoice Received Document");
+
+        jToolBar1.setRollover(true);
 
         btnPassportPic.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
         btnPassportPic.setText("Browse");
@@ -134,6 +136,11 @@ public class InvoiceReceivedDocument extends javax.swing.JInternalFrame {
                 btnPassportPicActionPerformed(evt);
             }
         });
+        jToolBar1.add(btnPassportPic);
+
+        btnPassportUpdate.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnPassportUpdate.setText("Update");
+        jToolBar1.add(btnPassportUpdate);
 
         btnSave.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/MODIFY.PNG"))); // NOI18N
@@ -144,12 +151,21 @@ public class InvoiceReceivedDocument extends javax.swing.JInternalFrame {
                 btnSaveActionPerformed(evt);
             }
         });
+        jToolBar1.add(btnSave);
 
-        jLabel6.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
-        jLabel6.setText("Invoice Received Document");
+        btnCancel.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/CANCEL.PNG"))); // NOI18N
+        btnCancel.setText("Cancel");
+        btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnCancel);
 
-        btnPassportUpdate.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
-        btnPassportUpdate.setText("Update");
+        jCalendar1.setDecorationBackgroundColor(new java.awt.Color(255, 153, 0));
+        jCalendar1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -158,16 +174,16 @@ public class InvoiceReceivedDocument extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblInvoice, javax.swing.GroupLayout.PREFERRED_SIZE, 663, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel6)
+                        .addGap(0, 874, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jToolBar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblInvoice, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
-                            .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
-                            .addComponent(btnPassportPic, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
-                            .addComponent(btnPassportUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,15 +192,10 @@ public class InvoiceReceivedDocument extends javax.swing.JInternalFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnPassportPic, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPassportUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblInvoice, javax.swing.GroupLayout.PREFERRED_SIZE, 821, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblInvoice, javax.swing.GroupLayout.PREFERRED_SIZE, 821, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -256,7 +267,9 @@ public class InvoiceReceivedDocument extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnPassportPic;
     private javax.swing.JButton btnPassportUpdate;
     private javax.swing.JButton btnSave;
+    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblInvoice;
     // End of variables declaration//GEN-END:variables
     byte[] invoiceByte;
@@ -267,5 +280,5 @@ public class InvoiceReceivedDocument extends javax.swing.JInternalFrame {
     File fileInvoice;
     FileInputStream finInvoice;
     JFileChooser fc=new JFileChooser(new File("C:\\Users\\MAC\\Documents\\Scan"));
-    Point middle = new Point(100,0);
+    Point middle = new Point(0,0);
 }

@@ -16,7 +16,11 @@ import org.vijay.receipt.ReceiptVoucher;
 import org.vijay.employee.AdvancedEmployeeSearch;
 import org.vijay.employee.LabourDetails;
 import com.vijay.reports.SiteWorkingHr;
+import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.Statement;
 import javax.swing.Box;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import org.vijay.cheque.ChequePrinting;
 
@@ -68,7 +72,7 @@ public class AnarTrading extends javax.swing.JFrame {
         menuItemSearchConEmployee = new javax.swing.JMenuItem();
         menuHelp = new javax.swing.JMenu();
         menuItemCalender = new javax.swing.JMenuItem();
-        menu = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         jToolBar2.setRollover(true);
 
@@ -77,6 +81,11 @@ public class AnarTrading extends javax.swing.JFrame {
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
+            }
+        });
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
             }
         });
 
@@ -157,6 +166,7 @@ public class AnarTrading extends javax.swing.JFrame {
         menuItemContractEmployee.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         menuItemContractEmployee.setMnemonic('C');
         menuItemContractEmployee.setText("Contract Employee Entry");
+        menuItemContractEmployee.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuItemContractEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemContractEmployeeActionPerformed(evt);
@@ -168,6 +178,7 @@ public class AnarTrading extends javax.swing.JFrame {
         menuItemHoliday.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         menuItemHoliday.setMnemonic('H');
         menuItemHoliday.setText("Holiday Entry");
+        menuItemHoliday.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuItemHoliday.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemHolidayActionPerformed(evt);
@@ -179,6 +190,7 @@ public class AnarTrading extends javax.swing.JFrame {
         menuItemAdvancePayment.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         menuItemAdvancePayment.setMnemonic('A');
         menuItemAdvancePayment.setText("Advance Payment Entry");
+        menuItemAdvancePayment.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuItemAdvancePayment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemAdvancePaymentActionPerformed(evt);
@@ -188,6 +200,7 @@ public class AnarTrading extends javax.swing.JFrame {
 
         menuItemSiteWorkingHr.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         menuItemSiteWorkingHr.setText("Site Working Hr./Invoice Working Hr.");
+        menuItemSiteWorkingHr.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuItemSiteWorkingHr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemSiteWorkingHrActionPerformed(evt);
@@ -197,6 +210,7 @@ public class AnarTrading extends javax.swing.JFrame {
 
         jMenu1.setMnemonic('I');
         jMenu1.setText("Invoice");
+        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu1.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
 
         menuItemInvoice.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
@@ -255,6 +269,7 @@ public class AnarTrading extends javax.swing.JFrame {
 
         menuItemPaymentVoucher.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         menuItemPaymentVoucher.setText("Payment Voucher");
+        menuItemPaymentVoucher.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuItemPaymentVoucher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemPaymentVoucherActionPerformed(evt);
@@ -297,6 +312,7 @@ public class AnarTrading extends javax.swing.JFrame {
         menuItemSearchEmployee.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         menuItemSearchEmployee.setMnemonic('E');
         menuItemSearchEmployee.setText("Employee");
+        menuItemSearchEmployee.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuItemSearchEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemSearchEmployeeActionPerformed(evt);
@@ -307,6 +323,7 @@ public class AnarTrading extends javax.swing.JFrame {
         menuItemSearchConEmployee.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         menuItemSearchConEmployee.setMnemonic('C');
         menuItemSearchConEmployee.setText("Contract Employee");
+        menuItemSearchConEmployee.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuItemSearchConEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemSearchConEmployeeActionPerformed(evt);
@@ -337,6 +354,7 @@ public class AnarTrading extends javax.swing.JFrame {
         menuItemCalender.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         menuItemCalender.setMnemonic('C');
         menuItemCalender.setText("Calender");
+        menuItemCalender.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuItemCalender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemCalenderActionPerformed(evt);
@@ -346,19 +364,14 @@ public class AnarTrading extends javax.swing.JFrame {
 
         jMenuBar1.add(menuHelp);
 
-        menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/Exiticon1.png"))); // NOI18N
-        menu.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/Exiticon1.png"))); // NOI18N
-        menu.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/Exiticon1.png"))); // NOI18N
-        menu.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/Exiticon1.png"))); // NOI18N
-        menu.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/Exit.png"))); // NOI18N
+        jMenu2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuMouseClicked(evt);
+                jMenu2MouseClicked(evt);
             }
         });
-
-        jMenuBar1.add(Box.createHorizontalGlue());
-
-        jMenuBar1.add(menu);
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -410,11 +423,6 @@ public class AnarTrading extends javax.swing.JFrame {
         // TODO add your handling code here:
        
     }//GEN-LAST:event_formMouseClicked
-
-    private void menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuMouseClicked
-        // TODO add your handling code here:
-        dispose();
-    }//GEN-LAST:event_menuMouseClicked
 
     private void menuHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuHelpActionPerformed
         // TODO add your handling code here:
@@ -547,6 +555,33 @@ public class AnarTrading extends javax.swing.JFrame {
         Cr.setVisible(true);
     }//GEN-LAST:event_menuItemCalenderActionPerformed
 
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        // TODO add your handling code here:
+        int keyCode = evt.getKeyCode();
+        if(keyCode == KeyEvent.VK_ESCAPE)
+        {
+           int response=JOptionPane.showConfirmDialog(null,"Do you want Exit ?","Confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+            if(response==JOptionPane.NO_OPTION)
+            {
+
+            }
+            else if(response==JOptionPane.YES_OPTION)
+            {
+                dispose();
+            }
+            else if(response==JOptionPane.CLOSED_OPTION)
+            {
+
+            } 
+        }
+        
+    }//GEN-LAST:event_formKeyPressed
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jMenu2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -600,10 +635,10 @@ try {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JToolBar jToolBar2;
-    private javax.swing.JMenu menu;
     private javax.swing.JMenu menuCourse;
     private javax.swing.JMenu menuFile;
     private javax.swing.JMenu menuHelp;

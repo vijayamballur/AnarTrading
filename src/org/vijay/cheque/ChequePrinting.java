@@ -15,6 +15,8 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import static org.vijay.employee.LabourDetails.dateFormat;
 
 /**
@@ -28,15 +30,18 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
      */
     public ChequePrinting() {
         initComponents();
-        a.addPropertyChangeListener(new PropertyChangeListener() {
-
-            @Override
-            public void propertyChange(PropertyChangeEvent evt) {
-                if (evt.getPropertyName().equals("date")) {
-                    dateString = new SimpleDateFormat("yyyy-MM-dd").format(a.getDate());
-                }
-            }  
-        });
+        currentDate();
+       
+    }
+    public void currentDate()
+    {
+        Calendar cal=new GregorianCalendar();
+        int sec=cal.get(Calendar.SECOND);
+        int min=cal.get(Calendar.MINUTE);
+        int hour=cal.get(Calendar.HOUR);
+        String date=Integer.toString(hour)+":"+Integer.toString(min)+":"+Integer.toString(sec);
+        lblDate.setText(date);
+        
     }
 
     /**
@@ -48,11 +53,12 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        a = new com.toedter.calendar.JDateChooser();
         jButton2 = new javax.swing.JButton();
-        jYearChooser1 = new com.toedter.calendar.JYearChooser();
-
-        a.setDateFormatString("yyyy-MM-dd");
+        jMonthChooser = new com.toedter.calendar.JMonthChooser();
+        jYearChooser = new com.toedter.calendar.JYearChooser();
+        jLocaleChooser1 = new com.toedter.components.JLocaleChooser();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
+        lblDate = new javax.swing.JLabel();
 
         jButton2.setText("jButton2");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -61,32 +67,45 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
             }
         });
 
+        lblDate.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(a, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(233, Short.MAX_VALUE)
-                .addComponent(jYearChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(119, 119, 119))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDate)
+                    .addComponent(jLocaleChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jMonthChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jYearChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(216, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(a, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
-                .addComponent(jYearChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(231, 231, 231)
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jMonthChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jYearChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLocaleChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
                 .addComponent(jButton2)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addGap(44, 44, 44)
+                .addComponent(lblDate)
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         pack();
@@ -94,14 +113,18 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(rootPane, dateString);
+        JOptionPane.showMessageDialog(rootPane, jMonthChooser.getMonth());
+        JOptionPane.showMessageDialog(rootPane, jYearChooser.getYear());
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JDateChooser a;
     private javax.swing.JButton jButton2;
-    private com.toedter.calendar.JYearChooser jYearChooser1;
+    private com.toedter.calendar.JCalendar jCalendar1;
+    private com.toedter.components.JLocaleChooser jLocaleChooser1;
+    private com.toedter.calendar.JMonthChooser jMonthChooser;
+    private com.toedter.calendar.JYearChooser jYearChooser;
+    private javax.swing.JLabel lblDate;
     // End of variables declaration//GEN-END:variables
 public static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
    DateFormat defaultDate = new SimpleDateFormat("yyyy-MM-dd");

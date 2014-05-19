@@ -8,6 +8,7 @@ import org.vijay.common.connection;
 import org.vijay.common.AutoCompleteDecorator;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,6 +20,8 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import net.proteanit.sql.DbUtils;
+import org.vijay.common.NumberRenderer;
+import org.vijay.employee.LabourDetails;
 import org.vijay.report.ReportView;
 
 /*
@@ -54,6 +57,13 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         });
         CurrentWorkingDirectory CWD=new CurrentWorkingDirectory();
         path=CWD.getpath();
+    }
+    public void ViewAdvancedInvoiceSearchForm()
+    {
+        AdvancedInvoiceSearch  AIS=new AdvancedInvoiceSearch();
+        AnarTrading.desktopPane.add(AIS);
+        AIS.setVisible(true);
+        AIS.show();
     }
     public void queryGenerator()
     {
@@ -809,6 +819,11 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         
         
     }
+    public void JtableClearSelection()
+    {
+        int row=jTable1.getSelectedRow();
+        
+    }
     public void search(String query,String field1)
     {
         connection c=new connection();
@@ -820,16 +835,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
                 ResultSet rs=ps.executeQuery();
                 jTable1.setModel(DbUtils.resultSetToTableModel(rs));
                 con.close();
-                jTable1.getColumnModel().getColumn(0).setMaxWidth(35);
-                jTable1.getColumnModel().getColumn(1).setMaxWidth(35);
-                jTable1.getColumnModel().getColumn(5).setMaxWidth(70);
-                jTable1.getColumnModel().getColumn(7).setMaxWidth(60);
-                jTable1.getColumnModel().getColumn(8).setMaxWidth(35);
-                jTable1.getColumnModel().getColumn(9).setMaxWidth(30);
-                jTable1.getColumnModel().getColumn(10).setMaxWidth(70);
-                jTable1.setShowHorizontalLines( true );
-                jTable1.setRowSelectionAllowed( true );
-
+//                jTable1.getColumnModel().getColumn(0).setMaxWidth(35);
+//                jTable1.getColumnModel().getColumn(1).setMaxWidth(35);
+//                jTable1.getColumnModel().getColumn(5).setMaxWidth(70);
+//                jTable1.getColumnModel().getColumn(7).setMaxWidth(60);
+//                jTable1.getColumnModel().getColumn(8).setMaxWidth(35);
+//                jTable1.getColumnModel().getColumn(9).setMaxWidth(30);
+//                jTable1.getColumnModel().getColumn(10).setMaxWidth(70);
+//                jTable1.setShowHorizontalLines( true );
+//                jTable1.setRowSelectionAllowed( true );
+                jTable1.getColumnModel().getColumn(6).setCellRenderer(NumberRenderer.getIntegerRenderer());
+                jTable1.getColumnModel().getColumn(12).setCellRenderer(NumberRenderer.getIntegerRenderer());            
+                jTable1.getColumnModel().getColumn(5).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+                jTable1.getColumnModel().getColumn(10).setCellRenderer(NumberRenderer.getDateTimeRenderer());
             }
             catch(Exception e)
             {
@@ -848,15 +866,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
                 ResultSet rs=ps.executeQuery();
                 jTable1.setModel(DbUtils.resultSetToTableModel(rs));
                 con.close();
-                jTable1.getColumnModel().getColumn(0).setMaxWidth(35);
-                jTable1.getColumnModel().getColumn(1).setMaxWidth(35);
-                jTable1.getColumnModel().getColumn(5).setMaxWidth(70);
-                jTable1.getColumnModel().getColumn(7).setMaxWidth(60);
-                jTable1.getColumnModel().getColumn(8).setMaxWidth(35);
-                jTable1.getColumnModel().getColumn(9).setMaxWidth(30);
-                jTable1.getColumnModel().getColumn(10).setMaxWidth(70);
-                jTable1.setShowHorizontalLines( true );
-                jTable1.setRowSelectionAllowed( true );
+//                jTable1.getColumnModel().getColumn(0).setMaxWidth(35);
+//                jTable1.getColumnModel().getColumn(1).setMaxWidth(35);
+//                jTable1.getColumnModel().getColumn(5).setMaxWidth(70);
+//                jTable1.getColumnModel().getColumn(7).setMaxWidth(60);
+//                jTable1.getColumnModel().getColumn(8).setMaxWidth(35);
+//                jTable1.getColumnModel().getColumn(9).setMaxWidth(30);
+//                jTable1.getColumnModel().getColumn(10).setMaxWidth(70);
+//                jTable1.setShowHorizontalLines( true );
+//                jTable1.setRowSelectionAllowed( true );
+                jTable1.getColumnModel().getColumn(6).setCellRenderer(NumberRenderer.getIntegerRenderer());
+                jTable1.getColumnModel().getColumn(12).setCellRenderer(NumberRenderer.getIntegerRenderer());            
+                jTable1.getColumnModel().getColumn(5).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+                jTable1.getColumnModel().getColumn(10).setCellRenderer(NumberRenderer.getDateTimeRenderer());
 
             }
             catch(Exception e)
@@ -874,15 +896,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
                 ResultSet rs=ps.executeQuery();
                 jTable1.setModel(DbUtils.resultSetToTableModel(rs));
                 con.close();
-                jTable1.getColumnModel().getColumn(0).setMaxWidth(35);
-                jTable1.getColumnModel().getColumn(1).setMaxWidth(35);
-                jTable1.getColumnModel().getColumn(5).setMaxWidth(70);
-                jTable1.getColumnModel().getColumn(7).setMaxWidth(60);
-                jTable1.getColumnModel().getColumn(8).setMaxWidth(35);
-                jTable1.getColumnModel().getColumn(9).setMaxWidth(30);
-                jTable1.getColumnModel().getColumn(10).setMaxWidth(70);
-                jTable1.setShowHorizontalLines( true );
-                jTable1.setRowSelectionAllowed( true );
+//                jTable1.getColumnModel().getColumn(0).setMaxWidth(35);
+//                jTable1.getColumnModel().getColumn(1).setMaxWidth(35);
+//                jTable1.getColumnModel().getColumn(5).setMaxWidth(70);
+//                jTable1.getColumnModel().getColumn(7).setMaxWidth(60);
+//                jTable1.getColumnModel().getColumn(8).setMaxWidth(35);
+//                jTable1.getColumnModel().getColumn(9).setMaxWidth(30);
+//                jTable1.getColumnModel().getColumn(10).setMaxWidth(70);
+//                jTable1.setShowHorizontalLines( true );
+//                jTable1.setRowSelectionAllowed( true );
+                jTable1.getColumnModel().getColumn(6).setCellRenderer(NumberRenderer.getIntegerRenderer());
+                jTable1.getColumnModel().getColumn(12).setCellRenderer(NumberRenderer.getIntegerRenderer());            
+                jTable1.getColumnModel().getColumn(5).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+                jTable1.getColumnModel().getColumn(10).setCellRenderer(NumberRenderer.getDateTimeRenderer());
 
             }
             catch(Exception e)
@@ -903,15 +929,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
                 ResultSet rs=ps.executeQuery();
                 jTable1.setModel(DbUtils.resultSetToTableModel(rs));
                 con.close();
-                jTable1.getColumnModel().getColumn(0).setMaxWidth(35);
-                jTable1.getColumnModel().getColumn(1).setMaxWidth(35);
-                jTable1.getColumnModel().getColumn(5).setMaxWidth(70);
-                jTable1.getColumnModel().getColumn(7).setMaxWidth(60);
-                jTable1.getColumnModel().getColumn(8).setMaxWidth(35);
-                jTable1.getColumnModel().getColumn(9).setMaxWidth(30);
-                jTable1.getColumnModel().getColumn(10).setMaxWidth(70);
-                jTable1.setShowHorizontalLines( true );
-                jTable1.setRowSelectionAllowed( true );
+//                jTable1.getColumnModel().getColumn(0).setMaxWidth(35);
+//                jTable1.getColumnModel().getColumn(1).setMaxWidth(35);
+//                jTable1.getColumnModel().getColumn(5).setMaxWidth(70);
+//                jTable1.getColumnModel().getColumn(7).setMaxWidth(60);
+//                jTable1.getColumnModel().getColumn(8).setMaxWidth(35);
+//                jTable1.getColumnModel().getColumn(9).setMaxWidth(30);
+//                jTable1.getColumnModel().getColumn(10).setMaxWidth(70);
+//                jTable1.setShowHorizontalLines( true );
+//                jTable1.setRowSelectionAllowed( true );
+                jTable1.getColumnModel().getColumn(6).setCellRenderer(NumberRenderer.getIntegerRenderer());
+                jTable1.getColumnModel().getColumn(12).setCellRenderer(NumberRenderer.getIntegerRenderer());            
+                jTable1.getColumnModel().getColumn(5).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+                jTable1.getColumnModel().getColumn(10).setCellRenderer(NumberRenderer.getDateTimeRenderer());
 
             }
             catch(Exception e)
@@ -933,15 +963,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
                 ResultSet rs=ps.executeQuery();
                 jTable1.setModel(DbUtils.resultSetToTableModel(rs));
                 con.close();
-                jTable1.getColumnModel().getColumn(0).setMaxWidth(35);
-                jTable1.getColumnModel().getColumn(1).setMaxWidth(35);
-                jTable1.getColumnModel().getColumn(5).setMaxWidth(70);
-                jTable1.getColumnModel().getColumn(7).setMaxWidth(60);
-                jTable1.getColumnModel().getColumn(8).setMaxWidth(35);
-                jTable1.getColumnModel().getColumn(9).setMaxWidth(30);
-                jTable1.getColumnModel().getColumn(10).setMaxWidth(70);
-                jTable1.setShowHorizontalLines( true );
-                jTable1.setRowSelectionAllowed( true );
+//                jTable1.getColumnModel().getColumn(0).setMaxWidth(35);
+//                jTable1.getColumnModel().getColumn(1).setMaxWidth(35);
+//                jTable1.getColumnModel().getColumn(5).setMaxWidth(70);
+//                jTable1.getColumnModel().getColumn(7).setMaxWidth(60);
+//                jTable1.getColumnModel().getColumn(8).setMaxWidth(35);
+//                jTable1.getColumnModel().getColumn(9).setMaxWidth(30);
+//                jTable1.getColumnModel().getColumn(10).setMaxWidth(70);
+//                jTable1.setShowHorizontalLines( true );
+//                jTable1.setRowSelectionAllowed( true );
+                jTable1.getColumnModel().getColumn(6).setCellRenderer(NumberRenderer.getIntegerRenderer());
+                jTable1.getColumnModel().getColumn(12).setCellRenderer(NumberRenderer.getIntegerRenderer());            
+                jTable1.getColumnModel().getColumn(5).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+                jTable1.getColumnModel().getColumn(10).setCellRenderer(NumberRenderer.getDateTimeRenderer());
 
             }
             catch(Exception e)
@@ -964,15 +998,19 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
                 ResultSet rs=ps.executeQuery();
                 jTable1.setModel(DbUtils.resultSetToTableModel(rs));
                 con.close();
-                jTable1.getColumnModel().getColumn(0).setMaxWidth(35);
-                jTable1.getColumnModel().getColumn(1).setMaxWidth(35);
-                jTable1.getColumnModel().getColumn(5).setMaxWidth(70);
-                jTable1.getColumnModel().getColumn(7).setMaxWidth(60);
-                jTable1.getColumnModel().getColumn(8).setMaxWidth(35);
-                jTable1.getColumnModel().getColumn(9).setMaxWidth(30);
-                jTable1.getColumnModel().getColumn(10).setMaxWidth(70);
-                jTable1.setShowHorizontalLines( true );
-                jTable1.setRowSelectionAllowed( true );
+//                jTable1.getColumnModel().getColumn(0).setMaxWidth(35);
+//                jTable1.getColumnModel().getColumn(1).setMaxWidth(35);
+//                jTable1.getColumnModel().getColumn(5).setMaxWidth(70);
+//                jTable1.getColumnModel().getColumn(7).setMaxWidth(60);
+//                jTable1.getColumnModel().getColumn(8).setMaxWidth(35);
+//                jTable1.getColumnModel().getColumn(9).setMaxWidth(30);
+//                jTable1.getColumnModel().getColumn(10).setMaxWidth(70);
+//                jTable1.setShowHorizontalLines( true );
+//                jTable1.setRowSelectionAllowed( true );
+                jTable1.getColumnModel().getColumn(6).setCellRenderer(NumberRenderer.getIntegerRenderer());
+                jTable1.getColumnModel().getColumn(12).setCellRenderer(NumberRenderer.getIntegerRenderer());            
+                jTable1.getColumnModel().getColumn(5).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+                jTable1.getColumnModel().getColumn(10).setCellRenderer(NumberRenderer.getDateTimeRenderer());
 
             }
             catch(Exception e)
@@ -1166,6 +1204,8 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
 
         jtablePopUp = new javax.swing.JPopupMenu();
         menuItemDocument = new javax.swing.JMenuItem();
+        menuItemEdit = new javax.swing.JMenuItem();
+        menuItemDelete = new javax.swing.JMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         chkFrom = new javax.swing.JCheckBox();
@@ -1178,17 +1218,18 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         cmbMonth = new javax.swing.JComboBox();
         chkPayment = new javax.swing.JCheckBox();
         cmbPayment = new javax.swing.JComboBox();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        jToolBar1 = new javax.swing.JToolBar();
+        jLabel3 = new javax.swing.JLabel();
+        txtInvoiceId = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         radioPaidView = new javax.swing.JRadioButton();
         radioNotPaidView = new javax.swing.JRadioButton();
         radioAll = new javax.swing.JRadioButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
         txtTotal = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txtInvoiceId = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuItemComplete = new javax.swing.JMenuItem();
@@ -1196,7 +1237,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         menuItemMonthCompany = new javax.swing.JMenuItem();
         menuItemMonthInvoice = new javax.swing.JMenuItem();
 
-        menuItemDocument.setText("Add Document");
+        menuItemDocument.setText("View Document");
         menuItemDocument.setToolTipText("");
         menuItemDocument.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1205,12 +1246,28 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         });
         jtablePopUp.add(menuItemDocument);
 
+        menuItemEdit.setText("Edit");
+        menuItemEdit.setToolTipText("");
+        menuItemEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemEditActionPerformed(evt);
+            }
+        });
+        jtablePopUp.add(menuItemEdit);
+
+        menuItemDelete.setText("Delete");
+        menuItemDelete.setToolTipText("");
+        menuItemDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemDeleteActionPerformed(evt);
+            }
+        });
+        jtablePopUp.add(menuItemDelete);
+
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setTitle("Invoice Search");
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Search Critiria", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gabriola", 0, 18))); // NOI18N
 
         chkFrom.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         chkFrom.setText("From");
@@ -1309,6 +1366,77 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             }
         });
 
+        jToolBar1.setFloatable(false);
+        jToolBar1.setRollover(true);
+
+        jLabel3.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jLabel3.setText("Invoice Id");
+        jToolBar1.add(jLabel3);
+        jToolBar1.add(txtInvoiceId);
+
+        jButton1.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/SEARCH.PNG"))); // NOI18N
+        jButton1.setText("Search");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton1);
+
+        buttonGroup1.add(radioPaidView);
+        radioPaidView.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        radioPaidView.setText("Paid View");
+        radioPaidView.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        radioPaidView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/view.png"))); // NOI18N
+        radioPaidView.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                radioPaidViewItemStateChanged(evt);
+            }
+        });
+        radioPaidView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioPaidViewActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(radioPaidView);
+
+        buttonGroup1.add(radioNotPaidView);
+        radioNotPaidView.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        radioNotPaidView.setText("Not Paid View");
+        radioNotPaidView.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        radioNotPaidView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/view.png"))); // NOI18N
+        radioNotPaidView.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                radioNotPaidViewItemStateChanged(evt);
+            }
+        });
+        radioNotPaidView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioNotPaidViewActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(radioNotPaidView);
+
+        radioAll.setSelected(true);
+        buttonGroup1.add(radioAll);
+        radioAll.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        radioAll.setText("All");
+        radioAll.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        radioAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/view.png"))); // NOI18N
+        radioAll.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                radioAllItemStateChanged(evt);
+            }
+        });
+        radioAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioAllActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(radioAll);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -1316,47 +1444,52 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chkFrom)
-                    .addComponent(chkMonth))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(cmbMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(chkYear)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbYear, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(cmbFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chkPayment)
-                    .addComponent(chkTo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chkFrom)
+                            .addComponent(chkMonth))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(cmbMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(chkYear)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmbYear, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmbFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chkPayment)
+                            .addComponent(chkTo)))
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cmbTo, 0, 411, Short.MAX_VALUE)
+                    .addComponent(cmbTo, 0, 412, Short.MAX_VALUE)
                     .addComponent(cmbPayment, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addContainerGap(107, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbFrom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chkFrom)
                     .addComponent(chkTo)
-                    .addComponent(cmbTo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chkMonth)
                     .addComponent(chkYear)
-                    .addComponent(cmbYear, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chkPayment)
-                    .addComponent(cmbPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 20, Short.MAX_VALUE))
+                    .addComponent(cmbPayment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
-        jTable1.setEnabled(false);
         jTable1.setFont(new java.awt.Font("Verdana", 0, 9)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1369,10 +1502,23 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
+            }
+        });
+        jTable1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTable1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTable1FocusLost(evt);
+            }
+        });
+        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTable1KeyPressed(evt);
             }
         });
         jScrollPane1.setViewportView(jTable1);
@@ -1387,49 +1533,6 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             }
         });
 
-        buttonGroup1.add(radioPaidView);
-        radioPaidView.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        radioPaidView.setText("Paid View");
-        radioPaidView.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                radioPaidViewItemStateChanged(evt);
-            }
-        });
-        radioPaidView.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioPaidViewActionPerformed(evt);
-            }
-        });
-
-        buttonGroup1.add(radioNotPaidView);
-        radioNotPaidView.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        radioNotPaidView.setText("Not Paid View");
-        radioNotPaidView.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                radioNotPaidViewItemStateChanged(evt);
-            }
-        });
-        radioNotPaidView.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioNotPaidViewActionPerformed(evt);
-            }
-        });
-
-        radioAll.setSelected(true);
-        buttonGroup1.add(radioAll);
-        radioAll.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        radioAll.setText("All");
-        radioAll.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                radioAllItemStateChanged(evt);
-            }
-        });
-        radioAll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioAllActionPerformed(evt);
-            }
-        });
-
         txtTotal.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
@@ -1441,18 +1544,6 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
                 jLabel2MouseClicked(evt);
             }
         });
-
-        jButton1.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/SEARCH.PNG"))); // NOI18N
-        jButton1.setText("Search");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        jLabel3.setText("Invoice Id");
 
         jMenu1.setText("Graphical Reports");
         jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1502,19 +1593,6 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(radioPaidView)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(radioNotPaidView)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(radioAll)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtInvoiceId, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
                 .addContainerGap())
@@ -1524,15 +1602,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(radioPaidView)
-                    .addComponent(radioNotPaidView)
-                    .addComponent(radioAll)
-                    .addComponent(txtInvoiceId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 621, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -2038,6 +2108,66 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         ID.show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void menuItemEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemEditActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuItemEditActionPerformed
+
+    private void menuItemDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDeleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuItemDeleteActionPerformed
+
+    private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
+        // TODO add your handling code here:
+         int keyCode = evt.getKeyCode();
+        if(keyCode == KeyEvent.VK_ENTER)
+        {
+            InvoiceEntry  IE=new InvoiceEntry(invoiceId);
+            AnarTrading.desktopPane.add(IE);
+            IE.setVisible(true);
+            IE.show();
+        }
+        if(keyCode == KeyEvent.VK_DELETE)
+        {
+            int response=JOptionPane.showConfirmDialog(null,"Do you want to Delete ?","Confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+            if(response==JOptionPane.NO_OPTION)
+            {
+
+            }
+            else if(response==JOptionPane.YES_OPTION)
+            {
+                try
+                {
+                    connection c=new connection();
+                    Connection con=c.conn();
+                    Statement stmt1=con.createStatement();
+                    int i=stmt1.executeUpdate("delete from tbl_invoiceDetails  where invoiceId="+invoiceId);
+                    if(i!=0)
+                    {
+                        dispose();
+                        ViewAdvancedInvoiceSearchForm();
+                    }
+                }
+                catch(Exception e)
+                {
+                    JOptionPane.showMessageDialog(rootPane,e, "ERROR!!", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            else if(response==JOptionPane.CLOSED_OPTION)
+            {
+
+            }
+        }
+    }//GEN-LAST:event_jTable1KeyPressed
+
+    private void jTable1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1FocusGained
+        // TODO add your handling code here:
+        queryGenerator();
+    }//GEN-LAST:event_jTable1FocusGained
+
+    private void jTable1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1FocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable1FocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -2061,9 +2191,12 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JPopupMenu jtablePopUp;
     private javax.swing.JMenuItem menuItemComplete;
+    private javax.swing.JMenuItem menuItemDelete;
     private javax.swing.JMenuItem menuItemDocument;
+    private javax.swing.JMenuItem menuItemEdit;
     private javax.swing.JMenuItem menuItemMonthCompany;
     private javax.swing.JMenuItem menuItemMonthInvoice;
     private javax.swing.JRadioButton radioAll;

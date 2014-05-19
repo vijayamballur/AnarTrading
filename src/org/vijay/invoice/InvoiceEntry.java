@@ -7,12 +7,15 @@ import org.vijay.common.AutoCompleteDecorator;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -22,6 +25,9 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import net.proteanit.sql.DbUtils;
+import org.vijay.common.NumberRenderer;
+import org.vijay.employee.LabourDetails;
+import static org.vijay.employee.LabourDetails.dateFormat;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -42,26 +48,46 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
         initComponents();
         setSize(Toolkit.getDefaultToolkit().getScreenSize());
         setLocation(middle);
+        btnUpdate.setEnabled(false);
         cmbFromFill();
         cmbToFill();
-        viewDbEmployeeDetails();
-        btnDate.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        viewDbInvoiceDetails();
+        jDateChooserDate.addPropertyChangeListener(new PropertyChangeListener() {
 
-                @Override
-                public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                    if (evt.getNewValue() instanceof Date) {
-                        invoiceDate((Date) evt.getNewValue());
-                        try 
-                        {
-                            addDaysToDate(txtDate.getText(),Integer.parseInt(txtTerms.getText()));
-                        } 
-                        catch (Exception ex) 
-                        {
-                            Logger.getLogger(InvoiceEntry.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    }
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                if (evt.getPropertyName().equals("date")) {
+                    invoiceDate = new SimpleDateFormat("yyyy-MM-dd").format(jDateChooserDate.getDate());
                 }
-            });
+            }  
+        });
+        jtableSelection();
+    }
+        public InvoiceEntry(int invoiceId) {
+        this.invoiceId=invoiceId;
+        initComponents();
+        btnUpdate.setEnabled(true);
+        btnSave.setEnabled(false);
+        setSize(Toolkit.getDefaultToolkit().getScreenSize());
+        setLocation(middle);
+        cmbFromFill();
+        cmbToFill();
+        viewDbInvoiceDetails();
+        jDateChooserDate.addPropertyChangeListener(new PropertyChangeListener() {
+
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                if (evt.getPropertyName().equals("date")) {
+                    invoiceDate = new SimpleDateFormat("yyyy-MM-dd").format(jDateChooserDate.getDate());
+                }
+            }  
+        });
+        jtableSelection();
+        getDetailsUsingInvoiceId();
+        
+    }
+    public void jtableSelection()
+    {
         jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 
             @Override
@@ -75,7 +101,14 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
             cmbFrom.setSelectedItem(jTable1.getValueAt(rowNo,2).toString());
             cmbTo.setSelectedItem(jTable1.getValueAt(rowNo,3).toString());
             txtInvoiceNumber.setText(jTable1.getValueAt(rowNo,4).toString());
-            txtDate.setText(jTable1.getValueAt(rowNo,5).toString());
+            try 
+            {
+                    jDateChooserDate.setDate(defaultDate.parse(jTable1.getValueAt(rowNo,5).toString()));
+            } 
+            catch (ParseException ex) 
+            {
+                    Logger.getLogger(LabourDetails.class.getName()).log(Level.SEVERE, null, ex);
+            } 
             txtAmount.setText(jTable1.getValueAt(rowNo,6).toString());
             cmbMonth.setSelectedItem(jTable1.getValueAt(rowNo,7).toString());
             cmbYear.setSelectedItem(jTable1.getValueAt(rowNo,8).toString());
@@ -91,26 +124,43 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
             }
         });
     }
-    public void invoiceDate(String dateString)
-    {
-		Date date = null;
-		try
-                {
-                    if ((dateString != null) && (dateString.length() > 0))
-                        date = dateFormat.parse(dateString);
-		}
-                catch (Exception e)
-                {
-                    date = null;
-		}
-                this.invoiceDate(date);
-    }
-     public void invoiceDate(Date date)
+    public void getDetailsUsingInvoiceId()
      {
-        if (date != null)
-        dateString = dateFormat.format(date);
-        txtDate.setText(dateString);
-        btnDate.setTargetDate(date);
+         try {
+            connection c = new connection();
+            Connection con = c.conn();
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT fromAdd,toAdd,invoiceNumber,invoiceDate,amount,InvoiceMonth,invoiceYear,terms,paymentDate,remark,balance,status,deduction FROM tbl_invoicedetails where invoiceId="+invoiceId);
+            while (rs.next()) {
+                cmbFrom.setSelectedItem(rs.getString("fromAdd"));
+                cmbTo.setSelectedItem(rs.getString("toAdd"));
+                txtInvoiceNumber.setText(rs.getString("invoiceNumber"));
+                try 
+                {
+                    jDateChooserDate.setDate(dateFormat.parse(rs.getString("invoiceDate")));
+                } 
+                catch (ParseException ex) 
+                {
+                    Logger.getLogger(LabourDetails.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                txtAmount.setText(rs.getString("amount"));
+                cmbMonth.setSelectedItem(rs.getString("InvoiceMonth"));
+                cmbYear.setSelectedItem(rs.getString("invoiceYear"));
+                txtTerms.setText(rs.getString("terms"));
+                txtPaymentDate.setText(rs.getString("paymentDate"));
+                txtRemarks.setText(rs.getString("remark"));
+                txtBalance.setText(rs.getString("balance"));
+                status=rs.getInt("status");
+                if(status==0)
+                radioNotPaid.setSelected(true);
+                else
+                radioPaid.setSelected(true);
+                txtDeduction.setText(rs.getString("deduction"));
+            }
+            con.close();
+        } catch (SQLException ex) {
+            
+        }
      }
      private void addDaysToDate(String date, int daysToAdd) throws Exception 
      {
@@ -147,7 +197,7 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
             ps.setString(1, cmbFrom.getSelectedItem().toString());
             ps.setString(2, cmbTo.getSelectedItem().toString());
             ps.setString(3, txtInvoiceNumber.getText());
-            ps.setString(4, txtDate.getText());
+            ps.setString(4, invoiceDate);
             ps.setString(5, txtAmount.getText());
             ps.setString(6, cmbMonth.getSelectedItem().toString());
             ps.setString(7, cmbYear.getSelectedItem().toString());
@@ -170,9 +220,9 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane,e+"Error SA001");
         }
     }
-    public void viewDbEmployeeDetails()
+    public void viewDbInvoiceDetails()
     {
-        query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',status,deduction '"+"DEDUCTION"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc";
+        query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',status,deduction '"+"DEDUCTION"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc limit 40";
         connection c=new connection();
         Connection con=c.conn();
         try
@@ -181,21 +231,18 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
             ResultSet rs=stmt.executeQuery(query);
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             con.close();
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(30);
-            jTable1.getColumnModel().getColumn(5).setMaxWidth(70);
-            jTable1.getColumnModel().getColumn(7).setMaxWidth(60);
-            jTable1.getColumnModel().getColumn(8).setMaxWidth(35);
-            jTable1.getColumnModel().getColumn(9).setMaxWidth(30);
-            jTable1.getColumnModel().getColumn(10).setMaxWidth(70);
             
             jTable1.getColumnModel().getColumn(1).setMinWidth(0);
             jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
 
             jTable1.getColumnModel().getColumn(13).setMinWidth(0);
             jTable1.getColumnModel().getColumn(13).setMaxWidth(0);
-            jTable1.setShowHorizontalLines( true );
-            jTable1.setRowSelectionAllowed( true );
-
+            jTable1.getColumnModel().getColumn(6).setCellRenderer(NumberRenderer.getIntegerRenderer());
+            jTable1.getColumnModel().getColumn(12).setCellRenderer(NumberRenderer.getIntegerRenderer());
+            jTable1.getColumnModel().getColumn(14).setCellRenderer(NumberRenderer.getIntegerRenderer());
+            
+            jTable1.getColumnModel().getColumn(5).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+            jTable1.getColumnModel().getColumn(10).setCellRenderer(NumberRenderer.getDateTimeRenderer());
         }
         catch(Exception e)
         {
@@ -220,7 +267,7 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
             ps.setString(1,cmbFrom.getSelectedItem().toString());
             ps.setString(2,cmbTo.getSelectedItem().toString());
             ps.setString(3,txtInvoiceNumber.getText());
-            ps.setString(4,txtDate.getText());
+            ps.setString(4,invoiceDate);
             ps.setString(5,txtAmount.getText());
             ps.setString(6,cmbMonth.getSelectedItem().toString());
             ps.setString(7,cmbYear.getSelectedItem().toString());
@@ -294,8 +341,8 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
         jToolBar1 = new javax.swing.JToolBar();
         btnSave = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
-        View = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
+        View = new javax.swing.JButton();
         btnRefresh = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         lblEmployeeName = new javax.swing.JLabel();
@@ -305,8 +352,6 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
         lblEmployeeName2 = new javax.swing.JLabel();
         txtInvoiceNumber = new javax.swing.JTextField();
         lblEmployeeName5 = new javax.swing.JLabel();
-        txtDate = new javax.swing.JTextField();
-        btnDate = new net.sourceforge.jcalendarbutton.JCalendarButton();
         lblEmployeeName3 = new javax.swing.JLabel();
         txtAmount = new javax.swing.JTextField();
         lblEmployeeName4 = new javax.swing.JLabel();
@@ -326,6 +371,9 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
         lblEmployeeName11 = new javax.swing.JLabel();
         radioPaid = new javax.swing.JRadioButton();
         radioNotPaid = new javax.swing.JRadioButton();
+        lblEmployeeName13 = new javax.swing.JLabel();
+        jDateChooserDate = new com.toedter.calendar.JDateChooser();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
 
         menuItemDocument.setText("Add Document");
         menuItemDocument.setToolTipText("");
@@ -386,17 +434,6 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnUpdate);
 
-        View.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        View.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/view.png"))); // NOI18N
-        View.setText("View");
-        View.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        View.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ViewActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(View);
-
         btnDelete.setEnabled(false);
         btnDelete.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/DELETE.PNG"))); // NOI18N
@@ -408,6 +445,17 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
             }
         });
         jToolBar1.add(btnDelete);
+
+        View.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        View.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/view.png"))); // NOI18N
+        View.setText("View");
+        View.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        View.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(View);
 
         btnRefresh.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/clear.png"))); // NOI18N
@@ -462,11 +510,6 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
 
         lblEmployeeName5.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         lblEmployeeName5.setText("Date");
-
-        txtDate.setText("1111-11-11");
-        txtDate.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-
-        btnDate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/calendar-icon.png"))); // NOI18N
 
         lblEmployeeName3.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         lblEmployeeName3.setText("Amount");
@@ -560,6 +603,19 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
         radioNotPaid.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         radioNotPaid.setText("Not Paid");
 
+        lblEmployeeName13.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        lblEmployeeName13.setText("Last 40 Entries");
+
+        jDateChooserDate.setDateFormatString("yyy-MM-dd");
+        jDateChooserDate.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jDateChooserDateFocusLost(evt);
+            }
+        });
+
+        jCalendar1.setDecorationBackgroundColor(new java.awt.Color(255, 153, 0));
+        jCalendar1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -567,8 +623,10 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblEmployeeName13)
                             .addComponent(lblEmployeeName7)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -593,11 +651,8 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
                                                     .addComponent(lblEmployeeName5))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(btnDate, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addComponent(txtPaymentDate))
+                                                    .addComponent(txtPaymentDate, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                                                    .addComponent(jDateChooserDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(lblEmployeeName10)
@@ -625,19 +680,17 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
                                         .addComponent(radioPaid)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(radioNotPaid))
-                                    .addComponent(jScrollPane2))))
-                        .addGap(0, 452, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(jScrollPane2)))
+                            .addComponent(jToolBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 691, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                        .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblEmployeeName, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -649,39 +702,40 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblEmployeeName2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtInvoiceNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblEmployeeName5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lblEmployeeName5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblEmployeeName3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lblEmployeeName4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(cmbMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cmbYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(btnDate, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cmbYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jDateChooserDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblEmployeeName7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTerms, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblEmployeeName8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPaymentDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblEmployeeName10, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtBalance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblEmployeeName12, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDeduction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblEmployeeName9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblEmployeeName11, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(radioPaid)
+                            .addComponent(radioNotPaid))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblEmployeeName13, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEmployeeName7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTerms, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEmployeeName8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPaymentDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEmployeeName10, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtBalance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEmployeeName12, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDeduction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEmployeeName9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEmployeeName11, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(radioPaid)
-                    .addComponent(radioNotPaid))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE))
         );
 
         pack();
@@ -695,10 +749,6 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
     private void cmbToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbToActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbToActionPerformed
-
-    private void cmbMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMonthActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbMonthActionPerformed
 
     private void cmbYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbYearActionPerformed
         // TODO add your handling code here:
@@ -760,7 +810,7 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
 
     private void txtTermsFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTermsFocusLost
         try {
-            addDaysToDate(txtDate.getText(),Integer.parseInt(txtTerms.getText()));
+            addDaysToDate(invoiceDate,Integer.parseInt(txtTerms.getText()));
         } catch (Exception ex) {
             Logger.getLogger(InvoiceEntry.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -815,11 +865,19 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
         AIS.show();
     }//GEN-LAST:event_ViewActionPerformed
 
+    private void jDateChooserDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jDateChooserDateFocusLost
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jDateChooserDateFocusLost
+
+    private void cmbMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMonthActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbMonthActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton View;
     private javax.swing.JButton btnCancel;
-    private net.sourceforge.jcalendarbutton.JCalendarButton btnDate;
     private javax.swing.JButton btnDelete;
     private javax.swing.ButtonGroup btnGroupView;
     private javax.swing.JButton btnRefresh;
@@ -830,6 +888,8 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox cmbMonth;
     private javax.swing.JComboBox cmbTo;
     private javax.swing.JComboBox cmbYear;
+    private com.toedter.calendar.JCalendar jCalendar1;
+    private com.toedter.calendar.JDateChooser jDateChooserDate;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
@@ -839,6 +899,7 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblEmployeeName10;
     private javax.swing.JLabel lblEmployeeName11;
     private javax.swing.JLabel lblEmployeeName12;
+    private javax.swing.JLabel lblEmployeeName13;
     private javax.swing.JLabel lblEmployeeName2;
     private javax.swing.JLabel lblEmployeeName3;
     private javax.swing.JLabel lblEmployeeName4;
@@ -852,7 +913,6 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton radioPaid;
     private javax.swing.JTextField txtAmount;
     private javax.swing.JTextField txtBalance;
-    private javax.swing.JTextField txtDate;
     private javax.swing.JTextField txtDeduction;
     private javax.swing.JTextField txtInvoiceNumber;
     private javax.swing.JTextField txtPaymentDate;
@@ -862,6 +922,6 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
    Point middle = new Point(0,0);
    public static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
    DateFormat defaultDate = new SimpleDateFormat("yyyy-MM-dd");
-   String dateString = "",query;
+   String dateString = "",query,invoiceDate;
    int invoiceId,status,i;
 }
