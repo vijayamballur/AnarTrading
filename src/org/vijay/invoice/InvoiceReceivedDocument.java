@@ -108,13 +108,12 @@ public class InvoiceReceivedDocument extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         lblInvoice = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         btnPassportPic = new javax.swing.JButton();
         btnPassportUpdate = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
+        jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -124,12 +123,11 @@ public class InvoiceReceivedDocument extends javax.swing.JInternalFrame {
 
         lblInvoice.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel6.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
-        jLabel6.setText("Invoice Received Document");
-
+        jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
         btnPassportPic.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnPassportPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/SEARCH.PNG"))); // NOI18N
         btnPassportPic.setText("Browse");
         btnPassportPic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,11 +137,12 @@ public class InvoiceReceivedDocument extends javax.swing.JInternalFrame {
         jToolBar1.add(btnPassportPic);
 
         btnPassportUpdate.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
+        btnPassportUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/MODIFY.PNG"))); // NOI18N
         btnPassportUpdate.setText("Update");
         jToolBar1.add(btnPassportUpdate);
 
         btnSave.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/MODIFY.PNG"))); // NOI18N
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/SAVE.PNG"))); // NOI18N
         btnSave.setText("Save");
         btnSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -164,8 +163,8 @@ public class InvoiceReceivedDocument extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnCancel);
 
-        jCalendar1.setDecorationBackgroundColor(new java.awt.Color(255, 153, 0));
-        jCalendar1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel1.setText("jLabel1");
+        jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -175,28 +174,21 @@ public class InvoiceReceivedDocument extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(0, 874, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jToolBar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblInvoice, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE))
+                        .addComponent(lblInvoice, javax.swing.GroupLayout.PREFERRED_SIZE, 663, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 629, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 663, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblInvoice, javax.swing.GroupLayout.PREFERRED_SIZE, 821, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblInvoice, javax.swing.GroupLayout.PREFERRED_SIZE, 829, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         pack();
@@ -267,18 +259,17 @@ public class InvoiceReceivedDocument extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnPassportPic;
     private javax.swing.JButton btnPassportUpdate;
     private javax.swing.JButton btnSave;
-    private com.toedter.calendar.JCalendar jCalendar1;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblInvoice;
     // End of variables declaration//GEN-END:variables
-    byte[] invoiceByte;
+    byte[] invoiceByte,chequeByte;
     BufferedImage bfImage,resizedImage;
     ImageIcon imageIcon;
-    int receivedId,lenInvoice;
-    String pathInvoice;
-    File fileInvoice;
-    FileInputStream finInvoice;
+    int receivedId,lenInvoice,lenCheque;
+    String pathInvoice,pathCheque;
+    File fileInvoice,fileCheque;
+    FileInputStream finInvoice,finCheque;
     JFileChooser fc=new JFileChooser(new File("C:\\Users\\MAC\\Documents\\Scan"));
     Point middle = new Point(0,0);
 }

@@ -7,6 +7,7 @@
 package org.vijay.common;
 import java.text.Format;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.swing.table.DefaultTableCellRenderer;
 
 /*
@@ -15,6 +16,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 public class FormatRenderer extends DefaultTableCellRenderer
 {
 	private Format formatter;
+        DateFormat defaultDate = new SimpleDateFormat("dd-MMM-yyyy");
 
 	/*
 	 *   Use the specified formatter to format the Object
@@ -31,7 +33,7 @@ public class FormatRenderer extends DefaultTableCellRenderer
 		try
 		{
 			if (value != null)
-				value = formatter.format(value);
+				value = defaultDate.format(value);
 		}
 		catch(IllegalArgumentException e) {}
 

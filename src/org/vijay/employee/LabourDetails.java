@@ -27,6 +27,7 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import net.proteanit.sql.DbUtils;
+import org.vijay.common.NumberRenderer;
 
 /*
  * To change this template, choose Tools | Templates
@@ -129,6 +130,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
     }
     public LabourDetails(int empId1) {
         initComponents();
+        setSize(Toolkit.getDefaultToolkit().getScreenSize());
         this.empId=empId1;
         cmbProfessionFill();
         cmbNationalityFill();
@@ -401,6 +403,10 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
             jTable1.getColumnModel().getColumn(1).setMinWidth(0);
             jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
             jTable1.getColumnModel().getColumn(1).setWidth(0);
+            jTable1.getColumnModel().getColumn(6).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+            jTable1.getColumnModel().getColumn(7).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+            jTable1.getColumnModel().getColumn(9).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+            jTable1.getColumnModel().getColumn(10).setCellRenderer(NumberRenderer.getDateTimeRenderer());
             jTable1.setShowHorizontalLines( true );
             jTable1.setRowSelectionAllowed( true );
 
@@ -546,9 +552,9 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         setClosable(true);
         setIconifiable(true);
-        setMaximizable(true);
         setTitle("Employee Details");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/Library.png"))); // NOI18N
+        setOpaque(true);
 
         jLabel3.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel3.setText("Employee Name");
@@ -642,6 +648,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setOpaque(false);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);

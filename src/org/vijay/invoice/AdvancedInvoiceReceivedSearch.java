@@ -8,6 +8,7 @@ import org.vijay.common.connection;
 import org.vijay.common.AutoCompleteDecorator;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -1347,6 +1348,11 @@ public final class AdvancedInvoiceReceivedSearch extends javax.swing.JInternalFr
                 jTable1MouseClicked(evt);
             }
         });
+        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTable1KeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
@@ -1609,7 +1615,7 @@ public final class AdvancedInvoiceReceivedSearch extends javax.swing.JInternalFr
 
     private void menuItemDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDocumentActionPerformed
          // TODO add your handling code here:
-        InvoiceDocument ID = new InvoiceDocument(invoiceId);
+        InvoiceReceivedDocument ID = new InvoiceReceivedDocument(invoiceId);
         AnarTrading.desktopPane.add(ID);
         ID.setVisible(true);
         ID.show();
@@ -1761,6 +1767,22 @@ public final class AdvancedInvoiceReceivedSearch extends javax.swing.JInternalFr
         ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Invoice\\Graphical\\Comparison(month-Invoice).jasper"));
         re.setVisible(true);
     }//GEN-LAST:event_menuItemMonthInvoiceActionPerformed
+
+    private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
+        // TODO add your handling code here:
+        int keyCode = evt.getKeyCode();
+        if(keyCode == KeyEvent.VK_ENTER)
+        {
+            InvoiceReceived  IR=new InvoiceReceived(invoiceId);
+            AnarTrading.desktopPane.add(IR);
+            IR.setVisible(true);
+            IR.show();
+        }
+        if(keyCode == KeyEvent.VK_DELETE)
+        {
+            
+        }
+    }//GEN-LAST:event_jTable1KeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

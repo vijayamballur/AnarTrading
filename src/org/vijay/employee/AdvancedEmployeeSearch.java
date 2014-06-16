@@ -5,6 +5,7 @@ import org.vijay.common.AnarTrading;
 import org.vijay.common.connection;
 import org.vijay.common.AutoCompleteDecorator;
 import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
@@ -16,6 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import net.proteanit.sql.DbUtils;
+import org.vijay.common.NumberRenderer;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -35,6 +37,7 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
     public AdvancedEmployeeSearch() {
         initComponents();
         setLocation(middle);
+        setSize(Toolkit.getDefaultToolkit().getScreenSize());
         cmbParentFill();
         cmbChildFill();
         cmbContractFill();
@@ -157,6 +160,10 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
                 jTable1.getColumnModel().getColumn(1).setMinWidth(0);
                 jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
                 jTable1.getColumnModel().getColumn(1).setWidth(0);
+                jTable1.getColumnModel().getColumn(6).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+                jTable1.getColumnModel().getColumn(7).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+                jTable1.getColumnModel().getColumn(9).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+                jTable1.getColumnModel().getColumn(10).setCellRenderer(NumberRenderer.getDateTimeRenderer());
                 jTable1.setShowHorizontalLines( true );
                 jTable1.setRowSelectionAllowed( true );
 
@@ -181,6 +188,10 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
                 jTable1.getColumnModel().getColumn(1).setMinWidth(0);
                 jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
                 jTable1.getColumnModel().getColumn(1).setWidth(0);
+                jTable1.getColumnModel().getColumn(6).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+                jTable1.getColumnModel().getColumn(7).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+                jTable1.getColumnModel().getColumn(9).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+                jTable1.getColumnModel().getColumn(10).setCellRenderer(NumberRenderer.getDateTimeRenderer());
                 jTable1.setShowHorizontalLines( true );
                 jTable1.setRowSelectionAllowed( true );
 
@@ -203,6 +214,10 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
                 jTable1.getColumnModel().getColumn(1).setMinWidth(0);
                 jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
                 jTable1.getColumnModel().getColumn(1).setWidth(0);
+                jTable1.getColumnModel().getColumn(6).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+                jTable1.getColumnModel().getColumn(7).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+                jTable1.getColumnModel().getColumn(9).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+                jTable1.getColumnModel().getColumn(10).setCellRenderer(NumberRenderer.getDateTimeRenderer());
                 jTable1.setShowHorizontalLines( true );
                 jTable1.setRowSelectionAllowed( true );
 
@@ -228,6 +243,10 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
                 jTable1.getColumnModel().getColumn(1).setMinWidth(0);
                 jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
                 jTable1.getColumnModel().getColumn(1).setWidth(0);
+                jTable1.getColumnModel().getColumn(6).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+                jTable1.getColumnModel().getColumn(7).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+                jTable1.getColumnModel().getColumn(9).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+                jTable1.getColumnModel().getColumn(10).setCellRenderer(NumberRenderer.getDateTimeRenderer());
                 jTable1.setShowHorizontalLines( true );
                 jTable1.setRowSelectionAllowed( true );
 
@@ -254,6 +273,10 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
                 jTable1.getColumnModel().getColumn(1).setMinWidth(0);
                 jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
                 jTable1.getColumnModel().getColumn(1).setWidth(0);
+                jTable1.getColumnModel().getColumn(6).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+                jTable1.getColumnModel().getColumn(7).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+                jTable1.getColumnModel().getColumn(9).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+                jTable1.getColumnModel().getColumn(10).setCellRenderer(NumberRenderer.getDateTimeRenderer());
                 jTable1.setShowHorizontalLines( true );
                 jTable1.setRowSelectionAllowed( true );
 
@@ -391,7 +414,6 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setMaximizable(true);
         setTitle("Employee Search");
         addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -558,7 +580,8 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 849, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();

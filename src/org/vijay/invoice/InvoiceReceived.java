@@ -28,6 +28,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import net.proteanit.sql.DbUtils;
 import org.vijay.employee.LabourDetails;
+import static org.vijay.invoice.InvoiceEntry.dateFormat;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -61,6 +62,26 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
             }  
         });
         jtableSelection();
+    }
+    public InvoiceReceived(int invoiceId) {
+        this.receivedId=invoiceId;
+        initComponents();
+        setSize(Toolkit.getDefaultToolkit().getScreenSize());
+        setLocation(middle);
+        cmbFromFill();
+        cmbToFill();
+        viewDbEmployeeDetails();
+        jDateChooserDate.addPropertyChangeListener(new PropertyChangeListener() {
+
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                if (evt.getPropertyName().equals("date")) {
+                    invoiceDate = new SimpleDateFormat("yyyy-MM-dd").format(jDateChooserDate.getDate());
+                }
+            }  
+        });
+        jtableSelection();
+        getDetailsUsingInvoiceId();
     }
     public void jtableSelection()
     {
@@ -102,6 +123,45 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
             }
         });
     }
+    public void getDetailsUsingInvoiceId()
+     {
+         try {
+            connection c = new connection();
+            Connection con = c.conn();
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT fromAdd, toAdd, invoiceNumber, invoiceDate, amount, invoiceMonth, invoiceYear, terms, paymentDate, remark, balance, deduction, STATUS FROM tbl_invoicereceived where receivedId="+receivedId);
+            while (rs.next()) {
+                cmbFrom.setSelectedItem(rs.getString("fromAdd"));
+                cmbTo.setSelectedItem(rs.getString("toAdd"));
+                txtInvoiceNumber.setText(rs.getString("invoiceNumber"));
+                try 
+                {
+                    jDateChooserDate.setDate(dateFormat.parse(rs.getString("invoiceDate")));
+                } 
+                catch (ParseException ex) 
+                {
+                    Logger.getLogger(LabourDetails.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                txtAmount.setText(rs.getString("amount"));
+                cmbMonth.setSelectedItem(rs.getString("InvoiceMonth"));
+                cmbYear.setSelectedItem(rs.getString("invoiceYear"));
+                txtTerms.setText(rs.getString("terms"));
+                txtPaymentDate.setText(rs.getString("paymentDate"));
+                txtRemarks.setText(rs.getString("remark"));
+                txtBalance.setText(rs.getString("balance"));
+                txtDeduction.setText(rs.getString("deduction"));
+                status=rs.getInt("status");
+                if(status==0)
+                radioNotPaid.setSelected(true);
+                else
+                radioPaid.setSelected(true);
+                
+            }
+            con.close();
+        } catch (SQLException ex) {
+            
+        }
+     }
      private void addDaysToDate(String date, int daysToAdd) throws Exception 
      {
          Date parsedDate = dateFormat.parse(date);

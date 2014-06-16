@@ -29,36 +29,27 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="874" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jToolBar1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="lblInvoice" alignment="0" pref="663" max="32767" attributes="0"/>
-                      </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lblInvoice" min="-2" pref="663" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jCalendar1" max="32767" attributes="0"/>
+                      <Component id="jLabel1" min="-2" pref="629" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="jToolBar1" alignment="0" min="-2" pref="663" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="39" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblInvoice" min="-2" pref="821" max="-2" attributes="0"/>
-                  <Component id="jCalendar1" min="-2" pref="243" max="-2" attributes="0"/>
+                  <Component id="lblInvoice" min="-2" pref="829" max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" pref="243" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jToolBar1" min="-2" pref="25" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="64" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -73,16 +64,9 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Gabriola" size="18" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Invoice Received Document"/>
-      </Properties>
-    </Component>
     <Container class="javax.swing.JToolBar" name="jToolBar1">
       <Properties>
+        <Property name="floatable" type="boolean" value="false"/>
         <Property name="rollover" type="boolean" value="true"/>
       </Properties>
 
@@ -92,6 +76,9 @@
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Gabriola" size="18" style="0"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/Icons/SEARCH.PNG"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Browse"/>
           </Properties>
@@ -104,6 +91,9 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Gabriola" size="18" style="0"/>
             </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/Icons/MODIFY.PNG"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Update"/>
           </Properties>
         </Component>
@@ -113,7 +103,7 @@
               <Font name="Gabriola" size="18" style="0"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Icons/MODIFY.PNG"/>
+              <Image iconType="3" name="/images/Icons/SAVE.PNG"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Save"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -143,13 +133,13 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="com.toedter.calendar.JCalendar" name="jCalendar1">
+    <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="decorationBackgroundColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="99" red="ff" type="rgb"/>
-        </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="12" style="0"/>
+        <Property name="text" type="java.lang.String" value="jLabel1"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
+          </Border>
         </Property>
       </Properties>
     </Component>

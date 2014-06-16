@@ -16,6 +16,8 @@ import org.vijay.receipt.ReceiptVoucher;
 import org.vijay.employee.AdvancedEmployeeSearch;
 import org.vijay.employee.LabourDetails;
 import com.vijay.reports.SiteWorkingHr;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.Statement;
@@ -46,9 +48,10 @@ public class AnarTrading extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jToolBar2 = new javax.swing.JToolBar();
         desktopPane = new javax.swing.JDesktopPane();
         jSeparator6 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuWindow = new javax.swing.JMenu();
         menuFile = new javax.swing.JMenu();
@@ -74,8 +77,6 @@ public class AnarTrading extends javax.swing.JFrame {
         menuItemCalender = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
-        jToolBar2.setRollover(true);
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -89,9 +90,17 @@ public class AnarTrading extends javax.swing.JFrame {
             }
         });
 
-        desktopPane.setBackground(new java.awt.Color(204, 204, 204));
+        desktopPane.setBackground(new java.awt.Color(149, 169, 182));
         desktopPane.add(jSeparator6);
         jSeparator6.setBounds(160, 280, 0, 2);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/2.png"))); // NOI18N
+        desktopPane.add(jLabel1);
+        jLabel1.setBounds(0, -70, 1300, 390);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/water.png"))); // NOI18N
+        desktopPane.add(jLabel2);
+        jLabel2.setBounds(0, 355, 1330, 660);
 
         jMenuBar1.setBackground(new java.awt.Color(102, 102, 102));
         jMenuBar1.setMargin(new java.awt.Insets(0, 0, 0, 50));
@@ -151,7 +160,6 @@ public class AnarTrading extends javax.swing.JFrame {
 
         menuItemLabourDetails.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         menuItemLabourDetails.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        menuItemLabourDetails.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/menuIcons/company.png"))); // NOI18N
         menuItemLabourDetails.setMnemonic('E');
         menuItemLabourDetails.setText("Employee Entry");
         menuItemLabourDetails.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -379,11 +387,13 @@ public class AnarTrading extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1111, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1009, Short.MAX_VALUE)
         );
 
         pack();
@@ -634,11 +644,12 @@ try {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JToolBar jToolBar2;
     private javax.swing.JMenu menuCourse;
     private javax.swing.JMenu menuFile;
     private javax.swing.JMenu menuHelp;
@@ -662,4 +673,5 @@ try {
     private javax.swing.JMenu menuWindow;
     // End of variables declaration//GEN-END:variables
     public static int jtableValueCount;
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 }
