@@ -33,7 +33,7 @@ public class FormatRenderer extends DefaultTableCellRenderer
 		try
 		{
 			if (value != null)
-				value = defaultDate.format(value);
+				value = formatter.format(value);
 		}
 		catch(IllegalArgumentException e) {}
 

@@ -27,6 +27,7 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import net.proteanit.sql.DbUtils;
+import org.vijay.common.NumberRenderer;
 import org.vijay.employee.LabourDetails;
 import static org.vijay.invoice.InvoiceEntry.dateFormat;
 
@@ -71,6 +72,8 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
         cmbFromFill();
         cmbToFill();
         viewDbEmployeeDetails();
+        btnUpdate.setEnabled(true);
+        btnSave.setEnabled(false);
         jDateChooserDate.addPropertyChangeListener(new PropertyChangeListener() {
 
             @Override
@@ -233,6 +236,11 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
             jTable1.getColumnModel().getColumn(1).setMinWidth(0);
             jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
             jTable1.getColumnModel().getColumn(1).setWidth(0);
+            jTable1.getColumnModel().getColumn(5).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+            jTable1.getColumnModel().getColumn(6).setCellRenderer(NumberRenderer.getIntegerRenderer());
+            jTable1.getColumnModel().getColumn(10).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+            jTable1.getColumnModel().getColumn(11).setCellRenderer(NumberRenderer.getIntegerRenderer());
+            jTable1.getColumnModel().getColumn(12).setCellRenderer(NumberRenderer.getIntegerRenderer());
 
         }
         catch(Exception e)
