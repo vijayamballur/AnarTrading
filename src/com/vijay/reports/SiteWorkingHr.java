@@ -39,7 +39,7 @@ public class SiteWorkingHr extends javax.swing.JInternalFrame {
     public void ViewForm()
     {
         SiteWorkingHr SWH=new SiteWorkingHr();
-        AnarTrading.desktopPane.add(SWH);
+        AnarTrading.desktopPane1.add(SWH);
         SWH.setVisible(true); 
     }
     public void cmbEmployeeNameFill() {

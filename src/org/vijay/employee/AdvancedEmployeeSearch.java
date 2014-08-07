@@ -64,83 +64,83 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
         
         if(chkParent.isSelected()==false && chkChild.isSelected()==false && chkContract.isSelected()==false && chkCurrentSite.isSelected()==false)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp order by empName";
+            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' order by empName";
             search(query);
         }
         if(chkParent.isSelected()==false && chkChild.isSelected()==false && chkContract.isSelected()==false && chkCurrentSite.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where currentSite=? order by empName";
+            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and currentSite=? order by empName";
             search(query,site);
         }
         if(chkParent.isSelected()==false && chkChild.isSelected()==false && chkContract.isSelected()==true && chkCurrentSite.isSelected()==false)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where contractingCompany=? order by empName";
+            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and contractingCompany=? order by empName";
             search(query,contract);
         }
         if(chkParent.isSelected()==false && chkChild.isSelected()==false && chkContract.isSelected()==true && chkCurrentSite.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where contractingCompany=? and currentSite=? order by empName";
+            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and contractingCompany=? and currentSite=? order by empName";
             search(query,contract,site);
         }
         if(chkParent.isSelected()==false && chkChild.isSelected()==true && chkContract.isSelected()==false && chkCurrentSite.isSelected()==false)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where secondParty=? order by empName";
+            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and secondParty=? order by empName";
             search(query,child);
         }
         if(chkParent.isSelected()==false && chkChild.isSelected()==true && chkContract.isSelected()==false && chkCurrentSite.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where secondParty=? and currentSite=? order by empName";
+            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and secondParty=? and currentSite=? order by empName";
             search(query,child,site);
         }
         if(chkParent.isSelected()==false && chkChild.isSelected()==true && chkContract.isSelected()==true && chkCurrentSite.isSelected()==false)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where secondParty=? and contractingCompany=? order by empName";
+            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and secondParty=? and contractingCompany=? order by empName";
             search(query,child,contract);
         }
         if(chkParent.isSelected()==false && chkChild.isSelected()==true && chkContract.isSelected()==true && chkCurrentSite.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where secondParty=? and contractingCompany=? and currentSite=? order by empName";
+            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and secondParty=? and contractingCompany=? and currentSite=? order by empName";
             search(query,child,contract,site);
         }
         
         if(chkParent.isSelected()==true && chkChild.isSelected()==false && chkContract.isSelected()==false && chkCurrentSite.isSelected()==false)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where firstParty=? order by empName";
+            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and firstParty=? order by empName";
             search(query,parent);
         }
         if(chkParent.isSelected()==true && chkChild.isSelected()==false && chkContract.isSelected()==false && chkCurrentSite.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where firstParty=? and currentSite=? order by empName";
+            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and firstParty=? and currentSite=? order by empName";
             search(query,parent,site);
         }
         if(chkParent.isSelected()==true && chkChild.isSelected()==false && chkContract.isSelected()==true && chkCurrentSite.isSelected()==false)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where firstParty=? and contractingCompany=? order by empName";
+            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and firstParty=? and contractingCompany=? order by empName";
             search(query,parent,contract);
         }
         if(chkParent.isSelected()==true && chkChild.isSelected()==false && chkContract.isSelected()==true && chkCurrentSite.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where firstParty=? and contractingCompany=? and currentSite=? order by empName";
+            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and firstParty=? and contractingCompany=? and currentSite=? order by empName";
             search(query,parent,contract,site);
         }
         if(chkParent.isSelected()==true && chkChild.isSelected()==true && chkContract.isSelected()==false && chkCurrentSite.isSelected()==false)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where firstParty=? and secondParty=? order by empName";
+            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and firstParty=? and secondParty=? order by empName";
             search(query,parent,child);
         }
         if(chkParent.isSelected()==true && chkChild.isSelected()==true && chkContract.isSelected()==false && chkCurrentSite.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where firstParty=? and secondParty=? and currentSite=? order by empName";
+            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and firstParty=? and secondParty=? and currentSite=? order by empName";
             search(query,parent,child,site);
         }
         if(chkParent.isSelected()==true && chkChild.isSelected()==true && chkContract.isSelected()==true && chkCurrentSite.isSelected()==false)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where firstParty=? and secondParty=? and contractingCompany=? order by empName";
+            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and firstParty=? and secondParty=? and contractingCompany=? order by empName";
             search(query,parent,child,contract);
         }
         if(chkParent.isSelected()==true && chkChild.isSelected()==true && chkContract.isSelected()==true && chkCurrentSite.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where firstParty=? and secondParty=? and contractingCompany=? and currentSite=? order by empName";
+            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and firstParty=? and secondParty=? and contractingCompany=? and currentSite=? order by empName";
             search(query,parent,child,contract,site);
         }
         
@@ -343,6 +343,71 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
             
         }
     }
+     public void updateJobStatus()
+     {
+         int response=JOptionPane.showConfirmDialog(null,"Is he Left the job?","Confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+            if(response==JOptionPane.NO_OPTION)
+            {
+
+            }
+            else if(response==JOptionPane.YES_OPTION)
+            {
+                try
+                {
+                    connection c=new connection();
+                    Connection con=c.conn();
+                    Statement stmt1=con.createStatement();
+                    int i=stmt1.executeUpdate("UPDATE tbl_labourdetails SET Status='LEFT' where empId="+empId);
+                    if(i!=0)
+                    {
+                        dispose();
+                        ViewAdvancedEmployeeSearchForm();
+                    }
+                }
+                catch(Exception e)
+                {
+                    JOptionPane.showMessageDialog(rootPane, e, "ERROR!!", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            else if(response==JOptionPane.CLOSED_OPTION)
+            {
+
+            }
+     }
+     public void ViewAdvancedEmployeeSearchForm()
+    {
+        AdvancedEmployeeSearch  AES=new AdvancedEmployeeSearch();
+        AnarTrading.desktopPane1.add(AES);
+        AES.setVisible(true);
+        AES.show();
+    }
+    public void viewDbLeftEmployeeDetails()
+    {
+        connection c=new connection();
+        Connection con=c.conn();
+        try
+        {
+            Statement stmt=con.createStatement();
+            ResultSet rs=stmt.executeQuery("select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='LEFT' order by empName");
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+            jTable1.setAutoCreateRowSorter(true);
+            con.close();
+            jTable1.getColumnModel().getColumn(1).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(1).setWidth(0);
+            jTable1.getColumnModel().getColumn(6).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+            jTable1.getColumnModel().getColumn(7).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+            jTable1.getColumnModel().getColumn(9).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+            jTable1.getColumnModel().getColumn(10).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+            jTable1.setShowHorizontalLines( true );
+            jTable1.setRowSelectionAllowed( true );
+
+        }
+        catch(Exception e)
+        {
+
+        }
+    }
    
 
     /**
@@ -360,6 +425,7 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
         menuItemViewID = new javax.swing.JMenuItem();
         menuItemPrint = new javax.swing.JMenuItem();
         menuItemDelete = new javax.swing.JMenuItem();
+        menuItemJobStatus = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         chkParent = new javax.swing.JCheckBox();
         cmbParent = new javax.swing.JComboBox();
@@ -411,6 +477,14 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
             }
         });
         JtablePopUP.add(menuItemDelete);
+
+        menuItemJobStatus.setText("Left Job");
+        menuItemJobStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemJobStatusActionPerformed(evt);
+            }
+        });
+        JtablePopUP.add(menuItemJobStatus);
 
         setClosable(true);
         setIconifiable(true);
@@ -581,7 +655,7 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
@@ -679,7 +753,7 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
         if(keyCode == KeyEvent.VK_ENTER)
         {
             LabourDetails LD = new LabourDetails(empId);
-            AnarTrading.desktopPane.add(LD);
+            AnarTrading.desktopPane1.add(LD);
             LD.setVisible(true);
         }
         if(keyCode == KeyEvent.VK_DELETE)
@@ -717,7 +791,7 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
     private void menuItemViewIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemViewIDActionPerformed
         // TODO add your handling code here:
         ID id = new ID(empId);
-        AnarTrading.desktopPane.add(id);
+        AnarTrading.desktopPane1.add(id);
         id.setVisible(true);
     }//GEN-LAST:event_menuItemViewIDActionPerformed
 
@@ -744,7 +818,7 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
     private void menuItemViewPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemViewPPActionPerformed
         // TODO add your handling code here:
         PassportDocument PD = new PassportDocument(empId);
-        AnarTrading.desktopPane.add(PD);
+        AnarTrading.desktopPane1.add(PD);
         PD.setVisible(true);
     }//GEN-LAST:event_menuItemViewPPActionPerformed
 
@@ -788,9 +862,14 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
     private void menuItemViewRPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemViewRPActionPerformed
         // TODO add your handling code here:
         RPDocument RD = new RPDocument(empId);
-        AnarTrading.desktopPane.add(RD);
+        AnarTrading.desktopPane1.add(RD);
         RD.setVisible(true);
     }//GEN-LAST:event_menuItemViewRPActionPerformed
+
+    private void menuItemJobStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemJobStatusActionPerformed
+        // TODO add your handling code here:
+        updateJobStatus();
+    }//GEN-LAST:event_menuItemJobStatusActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -807,6 +886,7 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JMenuItem menuItemDelete;
+    private javax.swing.JMenuItem menuItemJobStatus;
     private javax.swing.JMenuItem menuItemPrint;
     private javax.swing.JMenuItem menuItemViewID;
     private javax.swing.JMenuItem menuItemViewPP;

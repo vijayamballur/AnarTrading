@@ -154,7 +154,7 @@ public final class SalaryDeductions extends javax.swing.JInternalFrame {
     public void ViewAdvancedPaymentForm()
     {
         SalaryDeductions  advance=new SalaryDeductions();
-        AnarTrading.desktopPane.add(advance);
+        AnarTrading.desktopPane1.add(advance);
         advance.setVisible(true);
         advance.show();
     }
@@ -621,7 +621,7 @@ public final class SalaryDeductions extends javax.swing.JInternalFrame {
     private void lblSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSearchMouseClicked
         // TODO add your handling code here:
         AdvancedSalaryDeductionSearch advPaySearch = new AdvancedSalaryDeductionSearch();
-        AnarTrading.desktopPane.add(advPaySearch);
+        AnarTrading.desktopPane1.add(advPaySearch);
         advPaySearch.setVisible(true);
         advPaySearch.show();  
     }//GEN-LAST:event_lblSearchMouseClicked

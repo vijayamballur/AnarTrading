@@ -26,7 +26,7 @@ public class ReportView extends JFrame
     }
     public ReportView(String fileName,HashMap para)
     {
-        super("Anar ");
+        super("Anar");
         try
         {
             connection c=new connection();

@@ -836,7 +836,7 @@ public final class ContractEmployeeDetails extends javax.swing.JInternalFrame {
     public void ViewLabourForm()
     {
         ContractEmployeeDetails  CE=new ContractEmployeeDetails();
-        AnarTrading.desktopPane.add(CE);
+        AnarTrading.desktopPane1.add(CE);
         CE.setVisible(true);
         CE.show();
     }
@@ -1023,7 +1023,7 @@ public final class ContractEmployeeDetails extends javax.swing.JInternalFrame {
     private void jMenuItemTimeSheetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTimeSheetActionPerformed
         // TODO add your handling code here:
         TimeSheet TS = new TimeSheet(empId);
-        AnarTrading.desktopPane.add(TS);
+        AnarTrading.desktopPane1.add(TS);
         TS.setVisible(true);
         TS.show();
     }//GEN-LAST:event_jMenuItemTimeSheetActionPerformed
@@ -1077,7 +1077,7 @@ public final class ContractEmployeeDetails extends javax.swing.JInternalFrame {
     private void lblSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSearchMouseClicked
         // TODO add your handling code here:
         AdvancedContractEmployeeSearch ACE = new AdvancedContractEmployeeSearch();
-        AnarTrading.desktopPane.add(ACE);
+        AnarTrading.desktopPane1.add(ACE);
         ACE.setVisible(true);
         ACE.show();
     }//GEN-LAST:event_lblSearchMouseClicked

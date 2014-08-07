@@ -173,7 +173,7 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
      public void ViewInvoiceDetailsForm()
     {
         InvoiceEntry  IE=new InvoiceEntry();
-        AnarTrading.desktopPane.add(IE);
+        AnarTrading.desktopPane1.add(IE);
         IE.setVisible(true);
         IE.show();
     }
@@ -386,7 +386,6 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setMaximizable(true);
         setTitle("Invoice Details");
 
         jTable1.setFont(new java.awt.Font("Verdana", 0, 9)); // NOI18N
@@ -839,7 +838,7 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
     private void menuItemDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDocumentActionPerformed
         // TODO add your handling code here:
         InvoiceDocument ID = new InvoiceDocument(invoiceId);
-        AnarTrading.desktopPane.add(ID);
+        AnarTrading.desktopPane1.add(ID);
         ID.setVisible(true);
         ID.show();
     }//GEN-LAST:event_menuItemDocumentActionPerformed
@@ -860,7 +859,7 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
     private void ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewActionPerformed
         // TODO add your handling code here:
         AdvancedInvoiceSearch AIS=new AdvancedInvoiceSearch();
-        AnarTrading.desktopPane.add(AIS);
+        AnarTrading.desktopPane1.add(AIS);
         AIS.setVisible(true);
         AIS.show();
     }//GEN-LAST:event_ViewActionPerformed

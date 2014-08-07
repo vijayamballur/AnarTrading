@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report2" pageWidth="1080" pageHeight="595" orientation="Landscape" columnWidth="1040" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="862b8176-6b97-40a3-98fb-11c94cedce51">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="InputValue" class="java.lang.String"/>
+	<parameter name="invoiceYear" class="java.lang.String"/>
+	<parameter name="invoiceMonth" class="java.lang.String"/>
+	<parameter name="toAdd" class="java.lang.String"/>
+	<parameter name="fromAdd" class="java.lang.String"/>
+	<parameter name="pDate" class="java.lang.String"/>
+	<parameter name="QueryGenerator" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[$P{InputValue}.equals("1.1")
+? "SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails where STATUS=1 order by STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("2.1")
+? "SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails where tbl_invoicedetails.`invoiceYear`='"+$P{invoiceYear}+"' and STATUS=1 order by STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("3.1")
+? "SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails where tbl_invoicedetails.`InvoiceMonth`='"+$P{invoiceMonth}+"' and STATUS=1 order by STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("4.1")
+?"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails where tbl_invoicedetails.`InvoiceMonth`='"+$P{invoiceMonth}+"' and tbl_invoicedetails.`invoiceYear`='"+$P{invoiceYear}+"' and STATUS=1 order by STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("5.1")
+? "SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails where tbl_invoicedetails.`toAdd`='"+$P{toAdd}+"' and STATUS=1 order by STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("6.1")
+?"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails where tbl_invoicedetails.`toAdd`='"+$P{toAdd}+"' and tbl_invoicedetails.`invoiceYear`='"+$P{invoiceYear}+"' and STATUS=1 order by STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("7.1")
+?"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails where tbl_invoicedetails.`toAdd`='"+$P{toAdd}+"' and tbl_invoicedetails.`InvoiceMonth`='"+$P{invoiceMonth}+"' and STATUS=1 order by STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("8.1")
+?"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails where tbl_invoicedetails.`toAdd`='"+$P{toAdd}+"' and tbl_invoicedetails.`InvoiceMonth`='"+$P{invoiceMonth}+"' and tbl_invoicedetails.`invoiceYear`='"+$P{invoiceYear}+"' and STATUS=1 order by STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("9.1")
+?"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails where tbl_invoicedetails.`fromAdd`='"+$P{fromAdd}+"' and STATUS=1 order by STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("10.1")
+?"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails where tbl_invoicedetails.`fromAdd`='"+$P{fromAdd}+"' and  tbl_invoicedetails.`invoiceYear`='"+$P{invoiceYear}+"' order by STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("11.1")
+?"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails where tbl_invoicedetails.`fromAdd`='"+$P{fromAdd}+"' and  tbl_invoicedetails.`InvoiceMonth`='"+$P{invoiceMonth}+"' order by STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("12.1")
+?"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails where tbl_invoicedetails.`fromAdd`='"+$P{fromAdd}+"' and  tbl_invoicedetails.`InvoiceMonth`='"+$P{invoiceMonth}+"' and  tbl_invoicedetails.`invoiceYear`='"+$P{invoiceYear}+"' order by STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("13.1")
+?"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails where tbl_invoicedetails.`fromAdd`='"+$P{fromAdd}+"' and  tbl_invoicedetails.`toAdd`='"+$P{toAdd}+"' order by STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("14.1")
+?"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails where tbl_invoicedetails.`fromAdd`='"+$P{fromAdd}+"' and  tbl_invoicedetails.`toAdd`='"+$P{toAdd}+"' and tbl_invoicedetails.`invoiceYear`='"+$P{invoiceYear}+"' order by STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("15.1")
+?"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails where tbl_invoicedetails.`fromAdd`='"+$P{fromAdd}+"' and  tbl_invoicedetails.`toAdd`='"+$P{toAdd}+"' and tbl_invoicedetails.`InvoiceMonth`='"+$P{invoiceMonth}+"' order by STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("16.1")
+?"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails where tbl_invoicedetails.`fromAdd`='"+$P{fromAdd}+"' and tbl_invoicedetails.`toAdd`='"+$P{toAdd}+"' and tbl_invoicedetails.`InvoiceMonth`='"+$P{invoiceMonth}+"' and  tbl_invoicedetails.`invoiceYear`='"+$P{invoiceYear}+"' order by STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("17.1")
+?"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails WHERE DATE_FORMAT(tbl_invoicedetails.`paymentDate`,'%M %Y')='"+$P{pDate}+"' ORDER BY STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("18.1")
+?"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails WHERE DATE_FORMAT(tbl_invoicedetails.`paymentDate`,'%M %Y')='"+$P{pDate}+"' and tbl_invoicedetails.`invoiceYear`='"+$P{invoiceYear}+"' ORDER BY STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("19.1")
+?"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails WHERE DATE_FORMAT(tbl_invoicedetails.`paymentDate`,'%M %Y')='"+$P{pDate}+"' and tbl_invoicedetails.`InvoiceMonth`='"+$P{invoiceMonth}+"' ORDER BY STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("20.1")
+?"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails WHERE DATE_FORMAT(tbl_invoicedetails.`paymentDate`,'%M %Y')='"+$P{pDate}+"' and tbl_invoicedetails.`InvoiceMonth`='"+$P{invoiceMonth}+"' and tbl_invoicedetails.`invoiceYear`='"+$P{invoiceYear}+"' ORDER BY STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("21.1")
+?"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails WHERE DATE_FORMAT(tbl_invoicedetails.`paymentDate`,'%M %Y')='"+$P{pDate}+"' and tbl_invoicedetails.`toAdd`='"+$P{toAdd}+"' ORDER BY STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("22.1")
+?"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails WHERE DATE_FORMAT(tbl_invoicedetails.`paymentDate`,'%M %Y')='"+$P{pDate}+"' and tbl_invoicedetails.`toAdd`='"+$P{toAdd}+"' and tbl_invoicedetails.`invoiceYear`='"+$P{invoiceYear}+"' ORDER BY STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("23.1")
+?"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails WHERE DATE_FORMAT(tbl_invoicedetails.`paymentDate`,'%M %Y')='"+$P{pDate}+"' and tbl_invoicedetails.`toAdd`='"+$P{toAdd}+"' and tbl_invoicedetails.`InvoiceMonth`='"+$P{invoiceMonth}+"' ORDER BY STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("24.1")
+?"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails WHERE DATE_FORMAT(tbl_invoicedetails.`paymentDate`,'%M %Y')='"+$P{pDate}+"' and tbl_invoicedetails.`toAdd`='"+$P{toAdd}+"' and tbl_invoicedetails.`InvoiceMonth`='"+$P{invoiceMonth}+"' and tbl_invoicedetails.`invoiceYear`='"+$P{invoiceYear}+"' and status=1 ORDER BY STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("25.1")
+?"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails WHERE DATE_FORMAT(tbl_invoicedetails.`paymentDate`,'%M %Y')='"+$P{pDate}+"' and tbl_invoicedetails.`fromAdd`='"+$P{fromAdd}+"' ORDER BY STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("26.1")
+?"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails WHERE DATE_FORMAT(tbl_invoicedetails.`paymentDate`,'%M %Y')='"+$P{pDate}+"' and tbl_invoicedetails.`fromAdd`='"+$P{fromAdd}+"' and tbl_invoicedetails.`invoiceYear`='"+$P{invoiceYear}+"' ORDER BY STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("27.1")
+?"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails WHERE DATE_FORMAT(tbl_invoicedetails.`paymentDate`,'%M %Y')='"+$P{pDate}+"' and tbl_invoicedetails.`fromAdd`='"+$P{fromAdd}+"' and tbl_invoicedetails.`InvoiceMonth`='"+$P{invoiceMonth}+"' ORDER BY STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("28.1")
+?"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails WHERE DATE_FORMAT(tbl_invoicedetails.`paymentDate`,'%M %Y')='"+$P{pDate}+"' and tbl_invoicedetails.`fromAdd`='"+$P{fromAdd}+"' and tbl_invoicedetails.`InvoiceMonth`='"+$P{invoiceMonth}+"' and tbl_invoicedetails.`invoiceYear`='"+$P{invoiceYear}+"' ORDER BY STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("29.1")
+?"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails WHERE DATE_FORMAT(tbl_invoicedetails.`paymentDate`,'%M %Y')='"+$P{pDate}+"' and tbl_invoicedetails.`fromAdd`='"+$P{fromAdd}+"' and tbl_invoicedetails.`toAdd`='"+$P{toAdd}+"' ORDER BY STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("30.1")
+?"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails WHERE DATE_FORMAT(tbl_invoicedetails.`paymentDate`,'%M %Y')='"+$P{pDate}+"' and tbl_invoicedetails.`fromAdd`='"+$P{fromAdd}+"' and tbl_invoicedetails.`toAdd`='"+$P{toAdd}+"' and tbl_invoicedetails.`invoiceYear`='"+$P{invoiceYear}+"' ORDER BY STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("31.1")
+?"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails WHERE DATE_FORMAT(tbl_invoicedetails.`paymentDate`,'%M %Y')='"+$P{pDate}+"' and tbl_invoicedetails.`fromAdd`='"+$P{fromAdd}+"' and tbl_invoicedetails.`toAdd`='"+$P{toAdd}+"' and tbl_invoicedetails.`InvoiceMonth`='"+$P{invoiceMonth}+"' ORDER BY STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:$P{InputValue}.equals("32.1")
+?"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails WHERE DATE_FORMAT(tbl_invoicedetails.`paymentDate`,'%M %Y')='"+$P{pDate}+"' and tbl_invoicedetails.`fromAdd`='"+$P{fromAdd}+"' and tbl_invoicedetails.`toAdd`='"+$P{toAdd}+"' and tbl_invoicedetails.`InvoiceMonth`='"+$P{invoiceMonth}+"' and tbl_invoicedetails.`invoiceYear`='"+$P{invoiceYear}+"' ORDER BY STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"
+
+:"SELECT tbl_invoicedetails.`invoiceId` AS tbl_invoicedetails_invoiceId,tbl_invoicedetails.`fromAdd` AS tbl_invoicedetails_fromAdd,tbl_invoicedetails.`toAdd` AS tbl_invoicedetails_toAdd,tbl_invoicedetails.`invoiceNumber` AS tbl_invoicedetails_invoiceNumber,tbl_invoicedetails.`invoiceDate` AS tbl_invoicedetails_invoiceDate,tbl_invoicedetails.`amount` AS tbl_invoicedetails_amount,tbl_invoicedetails.`InvoiceMonth` AS tbl_invoicedetails_InvoiceMonth,tbl_invoicedetails.`invoiceYear` AS tbl_invoicedetails_invoiceYear,tbl_invoicedetails.`terms` AS tbl_invoicedetails_terms,tbl_invoicedetails.`paymentDate` AS tbl_invoicedetails_paymentDate,tbl_invoicedetails.`remark` AS tbl_invoicedetails_remark,tbl_invoicedetails.`balance` AS tbl_invoicedetails_balance,tbl_invoicedetails.`status` AS tbl_invoicedetails_status,tbl_invoicedetails.`deduction` AS tbl_invoicedetails_deduction FROM `tbl_invoicedetails` tbl_invoicedetails order by STR_TO_DATE(invoiceYear,'%Y'),STR_TO_DATE(InvoiceMonth,'%M')"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[$P!{QueryGenerator}]]>
+	</queryString>
+	<field name="tbl_invoicedetails_invoiceId" class="java.lang.Long"/>
+	<field name="tbl_invoicedetails_fromAdd" class="java.lang.String"/>
+	<field name="tbl_invoicedetails_toAdd" class="java.lang.String"/>
+	<field name="tbl_invoicedetails_invoiceNumber" class="java.lang.String"/>
+	<field name="tbl_invoicedetails_invoiceDate" class="java.sql.Date"/>
+	<field name="tbl_invoicedetails_amount" class="java.math.BigDecimal"/>
+	<field name="tbl_invoicedetails_InvoiceMonth" class="java.lang.String"/>
+	<field name="tbl_invoicedetails_invoiceYear" class="java.lang.String"/>
+	<field name="tbl_invoicedetails_terms" class="java.lang.Integer"/>
+	<field name="tbl_invoicedetails_paymentDate" class="java.sql.Date"/>
+	<field name="tbl_invoicedetails_remark" class="java.lang.String"/>
+	<field name="tbl_invoicedetails_balance" class="java.math.BigDecimal"/>
+	<field name="tbl_invoicedetails_status" class="java.lang.Integer"/>
+	<field name="tbl_invoicedetails_deduction" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement x="740" y="4" width="300" height="64" uuid="c6920bf5-5b40-4e15-bc61-d395ef9bdf23"/>
+				<imageExpression><![CDATA["leaf_banner_green.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="428e35c2-11c1-42f1-a43e-ca92d5fc208d"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Invoice Send]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="100" y="46" width="174" height="22" uuid="c8404b87-6021-4725-821f-4fd27bf1aa72"/>
+				<text><![CDATA[Leaf Green SubTitle]]></text>
+			</staticText>
+			<image>
+				<reportElement x="731" y="4" width="309" height="66" uuid="c5919991-d642-4196-b21e-1bc415ae2de2"/>
+				<imageExpression><![CDATA["C:\\Users\\MAC\\Documents\\NetBeansProjects\\ANAR TRADING\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\Banner.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="1040" height="1" uuid="50d04efb-30f6-4314-88ee-72b6fe8ce9a9"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="2" y="19" width="39" height="15" uuid="f5ab4ec8-e18e-4258-a89d-53a12d378ee5"/>
+				<text><![CDATA[Inv Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="40" y="19" width="176" height="15" uuid="f8fc944e-d9f9-4dbf-9921-78053df86eb3"/>
+				<text><![CDATA[From Add]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="215" y="19" width="218" height="15" uuid="6b7350fc-678a-4261-a24d-8349e24f7e93"/>
+				<text><![CDATA[To Add]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="432" y="19" width="92" height="15" uuid="dd3fa4a6-ddf5-4622-b5cb-c7370d8f07a8"/>
+				<text><![CDATA[Invoice #]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="523" y="19" width="66" height="15" uuid="24dc691c-ce0e-441b-bcc4-55f4b1006c10"/>
+				<text><![CDATA[Inv Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="588" y="19" width="93" height="15" uuid="54ad9f9f-722e-4780-b0fc-7a9ab8c7dbeb"/>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="680" y="19" width="52" height="15" uuid="9b369906-a737-4828-98bb-af75d0eb0479"/>
+				<text><![CDATA[Month]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="731" y="19" width="42" height="15" uuid="0d18c0f3-2893-4f01-aa9b-a8660ac2052d"/>
+				<text><![CDATA[Year]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="772" y="19" width="40" height="15" uuid="79ffbe70-85f3-4017-9bb1-56c57e90c2a8"/>
+				<text><![CDATA[Term]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="811" y="19" width="61" height="15" uuid="e195cbaa-6b85-4283-8bac-4ea749d27020"/>
+				<text><![CDATA[P.Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="871" y="19" width="53" height="15" uuid="a1737db6-1497-425b-a145-8e4c9fb73a1d"/>
+				<text><![CDATA[Balance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="980" y="19" width="83" height="15" uuid="cf23c253-4b5f-490b-af90-179719a05375"/>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="926" y="19" width="55" height="17" uuid="720236a0-d77d-4377-b6df-5c4190af599c"/>
+				<text><![CDATA[Dedu.]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="1040" height="1" uuid="329d26d9-5420-4221-9654-c8fe343b6325"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="2" y="0" width="39" height="15" uuid="93c792b9-3a2b-4a24-b0f3-b51d7bd9b88d"/>
+				<textElement>
+					<font fontName="Verdana" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoicedetails_invoiceId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="40" y="0" width="176" height="15" uuid="a33ff318-3eec-459f-9de1-c809e5d9e3fc"/>
+				<textElement>
+					<font fontName="Verdana" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoicedetails_fromAdd}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="215" y="0" width="218" height="15" uuid="ceb9f94f-3a75-4447-9187-fcee2d392ca8"/>
+				<textElement>
+					<font fontName="Verdana" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoicedetails_toAdd}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="432" y="0" width="92" height="15" uuid="b511b2d9-7cb8-49ff-bf19-fed3573da303"/>
+				<textElement>
+					<font fontName="Verdana" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoicedetails_invoiceNumber}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MMM-yy">
+				<reportElement style="Detail" x="523" y="0" width="66" height="15" uuid="940efa05-96ce-4157-a2a3-fcdb89e37e19"/>
+				<textElement>
+					<font fontName="Verdana" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoicedetails_invoiceDate}]]></textFieldExpression>
+			</textField>
+			<textField pattern="QR #,##0.00">
+				<reportElement style="Detail" x="588" y="0" width="93" height="15" uuid="4b91326d-8cc7-44a0-b5a7-c44bb497134d"/>
+				<textElement>
+					<font fontName="Verdana" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoicedetails_amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="680" y="0" width="52" height="15" uuid="e3c20e8e-313c-474d-9908-bdc8db1e9e94"/>
+				<textElement>
+					<font fontName="Verdana" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoicedetails_InvoiceMonth}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="731" y="0" width="42" height="15" uuid="16104670-bef0-44ef-9b81-173a0b6f6fb7"/>
+				<textElement>
+					<font fontName="Verdana" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoicedetails_invoiceYear}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="772" y="0" width="40" height="15" uuid="99ea3fee-7ba2-4558-a87d-94ea12d2f06b"/>
+				<textElement>
+					<font fontName="Verdana" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoicedetails_terms}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MMM-yy">
+				<reportElement style="Detail" x="811" y="0" width="61" height="15" uuid="7a08c703-497e-4fe3-9425-c1129e2740c5"/>
+				<textElement>
+					<font fontName="Verdana" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoicedetails_paymentDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="871" y="0" width="53" height="15" uuid="e3d842a1-435d-4241-b1a3-ab9a6d2784bb"/>
+				<textElement>
+					<font fontName="Verdana" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoicedetails_balance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="980" y="0" width="83" height="15" uuid="16b98567-bd3b-4bc3-be1d-911dae51ccb7"/>
+				<textFieldExpression><![CDATA[$F{tbl_invoicedetails_status}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="926" y="1" width="55" height="15" uuid="2bbdea10-a7c1-48d8-a8c2-ac92d5d3dce4"/>
+				<textFieldExpression><![CDATA[$F{tbl_invoicedetails_deduction}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="4" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="1040" height="1" uuid="71f66967-9fee-426d-ba53-16b5490141d4"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="919" y="0" width="80" height="20" uuid="f144d83d-a710-4710-910d-aebd1efc321c"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="999" y="0" width="40" height="20" uuid="67f801b4-319c-4ec6-acae-d932cc952183"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="ced80db7-28b1-4b5c-b9f2-346df4430888"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

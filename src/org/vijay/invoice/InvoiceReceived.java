@@ -176,7 +176,7 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
      public void ViewInvoiceDetailsForm()
     {
         InvoiceReceived  IR=new InvoiceReceived();
-        AnarTrading.desktopPane.add(IR);
+        AnarTrading.desktopPane1.add(IR);
         IR.setVisible(true);
         IR.show();
     }
@@ -847,7 +847,7 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
     private void menuItemDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDocumentActionPerformed
         // TODO add your handling code here:
         InvoiceReceivedDocument IRD = new InvoiceReceivedDocument(receivedId);
-        AnarTrading.desktopPane.add(IRD);
+        AnarTrading.desktopPane1.add(IRD);
         IRD.setVisible(true);
         IRD.show();
     }//GEN-LAST:event_menuItemDocumentActionPerformed
@@ -868,7 +868,7 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
     private void ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewActionPerformed
         // TODO add your handling code here:
         AdvancedInvoiceReceivedSearch AIRS=new AdvancedInvoiceReceivedSearch();
-        AnarTrading.desktopPane.add(AIRS);
+        AnarTrading.desktopPane1.add(AIRS);
         AIRS.setVisible(true);
         AIRS.show();
     }//GEN-LAST:event_ViewActionPerformed

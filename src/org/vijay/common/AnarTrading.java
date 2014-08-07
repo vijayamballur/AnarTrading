@@ -25,6 +25,7 @@ import javax.swing.Box;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import org.vijay.cheque.ChequePrinting;
+import org.vijay.invoice.InvoiceNew;
 
 /**
  *
@@ -48,13 +49,12 @@ public class AnarTrading extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        desktopPane = new javax.swing.JDesktopPane();
-        jSeparator6 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        desktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuWindow = new javax.swing.JMenu();
         menuFile = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        menuItemNewInvoice = new javax.swing.JMenuItem();
         menuItemExit = new javax.swing.JMenuItem();
         menuCourse = new javax.swing.JMenu();
         menuItemLabourDetails = new javax.swing.JMenuItem();
@@ -62,13 +62,13 @@ public class AnarTrading extends javax.swing.JFrame {
         menuItemHoliday = new javax.swing.JMenuItem();
         menuItemAdvancePayment = new javax.swing.JMenuItem();
         menuItemSiteWorkingHr = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        menuItemInvoice = new javax.swing.JMenuItem();
-        menuItemInvoiceReceived = new javax.swing.JMenuItem();
         menuItemChequePrinting = new javax.swing.JMenuItem();
         menuTransaction = new javax.swing.JMenu();
         menuItemReceiptVoucher = new javax.swing.JMenuItem();
         menuItemPaymentVoucher = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        menuItemInvoice = new javax.swing.JMenuItem();
+        menuItemInvoiceReceived = new javax.swing.JMenuItem();
         menuHelp1 = new javax.swing.JMenu();
         menuHelp2 = new javax.swing.JMenu();
         menuItemSearchEmployee = new javax.swing.JMenuItem();
@@ -90,17 +90,16 @@ public class AnarTrading extends javax.swing.JFrame {
             }
         });
 
-        desktopPane.setBackground(new java.awt.Color(149, 169, 182));
-        desktopPane.add(jSeparator6);
-        jSeparator6.setBounds(160, 280, 0, 2);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/2.png"))); // NOI18N
-        desktopPane.add(jLabel1);
-        jLabel1.setBounds(0, -70, 1300, 390);
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/water.png"))); // NOI18N
-        desktopPane.add(jLabel2);
-        jLabel2.setBounds(0, 355, 1330, 660);
+        javax.swing.GroupLayout desktopPane1Layout = new javax.swing.GroupLayout(desktopPane1);
+        desktopPane1.setLayout(desktopPane1Layout);
+        desktopPane1Layout.setHorizontalGroup(
+            desktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1332, Short.MAX_VALUE)
+        );
+        desktopPane1Layout.setVerticalGroup(
+            desktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1009, Short.MAX_VALUE)
+        );
 
         jMenuBar1.setBackground(new java.awt.Color(102, 102, 102));
         jMenuBar1.setMargin(new java.awt.Insets(0, 0, 0, 50));
@@ -135,10 +134,27 @@ public class AnarTrading extends javax.swing.JFrame {
             }
         });
 
+        jMenu3.setText("New");
+
+        menuItemNewInvoice.setText("Invoioce");
+        menuItemNewInvoice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemNewInvoiceActionPerformed(evt);
+            }
+        });
+        jMenu3.add(menuItemNewInvoice);
+
+        menuFile.add(jMenu3);
+
         menuItemExit.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         menuItemExit.setMnemonic('E');
         menuItemExit.setText("Exit");
         menuItemExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuItemExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemExitActionPerformed(evt);
+            }
+        });
         menuFile.add(menuItemExit);
 
         jMenuBar1.add(menuFile);
@@ -216,35 +232,6 @@ public class AnarTrading extends javax.swing.JFrame {
         });
         menuCourse.add(menuItemSiteWorkingHr);
 
-        jMenu1.setMnemonic('I');
-        jMenu1.setText("Invoice");
-        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jMenu1.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-
-        menuItemInvoice.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        menuItemInvoice.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        menuItemInvoice.setMnemonic('I');
-        menuItemInvoice.setText("Send");
-        menuItemInvoice.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemInvoiceActionPerformed(evt);
-            }
-        });
-        jMenu1.add(menuItemInvoice);
-
-        menuItemInvoiceReceived.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        menuItemInvoiceReceived.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        menuItemInvoiceReceived.setMnemonic('R');
-        menuItemInvoiceReceived.setText("Received");
-        menuItemInvoiceReceived.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemInvoiceReceivedActionPerformed(evt);
-            }
-        });
-        jMenu1.add(menuItemInvoiceReceived);
-
-        menuCourse.add(jMenu1);
-
         menuItemChequePrinting.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         menuItemChequePrinting.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         menuItemChequePrinting.setMnemonic('E');
@@ -284,6 +271,35 @@ public class AnarTrading extends javax.swing.JFrame {
             }
         });
         menuTransaction.add(menuItemPaymentVoucher);
+
+        jMenu1.setMnemonic('I');
+        jMenu1.setText("Invoice");
+        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenu1.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+
+        menuItemInvoice.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        menuItemInvoice.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        menuItemInvoice.setMnemonic('I');
+        menuItemInvoice.setText("Send");
+        menuItemInvoice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemInvoiceActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuItemInvoice);
+
+        menuItemInvoiceReceived.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        menuItemInvoiceReceived.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        menuItemInvoiceReceived.setMnemonic('R');
+        menuItemInvoiceReceived.setText("Received");
+        menuItemInvoiceReceived.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemInvoiceReceivedActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuItemInvoiceReceived);
+
+        menuTransaction.add(jMenu1);
 
         jMenuBar1.add(menuTransaction);
 
@@ -387,13 +403,11 @@ public class AnarTrading extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(desktopPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1009, Short.MAX_VALUE)
+            .addComponent(desktopPane1)
         );
 
         pack();
@@ -406,7 +420,7 @@ public class AnarTrading extends javax.swing.JFrame {
     private void menuItemReceiptVoucherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemReceiptVoucherActionPerformed
         
         ReceiptVoucher RV = new ReceiptVoucher();
-        AnarTrading.desktopPane.add(RV);
+        AnarTrading.desktopPane1.add(RV);
         RV.setVisible(true);
     }//GEN-LAST:event_menuItemReceiptVoucherActionPerformed
 
@@ -455,7 +469,7 @@ public class AnarTrading extends javax.swing.JFrame {
     private void menuItemPaymentVoucherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemPaymentVoucherActionPerformed
         // TODO add your handling code here:
         paymentVoucher PV = new paymentVoucher();
-        AnarTrading.desktopPane.add(PV);
+        AnarTrading.desktopPane1.add(PV);
         PV.setVisible(true);
     }//GEN-LAST:event_menuItemPaymentVoucherActionPerformed
 
@@ -470,7 +484,7 @@ public class AnarTrading extends javax.swing.JFrame {
     private void menuItemSearchEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSearchEmployeeActionPerformed
         // TODO add your handling code here:
         AdvancedEmployeeSearch AE = new AdvancedEmployeeSearch();
-        AnarTrading.desktopPane.add(AE);
+        AnarTrading.desktopPane1.add(AE);
         AE.setVisible(true);
     }//GEN-LAST:event_menuItemSearchEmployeeActionPerformed
 
@@ -485,7 +499,7 @@ public class AnarTrading extends javax.swing.JFrame {
     private void menuItemSearchConEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSearchConEmployeeActionPerformed
         // TODO add your handling code here:
         AdvancedContractEmployeeSearch ACE = new AdvancedContractEmployeeSearch();
-        AnarTrading.desktopPane.add(ACE);
+        AnarTrading.desktopPane1.add(ACE);
         ACE.setVisible(true);
     }//GEN-LAST:event_menuItemSearchConEmployeeActionPerformed
 
@@ -501,14 +515,14 @@ public class AnarTrading extends javax.swing.JFrame {
     private void menuItemInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemInvoiceActionPerformed
         // TODO add your handling code here:
         InvoiceEntry IE = new InvoiceEntry();
-        AnarTrading.desktopPane.add(IE);
+        AnarTrading.desktopPane1.add(IE);
         IE.setVisible(true);
     }//GEN-LAST:event_menuItemInvoiceActionPerformed
 
     private void menuItemAdvancePaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAdvancePaymentActionPerformed
         // TODO add your handling code here:
         SalaryDeductions advance = new SalaryDeductions();
-        AnarTrading.desktopPane.add(advance);
+        AnarTrading.desktopPane1.add(advance);
         advance.setVisible(true);
         advance.show();
     }//GEN-LAST:event_menuItemAdvancePaymentActionPerformed
@@ -516,7 +530,7 @@ public class AnarTrading extends javax.swing.JFrame {
     private void menuItemHolidayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemHolidayActionPerformed
         // TODO add your handling code here:
         HolidayDetails holiday = new HolidayDetails();
-        AnarTrading.desktopPane.add(holiday);
+        AnarTrading.desktopPane1.add(holiday);
         holiday.setVisible(true);
         holiday.show();
     }//GEN-LAST:event_menuItemHolidayActionPerformed
@@ -524,14 +538,14 @@ public class AnarTrading extends javax.swing.JFrame {
     private void menuItemContractEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemContractEmployeeActionPerformed
         // TODO add your handling code here:
         ContractEmployeeDetails CE = new ContractEmployeeDetails();
-        AnarTrading.desktopPane.add(CE);
+        AnarTrading.desktopPane1.add(CE);
         CE.setVisible(true);
     }//GEN-LAST:event_menuItemContractEmployeeActionPerformed
 
     private void menuItemLabourDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemLabourDetailsActionPerformed
 
         LabourDetails labour = new LabourDetails();
-        AnarTrading.desktopPane.add(labour);
+        AnarTrading.desktopPane1.add(labour);
         labour.setVisible(true);
         labour.show();
     }//GEN-LAST:event_menuItemLabourDetailsActionPerformed
@@ -539,7 +553,7 @@ public class AnarTrading extends javax.swing.JFrame {
     private void menuItemInvoiceReceivedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemInvoiceReceivedActionPerformed
         // TODO add your handling code here:
         InvoiceReceived IR = new InvoiceReceived();
-        AnarTrading.desktopPane.add(IR);
+        AnarTrading.desktopPane1.add(IR);
         IR.setVisible(true);
         IR.show();
     }//GEN-LAST:event_menuItemInvoiceReceivedActionPerformed
@@ -547,21 +561,21 @@ public class AnarTrading extends javax.swing.JFrame {
     private void menuItemSiteWorkingHrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSiteWorkingHrActionPerformed
         // TODO add your handling code here:
         SiteWorkingHr SWH=new SiteWorkingHr();
-        AnarTrading.desktopPane.add(SWH);
+        AnarTrading.desktopPane1.add(SWH);
         SWH.setVisible(true);
     }//GEN-LAST:event_menuItemSiteWorkingHrActionPerformed
 
     private void menuItemChequePrintingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemChequePrintingActionPerformed
         // TODO add your handling code here:
         ChequePrinting CP=new ChequePrinting();
-        AnarTrading.desktopPane.add(CP);
+        AnarTrading.desktopPane1.add(CP);
         CP.setVisible(true);
     }//GEN-LAST:event_menuItemChequePrintingActionPerformed
 
     private void menuItemCalenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCalenderActionPerformed
         // TODO add your handling code here:
         Calender Cr=new Calender();
-        AnarTrading.desktopPane.add(Cr);
+        AnarTrading.desktopPane1.add(Cr);
         Cr.setVisible(true);
     }//GEN-LAST:event_menuItemCalenderActionPerformed
 
@@ -591,6 +605,19 @@ public class AnarTrading extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void menuItemExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemExitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuItemExitActionPerformed
+
+    private void menuItemNewInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemNewInvoiceActionPerformed
+        // TODO add your handling code here:
+        InvoiceNew IN = new InvoiceNew();
+        AnarTrading.desktopPane1.add(IN);
+        IN.setVisible(true);
+        IN.show();
+        
+    }//GEN-LAST:event_menuItemNewInvoiceActionPerformed
 
     /**
      * @param args the command line arguments
@@ -643,13 +670,11 @@ try {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    public static javax.swing.JDesktopPane desktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JMenu menuCourse;
     private javax.swing.JMenu menuFile;
     private javax.swing.JMenu menuHelp;
@@ -664,6 +689,7 @@ try {
     public static javax.swing.JMenuItem menuItemInvoice;
     public static javax.swing.JMenuItem menuItemInvoiceReceived;
     public static javax.swing.JMenuItem menuItemLabourDetails;
+    private javax.swing.JMenuItem menuItemNewInvoice;
     public static javax.swing.JMenuItem menuItemPaymentVoucher;
     public static javax.swing.JMenuItem menuItemReceiptVoucher;
     public static javax.swing.JMenuItem menuItemSearchConEmployee;

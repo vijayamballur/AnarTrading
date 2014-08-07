@@ -65,6 +65,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         btnViewID.setEnabled(false);
         btnUpdate.setEnabled(false);
         btnDelete.setEnabled(false);
+        btnLeftJob.setEnabled(false);
         
         cmbNationality.addItem("");
         cmbProfession.addItem("");
@@ -230,6 +231,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
             btnViewPP.setEnabled(true);
             btnViewRP.setEnabled(true);
             btnViewID.setEnabled(true);
+            btnLeftJob.setEnabled(true);
             
             empId=Integer.parseInt(jTable1.getValueAt(rowNo,1).toString());
             txtEmpName.setText(jTable1.getValueAt(rowNo,2).toString());
@@ -396,7 +398,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         try
         {
             Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp order by empId desc limit 40");
+            ResultSet rs=stmt.executeQuery("select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where Status='PRESENT' order by empId desc limit 40");
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             jTable1.setAutoCreateRowSorter(true);
             con.close();
@@ -418,7 +420,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
     }
      public void deleteAction()
      {
-         int response=JOptionPane.showConfirmDialog(null,"Do you want to Delete ?","Confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+         int response=JOptionPane.showConfirmDialog(null,"Do you want to delete data Permanently?","Confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
             if(response==JOptionPane.NO_OPTION)
             {
 
@@ -431,6 +433,37 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
                     Connection con=c.conn();
                     Statement stmt1=con.createStatement();
                     int i=stmt1.executeUpdate("delete from tbl_labourdetails  where empId="+empId);
+                    if(i!=0)
+                    {
+                        dispose();
+                        ViewLabourForm();
+                    }
+                }
+                catch(Exception e)
+                {
+                    JOptionPane.showMessageDialog(rootPane, e, "ERROR!!", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            else if(response==JOptionPane.CLOSED_OPTION)
+            {
+
+            }
+     }
+     public void updateJobStatus()
+     {
+         int response=JOptionPane.showConfirmDialog(null,"Is he Left the job?","Confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+            if(response==JOptionPane.NO_OPTION)
+            {
+
+            }
+            else if(response==JOptionPane.YES_OPTION)
+            {
+                try
+                {
+                    connection c=new connection();
+                    Connection con=c.conn();
+                    Statement stmt1=con.createStatement();
+                    int i=stmt1.executeUpdate("UPDATE tbl_labourdetails SET Status='LEFT' where empId="+empId);
                     if(i!=0)
                     {
                         dispose();
@@ -464,6 +497,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         menuItemViewID = new javax.swing.JMenuItem();
         menuItemPrint = new javax.swing.JMenuItem();
         menuItemDelete = new javax.swing.JMenuItem();
+        menuItemStatus = new javax.swing.JMenuItem();
         jLabel3 = new javax.swing.JLabel();
         txtEmpName = new javax.swing.JTextField();
         Nationality = new javax.swing.JLabel();
@@ -504,6 +538,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         btnViewRP = new javax.swing.JButton();
         btnViewID = new javax.swing.JButton();
         btnRefresh = new javax.swing.JButton();
+        btnLeftJob = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         jCalendar1 = new com.toedter.calendar.JCalendar();
 
@@ -548,6 +583,14 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
             }
         });
         jtablePopUp.add(menuItemDelete);
+
+        menuItemStatus.setText("Left Job");
+        menuItemStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemStatusActionPerformed(evt);
+            }
+        });
+        jtablePopUp.add(menuItemStatus);
 
         setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         setClosable(true);
@@ -777,6 +820,18 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnRefresh);
 
+        btnLeftJob.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/CANCEL.PNG"))); // NOI18N
+        btnLeftJob.setText("Left Job");
+        btnLeftJob.setFocusable(false);
+        btnLeftJob.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnLeftJob.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnLeftJob.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLeftJobActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnLeftJob);
+
         btnCancel.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/CANCEL.PNG"))); // NOI18N
         btnCancel.setMnemonic('c');
@@ -934,7 +989,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
     public void ViewLabourForm()
     {
         LabourDetails  labour=new LabourDetails();
-        AnarTrading.desktopPane.add(labour);
+        AnarTrading.desktopPane1.add(labour);
         labour.setVisible(true);
         labour.show();
     }
@@ -999,7 +1054,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         Connection con=c.conn();
         try
         {
-            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_labourdetails(empName,nationality,profession,passportNumber,passportExpiry,visaExpiry,idNumber,todayDate,dob,currentSite,firstParty,secondParty,contractingCompany,basicSalary) VALUES(upper(?),upper(?),upper(?),?,?,?,?,?,?,upper(?),upper(?),upper(?),upper(?),?)");           
+            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_labourdetails(empName,nationality,profession,passportNumber,passportExpiry,visaExpiry,idNumber,todayDate,dob,currentSite,firstParty,secondParty,contractingCompany,basicSalary,Status) VALUES(upper(?),upper(?),upper(?),?,?,?,?,?,?,upper(?),upper(?),upper(?),upper(?),?,?)");           
             ps.setString(1, txtEmpName.getText());
             ps.setString(2, cmbNationality.getSelectedItem().toString());
             ps.setString(3, cmbProfession.getSelectedItem().toString());
@@ -1014,6 +1069,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
             ps.setString(12, cmbSecondParty.getSelectedItem().toString());
             ps.setString(13, cmbContracting.getSelectedItem().toString());
             ps.setString(14, txtBasicSalary.getText());
+            ps.setString(15, "PRESENT");
             int i=ps.executeUpdate();
             if(i!=0)
             {
@@ -1062,14 +1118,14 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
     private void menuItemViewPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemViewPPActionPerformed
         // TODO add your handling code here:
         PassportDocument PD = new PassportDocument(empId);
-        AnarTrading.desktopPane.add(PD);
+        AnarTrading.desktopPane1.add(PD);
         PD.setVisible(true);
     }//GEN-LAST:event_menuItemViewPPActionPerformed
 
     private void menuItemViewRPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemViewRPActionPerformed
         // TODO add your handling code here:
         RPDocument RD = new RPDocument(empId);
-        AnarTrading.desktopPane.add(RD);
+        AnarTrading.desktopPane1.add(RD);
         RD.setVisible(true);
     }//GEN-LAST:event_menuItemViewRPActionPerformed
 
@@ -1089,7 +1145,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         // TODO add your handling code here:
         AdvancedEmployeeSearch AES = new AdvancedEmployeeSearch();
-        AnarTrading.desktopPane.add(AES);
+        AnarTrading.desktopPane1.add(AES);
         AES.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnViewActionPerformed
@@ -1097,21 +1153,21 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
     private void btnViewPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewPPActionPerformed
         // TODO add your handling code here:
         PassportDocument PD = new PassportDocument(empId);
-        AnarTrading.desktopPane.add(PD);
+        AnarTrading.desktopPane1.add(PD);
         PD.setVisible(true);
     }//GEN-LAST:event_btnViewPPActionPerformed
 
     private void btnViewRPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRPActionPerformed
         // TODO add your handling code here:
         RPDocument RD = new RPDocument(empId);
-        AnarTrading.desktopPane.add(RD);
+        AnarTrading.desktopPane1.add(RD);
         RD.setVisible(true);
     }//GEN-LAST:event_btnViewRPActionPerformed
 
     private void btnViewIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewIDActionPerformed
         // TODO add your handling code here:
         ID id = new ID(empId);
-        AnarTrading.desktopPane.add(id);
+        AnarTrading.desktopPane1.add(id);
         id.setVisible(true);
     }//GEN-LAST:event_btnViewIDActionPerformed
 
@@ -1142,7 +1198,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         if(keyCode == KeyEvent.VK_ENTER)
         {
             LabourDetails LD = new LabourDetails(empId);
-            AnarTrading.desktopPane.add(LD);
+            AnarTrading.desktopPane1.add(LD);
             LD.setVisible(true);
         }
         if(keyCode == KeyEvent.VK_DELETE)
@@ -1181,7 +1237,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
     private void menuItemViewIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemViewIDActionPerformed
         // TODO add your handling code here:
         ID id = new ID(empId);
-        AnarTrading.desktopPane.add(id);
+        AnarTrading.desktopPane1.add(id);
         id.setVisible(true);
     }//GEN-LAST:event_menuItemViewIDActionPerformed
 
@@ -1194,10 +1250,21 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         deleteAction();
     }//GEN-LAST:event_menuItemDeleteActionPerformed
 
+    private void menuItemStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemStatusActionPerformed
+        // TODO add your handling code here:
+        updateJobStatus();
+    }//GEN-LAST:event_menuItemStatusActionPerformed
+
+    private void btnLeftJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeftJobActionPerformed
+        // TODO add your handling code here:
+        updateJobStatus();
+    }//GEN-LAST:event_btnLeftJobActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Nationality;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnLeftJob;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;
@@ -1236,6 +1303,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
     private javax.swing.JPopupMenu jtablePopUp;
     private javax.swing.JMenuItem menuItemDelete;
     private javax.swing.JMenuItem menuItemPrint;
+    private javax.swing.JMenuItem menuItemStatus;
     private javax.swing.JMenuItem menuItemViewID;
     private javax.swing.JMenuItem menuItemViewPP;
     private javax.swing.JMenuItem menuItemViewRP;

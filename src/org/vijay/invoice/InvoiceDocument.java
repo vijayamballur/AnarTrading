@@ -256,6 +256,28 @@ public class InvoiceDocument extends javax.swing.JInternalFrame {
 
     private void btnPassportUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPassportUpdateActionPerformed
         // TODO add your handling code here:
+            try
+            {
+                connection c=new connection();
+                Connection con=c.conn();
+                PreparedStatement ps=con.prepareStatement("UPDATE tbl_invoicedocument set document=? where invoiceId=?");
+                ps.setBinaryStream(1,finInvoice,lenInvoice);
+                ps.setInt(2,invoiceId);
+                int status=ps.executeUpdate();
+                if(status>0)
+                {
+                    dispose();
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(rootPane,"Error");
+                }
+            }
+            catch(Exception e)
+            {
+                JOptionPane.showMessageDialog(rootPane,e);
+            }
+        
     }//GEN-LAST:event_btnPassportUpdateActionPerformed
 
 

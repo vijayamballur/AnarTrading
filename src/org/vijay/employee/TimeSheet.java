@@ -1237,7 +1237,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
             {
                dispose();
                TimeSheet TS = new TimeSheet(empId);
-               AnarTrading.desktopPane.add(TS);
+               AnarTrading.desktopPane1.add(TS);
                TS.setVisible(true);
                TS.show();
             } 
@@ -3554,7 +3554,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         dispose();
         TimeSheet TS = new TimeSheet(empId);
-        AnarTrading.desktopPane.add(TS);
+        AnarTrading.desktopPane1.add(TS);
         TS.setVisible(true);
         TS.show();
     }//GEN-LAST:event_btnRefreshActionPerformed

@@ -175,7 +175,7 @@ public class paymentVoucher extends javax.swing.JInternalFrame {
      public void ViewPaymentForm()
     {
         paymentVoucher PV = new paymentVoucher();
-        AnarTrading.desktopPane.add(PV);
+        AnarTrading.desktopPane1.add(PV);
         PV.setVisible(true);
         //AnarMDI.btnReceiptVoucher.setEnabled(false);
         //AnarMDI.menuItemReceiptVoucher.setEnabled(false);

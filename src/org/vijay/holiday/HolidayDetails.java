@@ -72,11 +72,12 @@ public final class HolidayDetails extends javax.swing.JInternalFrame {
             txtholiday12.setText(jTable1.getValueAt(rowNo,9).toString());
             }
         });
+        
     }
     public void viewHolidayForm()
     {
          HolidayDetails holiday = new HolidayDetails();
-        AnarTrading.desktopPane.add(holiday);
+        AnarTrading.desktopPane1.add(holiday);
         holiday.setVisible(true);
         holiday.show();
         AnarTrading.menuItemHoliday.setEnabled(false);

@@ -1379,6 +1379,11 @@ public final class AdvancedInvoiceReceivedSearch extends javax.swing.JInternalFr
                 jTable1MouseClicked(evt);
             }
         });
+        jTable1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTable1FocusGained(evt);
+            }
+        });
         jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTable1KeyPressed(evt);
@@ -1647,7 +1652,7 @@ public final class AdvancedInvoiceReceivedSearch extends javax.swing.JInternalFr
     private void menuItemDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDocumentActionPerformed
          // TODO add your handling code here:
         InvoiceReceivedDocument ID = new InvoiceReceivedDocument(invoiceId);
-        AnarTrading.desktopPane.add(ID);
+        AnarTrading.desktopPane1.add(ID);
         ID.setVisible(true);
         ID.show();
     }//GEN-LAST:event_menuItemDocumentActionPerformed
@@ -1805,7 +1810,7 @@ public final class AdvancedInvoiceReceivedSearch extends javax.swing.JInternalFr
         if(keyCode == KeyEvent.VK_ENTER)
         {
             InvoiceReceived  IR=new InvoiceReceived(invoiceId);
-            AnarTrading.desktopPane.add(IR);
+            AnarTrading.desktopPane1.add(IR);
             IR.setVisible(true);
             IR.show();
         }
@@ -1814,6 +1819,11 @@ public final class AdvancedInvoiceReceivedSearch extends javax.swing.JInternalFr
             
         }
     }//GEN-LAST:event_jTable1KeyPressed
+
+    private void jTable1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1FocusGained
+        // TODO add your handling code here:
+        queryGenerator();
+    }//GEN-LAST:event_jTable1FocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

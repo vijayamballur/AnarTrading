@@ -200,7 +200,7 @@ public class ReceiptVoucher extends javax.swing.JInternalFrame {
      public void ViewPaymentForm()
     {
         ReceiptVoucher RV = new ReceiptVoucher();
-        AnarTrading.desktopPane.add(RV);
+        AnarTrading.desktopPane1.add(RV);
         RV.setVisible(true);
         AnarTrading.menuItemReceiptVoucher.setEnabled(false);
     }
