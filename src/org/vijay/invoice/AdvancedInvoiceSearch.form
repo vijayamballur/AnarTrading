@@ -147,7 +147,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="chkFrom" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -169,15 +169,15 @@
                               <Component id="chkPayment" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="chkTo" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="cmbTo" pref="412" max="32767" attributes="0"/>
+                              <Component id="cmbPayment" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <Component id="jToolBar1" max="32767" attributes="0"/>
+                      <Component id="jToolBar1" min="-2" pref="610" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="cmbTo" pref="412" max="32767" attributes="0"/>
-                      <Component id="cmbPayment" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="107" max="32767" attributes="0"/>
+                  <EmptySpace pref="99" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -211,7 +211,7 @@
         <Component class="javax.swing.JCheckBox" name="chkFrom">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
+              <Font name="Century Gothic" size="12" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="From"/>
           </Properties>
@@ -239,7 +239,7 @@
         <Component class="javax.swing.JCheckBox" name="chkTo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
+              <Font name="Century Gothic" size="12" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="To"/>
           </Properties>
@@ -266,7 +266,7 @@
         <Component class="javax.swing.JCheckBox" name="chkMonth">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
+              <Font name="Century Gothic" size="12" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Month"/>
           </Properties>
@@ -277,7 +277,7 @@
         <Component class="javax.swing.JCheckBox" name="chkYear">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
+              <Font name="Century Gothic" size="12" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Year"/>
           </Properties>
@@ -348,7 +348,7 @@
         <Component class="javax.swing.JCheckBox" name="chkPayment">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="0"/>
+              <Font name="Century Gothic" size="12" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Payment"/>
           </Properties>
@@ -380,32 +380,26 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel3">
+            <Component class="javax.swing.JRadioButton" name="radioAll">
               <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroup1"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Verdana" size="10" style="0"/>
+                  <Font name="Century Gothic" size="12" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Invoice Id"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtInvoiceId">
-            </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Verdana" size="10" style="0"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/Icons/SEARCH.PNG"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Search"/>
+                <Property name="text" type="java.lang.String" value="All"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="radioAllItemStateChanged"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioAllActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="radioAll.setSelected(true);"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JRadioButton" name="radioPaidView">
               <Properties>
@@ -413,14 +407,11 @@
                   <ComponentRef name="buttonGroup1"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Verdana" size="10" style="0"/>
+                  <Font name="Century Gothic" size="12" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Received View"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/Icons/view.png"/>
                 </Property>
               </Properties>
               <Events>
@@ -434,14 +425,11 @@
                   <ComponentRef name="buttonGroup1"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Verdana" size="10" style="0"/>
+                  <Font name="Century Gothic" size="12" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Not Received View"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/Icons/view.png"/>
                 </Property>
               </Properties>
               <Events>
@@ -449,39 +437,48 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioNotPaidViewActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="radioAll">
+            <Component class="javax.swing.JToolBar$Separator" name="jSeparator1">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="buttonGroup1"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Verdana" size="10" style="0"/>
+                  <Font name="Century Gothic" size="12" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="All"/>
+                <Property name="text" type="java.lang.String" value="Invoice Id"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtInvoiceId">
+            </Component>
+            <Component class="javax.swing.JButton" name="jButton1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Century Gothic" size="12" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Search"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                    <BevelBorder/>
+                  </Border>
+                </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/Icons/view.png"/>
-                </Property>
               </Properties>
               <Events>
-                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="radioAllItemStateChanged"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioAllActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
               </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="radioAll.setSelected(true);"/>
-              </AuxValues>
             </Component>
             <Component class="javax.swing.JButton" name="btnPrint">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Verdana" size="10" style="0"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/Icons/MODIFY.PNG"/>
+                  <Font name="Century Gothic" size="12" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Print"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                    <BevelBorder/>
+                  </Border>
+                </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
                 </Property>

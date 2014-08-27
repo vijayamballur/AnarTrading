@@ -371,7 +371,6 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
         lblEmployeeName11 = new javax.swing.JLabel();
         radioPaid = new javax.swing.JRadioButton();
         radioNotPaid = new javax.swing.JRadioButton();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
 
         menuItemDocument.setText("Add Document");
         menuItemDocument.setToolTipText("");
@@ -387,7 +386,7 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setTitle("Invoice Received Details");
 
-        jTable1.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -409,9 +408,9 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
-        btnSave.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/SAVE.PNG"))); // NOI18N
+        btnSave.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnSave.setText("Save");
+        btnSave.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -421,9 +420,9 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
         jToolBar1.add(btnSave);
 
         btnUpdate.setEnabled(false);
-        btnUpdate.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/MODIFY.PNG"))); // NOI18N
+        btnUpdate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnUpdate.setText("Update");
+        btnUpdate.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -433,9 +432,9 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
         jToolBar1.add(btnUpdate);
 
         btnDelete.setEnabled(false);
-        btnDelete.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/DELETE.PNG"))); // NOI18N
+        btnDelete.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnDelete.setText("Delete");
+        btnDelete.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -444,9 +443,9 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnDelete);
 
-        View.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        View.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/view.png"))); // NOI18N
+        View.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         View.setText("View");
+        View.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         View.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         View.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -455,9 +454,9 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(View);
 
-        btnRefresh.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/clear.png"))); // NOI18N
+        btnRefresh.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnRefresh.setText("Refresh");
+        btnRefresh.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnRefresh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -466,9 +465,9 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnRefresh);
 
-        btnCancel.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/CANCEL.PNG"))); // NOI18N
+        btnCancel.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnCancel.setText("Cancel");
+        btnCancel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -477,7 +476,7 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnCancel);
 
-        lblEmployeeName.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        lblEmployeeName.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblEmployeeName.setText("From");
 
         cmbFrom.setEditable(true);
@@ -489,7 +488,7 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
             }
         });
 
-        lblEmployeeName6.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        lblEmployeeName6.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblEmployeeName6.setText("To");
 
         cmbTo.setEditable(true);
@@ -501,18 +500,18 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
             }
         });
 
-        lblEmployeeName2.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        lblEmployeeName2.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblEmployeeName2.setText("Invoice#");
 
         txtInvoiceNumber.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        lblEmployeeName5.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        lblEmployeeName5.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblEmployeeName5.setText("Date");
 
         jDateChooserDate.setDateFormatString("yyyy-MM-dd");
         jDateChooserDate.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        lblEmployeeName3.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        lblEmployeeName3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblEmployeeName3.setText("Amount");
 
         txtAmount.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
@@ -522,7 +521,7 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
             }
         });
 
-        lblEmployeeName4.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        lblEmployeeName4.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblEmployeeName4.setText("Mon.");
 
         cmbMonth.setEditable(true);
@@ -545,7 +544,7 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
             }
         });
 
-        lblEmployeeName7.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        lblEmployeeName7.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblEmployeeName7.setText("Terms");
 
         txtPaymentDate.setEnabled(false);
@@ -559,13 +558,13 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
             }
         });
 
-        lblEmployeeName8.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        lblEmployeeName8.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblEmployeeName8.setText("P.Date");
 
         txtPaymentDate.setEditable(false);
         txtPaymentDate.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        lblEmployeeName10.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        lblEmployeeName10.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblEmployeeName10.setText("Balance");
 
         txtBalance.setText("0.0");
@@ -579,13 +578,13 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
             }
         });
 
-        lblEmployeeName13.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        lblEmployeeName13.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblEmployeeName13.setText("Dedu.");
 
         txtDeduction.setText("0.0");
         txtDeduction.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        lblEmployeeName9.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        lblEmployeeName9.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblEmployeeName9.setText("Details");
 
         txtRemarks.setColumns(20);
@@ -593,25 +592,22 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
         txtRemarks.setRows(5);
         jScrollPane2.setViewportView(txtRemarks);
 
-        lblEmployeeName11.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        lblEmployeeName11.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblEmployeeName11.setText("Status");
 
         buttonGroup1.add(radioPaid);
-        radioPaid.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        radioPaid.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         radioPaid.setText("Paid");
 
         radioNotPaid.setSelected(true);
         buttonGroup1.add(radioNotPaid);
-        radioNotPaid.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        radioNotPaid.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         radioNotPaid.setText("unPaid");
         radioNotPaid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 radioNotPaidActionPerformed(evt);
             }
         });
-
-        jCalendar1.setDecorationBackgroundColor(new java.awt.Color(255, 153, 0));
-        jCalendar1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -683,63 +679,59 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(txtPaymentDate))
                                             .addComponent(cmbTo, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addGap(59, 59, 59)
-                        .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(349, 349, 349)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEmployeeName, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbFrom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEmployeeName6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblEmployeeName, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbFrom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblEmployeeName6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblEmployeeName2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtInvoiceNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblEmployeeName5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jDateChooserDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblEmployeeName3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cmbMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cmbYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblEmployeeName4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblEmployeeName7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtTerms, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblEmployeeName8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtPaymentDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lblEmployeeName10, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtBalance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblEmployeeName9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lblEmployeeName13, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtDeduction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblEmployeeName11, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(radioPaid)
-                                    .addComponent(radioNotPaid)))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
+                            .addComponent(lblEmployeeName2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtInvoiceNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblEmployeeName5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jDateChooserDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblEmployeeName3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblEmployeeName4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblEmployeeName7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTerms, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblEmployeeName8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPaymentDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblEmployeeName10, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtBalance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblEmployeeName9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblEmployeeName13, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtDeduction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblEmployeeName11, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(radioPaid)
+                            .addComponent(radioNotPaid)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+                .addGap(23, 23, 23))
         );
 
         pack();
@@ -891,7 +883,6 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox cmbMonth;
     private javax.swing.JComboBox cmbTo;
     private javax.swing.JComboBox cmbYear;
-    private com.toedter.calendar.JCalendar jCalendar1;
     private com.toedter.calendar.JDateChooser jDateChooserDate;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

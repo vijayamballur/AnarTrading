@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import net.proteanit.sql.DbUtils;
+import org.vijay.common.DateCellRenderer;
 import org.vijay.common.NumberRenderer;
 
 /*
@@ -157,13 +158,42 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
                 ResultSet rs=ps.executeQuery();
                 jTable1.setModel(DbUtils.resultSetToTableModel(rs));
                 con.close();
-                jTable1.getColumnModel().getColumn(1).setMinWidth(0);
-                jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
-                jTable1.getColumnModel().getColumn(1).setWidth(0);
-                jTable1.getColumnModel().getColumn(6).setCellRenderer(NumberRenderer.getDateTimeRenderer());
-                jTable1.getColumnModel().getColumn(7).setCellRenderer(NumberRenderer.getDateTimeRenderer());
-                jTable1.getColumnModel().getColumn(9).setCellRenderer(NumberRenderer.getDateTimeRenderer());
-                jTable1.getColumnModel().getColumn(10).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+            jTable1.getColumnModel().getColumn(1).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(1).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(3).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(3).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(3).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(4).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(4).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(4).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(9).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(9).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(9).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(11).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(11).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(11).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(15).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(15).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(15).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
+            jTable1.getColumnModel().getColumn(5).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(6).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(7).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(8).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(10).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(14).setMaxWidth(200);
+            
+            jTable1.getColumnModel().getColumn(6).setCellRenderer(new DateCellRenderer());
+            jTable1.getColumnModel().getColumn(7).setCellRenderer(new DateCellRenderer());
+            jTable1.getColumnModel().getColumn(9).setCellRenderer(new DateCellRenderer());
+            jTable1.getColumnModel().getColumn(10).setCellRenderer(new DateCellRenderer());
                 jTable1.setShowHorizontalLines( true );
                 jTable1.setRowSelectionAllowed( true );
 
@@ -185,13 +215,42 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
                 ResultSet rs=ps.executeQuery();
                 jTable1.setModel(DbUtils.resultSetToTableModel(rs));
                 con.close();
-                jTable1.getColumnModel().getColumn(1).setMinWidth(0);
-                jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
-                jTable1.getColumnModel().getColumn(1).setWidth(0);
-                jTable1.getColumnModel().getColumn(6).setCellRenderer(NumberRenderer.getDateTimeRenderer());
-                jTable1.getColumnModel().getColumn(7).setCellRenderer(NumberRenderer.getDateTimeRenderer());
-                jTable1.getColumnModel().getColumn(9).setCellRenderer(NumberRenderer.getDateTimeRenderer());
-                jTable1.getColumnModel().getColumn(10).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+            jTable1.getColumnModel().getColumn(1).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(1).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(3).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(3).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(3).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(4).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(4).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(4).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(9).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(9).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(9).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(11).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(11).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(11).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(15).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(15).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(15).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
+            jTable1.getColumnModel().getColumn(5).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(6).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(7).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(8).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(10).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(14).setMaxWidth(200);
+            
+            jTable1.getColumnModel().getColumn(6).setCellRenderer(new DateCellRenderer());
+            jTable1.getColumnModel().getColumn(7).setCellRenderer(new DateCellRenderer());
+            jTable1.getColumnModel().getColumn(9).setCellRenderer(new DateCellRenderer());
+            jTable1.getColumnModel().getColumn(10).setCellRenderer(new DateCellRenderer());
                 jTable1.setShowHorizontalLines( true );
                 jTable1.setRowSelectionAllowed( true );
 
@@ -211,13 +270,42 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
                 ResultSet rs=ps.executeQuery();
                 jTable1.setModel(DbUtils.resultSetToTableModel(rs));
                 con.close();
-                jTable1.getColumnModel().getColumn(1).setMinWidth(0);
-                jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
-                jTable1.getColumnModel().getColumn(1).setWidth(0);
-                jTable1.getColumnModel().getColumn(6).setCellRenderer(NumberRenderer.getDateTimeRenderer());
-                jTable1.getColumnModel().getColumn(7).setCellRenderer(NumberRenderer.getDateTimeRenderer());
-                jTable1.getColumnModel().getColumn(9).setCellRenderer(NumberRenderer.getDateTimeRenderer());
-                jTable1.getColumnModel().getColumn(10).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+                            jTable1.getColumnModel().getColumn(1).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(1).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(3).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(3).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(3).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(4).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(4).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(4).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(9).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(9).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(9).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(11).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(11).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(11).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(15).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(15).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(15).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
+            jTable1.getColumnModel().getColumn(5).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(6).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(7).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(8).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(10).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(14).setMaxWidth(200);
+            
+            jTable1.getColumnModel().getColumn(6).setCellRenderer(new DateCellRenderer());
+            jTable1.getColumnModel().getColumn(7).setCellRenderer(new DateCellRenderer());
+            jTable1.getColumnModel().getColumn(9).setCellRenderer(new DateCellRenderer());
+            jTable1.getColumnModel().getColumn(10).setCellRenderer(new DateCellRenderer());
                 jTable1.setShowHorizontalLines( true );
                 jTable1.setRowSelectionAllowed( true );
 
@@ -240,13 +328,42 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
                 ResultSet rs=ps.executeQuery();
                 jTable1.setModel(DbUtils.resultSetToTableModel(rs));
                 con.close();
-                jTable1.getColumnModel().getColumn(1).setMinWidth(0);
-                jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
-                jTable1.getColumnModel().getColumn(1).setWidth(0);
-                jTable1.getColumnModel().getColumn(6).setCellRenderer(NumberRenderer.getDateTimeRenderer());
-                jTable1.getColumnModel().getColumn(7).setCellRenderer(NumberRenderer.getDateTimeRenderer());
-                jTable1.getColumnModel().getColumn(9).setCellRenderer(NumberRenderer.getDateTimeRenderer());
-                jTable1.getColumnModel().getColumn(10).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+                           jTable1.getColumnModel().getColumn(1).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(1).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(3).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(3).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(3).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(4).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(4).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(4).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(9).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(9).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(9).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(11).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(11).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(11).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(15).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(15).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(15).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
+            jTable1.getColumnModel().getColumn(5).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(6).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(7).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(8).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(10).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(14).setMaxWidth(200);
+            
+            jTable1.getColumnModel().getColumn(6).setCellRenderer(new DateCellRenderer());
+            jTable1.getColumnModel().getColumn(7).setCellRenderer(new DateCellRenderer());
+            jTable1.getColumnModel().getColumn(9).setCellRenderer(new DateCellRenderer());
+            jTable1.getColumnModel().getColumn(10).setCellRenderer(new DateCellRenderer());
                 jTable1.setShowHorizontalLines( true );
                 jTable1.setRowSelectionAllowed( true );
 
@@ -270,13 +387,42 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
                 ResultSet rs=ps.executeQuery();
                 jTable1.setModel(DbUtils.resultSetToTableModel(rs));
                 con.close();
-                jTable1.getColumnModel().getColumn(1).setMinWidth(0);
-                jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
-                jTable1.getColumnModel().getColumn(1).setWidth(0);
-                jTable1.getColumnModel().getColumn(6).setCellRenderer(NumberRenderer.getDateTimeRenderer());
-                jTable1.getColumnModel().getColumn(7).setCellRenderer(NumberRenderer.getDateTimeRenderer());
-                jTable1.getColumnModel().getColumn(9).setCellRenderer(NumberRenderer.getDateTimeRenderer());
-                jTable1.getColumnModel().getColumn(10).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+                            jTable1.getColumnModel().getColumn(1).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(1).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(3).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(3).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(3).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(4).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(4).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(4).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(9).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(9).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(9).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(11).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(11).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(11).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(15).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(15).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(15).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
+            jTable1.getColumnModel().getColumn(5).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(6).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(7).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(8).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(10).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(14).setMaxWidth(200);
+            
+            jTable1.getColumnModel().getColumn(6).setCellRenderer(new DateCellRenderer());
+            jTable1.getColumnModel().getColumn(7).setCellRenderer(new DateCellRenderer());
+            jTable1.getColumnModel().getColumn(9).setCellRenderer(new DateCellRenderer());
+            jTable1.getColumnModel().getColumn(10).setCellRenderer(new DateCellRenderer());
                 jTable1.setShowHorizontalLines( true );
                 jTable1.setRowSelectionAllowed( true );
 
@@ -495,7 +641,7 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
             }
         });
 
-        chkParent.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        chkParent.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         chkParent.setText("Parent Company");
         chkParent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -517,7 +663,7 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
             }
         });
 
-        chkChild.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        chkChild.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         chkChild.setText("Child Company");
         chkChild.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -534,7 +680,7 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
             }
         });
 
-        chkContract.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        chkContract.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         chkContract.setText("Con.Company");
         chkContract.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -542,7 +688,7 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
             }
         });
 
-        chkCurrentSite.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        chkCurrentSite.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         chkCurrentSite.setText("Current Site");
         chkCurrentSite.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -581,7 +727,7 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cmbParent, 0, 337, Short.MAX_VALUE)
                     .addComponent(cmbChild, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 335, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 325, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(chkCurrentSite)
                     .addComponent(chkContract))
@@ -613,7 +759,7 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
                 .addGap(0, 6, Short.MAX_VALUE))
         );
 
-        jTable1.setFont(new java.awt.Font("Verdana", 0, 9)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -655,7 +801,7 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();

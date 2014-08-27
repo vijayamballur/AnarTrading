@@ -8,7 +8,7 @@
 		<![CDATA[SELECT
     fromName
     , bearer
-    , chequeDate
+    , DATE_FORMAT(IFNULL(chequeDate,""),'%d-%b-%Y')as chequeDate
     , amount
     , amountInWords
 FROM
@@ -20,7 +20,7 @@ FROM
 	<field name="bearer" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="chequeDate" class="java.sql.Date">
+	<field name="chequeDate" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="amount" class="java.math.BigDecimal">
@@ -54,7 +54,7 @@ FROM
 				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd-MMM-yyyy">
-				<reportElement x="405" y="4" width="87" height="20" uuid="b0eef12d-9a09-491c-873e-68e289bcdd91"/>
+				<reportElement x="398" y="4" width="94" height="20" uuid="5422df6d-69e9-4b55-8dc4-509535d45a5f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
 					<font fontName="Verdana" size="11" isBold="false"/>
 				</textElement>

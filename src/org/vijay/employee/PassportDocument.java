@@ -128,9 +128,9 @@ public class PassportDocument extends javax.swing.JInternalFrame {
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
-        btnBrowse.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        btnBrowse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/SEARCH.PNG"))); // NOI18N
+        btnBrowse.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnBrowse.setText("Browse");
+        btnBrowse.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnBrowse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBrowseActionPerformed(evt);
@@ -138,9 +138,9 @@ public class PassportDocument extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnBrowse);
 
-        btnSave.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/SAVE.PNG"))); // NOI18N
+        btnSave.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnSave.setText("Save");
+        btnSave.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
@@ -148,9 +148,9 @@ public class PassportDocument extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnSave);
 
-        btnUpdate.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/MODIFY.PNG"))); // NOI18N
+        btnUpdate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnUpdate.setText("Update");
+        btnUpdate.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateActionPerformed(evt);
@@ -158,9 +158,9 @@ public class PassportDocument extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnUpdate);
 
-        btnPrint.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/view.png"))); // NOI18N
+        btnPrint.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnPrint.setText("Print");
+        btnPrint.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPrintActionPerformed(evt);

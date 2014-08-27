@@ -423,7 +423,6 @@ public class paymentVoucher extends javax.swing.JInternalFrame {
         jPanel3.setPreferredSize(new java.awt.Dimension(164, 300));
 
         btnSave.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/SAVE.PNG"))); // NOI18N
         btnSave.setText("Save");
         btnSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -433,7 +432,6 @@ public class paymentVoucher extends javax.swing.JInternalFrame {
         });
 
         btnCancel.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
-        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/CANCEL.PNG"))); // NOI18N
         btnCancel.setText("Cancel");
         btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -443,7 +441,6 @@ public class paymentVoucher extends javax.swing.JInternalFrame {
         });
 
         btnRefresh.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
-        btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/clear.png"))); // NOI18N
         btnRefresh.setText("Refresh");
         btnRefresh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
@@ -453,7 +450,6 @@ public class paymentVoucher extends javax.swing.JInternalFrame {
         });
 
         btnPrint.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
-        btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/MODIFY.PNG"))); // NOI18N
         btnPrint.setText("Print");
         btnPrint.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPrint.addActionListener(new java.awt.event.ActionListener() {
@@ -463,7 +459,6 @@ public class paymentVoucher extends javax.swing.JInternalFrame {
         });
 
         btnUpdate.setFont(new java.awt.Font("Gabriola", 0, 18)); // NOI18N
-        btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/MODIFY.PNG"))); // NOI18N
         btnUpdate.setText("Update");
         btnUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {

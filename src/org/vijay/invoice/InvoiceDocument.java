@@ -108,7 +108,6 @@ public class InvoiceDocument extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         lblInvoice = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         btnPassportPic = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
@@ -122,13 +121,12 @@ public class InvoiceDocument extends javax.swing.JInternalFrame {
 
         lblInvoice.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel6.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel6.setText("Invoice Document");
-
+        jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
-        btnPassportPic.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        btnPassportPic.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnPassportPic.setText("Browse");
+        btnPassportPic.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnPassportPic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPassportPicActionPerformed(evt);
@@ -136,9 +134,9 @@ public class InvoiceDocument extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnPassportPic);
 
-        btnSave.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/MODIFY.PNG"))); // NOI18N
+        btnSave.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnSave.setText("Save");
+        btnSave.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,8 +145,9 @@ public class InvoiceDocument extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnSave);
 
-        btnPassportUpdate.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        btnPassportUpdate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnPassportUpdate.setText("Update");
+        btnPassportUpdate.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnPassportUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPassportUpdateActionPerformed(evt);
@@ -156,9 +155,9 @@ public class InvoiceDocument extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnPassportUpdate);
 
-        btnCancel.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/CANCEL.PNG"))); // NOI18N
+        btnCancel.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnCancel.setText("Cancel");
+        btnCancel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,23 +172,19 @@ public class InvoiceDocument extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jToolBar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblInvoice, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)))
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblInvoice, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(235, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblInvoice, javax.swing.GroupLayout.PREFERRED_SIZE, 821, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblInvoice, javax.swing.GroupLayout.PREFERRED_SIZE, 816, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();
@@ -286,7 +281,6 @@ public class InvoiceDocument extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnPassportPic;
     private javax.swing.JButton btnPassportUpdate;
     private javax.swing.JButton btnSave;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblInvoice;
     // End of variables declaration//GEN-END:variables

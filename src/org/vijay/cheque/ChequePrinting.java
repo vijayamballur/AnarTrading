@@ -297,29 +297,29 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
         setTitle("Cheque Printing");
 
         buttonGroup1.add(radioCommercial);
-        radioCommercial.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        radioCommercial.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         radioCommercial.setSelected(true);
         radioCommercial.setText("Commercial Bank");
 
         buttonGroup1.add(radioDoha);
-        radioDoha.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        radioDoha.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         radioDoha.setText("Doha Bank");
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel1.setText("From");
 
         cmbFromName.setEditable(true);
         AutoCompleteDecorator.decorate(cmbFromName);
         cmbFromName.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel2.setText("Bearer");
 
         cmbBearer.setEditable(true);
         AutoCompleteDecorator.decorate(cmbBearer);
         cmbBearer.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel3.setText("Amount");
 
         txtAmount.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
@@ -329,7 +329,7 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel4.setText("Amount In Words");
 
         txtAmountInWords.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
@@ -337,15 +337,15 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
         jDateCheque.setDateFormatString("yyyy-MM-dd");
         jDateCheque.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel5.setText("Cheque #");
 
         txtChequeNo.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel6.setText("Cheque Date");
 
-        jLabel7.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel7.setText("Remarks");
 
         txtRemarks.setColumns(20);
@@ -360,15 +360,15 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
         jCalendar1.setSundayForeground(new java.awt.Color(204, 0, 0));
         jCalendar1.setWeekdayForeground(new java.awt.Color(51, 51, 51));
 
-        jLabel8.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel8.setText("Bank Name");
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
-        btnSave.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/SAVE.PNG"))); // NOI18N
+        btnSave.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnSave.setText("Save");
+        btnSave.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -378,9 +378,9 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
         jToolBar1.add(btnSave);
 
         btnUpdate.setEnabled(false);
-        btnUpdate.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/MODIFY.PNG"))); // NOI18N
+        btnUpdate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnUpdate.setText("Update");
+        btnUpdate.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -390,9 +390,9 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
         jToolBar1.add(btnUpdate);
 
         btnDelete.setEnabled(false);
-        btnDelete.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/DELETE.PNG"))); // NOI18N
+        btnDelete.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnDelete.setText("Delete");
+        btnDelete.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -401,9 +401,9 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnDelete);
 
-        btnRefresh.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/clear.png"))); // NOI18N
+        btnRefresh.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnRefresh.setText("Refresh");
+        btnRefresh.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnRefresh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -412,9 +412,9 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnRefresh);
 
-        btnView.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        btnView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/view.png"))); // NOI18N
+        btnView.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnView.setText("View");
+        btnView.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnView.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -423,9 +423,9 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnView);
 
-        btnCancel.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/CANCEL.PNG"))); // NOI18N
+        btnCancel.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnCancel.setText("Cancel");
+        btnCancel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -434,6 +434,7 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnCancel);
 
+        jTable1.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

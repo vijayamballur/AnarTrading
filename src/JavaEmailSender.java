@@ -16,20 +16,21 @@ public class JavaEmailSender {
     final String USER_NAME = "noreplayatanar@gmail.com";   //User name of the Goole(gmail) account
     final String PASSSWORD = ".1234creative";  //Password of the Goole(gmail) account
     final String FROM_ADDRESS = "noreplayatanar@gmail.com";  //From addresss
-    String data="Test:-";
+    String data="Test";
     
     
     public void pleaseUPdate()
     {
+        String eol = System.getProperty("line.separator");  
         connection c=new connection();
         Connection con=c.conn();
         try
         {
-            PreparedStatement ps=con.prepareStatement("SELECT  DISTINCT empName,@i := @i + 1 FROM tbl_labourdetails,(SELECT @i := 0) temp WHERE visaExpiry='1111-11-11' OR currentSite='' ");
+            PreparedStatement ps=con.prepareStatement("SELECT empName,idNumber,passportNumber,passportExpiry,visaExpiry,DATEDIFF(visaExpiry,CURDATE()) FROM tbl_labourdetails WHERE DATEDIFF(visaExpiry,CURDATE()) BETWEEN 0 AND 30");
             ResultSet rs=ps.executeQuery();
             while(rs.next())
             {
-                data=data+"----"+rs.getString(1);
+                data=data+" "+rs.getString(1)+" "+rs.getString(2)+eol;
             }
 
             con.close();
@@ -48,8 +49,7 @@ public class JavaEmailSender {
       JavaEmailSender email = new JavaEmailSender();
       email.pleaseUPdate();
      //Sending test email
-      email.createAndSendEmail("vijay.amballur@gmail.com", "Profile not yet Compleated",
-      email.data);
+      email.createAndSendEmail("ansar@fixtureinternational.com", "Profile not yet Compleated",email.data);
     }
 
     public void createAndSendEmail(String emailAddressTo, String msgSubject, String msgText) {

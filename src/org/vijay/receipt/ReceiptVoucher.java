@@ -314,7 +314,6 @@ public class ReceiptVoucher extends javax.swing.JInternalFrame {
         btnCancel = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
 
         jPopUpPrint.setText("Print");
         jPopUpPrint.addActionListener(new java.awt.event.ActionListener() {
@@ -356,7 +355,7 @@ public class ReceiptVoucher extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Receipt Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 0, 10))); // NOI18N
 
-        jLabel9.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel9.setText("QR");
 
         txtAmount.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
@@ -366,39 +365,39 @@ public class ReceiptVoucher extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel7.setText("Date");
 
         txtDate.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
         btnDate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/calendar-icon.png"))); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel1.setText("Received from Mr./M/s");
 
-        jLabel2.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel2.setText("The sum of QR.");
 
         txtTheSumOfQR.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel3.setText("By Cash/Cheque No.");
 
         txtByCashOrCheckNo.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel4.setText("Dated");
 
         txtDated.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
         btnDated.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/calendar-icon.png"))); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel5.setText("Bank");
 
         txtBank.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel6.setText("Being");
 
         txtBeing.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
@@ -410,9 +409,9 @@ public class ReceiptVoucher extends javax.swing.JInternalFrame {
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
-        btnSave.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/SAVE.PNG"))); // NOI18N
+        btnSave.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnSave.setText("Save");
+        btnSave.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -421,9 +420,9 @@ public class ReceiptVoucher extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnSave);
 
-        btnUpdate.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/MODIFY.PNG"))); // NOI18N
+        btnUpdate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnUpdate.setText("Update");
+        btnUpdate.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -432,9 +431,9 @@ public class ReceiptVoucher extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnUpdate);
 
-        btnPrint.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/MODIFY.PNG"))); // NOI18N
+        btnPrint.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnPrint.setText("Print");
+        btnPrint.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnPrint.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -443,9 +442,9 @@ public class ReceiptVoucher extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnPrint);
 
-        btnRefresh.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/clear.png"))); // NOI18N
+        btnRefresh.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnRefresh.setText("Refresh");
+        btnRefresh.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnRefresh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -454,9 +453,9 @@ public class ReceiptVoucher extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnRefresh);
 
-        btnCancel.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/CANCEL.PNG"))); // NOI18N
+        btnCancel.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnCancel.setText("Cancel");
+        btnCancel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -572,27 +571,21 @@ public class ReceiptVoucher extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jCalendar1.setDecorationBackgroundColor(new java.awt.Color(255, 153, 0));
-        jCalendar1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE))
+                .addGap(0, 324, Short.MAX_VALUE))
             .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE))
         );
 
         pack();
@@ -741,7 +734,6 @@ public class ReceiptVoucher extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox cmbReceivedFrom;
-    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

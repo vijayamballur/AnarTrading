@@ -1219,12 +1219,13 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         chkPayment = new javax.swing.JCheckBox();
         cmbPayment = new javax.swing.JComboBox();
         jToolBar1 = new javax.swing.JToolBar();
+        radioAll = new javax.swing.JRadioButton();
+        radioPaidView = new javax.swing.JRadioButton();
+        radioNotPaidView = new javax.swing.JRadioButton();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
         jLabel3 = new javax.swing.JLabel();
         txtInvoiceId = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        radioPaidView = new javax.swing.JRadioButton();
-        radioNotPaidView = new javax.swing.JRadioButton();
-        radioAll = new javax.swing.JRadioButton();
         btnPrint = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -1268,7 +1269,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setTitle("Invoice Search");
 
-        chkFrom.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        chkFrom.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         chkFrom.setText("From");
         chkFrom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1291,7 +1292,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             }
         });
 
-        chkTo.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        chkTo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         chkTo.setText("To");
         chkTo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1309,7 +1310,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             }
         });
 
-        chkMonth.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        chkMonth.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         chkMonth.setText("Month");
         chkMonth.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1317,7 +1318,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             }
         });
 
-        chkYear.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        chkYear.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         chkYear.setText("Year");
         chkYear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1345,7 +1346,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             }
         });
 
-        chkPayment.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        chkPayment.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         chkPayment.setText("Payment");
         chkPayment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1366,27 +1367,27 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
-        jLabel3.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        jLabel3.setText("Invoice Id");
-        jToolBar1.add(jLabel3);
-        jToolBar1.add(txtInvoiceId);
-
-        jButton1.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/SEARCH.PNG"))); // NOI18N
-        jButton1.setText("Search");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        radioAll.setSelected(true);
+        buttonGroup1.add(radioAll);
+        radioAll.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        radioAll.setText("All");
+        radioAll.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        radioAll.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                radioAllItemStateChanged(evt);
             }
         });
-        jToolBar1.add(jButton1);
+        radioAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioAllActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(radioAll);
 
         buttonGroup1.add(radioPaidView);
-        radioPaidView.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        radioPaidView.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         radioPaidView.setText("Received View");
         radioPaidView.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        radioPaidView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/view.png"))); // NOI18N
         radioPaidView.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 radioPaidViewItemStateChanged(evt);
@@ -1400,10 +1401,9 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         jToolBar1.add(radioPaidView);
 
         buttonGroup1.add(radioNotPaidView);
-        radioNotPaidView.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        radioNotPaidView.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         radioNotPaidView.setText("Not Received View");
         radioNotPaidView.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        radioNotPaidView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/view.png"))); // NOI18N
         radioNotPaidView.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 radioNotPaidViewItemStateChanged(evt);
@@ -1415,28 +1415,27 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             }
         });
         jToolBar1.add(radioNotPaidView);
+        jToolBar1.add(jSeparator1);
 
-        radioAll.setSelected(true);
-        buttonGroup1.add(radioAll);
-        radioAll.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        radioAll.setText("All");
-        radioAll.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        radioAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/view.png"))); // NOI18N
-        radioAll.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                radioAllItemStateChanged(evt);
-            }
-        });
-        radioAll.addActionListener(new java.awt.event.ActionListener() {
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel3.setText("Invoice Id");
+        jToolBar1.add(jLabel3);
+        jToolBar1.add(txtInvoiceId);
+
+        jButton1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jButton1.setText("Search");
+        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioAllActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
-        jToolBar1.add(radioAll);
+        jToolBar1.add(jButton1);
 
-        btnPrint.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-        btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/MODIFY.PNG"))); // NOI18N
+        btnPrint.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnPrint.setText("Print");
+        btnPrint.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnPrint.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1451,7 +1450,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(chkFrom)
@@ -1468,13 +1467,13 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(chkPayment)
-                            .addComponent(chkTo)))
-                    .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cmbTo, 0, 412, Short.MAX_VALUE)
-                    .addComponent(cmbPayment, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(107, Short.MAX_VALUE))
+                            .addComponent(chkTo))
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cmbTo, 0, 412, Short.MAX_VALUE)
+                            .addComponent(cmbPayment, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2475,6 +2474,7 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JPopupMenu jtablePopUp;

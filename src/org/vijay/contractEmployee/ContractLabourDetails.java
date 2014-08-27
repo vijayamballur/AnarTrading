@@ -1,6 +1,7 @@
-package org.vijay.employee;
+package org.vijay.contractEmployee;
 
 
+import org.vijay.employee.*;
 import org.vijay.common.connection;
 import org.vijay.common.AutoCompleteDecorator;
 import org.vijay.common.AnarTrading;
@@ -27,7 +28,6 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import net.proteanit.sql.DbUtils;
-import org.vijay.common.DateCellRenderer;
 import org.vijay.common.NumberRenderer;
 
 /*
@@ -39,12 +39,12 @@ import org.vijay.common.NumberRenderer;
  *
  * @author user
  */
-public final class LabourDetails extends javax.swing.JInternalFrame {
+public final class ContractLabourDetails extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Accession
      */
-    public LabourDetails() {
+    public ContractLabourDetails() {
         initComponents();
         setSize(Toolkit.getDefaultToolkit().getScreenSize());
         cmbProfessionFill();
@@ -130,7 +130,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         });
          jtableSelection();
     }
-    public LabourDetails(int empId1) {
+    public ContractLabourDetails(int empId1) {
         initComponents();
         setSize(Toolkit.getDefaultToolkit().getScreenSize());
         this.empId=empId1;
@@ -406,39 +406,10 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
             jTable1.getColumnModel().getColumn(1).setMinWidth(0);
             jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
             jTable1.getColumnModel().getColumn(1).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(3).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(3).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(3).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(4).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(4).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(4).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(9).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(9).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(9).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(11).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(11).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(11).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(15).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(15).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(15).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
-            jTable1.getColumnModel().getColumn(5).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(6).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(7).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(8).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(10).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(14).setMaxWidth(200);
-            
-            jTable1.getColumnModel().getColumn(6).setCellRenderer(new DateCellRenderer());
-            jTable1.getColumnModel().getColumn(7).setCellRenderer(new DateCellRenderer());
-            jTable1.getColumnModel().getColumn(9).setCellRenderer(new DateCellRenderer());
-            jTable1.getColumnModel().getColumn(10).setCellRenderer(new DateCellRenderer());
+            jTable1.getColumnModel().getColumn(6).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+            jTable1.getColumnModel().getColumn(7).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+            jTable1.getColumnModel().getColumn(9).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+            jTable1.getColumnModel().getColumn(10).setCellRenderer(NumberRenderer.getDateTimeRenderer());
             jTable1.setShowHorizontalLines( true );
             jTable1.setRowSelectionAllowed( true );
 
@@ -570,6 +541,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         btnRefresh = new javax.swing.JButton();
         btnLeftJob = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
 
         jtablePopUp.setLabel("PopUp");
 
@@ -625,11 +597,10 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setTitle("Employee Details");
-        setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         setFrameIcon(null);
         setOpaque(true);
 
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel3.setText("Employee Name");
 
         txtEmpName.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
@@ -639,25 +610,25 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
             }
         });
 
-        Nationality.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        Nationality.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         Nationality.setText("Nationality");
 
         cmbNationality.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel5.setText("Profession");
 
         cmbProfession.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel7.setText("Passport Number");
 
         txtPassportNumber.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel8.setText("Passport Expiry");
 
-        jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel12.setText("Id Number");
 
         txtIdNumber.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
@@ -672,44 +643,44 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel11.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel11.setText("ID/Visa Expiry");
 
-        jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel9.setText("Date Of Birth");
 
-        jLabel17.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel17.setText("Basic Salary");
 
         txtBasicSalary.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel10.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel10.setText("Current Site");
 
         cmbCurrentSite.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel13.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel13.setText("Parent Company");
 
         cmbfirstParty.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel14.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel14.setText("Contracting Company");
 
         cmbContracting.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel16.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel16.setText("Child Company");
 
         cmbSecondParty.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        jLabel15.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel15.setText("Date");
 
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         jLabel1.setText("Last 40 Entries");
 
-        jTable1.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Verdana", 0, 9)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -736,24 +707,28 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
 
         jDateChooserDate.setDateFormatString("yyyy-MM-dd");
         jDateChooserDate.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jDateChooserDate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/calendar-icon.png")));
 
         jDateChooserDOB.setDateFormatString("yyyy-MM-dd");
         jDateChooserDOB.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jDateChooserDOB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/calendar-icon.png")));
 
         jDateChooserPPExpiry.setDateFormatString("yyyy-MM-dd");
         jDateChooserPPExpiry.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jDateChooserPPExpiry.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/calendar-icon.png")));
 
         jDateChooserRPExpiry.setDateFormatString("yyyy-MM-dd");
         jDateChooserRPExpiry.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jDateChooserRPExpiry.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/calendar-icon.png")));
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
-        btnSave.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnSave.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/SAVE.PNG"))); // NOI18N
         btnSave.setMnemonic('s');
         btnSave.setText("Save");
         btnSave.setToolTipText("");
-        btnSave.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -762,10 +737,10 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnSave);
 
-        btnUpdate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnUpdate.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/MODIFY.PNG"))); // NOI18N
         btnUpdate.setMnemonic('u');
         btnUpdate.setText("Update");
-        btnUpdate.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -774,10 +749,10 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnUpdate);
 
-        btnDelete.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnDelete.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/MODIFY.PNG"))); // NOI18N
         btnDelete.setMnemonic('u');
         btnDelete.setText("Delete");
-        btnDelete.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -786,10 +761,10 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnDelete);
 
-        btnView.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnView.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        btnView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/view.png"))); // NOI18N
         btnView.setMnemonic('v');
         btnView.setText("View");
-        btnView.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnView.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -798,10 +773,10 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnView);
 
-        btnViewPP.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnViewPP.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        btnViewPP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/view.png"))); // NOI18N
         btnViewPP.setMnemonic('P');
         btnViewPP.setText("View PP");
-        btnViewPP.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnViewPP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnViewPP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -810,10 +785,10 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnViewPP);
 
-        btnViewRP.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnViewRP.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        btnViewRP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/view.png"))); // NOI18N
         btnViewRP.setMnemonic('R');
         btnViewRP.setText("View RP");
-        btnViewRP.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnViewRP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnViewRP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -822,10 +797,10 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnViewRP);
 
-        btnViewID.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnViewID.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        btnViewID.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/view.png"))); // NOI18N
         btnViewID.setMnemonic('I');
         btnViewID.setText("View ID");
-        btnViewID.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnViewID.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnViewID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -834,10 +809,10 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnViewID);
 
-        btnRefresh.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnRefresh.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/clear.png"))); // NOI18N
         btnRefresh.setMnemonic('r');
         btnRefresh.setText("Refresh");
-        btnRefresh.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnRefresh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -846,9 +821,8 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnRefresh);
 
-        btnLeftJob.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnLeftJob.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/CANCEL.PNG"))); // NOI18N
         btnLeftJob.setText("Left Job");
-        btnLeftJob.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnLeftJob.setFocusable(false);
         btnLeftJob.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnLeftJob.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -859,10 +833,10 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnLeftJob);
 
-        btnCancel.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnCancel.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icons/CANCEL.PNG"))); // NOI18N
         btnCancel.setMnemonic('c');
         btnCancel.setText("Cancel");
-        btnCancel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -870,6 +844,9 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
             }
         });
         jToolBar1.add(btnCancel);
+
+        jCalendar1.setDecorationBackgroundColor(new java.awt.Color(255, 171, 113));
+        jCalendar1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -927,69 +904,73 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
                                     .addComponent(txtEmpName)
                                     .addComponent(cmbSecondParty, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jDateChooserDate, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 905, Short.MAX_VALUE))
-                        .addGap(0, 294, Short.MAX_VALUE)))
+                            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 890, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jDateChooserDate, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmpName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbNationality, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbProfession, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPassportNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtIdNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jDateChooserPPExpiry, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtBasicSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cmbCurrentSite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(3, 3, 3)
-                                .addComponent(jDateChooserDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jDateChooserDate, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbfirstParty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbContracting, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEmpName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbSecondParty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jDateChooserRPExpiry, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbNationality, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbProfession, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPassportNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(txtIdNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jDateChooserPPExpiry, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(txtBasicSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cmbCurrentSite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(3, 3, 3)
+                                        .addComponent(jDateChooserDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(cmbfirstParty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cmbContracting, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cmbSecondParty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jDateChooserRPExpiry, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE))
         );
 
         pack();
@@ -1298,6 +1279,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox cmbProfession;
     private javax.swing.JComboBox cmbSecondParty;
     private javax.swing.JComboBox cmbfirstParty;
+    private com.toedter.calendar.JCalendar jCalendar1;
     private com.toedter.calendar.JDateChooser jDateChooserDOB;
     private com.toedter.calendar.JDateChooser jDateChooserDate;
     private com.toedter.calendar.JDateChooser jDateChooserPPExpiry;

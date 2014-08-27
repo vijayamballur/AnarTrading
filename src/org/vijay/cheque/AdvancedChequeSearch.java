@@ -512,10 +512,10 @@ public final class AdvancedChequeSearch extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Invoice Received Search");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Search Critiria", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 0, 10))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Search Critiria", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
         jPanel1.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
 
-        chkBank.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        chkBank.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         chkBank.setText("Bank");
         chkBank.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -538,7 +538,7 @@ public final class AdvancedChequeSearch extends javax.swing.JInternalFrame {
             }
         });
 
-        chkFrom.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        chkFrom.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         chkFrom.setText("From");
         chkFrom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -556,7 +556,7 @@ public final class AdvancedChequeSearch extends javax.swing.JInternalFrame {
             }
         });
 
-        chkBearer.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        chkBearer.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         chkBearer.setText("Bearer");
         chkBearer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -608,7 +608,7 @@ public final class AdvancedChequeSearch extends javax.swing.JInternalFrame {
                 .addGap(0, 20, Short.MAX_VALUE))
         );
 
-        jTable1.setFont(new java.awt.Font("Verdana", 0, 9)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -652,7 +652,7 @@ public final class AdvancedChequeSearch extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(775, 775, 775)
                 .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 24, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -662,7 +662,7 @@ public final class AdvancedChequeSearch extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
