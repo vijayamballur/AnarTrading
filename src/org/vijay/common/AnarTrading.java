@@ -20,10 +20,12 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import org.vijay.cheque.AdvancedChequeSearch;
 import org.vijay.cheque.ChequePrinting;
+import org.vijay.employee.PPExpiryList;
 import org.vijay.employee.RPExpiryList;
 import org.vijay.invoice.AdvancedInvoiceReceivedSearch;
 import org.vijay.invoice.AdvancedInvoiceSearch;
 import org.vijay.invoice.InvoiceNew;
+import org.vijay.petty.PettyCashEntry;
 import org.vijay.stock.SafetyStock;
 
 /**
@@ -55,6 +57,7 @@ public class AnarTrading extends javax.swing.JFrame {
         btnNewEmployee = new javax.swing.JButton();
         btnSearchEmployee = new javax.swing.JButton();
         btnRpExpiry = new javax.swing.JButton();
+        btnPpExpiry = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         btnNewContractEmployee = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -69,6 +72,7 @@ public class AnarTrading extends javax.swing.JFrame {
         btnStock = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
+        btnPettyCash = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
@@ -157,6 +161,17 @@ public class AnarTrading extends javax.swing.JFrame {
             }
         });
 
+        btnPpExpiry.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnPpExpiry.setText("PP_Expiry_List");
+        btnPpExpiry.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnPpExpiry.setContentAreaFilled(false);
+        btnPpExpiry.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPpExpiry.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPpExpiryActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -167,13 +182,16 @@ public class AnarTrading extends javax.swing.JFrame {
                 .addComponent(btnSearchEmployee)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRpExpiry)
-                .addGap(0, 1125, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPpExpiry)
+                .addGap(0, 1034, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btnSearchEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnNewEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnRpExpiry, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+            .addComponent(btnPpExpiry, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Employee", jPanel3);
@@ -351,15 +369,28 @@ public class AnarTrading extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Bank Status", jPanel6);
 
+        btnPettyCash.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnPettyCash.setText("Petty_Cash_Entry");
+        btnPettyCash.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnPettyCash.setContentAreaFilled(false);
+        btnPettyCash.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPettyCash.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPettyCashActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1368, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addComponent(btnPettyCash)
+                .addGap(0, 1261, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 32, Short.MAX_VALUE)
+            .addComponent(btnPettyCash, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Petty Status", jPanel7);
@@ -911,6 +942,20 @@ public class AnarTrading extends javax.swing.JFrame {
         REL.setVisible(true);
     }//GEN-LAST:event_btnRpExpiryActionPerformed
 
+    private void btnPpExpiryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPpExpiryActionPerformed
+        // TODO add your handling code here:
+        PPExpiryList PEL=new PPExpiryList();
+        AnarTrading.desktopPane1.add(PEL);
+        PEL.setVisible(true);
+    }//GEN-LAST:event_btnPpExpiryActionPerformed
+
+    private void btnPettyCashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPettyCashActionPerformed
+        // TODO add your handling code here:
+        PettyCashEntry PE=new PettyCashEntry();
+        AnarTrading.desktopPane1.add(PE);
+        PE.setVisible(true);
+    }//GEN-LAST:event_btnPettyCashActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -970,6 +1015,8 @@ try {
     private javax.swing.JButton btnInvoiceSendRearch;
     private javax.swing.JButton btnNewContractEmployee;
     private javax.swing.JButton btnNewEmployee;
+    private javax.swing.JButton btnPettyCash;
+    private javax.swing.JButton btnPpExpiry;
     private javax.swing.JButton btnRpExpiry;
     private javax.swing.JButton btnSearchEmployee;
     private javax.swing.JButton btnStock;

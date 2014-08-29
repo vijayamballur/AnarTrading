@@ -64,66 +64,64 @@
                               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jToolBar1" pref="704" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <Component id="cmbFrom" max="32767" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="lblEmployeeName6" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="cmbFrom" max="32767" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="lblEmployeeName6" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="txtTerms" alignment="0" pref="108" max="32767" attributes="0"/>
+                                                  <Component id="txtInvoiceNumber" alignment="0" max="32767" attributes="0"/>
                                               </Group>
-                                              <Group type="102" attributes="0">
-                                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                      <Component id="txtTerms" alignment="0" pref="108" max="32767" attributes="0"/>
-                                                      <Component id="txtInvoiceNumber" alignment="0" max="32767" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="lblEmployeeName8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="lblEmployeeName5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="txtPaymentDate" pref="116" max="32767" attributes="0"/>
-                                                      <Component id="jDateChooserDate" max="32767" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="lblEmployeeName10" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="lblEmployeeName3" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lblEmployeeName8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblEmployeeName5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="txtPaymentDate" pref="116" max="32767" attributes="0"/>
+                                                  <Component id="jDateChooserDate" max="32767" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lblEmployeeName10" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblEmployeeName3" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <Component id="txtAmount" min="-2" pref="86" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="lblEmployeeName4" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="cmbMonth" min="-2" pref="124" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="cmbYear" pref="98" max="32767" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" attributes="0">
-                                                  <Component id="txtBalance" min="-2" pref="86" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="lblEmployeeName12" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                                  <Component id="txtDeduction" min="-2" pref="124" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Component id="cmbTo" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="txtAmount" min="-2" pref="86" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="lblEmployeeName4" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="cmbMonth" min="-2" pref="124" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="cmbYear" pref="98" max="32767" attributes="0"/>
                                           </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="txtBalance" min="-2" pref="86" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="lblEmployeeName12" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                              <Component id="txtDeduction" min="-2" pref="124" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="cmbTo" alignment="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="lblEmployeeName11" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="radioPaid" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="radioNotPaid" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
                                   </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="lblEmployeeName11" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="radioPaid" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="radioNotPaid" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>

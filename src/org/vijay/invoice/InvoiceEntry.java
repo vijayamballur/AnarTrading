@@ -25,6 +25,7 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import net.proteanit.sql.DbUtils;
+import org.vijay.common.DateCellRenderer;
 import org.vijay.common.NumberRenderer;
 import org.vijay.employee.LabourDetails;
 import static org.vijay.employee.LabourDetails.dateFormat;
@@ -232,17 +233,48 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             con.close();
             
+            jTable1.getColumnModel().getColumn(0).setMinWidth(50);
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
+            
             jTable1.getColumnModel().getColumn(1).setMinWidth(0);
             jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
+            
+            jTable1.getColumnModel().getColumn(4).setMinWidth(100);
+            jTable1.getColumnModel().getColumn(4).setMaxWidth(100);
+            
+            jTable1.getColumnModel().getColumn(5).setMinWidth(70);
+            jTable1.getColumnModel().getColumn(5).setMaxWidth(70);
+            
+            jTable1.getColumnModel().getColumn(6).setMinWidth(100);
+            jTable1.getColumnModel().getColumn(6).setMaxWidth(100);
+            
+            jTable1.getColumnModel().getColumn(7).setMinWidth(50);
+            jTable1.getColumnModel().getColumn(7).setMaxWidth(50);
+            
+            jTable1.getColumnModel().getColumn(8).setMinWidth(50);
+            jTable1.getColumnModel().getColumn(8).setMaxWidth(50);
+            
+            jTable1.getColumnModel().getColumn(9).setMinWidth(50);
+            jTable1.getColumnModel().getColumn(9).setMaxWidth(50);
+            
+            jTable1.getColumnModel().getColumn(10).setMinWidth(70);
+            jTable1.getColumnModel().getColumn(10).setMaxWidth(70);
 
+            jTable1.getColumnModel().getColumn(12).setMinWidth(100);
+            jTable1.getColumnModel().getColumn(12).setMaxWidth(100);
+            
             jTable1.getColumnModel().getColumn(13).setMinWidth(0);
             jTable1.getColumnModel().getColumn(13).setMaxWidth(0);
+            
+            jTable1.getColumnModel().getColumn(14).setMinWidth(50);
+            jTable1.getColumnModel().getColumn(14).setMaxWidth(50);
+
             jTable1.getColumnModel().getColumn(6).setCellRenderer(NumberRenderer.getIntegerRenderer());
             jTable1.getColumnModel().getColumn(12).setCellRenderer(NumberRenderer.getIntegerRenderer());
             jTable1.getColumnModel().getColumn(14).setCellRenderer(NumberRenderer.getIntegerRenderer());
             
-            jTable1.getColumnModel().getColumn(5).setCellRenderer(NumberRenderer.getDateTimeRenderer());
-            jTable1.getColumnModel().getColumn(10).setCellRenderer(NumberRenderer.getDateTimeRenderer());
+            jTable1.getColumnModel().getColumn(5).setCellRenderer(new DateCellRenderer());
+            jTable1.getColumnModel().getColumn(10).setCellRenderer(new DateCellRenderer());
         }
         catch(Exception e)
         {

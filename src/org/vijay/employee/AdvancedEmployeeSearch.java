@@ -174,9 +174,9 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
             jTable1.getColumnModel().getColumn(9).setMaxWidth(0);
             jTable1.getColumnModel().getColumn(9).setWidth(0);
             
-            jTable1.getColumnModel().getColumn(11).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(11).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(11).setWidth(0);
+            jTable1.getColumnModel().getColumn(10).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(10).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(10).setWidth(0);
             
             jTable1.getColumnModel().getColumn(15).setMinWidth(0);
             jTable1.getColumnModel().getColumn(15).setMaxWidth(0);
@@ -188,6 +188,7 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
             jTable1.getColumnModel().getColumn(7).setMaxWidth(100);
             jTable1.getColumnModel().getColumn(8).setMaxWidth(100);
             jTable1.getColumnModel().getColumn(10).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(11).setMaxWidth(100);
             jTable1.getColumnModel().getColumn(14).setMaxWidth(200);
             
             jTable1.getColumnModel().getColumn(6).setCellRenderer(new DateCellRenderer());
@@ -231,9 +232,9 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
             jTable1.getColumnModel().getColumn(9).setMaxWidth(0);
             jTable1.getColumnModel().getColumn(9).setWidth(0);
             
-            jTable1.getColumnModel().getColumn(11).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(11).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(11).setWidth(0);
+            jTable1.getColumnModel().getColumn(10).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(10).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(10).setWidth(0);
             
             jTable1.getColumnModel().getColumn(15).setMinWidth(0);
             jTable1.getColumnModel().getColumn(15).setMaxWidth(0);
@@ -245,6 +246,7 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
             jTable1.getColumnModel().getColumn(7).setMaxWidth(100);
             jTable1.getColumnModel().getColumn(8).setMaxWidth(100);
             jTable1.getColumnModel().getColumn(10).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(11).setMaxWidth(100);
             jTable1.getColumnModel().getColumn(14).setMaxWidth(200);
             
             jTable1.getColumnModel().getColumn(6).setCellRenderer(new DateCellRenderer());
@@ -286,9 +288,9 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
             jTable1.getColumnModel().getColumn(9).setMaxWidth(0);
             jTable1.getColumnModel().getColumn(9).setWidth(0);
             
-            jTable1.getColumnModel().getColumn(11).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(11).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(11).setWidth(0);
+            jTable1.getColumnModel().getColumn(10).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(10).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(10).setWidth(0);
             
             jTable1.getColumnModel().getColumn(15).setMinWidth(0);
             jTable1.getColumnModel().getColumn(15).setMaxWidth(0);
@@ -300,6 +302,7 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
             jTable1.getColumnModel().getColumn(7).setMaxWidth(100);
             jTable1.getColumnModel().getColumn(8).setMaxWidth(100);
             jTable1.getColumnModel().getColumn(10).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(11).setMaxWidth(100);
             jTable1.getColumnModel().getColumn(14).setMaxWidth(200);
             
             jTable1.getColumnModel().getColumn(6).setCellRenderer(new DateCellRenderer());
@@ -344,9 +347,9 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
             jTable1.getColumnModel().getColumn(9).setMaxWidth(0);
             jTable1.getColumnModel().getColumn(9).setWidth(0);
             
-            jTable1.getColumnModel().getColumn(11).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(11).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(11).setWidth(0);
+            jTable1.getColumnModel().getColumn(10).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(10).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(10).setWidth(0);
             
             jTable1.getColumnModel().getColumn(15).setMinWidth(0);
             jTable1.getColumnModel().getColumn(15).setMaxWidth(0);
@@ -358,6 +361,7 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
             jTable1.getColumnModel().getColumn(7).setMaxWidth(100);
             jTable1.getColumnModel().getColumn(8).setMaxWidth(100);
             jTable1.getColumnModel().getColumn(10).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(11).setMaxWidth(100);
             jTable1.getColumnModel().getColumn(14).setMaxWidth(200);
             
             jTable1.getColumnModel().getColumn(6).setCellRenderer(new DateCellRenderer());
@@ -403,9 +407,9 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
             jTable1.getColumnModel().getColumn(9).setMaxWidth(0);
             jTable1.getColumnModel().getColumn(9).setWidth(0);
             
-            jTable1.getColumnModel().getColumn(11).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(11).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(11).setWidth(0);
+            jTable1.getColumnModel().getColumn(10).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(10).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(10).setWidth(0);
             
             jTable1.getColumnModel().getColumn(15).setMinWidth(0);
             jTable1.getColumnModel().getColumn(15).setMaxWidth(0);
@@ -417,6 +421,7 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
             jTable1.getColumnModel().getColumn(7).setMaxWidth(100);
             jTable1.getColumnModel().getColumn(8).setMaxWidth(100);
             jTable1.getColumnModel().getColumn(10).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(11).setMaxWidth(100);
             jTable1.getColumnModel().getColumn(14).setMaxWidth(200);
             
             jTable1.getColumnModel().getColumn(6).setCellRenderer(new DateCellRenderer());

@@ -23,12 +23,12 @@ import org.vijay.common.connection;
  *
  * @author MAC
  */
-public class RPExpiryList extends javax.swing.JInternalFrame {
+public class PPExpiryList extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form btnRPExpiryList
      */
-    public RPExpiryList() {
+    public PPExpiryList() {
         initComponents();
         setSize(Toolkit.getDefaultToolkit().getScreenSize());
         viewDbEmployeeDetails();
@@ -50,7 +50,7 @@ public class RPExpiryList extends javax.swing.JInternalFrame {
         try
         {
             Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',idNumber '"+"ID/VisaNumber"+"',visaExpiry '"+"RP Expiry"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',DATEDIFF(visaExpiry,CURDATE())'"+"DAYS LEFT"+"' from tbl_labourdetails,(SELECT @i := 0) temp WHERE DATEDIFF(visaExpiry,CURDATE()) <30 AND STATUS !='LEFT' order by DATEDIFF(visaExpiry,CURDATE())");
+            ResultSet rs=stmt.executeQuery("select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',idNumber '"+"ID/VisaNumber"+"',visaExpiry '"+"RP Expiry"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',DATEDIFF(passportExpiry,CURDATE())'"+"DAYS LEFT"+"' from tbl_labourdetails,(SELECT @i := 0) temp WHERE DATEDIFF(passportExpiry,CURDATE()) <60 AND STATUS !='LEFT' order by DATEDIFF(passportExpiry,CURDATE())");
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
             jTable1.getColumnModel().getColumn(1).setMaxWidth(50);
@@ -80,7 +80,7 @@ public class RPExpiryList extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
 
         setClosable(true);
-        setTitle("Resident Permit Expiry List");
+        setTitle("Passport Expiry List");
 
         jTable1.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(

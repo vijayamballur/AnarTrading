@@ -8,7 +8,7 @@
 		<![CDATA[SELECT
     fromName
     , bearer
-    , DATE_FORMAT(IFNULL(chequeDate,""),'%d-%b-%Y')as chequeDate
+    , IF(chequeDate IS NULL ," ",DATE_FORMAT(chequeDate,'%d-%b-%Y') ) as chequeDate
     , amount
     , amountInWords
 FROM

@@ -419,9 +419,9 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
             jTable1.getColumnModel().getColumn(9).setMaxWidth(0);
             jTable1.getColumnModel().getColumn(9).setWidth(0);
             
-            jTable1.getColumnModel().getColumn(11).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(11).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(11).setWidth(0);
+            jTable1.getColumnModel().getColumn(10).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(10).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(10).setWidth(0);
             
             jTable1.getColumnModel().getColumn(15).setMinWidth(0);
             jTable1.getColumnModel().getColumn(15).setMaxWidth(0);
@@ -433,6 +433,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
             jTable1.getColumnModel().getColumn(7).setMaxWidth(100);
             jTable1.getColumnModel().getColumn(8).setMaxWidth(100);
             jTable1.getColumnModel().getColumn(10).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(11).setMaxWidth(100);
             jTable1.getColumnModel().getColumn(14).setMaxWidth(200);
             
             jTable1.getColumnModel().getColumn(6).setCellRenderer(new DateCellRenderer());
@@ -632,7 +633,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel3.setText("Employee Name");
 
-        txtEmpName.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        txtEmpName.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtEmpName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtEmpNameKeyPressed(evt);
@@ -642,17 +643,17 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         Nationality.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         Nationality.setText("Nationality");
 
-        cmbNationality.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        cmbNationality.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel5.setText("Profession");
 
-        cmbProfession.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        cmbProfession.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel7.setText("Passport Number");
 
-        txtPassportNumber.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        txtPassportNumber.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel8.setText("Passport Expiry");
@@ -660,7 +661,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel12.setText("Id Number");
 
-        txtIdNumber.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        txtIdNumber.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtIdNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdNumberActionPerformed(evt);
@@ -681,27 +682,27 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         jLabel17.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel17.setText("Basic Salary");
 
-        txtBasicSalary.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        txtBasicSalary.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel10.setText("Current Site");
 
-        cmbCurrentSite.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        cmbCurrentSite.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
 
         jLabel13.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel13.setText("Parent Company");
 
-        cmbfirstParty.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        cmbfirstParty.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
 
         jLabel14.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel14.setText("Contracting Company");
 
-        cmbContracting.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        cmbContracting.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
 
         jLabel16.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel16.setText("Child Company");
 
-        cmbSecondParty.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        cmbSecondParty.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
 
         jLabel15.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel15.setText("Date");
@@ -735,16 +736,16 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jDateChooserDate.setDateFormatString("yyyy-MM-dd");
-        jDateChooserDate.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jDateChooserDate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
 
         jDateChooserDOB.setDateFormatString("yyyy-MM-dd");
-        jDateChooserDOB.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jDateChooserDOB.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
 
         jDateChooserPPExpiry.setDateFormatString("yyyy-MM-dd");
-        jDateChooserPPExpiry.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jDateChooserPPExpiry.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
 
         jDateChooserRPExpiry.setDateFormatString("yyyy-MM-dd");
-        jDateChooserRPExpiry.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jDateChooserRPExpiry.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
