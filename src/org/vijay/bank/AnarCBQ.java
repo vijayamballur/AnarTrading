@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package org.vijay.petty;
+package org.vijay.bank;
 
 import java.awt.Toolkit;
 import java.beans.PropertyChangeEvent;
@@ -24,7 +24,6 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import net.proteanit.sql.DbUtils;
 import org.vijay.common.AnarTrading;
-import org.vijay.common.AutoCompleteDecorator;
 import org.vijay.common.DateCellRenderer;
 import org.vijay.common.NumberRenderer;
 import org.vijay.common.connection;
@@ -35,17 +34,15 @@ import static org.vijay.invoice.InvoiceEntry.dateFormat;
  *
  * @author MAC
  */
-public class PettyCashEntry extends javax.swing.JInternalFrame {
+public class AnarCBQ extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form PettyCashEntry
      */
-    public PettyCashEntry() {
+    public AnarCBQ() {
         initComponents();
         setSize(Toolkit.getDefaultToolkit().getScreenSize());
-        AutoCompleteDecorator.decorate(cmbName);
-        viewDbPettyCashDetails();
-        cmbNameFill();
+        viewDbAnarCBQdetails();
         jDate.addPropertyChangeListener(new PropertyChangeListener() {
 
             @Override
@@ -57,19 +54,17 @@ public class PettyCashEntry extends javax.swing.JInternalFrame {
         });
         jtableSelection();
     }
-    public PettyCashEntry(int pettyCashId) {
-        this.pettyCashId=pettyCashId;
+    public AnarCBQ(int aCbqId) {
+        this.aCbqId=aCbqId;
         initComponents();
-        setTitle("Petty Cash Entry-Updation/Deletion");
+        setTitle("Anar Commercial Bank-Updation/Deletion");
         
         btnSave.setEnabled(false);
         btnUpdate.setEnabled(true);
         btnDelete.setEnabled(true);
         
         setSize(Toolkit.getDefaultToolkit().getScreenSize());
-        AutoCompleteDecorator.decorate(cmbName);
-        viewDbPettyCashDetails();
-        cmbNameFill();
+        viewDbAnarCBQdetails();
         jDate.addPropertyChangeListener(new PropertyChangeListener() {
 
             @Override
@@ -80,26 +75,24 @@ public class PettyCashEntry extends javax.swing.JInternalFrame {
             }  
         });
         jtableSelection();
-        getDetailspettyCashId();
+        getDetailsAcbqId();
     }
-    
-    public void getDetailspettyCashId()
+    public void getDetailsAcbqId()
      {
          try {
             connection c = new connection();
             Connection con = c.conn();
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT pettyDate,Name,debit,credit,description FROM tbl_pettycash where pettyId="+pettyCashId);
+            ResultSet rs = stmt.executeQuery("SELECT transDate,debit,credit,description FROM tbl_anarcbq where AcbqId="+aCbqId);
             while (rs.next()) {
                 try 
                 {
-                    jDate.setDate(dateFormat.parse(rs.getString("pettyDate")));
+                    jDate.setDate(dateFormat.parse(rs.getString("transDate")));
                 } 
                 catch (ParseException ex) 
                 {
                     Logger.getLogger(LabourDetails.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                cmbName.setSelectedItem(rs.getString("Name"));
                 txtDebit.setText(rs.getString("debit"));
                 txtCredit.setText(rs.getString("credit"));
                 txtDescription.setText(rs.getString("description"));
@@ -110,8 +103,7 @@ public class PettyCashEntry extends javax.swing.JInternalFrame {
             
         }
      }
-    
-    public void viewDbPettyCashDetails()
+    public void viewDbAnarCBQdetails()
     {
         truncateTempDbTable();
         insertIntoTempDbTable();
@@ -120,17 +112,18 @@ public class PettyCashEntry extends javax.swing.JInternalFrame {
         try
         {
             Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("SELECT x.pettyId,x.Name,x.pettyDate,x.description, x.debit, x.credit, SUM(y.bal) balance FROM( SELECT *,credit-debit bal FROM tbl_temp_petty) X JOIN( SELECT *,credit-debit bal FROM tbl_temp_petty) Y ON y.id <= x.id  WHERE MONTH(x.pettyDate)=MONTH(CURRENT_DATE) GROUP BY x.id");
+            ResultSet rs=stmt.executeQuery("SELECT x.AcbqId,x.transDate,x.description, x.debit, x.credit, SUM(y.bal) balance FROM( SELECT *,credit-debit bal FROM tbl_temp_anarcbq) X JOIN( SELECT *,credit-debit bal FROM tbl_temp_anarcbq) Y ON y.id <= x.id WHERE MONTH(x.transDate)=MONTH(CURRENT_DATE) GROUP BY x.id");
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             
             jTable1.getColumnModel().getColumn(0).setMinWidth(50);
             jTable1.getColumnModel().getColumn(0).setMaxWidth(50);          
             
-            jTable1.getColumnModel().getColumn(1).setMinWidth(150);
-            jTable1.getColumnModel().getColumn(1).setMaxWidth(150);
             
-            jTable1.getColumnModel().getColumn(2).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(2).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(1).setMinWidth(100);
+            jTable1.getColumnModel().getColumn(1).setMaxWidth(100);
+            
+            jTable1.getColumnModel().getColumn(3).setMinWidth(100);
+            jTable1.getColumnModel().getColumn(3).setMaxWidth(100);
             
             jTable1.getColumnModel().getColumn(4).setMinWidth(100);
             jTable1.getColumnModel().getColumn(4).setMaxWidth(100);
@@ -138,13 +131,10 @@ public class PettyCashEntry extends javax.swing.JInternalFrame {
             jTable1.getColumnModel().getColumn(5).setMinWidth(100);
             jTable1.getColumnModel().getColumn(5).setMaxWidth(100);
             
-            jTable1.getColumnModel().getColumn(6).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(6).setMaxWidth(100);
-            
-            jTable1.getColumnModel().getColumn(2).setCellRenderer(new DateCellRenderer());
+            jTable1.getColumnModel().getColumn(1).setCellRenderer(new DateCellRenderer());
+            jTable1.getColumnModel().getColumn(3).setCellRenderer(NumberRenderer.getIntegerRenderer());
             jTable1.getColumnModel().getColumn(4).setCellRenderer(NumberRenderer.getIntegerRenderer());
             jTable1.getColumnModel().getColumn(5).setCellRenderer(NumberRenderer.getIntegerRenderer());
-            jTable1.getColumnModel().getColumn(6).setCellRenderer(NumberRenderer.getIntegerRenderer());
             jTable1.setAutoCreateRowSorter(true);
             con.close();
 
@@ -154,25 +144,11 @@ public class PettyCashEntry extends javax.swing.JInternalFrame {
 
         }
     }
-    public void cmbNameFill() {
-        try {
-            connection c = new connection();
-            Connection con = c.conn();
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT DISTINCT Name FROM tbl_pettycash order by Name asc");
-            while (rs.next()) {
-                cmbName.addItem(rs.getString(1));
-            }
-            con.close();
-        } catch (SQLException ex) {
-            
-        }
-    }
-    public void  viewPettyCashform()
+    public void  viewAnarCbqform()
     {
-        PettyCashEntry PE=new PettyCashEntry();
-        AnarTrading.desktopPane1.add(PE);
-        PE.setVisible(true);
+        AnarCBQ ACBQ=new AnarCBQ();
+        AnarTrading.desktopPane1.add(ACBQ);
+        ACBQ.setVisible(true);
     }
     
     public void insertIntoDb()
@@ -181,17 +157,16 @@ public class PettyCashEntry extends javax.swing.JInternalFrame {
         Connection con=c.conn();
         try
         {
-            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_pettycash(pettyDate,Name,debit,credit,description) VALUES(?,upper(?),?,?,?)");           
+            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_anarcbq(transDate,debit,credit,description) VALUES(?,?,?,?)");           
             ps.setString(1,todaydate);
-            ps.setString(2, cmbName.getSelectedItem().toString());
-            ps.setString(3, txtDebit.getText());
-            ps.setString(4, txtCredit.getText());
-            ps.setString(5, txtDescription.getText());
+            ps.setString(2, txtDebit.getText());
+            ps.setString(3, txtCredit.getText());
+            ps.setString(4, txtDescription.getText());
             int i=ps.executeUpdate();
             if(i!=0)
             {
                     dispose();
-                    viewPettyCashform();
+                    viewAnarCbqform();
                     
             }
             con.close();
@@ -208,7 +183,7 @@ public class PettyCashEntry extends javax.swing.JInternalFrame {
         Connection con=c.conn();
         try
         {
-            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_temp_petty (pettyId,pettyDate,NAME,debit,credit,description) SELECT * FROM tbl_pettycash ORDER BY pettydate,pettyId");
+            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_temp_anarcbq (AcbqId,transDate,debit,credit,description) SELECT * FROM tbl_anarcbq ORDER BY transDate,AcbqId");
             int i=ps.executeUpdate();
             if(i!=0)
             {
@@ -228,7 +203,7 @@ public class PettyCashEntry extends javax.swing.JInternalFrame {
         Connection con=c.conn();
         try
         {
-            PreparedStatement ps=con.prepareStatement("TRUNCATE TABLE tbl_temp_petty");
+            PreparedStatement ps=con.prepareStatement("TRUNCATE TABLE tbl_temp_anarcbq");
             int i=ps.executeUpdate();
             if(i!=0)
             {
@@ -254,19 +229,18 @@ public class PettyCashEntry extends javax.swing.JInternalFrame {
             btnUpdate.setEnabled(true);
             btnDelete.setEnabled(true);
             
-            pettyCashId=Integer.parseInt(jTable1.getValueAt(rowNo,0).toString());
-            cmbName.setSelectedItem(jTable1.getValueAt(rowNo,1).toString());
+            aCbqId=Integer.parseInt(jTable1.getValueAt(rowNo,0).toString());
             try 
             {
-                    jDate.setDate(defaultDate.parse(jTable1.getValueAt(rowNo,2).toString()));
+                    jDate.setDate(defaultDate.parse(jTable1.getValueAt(rowNo,1).toString()));
             } 
             catch (ParseException ex) 
             {
                     Logger.getLogger(LabourDetails.class.getName()).log(Level.SEVERE, null, ex);
             } 
-            txtDescription.setText(jTable1.getValueAt(rowNo,3).toString());
-            txtDebit.setText(jTable1.getValueAt(rowNo,4).toString());
-            txtCredit.setText(jTable1.getValueAt(rowNo,5).toString());
+            txtDescription.setText(jTable1.getValueAt(rowNo,2).toString());
+            txtDebit.setText(jTable1.getValueAt(rowNo,3).toString());
+            txtCredit.setText(jTable1.getValueAt(rowNo,4).toString());
             }
         });
     }
@@ -278,18 +252,17 @@ public class PettyCashEntry extends javax.swing.JInternalFrame {
         Connection con=c.conn();
         try
         {
-            PreparedStatement ps=con.prepareStatement("UPDATE tbl_pettycash SET pettyDate=?,Name=upper(?),debit=?,credit=?,description=? where pettyId=?");
+            PreparedStatement ps=con.prepareStatement("UPDATE tbl_anarcbq SET transDate=?,debit=?,credit=?,description=? where AcbqId=?");
             ps.setString(1,todaydate);
-            ps.setString(2, cmbName.getSelectedItem().toString());
-            ps.setString(3, txtDebit.getText());
-            ps.setString(4, txtCredit.getText());
-            ps.setString(5, txtDescription.getText());
-            ps.setInt(6, pettyCashId);
+            ps.setString(2, txtDebit.getText());
+            ps.setString(3, txtCredit.getText());
+            ps.setString(4, txtDescription.getText());
+            ps.setInt(5, aCbqId);
             int i=ps.executeUpdate();
             if(i!=0)
             {
                     dispose();
-                    viewPettyCashform();
+                    viewAnarCbqform();
             }
             con.close();  
             balance=0;
@@ -313,8 +286,6 @@ public class PettyCashEntry extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jDate = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        cmbName = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
         txtDebit = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -333,19 +304,12 @@ public class PettyCashEntry extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
 
         setClosable(true);
-        setTitle("Petty Cash Entry");
+        setTitle("Anar Commercial Bank");
 
         jDate.setDateFormatString("yyy-MM-dd");
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel1.setText("Date Of Entry");
-
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel2.setText("Name");
-
-        cmbName.setEditable(true);
-        cmbName.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        cmbName.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--select name--" }));
 
         jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel3.setText("Debit");
@@ -457,27 +421,20 @@ public class PettyCashEntry extends javax.swing.JInternalFrame {
                             .addComponent(jDate, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
                             .addComponent(txtDebit))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4))
+                        .addComponent(jLabel4)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbName, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCredit, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(txtCredit, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(242, 242, 242)))
                 .addContainerGap(187, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(cmbName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(8, 8, 8)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel3)
@@ -493,7 +450,6 @@ public class PettyCashEntry extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable1.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -554,11 +510,11 @@ public class PettyCashEntry extends javax.swing.JInternalFrame {
                     connection c=new connection();
                     Connection con=c.conn();
                     Statement stmt1=con.createStatement();
-                    int i=stmt1.executeUpdate("delete from tbl_pettycash  where pettyId="+pettyCashId);
+                    int i=stmt1.executeUpdate("delete from tbl_anarcbq  where AcbqId="+aCbqId);
                     if(i!=0)
                     {
                         dispose();
-                        viewPettyCashform();
+                        viewAnarCbqform();
                     }
                 }
                 catch(Exception e)
@@ -574,16 +530,16 @@ public class PettyCashEntry extends javax.swing.JInternalFrame {
 
     private void ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewActionPerformed
         // TODO add your handling code here:
-        pettySearch  PS=new pettySearch();
-        AnarTrading.desktopPane1.add(PS);
-        PS.setVisible(true);
-        PS.show();
+        AnarCBQsearch  AcbqSearch=new AnarCBQsearch();
+        AnarTrading.desktopPane1.add(AcbqSearch);
+        AcbqSearch.setVisible(true);
+        AcbqSearch.show();
     }//GEN-LAST:event_ViewActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
         dispose();
-        viewPettyCashform();
+        viewAnarCbqform();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -599,10 +555,8 @@ public class PettyCashEntry extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JComboBox cmbName;
     private com.toedter.calendar.JDateChooser jDate;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
@@ -617,7 +571,7 @@ public class PettyCashEntry extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
     String dateString = "",todaydate;
     float debit,credit,balance;
-    public int pettyCashId;
+    public int aCbqId;
     DateFormat defaultDate = new SimpleDateFormat("yyyy-MM-dd");
 
 }

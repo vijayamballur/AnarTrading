@@ -18,6 +18,10 @@ import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import org.vijay.bank.AnarCBQ;
+import org.vijay.bank.AnarCBQsearch;
+import org.vijay.bank.FixtureCBQ;
+import org.vijay.bank.FixtureCBQsearch;
 import org.vijay.cheque.AdvancedChequeSearch;
 import org.vijay.cheque.ChequePrinting;
 import org.vijay.employee.PPExpiryList;
@@ -26,6 +30,7 @@ import org.vijay.invoice.AdvancedInvoiceReceivedSearch;
 import org.vijay.invoice.AdvancedInvoiceSearch;
 import org.vijay.invoice.InvoiceNew;
 import org.vijay.petty.PettyCashEntry;
+import org.vijay.petty.pettySearch;
 import org.vijay.stock.SafetyStock;
 
 /**
@@ -71,8 +76,13 @@ public class AnarTrading extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         btnStock = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
+        btnAnarCBQentry = new javax.swing.JButton();
+        btnAnarCbqSearch = new javax.swing.JButton();
+        btnFixtureCBQentry = new javax.swing.JButton();
+        btnFixtureCbqSearch = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         btnPettyCash = new javax.swing.JButton();
+        btnPettySearch = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
@@ -356,15 +366,69 @@ public class AnarTrading extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Stock", jPanel5);
 
+        btnAnarCBQentry.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnAnarCBQentry.setText("Anar_CBQ_Entry");
+        btnAnarCBQentry.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnAnarCBQentry.setContentAreaFilled(false);
+        btnAnarCBQentry.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAnarCBQentry.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnarCBQentryActionPerformed(evt);
+            }
+        });
+
+        btnAnarCbqSearch.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnAnarCbqSearch.setText("Anar_CBQ_Date_Wise_Search");
+        btnAnarCbqSearch.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnAnarCbqSearch.setContentAreaFilled(false);
+        btnAnarCbqSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAnarCbqSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnarCbqSearchActionPerformed(evt);
+            }
+        });
+
+        btnFixtureCBQentry.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnFixtureCBQentry.setText("Fixture_CBQ_Entry");
+        btnFixtureCBQentry.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnFixtureCBQentry.setContentAreaFilled(false);
+        btnFixtureCBQentry.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnFixtureCBQentry.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFixtureCBQentryActionPerformed(evt);
+            }
+        });
+
+        btnFixtureCbqSearch.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnFixtureCbqSearch.setText("Fixture_CBQ_Date_Wise_Search");
+        btnFixtureCbqSearch.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnFixtureCbqSearch.setContentAreaFilled(false);
+        btnFixtureCbqSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnFixtureCbqSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFixtureCbqSearchActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1368, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addComponent(btnAnarCBQentry)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnFixtureCBQentry)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 762, Short.MAX_VALUE)
+                .addComponent(btnAnarCbqSearch)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnFixtureCbqSearch))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 32, Short.MAX_VALUE)
+            .addComponent(btnAnarCBQentry, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+            .addComponent(btnAnarCbqSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnFixtureCbqSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnFixtureCBQentry, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Bank Status", jPanel6);
@@ -380,17 +444,31 @@ public class AnarTrading extends javax.swing.JFrame {
             }
         });
 
+        btnPettySearch.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnPettySearch.setText("Date_Wise_Search");
+        btnPettySearch.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnPettySearch.setContentAreaFilled(false);
+        btnPettySearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPettySearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPettySearchActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addComponent(btnPettyCash)
-                .addGap(0, 1261, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPettySearch)
+                .addGap(0, 1136, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnPettyCash, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnPettyCash, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+            .addComponent(btnPettySearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Petty Status", jPanel7);
@@ -956,6 +1034,41 @@ public class AnarTrading extends javax.swing.JFrame {
         PE.setVisible(true);
     }//GEN-LAST:event_btnPettyCashActionPerformed
 
+    private void btnPettySearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPettySearchActionPerformed
+        // TODO add your handling code here:
+        pettySearch PS=new pettySearch();
+        AnarTrading.desktopPane1.add(PS);
+        PS.setVisible(true);
+    }//GEN-LAST:event_btnPettySearchActionPerformed
+
+    private void btnAnarCBQentryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnarCBQentryActionPerformed
+        // TODO add your handling code here:
+        AnarCBQ ACBQ=new AnarCBQ();
+        AnarTrading.desktopPane1.add(ACBQ);
+        ACBQ.setVisible(true);
+    }//GEN-LAST:event_btnAnarCBQentryActionPerformed
+
+    private void btnAnarCbqSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnarCbqSearchActionPerformed
+        // TODO add your handling code here:
+        AnarCBQsearch ACBQSearch=new AnarCBQsearch();
+        AnarTrading.desktopPane1.add(ACBQSearch);
+        ACBQSearch.setVisible(true);
+    }//GEN-LAST:event_btnAnarCbqSearchActionPerformed
+
+    private void btnFixtureCBQentryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFixtureCBQentryActionPerformed
+        // TODO add your handling code here:
+        FixtureCBQ FCBQ=new FixtureCBQ();
+        AnarTrading.desktopPane1.add(FCBQ);
+        FCBQ.setVisible(true);
+    }//GEN-LAST:event_btnFixtureCBQentryActionPerformed
+
+    private void btnFixtureCbqSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFixtureCbqSearchActionPerformed
+        // TODO add your handling code here:
+        FixtureCBQsearch FCBQSearch=new FixtureCBQsearch();
+        AnarTrading.desktopPane1.add(FCBQSearch);
+        FCBQSearch.setVisible(true);
+    }//GEN-LAST:event_btnFixtureCbqSearchActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1007,8 +1120,12 @@ try {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAnarCBQentry;
+    private javax.swing.JButton btnAnarCbqSearch;
     private javax.swing.JButton btnCheque;
     private javax.swing.JButton btnChequeSearch;
+    private javax.swing.JButton btnFixtureCBQentry;
+    private javax.swing.JButton btnFixtureCbqSearch;
     private javax.swing.JButton btnInvoiceReceived;
     private javax.swing.JButton btnInvoiceReceivedSearch;
     private javax.swing.JButton btnInvoiceSend;
@@ -1016,6 +1133,7 @@ try {
     private javax.swing.JButton btnNewContractEmployee;
     private javax.swing.JButton btnNewEmployee;
     private javax.swing.JButton btnPettyCash;
+    private javax.swing.JButton btnPettySearch;
     private javax.swing.JButton btnPpExpiry;
     private javax.swing.JButton btnRpExpiry;
     private javax.swing.JButton btnSearchEmployee;

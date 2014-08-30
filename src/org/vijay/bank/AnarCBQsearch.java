@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 
-package org.vijay.petty;
+package org.vijay.bank;
 
+import org.vijay.petty.*;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.beans.PropertyChangeEvent;
@@ -32,12 +33,12 @@ import org.vijay.report.ReportView;
  *
  * @author MAC
  */
-public class pettySearch extends javax.swing.JInternalFrame {
+public class AnarCBQsearch extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form pettySearch
      */
-    public pettySearch() {
+    public AnarCBQsearch() {
         initComponents();
         setSize(Toolkit.getDefaultToolkit().getScreenSize());
         jDateFrom.addPropertyChangeListener(new PropertyChangeListener() {
@@ -63,18 +64,18 @@ public class pettySearch extends javax.swing.JInternalFrame {
             @Override
             public void valueChanged(ListSelectionEvent e) {
             int rowNo=jTable1.getSelectedRow();
-            pettyCashId=Integer.parseInt(jTable1.getValueAt(rowNo,0).toString());
+            aCbqId=Integer.parseInt(jTable1.getValueAt(rowNo,0).toString());
             }
         });
         CurrentWorkingDirectory CWD=new CurrentWorkingDirectory();
         path=CWD.getpath();
     }
-    public void ViewPettySearchForm()
+    public void ViewAnarCbqSearchForm()
     {
-        pettySearch  PS=new pettySearch();
-        AnarTrading.desktopPane1.add(PS);
-        PS.setVisible(true);
-        PS.show();
+        AnarCBQsearch  AcbqSearch=new AnarCBQsearch();
+        AnarTrading.desktopPane1.add(AcbqSearch);
+        AcbqSearch.setVisible(true);
+        AcbqSearch.show();
     }
     
     public void Search()
@@ -84,18 +85,18 @@ public class pettySearch extends javax.swing.JInternalFrame {
         try
         {
             Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("SELECT x.pettyId,x.Name,x.pettyDate,x.description, x.debit, x.credit, SUM(y.bal) balance FROM( SELECT *,credit-debit bal FROM tbl_temp_petty) X JOIN( SELECT *,credit-debit bal FROM tbl_temp_petty) Y ON y.id <= x.id  WHERE x.pettydate BETWEEN '"+Fromdate+"' AND '"+Todate+"' GROUP BY x.id");
+            ResultSet rs=stmt.executeQuery("SELECT x.AcbqId,x.transDate,x.description, x.debit, x.credit, SUM(y.bal) balance FROM( SELECT *,credit-debit bal FROM tbl_temp_anarcbq) X JOIN( SELECT *,credit-debit bal FROM tbl_temp_anarcbq) Y ON y.id <= x.id  WHERE x.transDate BETWEEN '"+Fromdate+"' AND '"+Todate+"' GROUP BY x.id");
             
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             
             jTable1.getColumnModel().getColumn(0).setMinWidth(50);
             jTable1.getColumnModel().getColumn(0).setMaxWidth(50);          
             
-            jTable1.getColumnModel().getColumn(1).setMinWidth(150);
-            jTable1.getColumnModel().getColumn(1).setMaxWidth(150);
+            jTable1.getColumnModel().getColumn(1).setMinWidth(100);
+            jTable1.getColumnModel().getColumn(1).setMaxWidth(100);
             
-            jTable1.getColumnModel().getColumn(2).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(2).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(3).setMinWidth(100);
+            jTable1.getColumnModel().getColumn(3).setMaxWidth(100);
             
             jTable1.getColumnModel().getColumn(4).setMinWidth(100);
             jTable1.getColumnModel().getColumn(4).setMaxWidth(100);
@@ -103,13 +104,10 @@ public class pettySearch extends javax.swing.JInternalFrame {
             jTable1.getColumnModel().getColumn(5).setMinWidth(100);
             jTable1.getColumnModel().getColumn(5).setMaxWidth(100);
             
-            jTable1.getColumnModel().getColumn(6).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(6).setMaxWidth(100);
-            
-            jTable1.getColumnModel().getColumn(2).setCellRenderer(new DateCellRenderer());
+            jTable1.getColumnModel().getColumn(1).setCellRenderer(new DateCellRenderer());
+            jTable1.getColumnModel().getColumn(3).setCellRenderer(NumberRenderer.getIntegerRenderer());
             jTable1.getColumnModel().getColumn(4).setCellRenderer(NumberRenderer.getIntegerRenderer());
             jTable1.getColumnModel().getColumn(5).setCellRenderer(NumberRenderer.getIntegerRenderer());
-            jTable1.getColumnModel().getColumn(6).setCellRenderer(NumberRenderer.getIntegerRenderer());
             jTable1.setAutoCreateRowSorter(true);
             con.close();
             jTable1.setEnabled(true);
@@ -143,7 +141,7 @@ public class pettySearch extends javax.swing.JInternalFrame {
         btnCancel = new javax.swing.JButton();
 
         setClosable(true);
-        setTitle("Date Wise Petty Cash");
+        setTitle("Date Wise-Anar CBQ");
 
         jTable1.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -266,11 +264,11 @@ public class pettySearch extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
-        // TODO add your handling code here:
+  //       TODO add your handling code here:
             HashMap para=new HashMap();
             para.put("fromDate",Fromdate);
             para.put("toDate",Todate);
-            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\PettyCash\\PettyCash.jasper"),para);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\Bank\\AnarCBQ.jasper"),para);
             re.setVisible(true);
 
     }//GEN-LAST:event_btnPrintActionPerformed
@@ -278,7 +276,7 @@ public class pettySearch extends javax.swing.JInternalFrame {
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
         dispose();
-        ViewPettySearchForm();
+        ViewAnarCbqSearchForm();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -290,9 +288,9 @@ public class pettySearch extends javax.swing.JInternalFrame {
          int keyCode = evt.getKeyCode();
         if(keyCode == KeyEvent.VK_ENTER)
         {
-            PettyCashEntry PE=new PettyCashEntry(pettyCashId);
-            AnarTrading.desktopPane1.add(PE);
-            PE.setVisible(true);
+            AnarCBQ AcbqEntry=new AnarCBQ(aCbqId);
+            AnarTrading.desktopPane1.add(AcbqEntry);
+            AcbqEntry.setVisible(true);
         }
         if(keyCode == KeyEvent.VK_DELETE)
         {
@@ -308,14 +306,14 @@ public class pettySearch extends javax.swing.JInternalFrame {
                     connection c=new connection();
                     Connection con=c.conn();
                     Statement stmt1=con.createStatement();
-                    int i=stmt1.executeUpdate("delete from tbl_pettycash  where pettyId="+pettyCashId);
+                    int i=stmt1.executeUpdate("delete from tbl_anarcbq  where AcbqId="+aCbqId);
                     if(i!=0)
                     {
                         dispose();
-                        pettySearch  PS=new pettySearch();
-                        AnarTrading.desktopPane1.add(PS);
-                        PS.setVisible(true);
-                        PS.show();
+                        AnarCBQsearch  ACS=new AnarCBQsearch();
+                        AnarTrading.desktopPane1.add(ACS);
+                        ACS.setVisible(true);
+                        ACS.show();
                     }
                 }
                 catch(Exception e)
@@ -350,5 +348,5 @@ public class pettySearch extends javax.swing.JInternalFrame {
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
     String dateString = "",Fromdate,Todate,path;
-    public int pettyCashId;
+    public int aCbqId;
 }

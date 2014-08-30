@@ -10,16 +10,13 @@
 	<parameter name="fromDate" class="java.lang.String"/>
 	<parameter name="toDate" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[SELECT x.pettyId,x.Name,x.pettyDate,x.description, x.debit, x.credit, SUM(y.bal) balance FROM( SELECT *,credit-debit bal FROM tbl_temp_petty) X JOIN( SELECT *,credit-debit bal FROM tbl_temp_petty) Y ON y.id <= x.id
-WHERE x.pettydate BETWEEN $P{fromDate} AND $P{toDate} GROUP BY x.id]]>
+		<![CDATA[SELECT x.FcbqId,x.transDate,x.description, x.debit, x.credit, SUM(y.bal) balance FROM( SELECT *,credit-debit bal FROM tbl_temp_fixturecbq) X JOIN( SELECT *,credit-debit bal FROM tbl_temp_fixturecbq) Y ON y.id <= x.id
+WHERE x.transDate BETWEEN $P{fromDate} AND $P{toDate} GROUP BY x.id]]>
 	</queryString>
-	<field name="pettyId" class="java.lang.Long">
+	<field name="FcbqId" class="java.lang.Long">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="Name" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="pettyDate" class="java.sql.Date">
+	<field name="transDate" class="java.sql.Date">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="description" class="java.lang.String">
@@ -43,36 +40,36 @@ WHERE x.pettydate BETWEEN $P{fromDate} AND $P{toDate} GROUP BY x.id]]>
 	<pageHeader>
 		<band height="73" splitType="Stretch">
 			<staticText>
-				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="ab72ce20-d8ae-4c08-b42b-4e12ca4338df"/>
+				<reportElement style="Title" x="0" y="13" width="283" height="33" uuid="ab72ce20-d8ae-4c08-b42b-4e12ca4338df"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Century Gothic"/>
 				</textElement>
-				<text><![CDATA[Petty Cash Details]]></text>
+				<text><![CDATA[Fixture CBQ Statement]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="100" y="46" width="18" height="20" uuid="d919edd7-78c7-444a-8e00-d382bc4b67d2"/>
+				<reportElement x="132" y="46" width="22" height="20" uuid="d919edd7-78c7-444a-8e00-d382bc4b67d2"/>
 				<textElement>
 					<font fontName="Century Gothic" size="12"/>
 				</textElement>
 				<text><![CDATA[TO]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="118" y="46" width="100" height="20" uuid="592827b7-1d8e-4206-aa68-59cb48269876"/>
+				<reportElement x="154" y="46" width="129" height="20" uuid="592827b7-1d8e-4206-aa68-59cb48269876"/>
 				<textElement textAlignment="Right">
 					<font fontName="Century Gothic" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{toDate}]]></textFieldExpression>
 			</textField>
 			<textField pattern="MMM-yy">
-				<reportElement x="0" y="46" width="100" height="20" uuid="17755d77-5385-4f44-82e8-66e229c28b58"/>
+				<reportElement x="0" y="46" width="132" height="20" uuid="17755d77-5385-4f44-82e8-66e229c28b58"/>
 				<textElement>
 					<font fontName="Century Gothic" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{fromDate}]]></textFieldExpression>
 			</textField>
 			<image>
-				<reportElement x="557" y="3" width="297" height="70" uuid="bff85913-77ed-4ffc-865b-8d57dcb6be52"/>
-				<imageExpression><![CDATA["C:\\Users\\MAC\\Documents\\NetBeansProjects\\ANAR TRADING\\lib\\Reports\\Anar\\PettyCash\\Banner.jpg"]]></imageExpression>
+				<reportElement x="681" y="0" width="173" height="73" uuid="5396b973-35dd-40b5-a902-94b56d0677e2"/>
+				<imageExpression><![CDATA["C:\\Users\\MAC\\Documents\\NetBeansProjects\\ANAR TRADING\\lib\\Reports\\Anar\\Bank\\Fixture.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</pageHeader>
@@ -92,21 +89,14 @@ WHERE x.pettydate BETWEEN $P{fromDate} AND $P{toDate} GROUP BY x.id]]>
 				<text><![CDATA[Trans Id]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="79" y="19" width="79" height="15" uuid="edc1a36b-6054-420e-a802-7aced0e01071"/>
-				<textElement>
-					<font fontName="Century Gothic" size="12"/>
-				</textElement>
-				<text><![CDATA[Name]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Column header" x="158" y="19" width="79" height="15" uuid="b94b7d88-593a-4fd2-a24d-3a659ce136d0"/>
+				<reportElement style="Column header" x="78" y="19" width="79" height="15" uuid="b94b7d88-593a-4fd2-a24d-3a659ce136d0"/>
 				<textElement>
 					<font fontName="Century Gothic" size="12"/>
 				</textElement>
 				<text><![CDATA[Petty Date]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="237" y="19" width="372" height="15" uuid="39a18ca8-eeee-4a54-8864-d896270a6828"/>
+				<reportElement style="Column header" x="157" y="19" width="452" height="15" uuid="39a18ca8-eeee-4a54-8864-d896270a6828"/>
 				<textElement>
 					<font fontName="Century Gothic" size="12"/>
 				</textElement>
@@ -148,24 +138,17 @@ WHERE x.pettydate BETWEEN $P{fromDate} AND $P{toDate} GROUP BY x.id]]>
 				<textElement>
 					<font fontName="Century Gothic" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{pettyId}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement style="Detail" x="79" y="0" width="79" height="15" uuid="3b81f9fa-a517-4b32-a069-d8e9f91c3d35"/>
-				<textElement>
-					<font fontName="Century Gothic" size="10"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{Name}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{FcbqId}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd-MMM-yy">
-				<reportElement style="Detail" x="158" y="0" width="79" height="15" uuid="d314c075-b7e6-4eff-988e-7fa257c45751"/>
+				<reportElement style="Detail" x="78" y="0" width="79" height="15" uuid="d314c075-b7e6-4eff-988e-7fa257c45751"/>
 				<textElement>
 					<font fontName="Century Gothic" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{pettyDate}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{transDate}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="237" y="0" width="372" height="15" uuid="53a079ce-9e7b-41e1-93f7-3119618026d9"/>
+				<reportElement style="Detail" x="157" y="0" width="452" height="15" uuid="53a079ce-9e7b-41e1-93f7-3119618026d9"/>
 				<textElement>
 					<font fontName="Century Gothic" size="10"/>
 				</textElement>
