@@ -93,7 +93,7 @@ WHERE x.transDate BETWEEN $P{fromDate} AND $P{toDate} GROUP BY x.id]]>
 				<textElement>
 					<font fontName="Century Gothic" size="12"/>
 				</textElement>
-				<text><![CDATA[Petty Date]]></text>
+				<text><![CDATA[Trans.Date]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="157" y="19" width="452" height="15" uuid="39a18ca8-eeee-4a54-8864-d896270a6828"/>

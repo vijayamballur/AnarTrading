@@ -22,6 +22,8 @@ import org.vijay.bank.AnarCBQ;
 import org.vijay.bank.AnarCBQsearch;
 import org.vijay.bank.FixtureCBQ;
 import org.vijay.bank.FixtureCBQsearch;
+import org.vijay.bank.FixtureDoha;
+import org.vijay.bank.FixtureDohaSearch;
 import org.vijay.cheque.AdvancedChequeSearch;
 import org.vijay.cheque.ChequePrinting;
 import org.vijay.employee.PPExpiryList;
@@ -80,6 +82,8 @@ public class AnarTrading extends javax.swing.JFrame {
         btnAnarCbqSearch = new javax.swing.JButton();
         btnFixtureCBQentry = new javax.swing.JButton();
         btnFixtureCbqSearch = new javax.swing.JButton();
+        btnFixDoha = new javax.swing.JButton();
+        btnFixtureDohaSearch = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         btnPettyCash = new javax.swing.JButton();
         btnPettySearch = new javax.swing.JButton();
@@ -410,6 +414,28 @@ public class AnarTrading extends javax.swing.JFrame {
             }
         });
 
+        btnFixDoha.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnFixDoha.setText("Fixture_DOHA_Entry");
+        btnFixDoha.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnFixDoha.setContentAreaFilled(false);
+        btnFixDoha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnFixDoha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFixDohaActionPerformed(evt);
+            }
+        });
+
+        btnFixtureDohaSearch.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnFixtureDohaSearch.setText("Fixture_DOHA_Date_Wise_Search");
+        btnFixtureDohaSearch.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnFixtureDohaSearch.setContentAreaFilled(false);
+        btnFixtureDohaSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnFixtureDohaSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFixtureDohaSearchActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -418,17 +444,25 @@ public class AnarTrading extends javax.swing.JFrame {
                 .addComponent(btnAnarCBQentry)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnFixtureCBQentry)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 762, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnFixDoha)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 412, Short.MAX_VALUE)
                 .addComponent(btnAnarCbqSearch)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnFixtureCbqSearch))
+                .addComponent(btnFixtureCbqSearch)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnFixtureDohaSearch)
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnAnarCBQentry, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-            .addComponent(btnAnarCbqSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnFixtureCbqSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnAnarCBQentry, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnFixtureCBQentry, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnFixDoha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(btnAnarCbqSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnFixtureCbqSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnFixtureDohaSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jTabbedPane1.addTab("Bank Status", jPanel6);
@@ -1069,6 +1103,20 @@ public class AnarTrading extends javax.swing.JFrame {
         FCBQSearch.setVisible(true);
     }//GEN-LAST:event_btnFixtureCbqSearchActionPerformed
 
+    private void btnFixDohaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFixDohaActionPerformed
+        // TODO add your handling code here:
+        FixtureDoha FDOHA=new FixtureDoha();
+        AnarTrading.desktopPane1.add(FDOHA);
+        FDOHA.setVisible(true);
+    }//GEN-LAST:event_btnFixDohaActionPerformed
+
+    private void btnFixtureDohaSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFixtureDohaSearchActionPerformed
+        // TODO add your handling code here:
+        FixtureDohaSearch FDohaSearch=new FixtureDohaSearch();
+        AnarTrading.desktopPane1.add(FDohaSearch);
+        FDohaSearch.setVisible(true);
+    }//GEN-LAST:event_btnFixtureDohaSearchActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1124,8 +1172,10 @@ try {
     private javax.swing.JButton btnAnarCbqSearch;
     private javax.swing.JButton btnCheque;
     private javax.swing.JButton btnChequeSearch;
+    private javax.swing.JButton btnFixDoha;
     private javax.swing.JButton btnFixtureCBQentry;
     private javax.swing.JButton btnFixtureCbqSearch;
+    private javax.swing.JButton btnFixtureDohaSearch;
     private javax.swing.JButton btnInvoiceReceived;
     private javax.swing.JButton btnInvoiceReceivedSearch;
     private javax.swing.JButton btnInvoiceSend;
