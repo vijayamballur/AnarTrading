@@ -6,7 +6,6 @@
 
 package org.vijay.stock;
 
-import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.beans.PropertyChangeEvent;
@@ -27,10 +26,8 @@ import javax.swing.event.ListSelectionListener;
 import net.proteanit.sql.DbUtils;
 import org.vijay.common.AnarTrading;
 import org.vijay.common.AutoCompleteDecorator;
-import org.vijay.common.NumberRenderer;
 import org.vijay.common.connection;
 import org.vijay.employee.LabourDetails;
-import org.vijay.invoice.InvoiceEntry;
 
 /**
  *

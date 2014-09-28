@@ -114,7 +114,7 @@ public class FixtureCBQ extends javax.swing.JInternalFrame {
         try
         {
             Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("SELECT x.FcbqId,x.transDate,x.description, x.debit, x.credit, SUM(y.bal) balance FROM( SELECT *,credit-debit bal FROM tbl_temp_fixturecbq) X JOIN( SELECT *,credit-debit bal FROM tbl_temp_fixturecbq) Y ON y.id <= x.id WHERE MONTH(x.transDate)=MONTH(CURRENT_DATE) GROUP BY x.id");
+            ResultSet rs=stmt.executeQuery("SELECT X.FcbqId,X.transDate,X.description, X.debit, X.credit, SUM(Y.bal) balance FROM( SELECT *,credit-debit bal FROM tbl_temp_fixturecbq) X JOIN( SELECT *,credit-debit bal FROM tbl_temp_fixturecbq) Y ON Y.id <= X.id WHERE MONTH(X.transDate)=MONTH(CURRENT_DATE) and YEAR(X.transDate)=YEAR(CURRENT_DATE) GROUP BY X.id");
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             
             jTable1.getColumnModel().getColumn(0).setMinWidth(50);

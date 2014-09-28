@@ -6,7 +6,6 @@
 
 package org.vijay.bank;
 
-import org.vijay.petty.*;
 import java.awt.Toolkit;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -25,7 +24,6 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import net.proteanit.sql.DbUtils;
 import org.vijay.common.AnarTrading;
-import org.vijay.common.AutoCompleteDecorator;
 import org.vijay.common.DateCellRenderer;
 import org.vijay.common.NumberRenderer;
 import org.vijay.common.connection;
@@ -114,7 +112,7 @@ public class FixtureDoha extends javax.swing.JInternalFrame {
         try
         {
             Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("SELECT x.FdohaId,x.transDate,x.description, x.debit, x.credit, SUM(y.bal) balance FROM( SELECT *,credit-debit bal FROM tbl_temp_fixdoha) X JOIN( SELECT *,credit-debit bal FROM tbl_temp_fixdoha) Y ON y.id <= x.id WHERE MONTH(x.transDate)=MONTH(CURRENT_DATE) GROUP BY x.id");
+            ResultSet rs=stmt.executeQuery("SELECT X.FdohaId,X.transDate,X.description, X.debit, X.credit, SUM(Y.bal) balance FROM( SELECT *,credit-debit bal FROM tbl_temp_fixdoha) X JOIN( SELECT *,credit-debit bal FROM tbl_temp_fixdoha) Y ON Y.id <= X.id WHERE MONTH(X.transDate)=MONTH(CURRENT_DATE) and YEAR(X.transDate)=YEAR(CURRENT_DATE) GROUP BY X.id");
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             
             jTable1.getColumnModel().getColumn(0).setMinWidth(50);

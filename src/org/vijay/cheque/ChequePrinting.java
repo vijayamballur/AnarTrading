@@ -194,7 +194,7 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
         }
         catch(Exception e)
         {
-            JOptionPane.showMessageDialog(rootPane,e+"Error SA001");
+            JOptionPane.showMessageDialog(rootPane,e+"-Cheque Db Exception");
         }
     }
     public void updateDb()
@@ -231,6 +231,78 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
         catch(Exception e)
         {
             JOptionPane.showMessageDialog(rootPane, e);
+        }
+    }
+   public void insertIntoFixCbqDb()
+    {
+        connection c=new connection();
+        Connection con=c.conn();
+        try
+        {
+            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_fixturecbq(transDate,debit,credit,description) VALUES(?,?,?,?)");           
+            ps.setString(1,chequeDate);
+            ps.setString(2, txtAmount.getText());
+            ps.setString(3, "0.00");
+            ps.setString(4, txtRemarks.getText());
+            int i=ps.executeUpdate();
+            if(i!=0)
+            {
+               insertIntoDb();
+            }
+            con.close();
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(rootPane,e+"-Fix_Cbq_Db Exception");
+            //JOptionPane.showMessageDialog(rootPane,e+"Error SA001");
+        }
+    }
+   public void insertIntoAnarCbqDb()
+    {
+        connection c=new connection();
+        Connection con=c.conn();
+        try
+        {
+            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_anarcbq(transDate,debit,credit,description) VALUES(?,?,?,?)");           
+            ps.setString(1,chequeDate);
+            ps.setString(2, txtAmount.getText());
+            ps.setString(3,"0.00");
+            ps.setString(4, txtRemarks.getText());
+            int i=ps.executeUpdate();
+            if(i!=0)
+            {
+                insertIntoDb();
+            }
+            con.close();
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(rootPane,e+"-Anar_Cbq_Db Exception");
+            //JOptionPane.showMessageDialog(rootPane,e+"Error SA001");
+        }
+    }
+   public void insertIntoFixDohaDb()
+    {
+        connection c=new connection();
+        Connection con=c.conn();
+        try
+        {
+            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_fixdoha(transDate,debit,credit,description) VALUES(?,?,?,?)");           
+            ps.setString(1,chequeDate);
+            ps.setString(2, txtAmount.getText());
+            ps.setString(3,"0.00");
+            ps.setString(4, txtRemarks.getText());
+            int i=ps.executeUpdate();
+            if(i!=0)
+            {
+                insertIntoDb();
+            }
+            con.close();
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(rootPane, e, "ERROR!!", JOptionPane.ERROR_MESSAGE);
+            //JOptionPane.showMessageDialog(rootPane,e+"Error SA001");
         }
     }
 
@@ -557,8 +629,36 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtAmountFocusLost
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-
-        insertIntoDb();
+       if(radioCommercial.isSelected())
+       {
+           if(cmbFromName.getSelectedItem().equals("FIXTURE INTERNATIONAL W.L.L"))
+           {
+               insertIntoFixCbqDb();
+           }
+           else if(cmbFromName.getSelectedItem().equals("ANAR TRADING & CONTRACTING"))
+           {
+               insertIntoAnarCbqDb();
+           }
+           else
+           {
+               
+           }
+       }
+       else
+       {
+           if(cmbFromName.getSelectedItem().equals("FIXTURE INTERNATIONAL W.L.L"))
+           {
+               insertIntoFixDohaDb();
+           }
+           else if(cmbFromName.getSelectedItem().equals("ANAR TRADING & CONTRACTING"))
+           {
+               JOptionPane.showMessageDialog(null, "There no DOha-Bank Account Attached with ANAR TRADING & CONTRACTING");
+           }
+           else
+           {
+               
+           }
+       }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed

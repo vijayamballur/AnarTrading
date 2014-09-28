@@ -26,14 +26,20 @@ import org.vijay.bank.FixtureDoha;
 import org.vijay.bank.FixtureDohaSearch;
 import org.vijay.cheque.AdvancedChequeSearch;
 import org.vijay.cheque.ChequePrinting;
+import org.vijay.contractEmployee.ConEmployeeTimeSheet;
+import org.vijay.contractEmployee.ConEmployeesSearch;
+import org.vijay.contractEmployee.ConTimeSheetSearch;
+import org.vijay.contractEmployee.ContractLabourDetails;
 import org.vijay.employee.PPExpiryList;
 import org.vijay.employee.RPExpiryList;
 import org.vijay.invoice.AdvancedInvoiceReceivedSearch;
 import org.vijay.invoice.AdvancedInvoiceSearch;
 import org.vijay.invoice.InvoiceNew;
+import org.vijay.invoice.InvoiceviewTemplate;
 import org.vijay.petty.PettyCashEntry;
 import org.vijay.petty.pettySearch;
 import org.vijay.stock.SafetyStock;
+import vijay.org.visa.BusinessVisa;
 
 /**
  *
@@ -67,11 +73,16 @@ public class AnarTrading extends javax.swing.JFrame {
         btnPpExpiry = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         btnNewContractEmployee = new javax.swing.JButton();
+        btnNewContractEmployee1 = new javax.swing.JButton();
+        btnTimeSheet = new javax.swing.JButton();
+        btnTimeSheetSearch = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         btnInvoiceSend = new javax.swing.JButton();
         btnInvoiceReceived = new javax.swing.JButton();
         btnInvoiceSendRearch = new javax.swing.JButton();
         btnInvoiceReceivedSearch = new javax.swing.JButton();
+        btnInvoiceTemplate = new javax.swing.JButton();
+        btnViewInvoice = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         btnCheque = new javax.swing.JButton();
         btnChequeSearch = new javax.swing.JButton();
@@ -87,6 +98,8 @@ public class AnarTrading extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         btnPettyCash = new javax.swing.JButton();
         btnPettySearch = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
+        btnBusinessApp = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
@@ -139,7 +152,8 @@ public class AnarTrading extends javax.swing.JFrame {
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
-        jTabbedPane1.setBackground(new java.awt.Color(153, 204, 255));
+        jTabbedPane1.setBackground(new java.awt.Color(51, 204, 255));
+        jTabbedPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTabbedPane1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
 
         btnNewEmployee.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
@@ -221,23 +235,65 @@ public class AnarTrading extends javax.swing.JFrame {
             }
         });
 
+        btnNewContractEmployee1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnNewContractEmployee1.setText("Search");
+        btnNewContractEmployee1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnNewContractEmployee1.setContentAreaFilled(false);
+        btnNewContractEmployee1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNewContractEmployee1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewContractEmployee1ActionPerformed(evt);
+            }
+        });
+
+        btnTimeSheet.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnTimeSheet.setText("Time_Sheet");
+        btnTimeSheet.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnTimeSheet.setContentAreaFilled(false);
+        btnTimeSheet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTimeSheet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimeSheetActionPerformed(evt);
+            }
+        });
+
+        btnTimeSheetSearch.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnTimeSheetSearch.setText("Time_Sheet_Search");
+        btnTimeSheetSearch.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnTimeSheetSearch.setContentAreaFilled(false);
+        btnTimeSheetSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTimeSheetSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimeSheetSearchActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(btnNewContractEmployee)
-                .addGap(0, 1271, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnNewContractEmployee1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnTimeSheet)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnTimeSheetSearch)
+                .addGap(0, 1006, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnNewContractEmployee, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnNewContractEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+            .addComponent(btnNewContractEmployee1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnTimeSheet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnTimeSheetSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Contract Employee", jPanel4);
 
         btnInvoiceSend.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btnInvoiceSend.setText("Invoice_Send");
+        btnInvoiceSend.setText("Send");
         btnInvoiceSend.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnInvoiceSend.setContentAreaFilled(false);
         btnInvoiceSend.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -248,7 +304,7 @@ public class AnarTrading extends javax.swing.JFrame {
         });
 
         btnInvoiceReceived.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btnInvoiceReceived.setText("Invoice_Received");
+        btnInvoiceReceived.setText("Received");
         btnInvoiceReceived.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnInvoiceReceived.setContentAreaFilled(false);
         btnInvoiceReceived.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -259,7 +315,7 @@ public class AnarTrading extends javax.swing.JFrame {
         });
 
         btnInvoiceSendRearch.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btnInvoiceSendRearch.setText("Search_Invoice_Send");
+        btnInvoiceSendRearch.setText("Search");
         btnInvoiceSendRearch.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnInvoiceSendRearch.setContentAreaFilled(false);
         btnInvoiceSendRearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -270,13 +326,35 @@ public class AnarTrading extends javax.swing.JFrame {
         });
 
         btnInvoiceReceivedSearch.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btnInvoiceReceivedSearch.setText("Search_Invoice_Received");
+        btnInvoiceReceivedSearch.setText("Search");
         btnInvoiceReceivedSearch.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnInvoiceReceivedSearch.setContentAreaFilled(false);
         btnInvoiceReceivedSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnInvoiceReceivedSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInvoiceReceivedSearchActionPerformed(evt);
+            }
+        });
+
+        btnInvoiceTemplate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnInvoiceTemplate.setText("New Invoice");
+        btnInvoiceTemplate.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnInvoiceTemplate.setContentAreaFilled(false);
+        btnInvoiceTemplate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnInvoiceTemplate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInvoiceTemplateActionPerformed(evt);
+            }
+        });
+
+        btnViewInvoice.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnViewInvoice.setText("View Invoice");
+        btnViewInvoice.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnViewInvoice.setContentAreaFilled(false);
+        btnViewInvoice.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnViewInvoice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewInvoiceActionPerformed(evt);
             }
         });
 
@@ -292,7 +370,10 @@ public class AnarTrading extends javax.swing.JFrame {
                 .addComponent(btnInvoiceReceived)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnInvoiceReceivedSearch)
-                .addGap(0, 850, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 978, Short.MAX_VALUE)
+                .addComponent(btnInvoiceTemplate)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnViewInvoice))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,12 +381,14 @@ public class AnarTrading extends javax.swing.JFrame {
             .addComponent(btnInvoiceSendRearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnInvoiceReceived, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
             .addComponent(btnInvoiceReceivedSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnInvoiceTemplate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnViewInvoice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Invoice", jPanel1);
 
         btnCheque.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btnCheque.setText("New_Cheque");
+        btnCheque.setText("New");
         btnCheque.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCheque.setContentAreaFilled(false);
         btnCheque.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -316,7 +399,7 @@ public class AnarTrading extends javax.swing.JFrame {
         });
 
         btnChequeSearch.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btnChequeSearch.setText("Cheque_Search");
+        btnChequeSearch.setText("Search");
         btnChequeSearch.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnChequeSearch.setContentAreaFilled(false);
         btnChequeSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -334,7 +417,7 @@ public class AnarTrading extends javax.swing.JFrame {
                 .addComponent(btnCheque)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnChequeSearch)
-                .addGap(0, 1174, Short.MAX_VALUE))
+                .addGap(0, 1280, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -506,6 +589,32 @@ public class AnarTrading extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Petty Status", jPanel7);
+
+        btnBusinessApp.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnBusinessApp.setText("Application");
+        btnBusinessApp.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBusinessApp.setContentAreaFilled(false);
+        btnBusinessApp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBusinessApp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBusinessAppActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addComponent(btnBusinessApp)
+                .addGap(0, 1291, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnBusinessApp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Business Visa", jPanel8);
 
         jToolBar1.add(jTabbedPane1);
 
@@ -1044,6 +1153,10 @@ public class AnarTrading extends javax.swing.JFrame {
 
     private void btnNewContractEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewContractEmployeeActionPerformed
         // TODO add your handling code here:
+        ContractLabourDetails CLD=new ContractLabourDetails();
+        AnarTrading.desktopPane1.add(CLD);
+        
+        CLD.setVisible(true);
 
     }//GEN-LAST:event_btnNewContractEmployeeActionPerformed
 
@@ -1117,6 +1230,53 @@ public class AnarTrading extends javax.swing.JFrame {
         FDohaSearch.setVisible(true);
     }//GEN-LAST:event_btnFixtureDohaSearchActionPerformed
 
+    private void btnNewContractEmployee1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewContractEmployee1ActionPerformed
+        // TODO add your handling code here:
+        ConEmployeesSearch CES= new ConEmployeesSearch();
+        AnarTrading.desktopPane1.add(CES);
+        CES.setVisible(true);
+                
+    }//GEN-LAST:event_btnNewContractEmployee1ActionPerformed
+
+    private void btnTimeSheetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimeSheetActionPerformed
+        // TODO add your handling code here:
+        ConEmployeeTimeSheet conTimeSheet=new ConEmployeeTimeSheet(null, true);
+        conTimeSheet.setVisible(true);
+    }//GEN-LAST:event_btnTimeSheetActionPerformed
+
+    private void btnTimeSheetSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimeSheetSearchActionPerformed
+        // TODO add your handling code here:
+        ConTimeSheetSearch CTS= new ConTimeSheetSearch();
+        AnarTrading.desktopPane1.add(CTS);
+        CTS.setVisible(true);
+    }//GEN-LAST:event_btnTimeSheetSearchActionPerformed
+
+    private void btnInvoiceTemplateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvoiceTemplateActionPerformed
+        // TODO add your handling code here:
+        InvoiceNew.trancateTempTable();
+        InvoiceNew.trancateMainTempTable();
+        InvoiceNew IN= new InvoiceNew();
+        AnarTrading.desktopPane1.add(IN);
+        IN.setVisible(true);
+        btnInvoiceTemplate.setEnabled(false);
+        
+    }//GEN-LAST:event_btnInvoiceTemplateActionPerformed
+
+    private void btnViewInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewInvoiceActionPerformed
+        // TODO add your handling code here:
+        InvoiceviewTemplate IVT= new InvoiceviewTemplate();
+        AnarTrading.desktopPane1.add(IVT);
+        IVT.setVisible(true);
+        btnViewInvoice.setEnabled(false);
+    }//GEN-LAST:event_btnViewInvoiceActionPerformed
+
+    private void btnBusinessAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusinessAppActionPerformed
+        // TODO add your handling code here:
+        BusinessVisa BV=new BusinessVisa();
+        AnarTrading.desktopPane1.add(BV);
+        BV.setVisible(true);
+    }//GEN-LAST:event_btnBusinessAppActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1170,6 +1330,7 @@ try {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnarCBQentry;
     private javax.swing.JButton btnAnarCbqSearch;
+    private javax.swing.JButton btnBusinessApp;
     private javax.swing.JButton btnCheque;
     private javax.swing.JButton btnChequeSearch;
     private javax.swing.JButton btnFixDoha;
@@ -1180,7 +1341,9 @@ try {
     private javax.swing.JButton btnInvoiceReceivedSearch;
     private javax.swing.JButton btnInvoiceSend;
     private javax.swing.JButton btnInvoiceSendRearch;
+    public static javax.swing.JButton btnInvoiceTemplate;
     private javax.swing.JButton btnNewContractEmployee;
+    private javax.swing.JButton btnNewContractEmployee1;
     private javax.swing.JButton btnNewEmployee;
     private javax.swing.JButton btnPettyCash;
     private javax.swing.JButton btnPettySearch;
@@ -1188,6 +1351,9 @@ try {
     private javax.swing.JButton btnRpExpiry;
     private javax.swing.JButton btnSearchEmployee;
     private javax.swing.JButton btnStock;
+    private javax.swing.JButton btnTimeSheet;
+    private javax.swing.JButton btnTimeSheetSearch;
+    public static javax.swing.JButton btnViewInvoice;
     public static javax.swing.JDesktopPane desktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
@@ -1199,6 +1365,7 @@ try {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenu menuCourse;

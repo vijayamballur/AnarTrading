@@ -32,31 +32,31 @@ FROM
 	<background>
 		<band height="226">
 			<textField>
-				<reportElement x="94" y="48" width="398" height="20" uuid="1d833bc4-913f-47fd-b25d-a5aade9c9e89"/>
+				<reportElement x="94" y="50" width="398" height="20" uuid="1d833bc4-913f-47fd-b25d-a5aade9c9e89"/>
 				<textElement verticalAlignment="Middle" markup="none">
-					<font fontName="Verdana" size="10" isBold="false"/>
+					<font fontName="Century Gothic" size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{bearer}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="53" y="74" width="346" height="44" uuid="209a9d64-5a4c-4393-a338-1e14ff0c551b"/>
+				<reportElement x="53" y="76" width="346" height="44" uuid="209a9d64-5a4c-4393-a338-1e14ff0c551b"/>
 				<textElement verticalAlignment="Top" markup="none">
-					<font fontName="Verdana" size="10" isBold="false"/>
+					<font fontName="Century Gothic" size="10" isBold="false"/>
 					<paragraph lineSpacing="Double"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{amountInWords}]]></textFieldExpression>
 			</textField>
 			<textField pattern="**#,##0.00">
-				<reportElement x="399" y="75" width="93" height="20" uuid="780ca179-09d0-4911-a9b6-a259ebab92c8"/>
+				<reportElement x="399" y="79" width="93" height="20" uuid="780ca179-09d0-4911-a9b6-a259ebab92c8"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
-					<font fontName="Verdana" size="11" isBold="false"/>
+					<font fontName="Century Gothic" size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd-MMM-yyyy">
-				<reportElement x="398" y="4" width="94" height="20" uuid="5422df6d-69e9-4b55-8dc4-509535d45a5f"/>
+				<reportElement x="403" y="7" width="94" height="20" uuid="5422df6d-69e9-4b55-8dc4-509535d45a5f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
-					<font fontName="Verdana" size="11" isBold="false"/>
+					<font fontName="Century Gothic" size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{chequeDate}]]></textFieldExpression>
 			</textField>

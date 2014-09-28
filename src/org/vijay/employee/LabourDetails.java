@@ -5,7 +5,6 @@ import org.vijay.common.connection;
 import org.vijay.common.AutoCompleteDecorator;
 import org.vijay.common.AnarTrading;
 import java.awt.Dimension;
-import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
@@ -20,7 +19,6 @@ import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -28,7 +26,6 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import net.proteanit.sql.DbUtils;
 import org.vijay.common.DateCellRenderer;
-import org.vijay.common.NumberRenderer;
 
 /*
  * To change this template, choose Tools | Templates
@@ -1111,6 +1108,7 @@ public final class LabourDetails extends javax.swing.JInternalFrame {
             //JOptionPane.showMessageDialog(rootPane,e+"Error SA001");
         }
     }
+    
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
         dispose();

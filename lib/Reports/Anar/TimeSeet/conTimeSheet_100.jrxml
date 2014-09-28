@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="conTimeSheet" pageWidth="1224" pageHeight="595" orientation="Landscape" columnWidth="1184" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="202fbc46-e0bd-4b0f-8ed8-dbc37a20727b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="site" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     tbl_conemployee.`empId` AS tbl_conemployee_empId,
+     tbl_conemployee.`empName` AS tbl_conemployee_empName,
+     tbl_conemployee.`site` AS tbl_conemployee_site,
+     tbl_conemployee.`contractingCompany` AS tbl_conemployee_contractingCompany,
+     tbl_con_timesheet.`date1` AS tbl_con_timesheet_date1,
+     tbl_con_timesheet.`date2` AS tbl_con_timesheet_date2,
+     tbl_con_timesheet.`date3` AS tbl_con_timesheet_date3,
+     tbl_con_timesheet.`date4` AS tbl_con_timesheet_date4,
+     tbl_con_timesheet.`date5` AS tbl_con_timesheet_date5,
+     tbl_con_timesheet.`date6` AS tbl_con_timesheet_date6,
+     tbl_con_timesheet.`date7` AS tbl_con_timesheet_date7,
+     tbl_con_timesheet.`date8` AS tbl_con_timesheet_date8,
+     tbl_con_timesheet.`date9` AS tbl_con_timesheet_date9,
+     tbl_con_timesheet.`date10` AS tbl_con_timesheet_date10,
+     tbl_con_timesheet.`date11` AS tbl_con_timesheet_date11,
+     tbl_con_timesheet.`date12` AS tbl_con_timesheet_date12,
+     tbl_con_timesheet.`date13` AS tbl_con_timesheet_date13,
+     tbl_con_timesheet.`date14` AS tbl_con_timesheet_date14,
+     tbl_con_timesheet.`date15` AS tbl_con_timesheet_date15,
+     tbl_con_timesheet.`date16` AS tbl_con_timesheet_date16,
+     tbl_con_timesheet.`date17` AS tbl_con_timesheet_date17,
+     tbl_con_timesheet.`date18` AS tbl_con_timesheet_date18,
+     tbl_con_timesheet.`date19` AS tbl_con_timesheet_date19,
+     tbl_con_timesheet.`date20` AS tbl_con_timesheet_date20,
+     tbl_con_timesheet.`date21` AS tbl_con_timesheet_date21,
+     tbl_con_timesheet.`date22` AS tbl_con_timesheet_date22,
+     tbl_con_timesheet.`date23` AS tbl_con_timesheet_date23,
+     tbl_con_timesheet.`date24` AS tbl_con_timesheet_date24,
+     tbl_con_timesheet.`date25` AS tbl_con_timesheet_date25,
+     tbl_con_timesheet.`date26` AS tbl_con_timesheet_date26,
+     tbl_con_timesheet.`date27` AS tbl_con_timesheet_date27,
+     tbl_con_timesheet.`date28` AS tbl_con_timesheet_date28,
+     tbl_con_timesheet.`date29` AS tbl_con_timesheet_date29,
+     tbl_con_timesheet.`date30` AS tbl_con_timesheet_date30,
+     tbl_con_timesheet.`date31` AS tbl_con_timesheet_date31,
+     tbl_con_timesheet.`totalHr` AS tbl_con_timesheet_totalHr,
+     tbl_con_timesheet.`countAbs` AS tbl_con_timesheet_countAbs,
+     tbl_con_timesheet.`countLeave` AS tbl_con_timesheet_countLeave,
+     tbl_con_timesheet.`timesheetDate` AS tbl_con_timesheet_timesheetDate
+FROM
+     `tbl_conemployee` tbl_conemployee INNER JOIN `tbl_con_timesheet` tbl_con_timesheet ON tbl_conemployee.`empId` = tbl_con_timesheet.`empId` where tbl_conemployee.`site`=$P{site} order by DATE_FORMAT(timesheetDate,'%b %y') desc]]>
+	</queryString>
+	<field name="tbl_conemployee_empId" class="java.lang.Long"/>
+	<field name="tbl_conemployee_empName" class="java.lang.String"/>
+	<field name="tbl_conemployee_site" class="java.lang.String"/>
+	<field name="tbl_conemployee_contractingCompany" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date1" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date2" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date3" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date4" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date5" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date6" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date7" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date8" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date9" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date10" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date11" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date12" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date13" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date14" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date15" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date16" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date17" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date18" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date19" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date20" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date21" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date22" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date23" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date24" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date25" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date26" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date27" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date28" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date29" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date30" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_date31" class="java.lang.String"/>
+	<field name="tbl_con_timesheet_totalHr" class="java.math.BigDecimal"/>
+	<field name="tbl_con_timesheet_countAbs" class="java.lang.Integer"/>
+	<field name="tbl_con_timesheet_countLeave" class="java.lang.Integer"/>
+	<field name="tbl_con_timesheet_timesheetDate" class="java.sql.Date"/>
+	<variable name="Grand Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{tbl_con_timesheet_totalHr}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="50" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="73" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="49" width="1183" height="1" forecolor="#808080" uuid="87fdba08-8a6c-4135-83d1-c7028b427155"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="58" width="17" height="15" forecolor="#808080" uuid="5fc80927-a167-42d7-bfe8-8ee2a6c84268"/>
+				<textElement>
+					<font fontName="Century Gothic" size="10" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="16" y="58" width="77" height="15" forecolor="#808080" uuid="3279921d-ab5b-4de1-802e-e08ed998577a"/>
+				<textElement>
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="92" y="58" width="118" height="15" forecolor="#808080" uuid="a4d97aa9-6934-46ea-bd7c-168264b84211"/>
+				<textElement>
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Site]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="210" y="58" width="130" height="15" forecolor="#808080" uuid="f80b85ea-f235-4821-a8e4-745d4ca6ad6e"/>
+				<textElement>
+					<font fontName="Century Gothic" size="10"/>
+				</textElement>
+				<text><![CDATA[Company]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="339" y="58" width="24" height="15" forecolor="#808080" uuid="3e72c2f5-3789-4272-9e04-e3eabc9b82a3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10"/>
+				</textElement>
+				<text><![CDATA[01]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="362" y="58" width="24" height="15" forecolor="#808080" uuid="2ee852d3-7a72-45fc-9156-78e31eccd454"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10"/>
+				</textElement>
+				<text><![CDATA[02]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="385" y="58" width="24" height="15" forecolor="#808080" uuid="9af230a1-a049-481c-99d4-d0be8589289b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10"/>
+				</textElement>
+				<text><![CDATA[03]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="408" y="58" width="24" height="15" forecolor="#808080" uuid="b6643c27-9c24-489f-af69-198b12291b9e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10"/>
+				</textElement>
+				<text><![CDATA[04]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="431" y="58" width="24" height="15" forecolor="#808080" uuid="05ca5c0e-eb40-4780-afd9-e6aa32b011ff"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10"/>
+				</textElement>
+				<text><![CDATA[05]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="454" y="58" width="24" height="15" forecolor="#808080" uuid="90e663a8-a424-4aca-983a-5d9b4f5984f3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10"/>
+				</textElement>
+				<text><![CDATA[06]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="477" y="58" width="24" height="15" forecolor="#808080" uuid="126abbad-0bc3-4e31-baa1-25b980a67771"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10"/>
+				</textElement>
+				<text><![CDATA[07]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="500" y="58" width="24" height="15" forecolor="#808080" uuid="6291e86f-ca63-418e-b026-8fb9f63b1c60"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10"/>
+				</textElement>
+				<text><![CDATA[08]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="523" y="58" width="24" height="15" forecolor="#808080" uuid="3c236f3f-8a42-4937-a1a0-ba4f2086b4d1"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[09]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="546" y="58" width="24" height="15" forecolor="#808080" uuid="125afddd-e6fb-408a-a68c-979b1d98560e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[10]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="569" y="58" width="24" height="15" forecolor="#808080" uuid="9b239d92-13be-4ae1-bdcd-7b8937938763"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[11]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="592" y="58" width="24" height="15" forecolor="#808080" uuid="2d183e57-f5e0-4349-a45a-401ac0ab53ac"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[12]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="615" y="58" width="24" height="15" forecolor="#808080" uuid="35695435-5b73-4a38-b41a-0fa35319be2a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[13]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="638" y="58" width="24" height="15" forecolor="#808080" uuid="ac209acc-2e8c-414a-882e-ee1324fdec3a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[14]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="661" y="58" width="24" height="15" forecolor="#808080" uuid="e619afba-f735-4b77-acb3-eddaed4812d8"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[15]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="684" y="58" width="24" height="15" forecolor="#808080" uuid="3bba9dde-e3bb-4969-922c-715616aefde2"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[16]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="707" y="58" width="24" height="15" forecolor="#808080" uuid="cb9e31b0-0bf1-4144-b953-27531ec2256f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[17]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="730" y="58" width="24" height="15" forecolor="#808080" uuid="e18d448d-e145-4b25-954f-31408084abfe"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[18]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="753" y="58" width="24" height="15" forecolor="#808080" uuid="fc159bc6-b606-4627-b17f-586809152633"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[19]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="776" y="58" width="24" height="15" forecolor="#808080" uuid="e9b90569-18d9-4f01-9c0a-7420172e0681"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[20]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="799" y="58" width="24" height="15" forecolor="#808080" uuid="aee12090-16cc-495b-9daa-478bb3303f20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[21]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="822" y="58" width="24" height="15" forecolor="#808080" uuid="a8ab2c58-1e19-4944-8517-2cd19cdf5243"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[22]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="845" y="58" width="24" height="15" forecolor="#808080" uuid="ce36568c-93ee-46c4-a2d0-8b74af1c2ea9"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[23]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="868" y="58" width="24" height="15" forecolor="#808080" uuid="1ff55e75-1b63-45d6-b5a9-7484d86817a0"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[24]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="891" y="58" width="24" height="15" forecolor="#808080" uuid="0ff6ed79-5d07-4794-afef-ed20fdee2bfb"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[25]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="914" y="58" width="24" height="15" forecolor="#808080" uuid="ed941a6d-34a3-42bb-9736-c105ce92654e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[26]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="937" y="58" width="24" height="15" forecolor="#808080" uuid="97b43de5-6c65-436d-a598-ca33e3d6de41"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[27]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="960" y="58" width="24" height="15" forecolor="#808080" uuid="0719f331-fecf-403f-87b5-7e6842e95a41"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[28]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="983" y="58" width="24" height="15" forecolor="#808080" uuid="f5aa17a5-fa1f-48f1-af15-f5f2c7d27fe9"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10"/>
+				</textElement>
+				<text><![CDATA[29]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="1006" y="58" width="24" height="15" forecolor="#808080" uuid="1344f883-1c29-4c3c-9731-ebe55a5fc73e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10"/>
+				</textElement>
+				<text><![CDATA[30]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="1029" y="58" width="24" height="15" forecolor="#808080" uuid="b524d4ae-c21f-4e7b-837b-499d07acafb6"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[31]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="1052" y="58" width="48" height="15" forecolor="#808080" uuid="dbff4282-bc32-444b-bba0-1cf49a9f1689"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Hr]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="1141" y="58" width="42" height="15" forecolor="#808080" uuid="0dc6d74f-9a96-46db-ad81-2af88b713a93"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Absent]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="1100" y="58" width="42" height="15" forecolor="#808080" uuid="e50cb365-6215-4ed1-836f-9add96d6fe67"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Leave]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="0" y="0" width="1183" height="33" uuid="9c473da1-a71f-4c92-a9d0-8833acc51453"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic"/>
+				</textElement>
+				<text><![CDATA[Time Sheet]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="1" width="295" height="48" uuid="c77adcda-96f7-4ef7-b3b7-556811131d98"/>
+				<imageExpression><![CDATA["C:\\Users\\MAC\\Documents\\NetBeansProjects\\ANAR TRADING\\lib\\Reports\\Anar\\TimeSeet\\Banner.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Column header" x="1064" y="0" width="118" height="15" forecolor="#808080" uuid="92e4dd78-ee11-45df-95b6-8b5e542ee8d0"/>
+				<textElement>
+					<font fontName="Century Gothic" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Current Site]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="1065" y="17" width="118" height="15" uuid="dbbe9793-a2ce-44ef-bc8e-f7f21846c228"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_conemployee_site}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="1183" height="1" uuid="7af0ccd1-102b-4614-882f-a05d4fcfd522"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="17" height="15" uuid="c883cd5a-b868-49a8-b906-31b1cfdd46a4"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_conemployee_empId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="16" y="0" width="77" height="15" uuid="2c29d6e0-e9a6-4e9a-a09f-c5c3139df247"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_conemployee_empName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="210" y="0" width="130" height="15" uuid="2644cf3b-0714-4842-9385-aeca4b9de643"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_conemployee_contractingCompany}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="339" y="0" width="24" height="15" uuid="27c06f41-8627-472b-8164-9f8d17b20821"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="362" y="0" width="24" height="15" uuid="bc4aed3c-93ba-4ca2-aa18-22a6f43b45c4"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="385" y="0" width="24" height="15" uuid="d4e8a56b-4721-4027-9a07-bd0ed670956e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="408" y="0" width="24" height="15" uuid="f4c26f01-40f0-4fcc-8145-a0f8be405970"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="431" y="0" width="24" height="15" uuid="26182289-6803-4636-a46d-ce5b30f40e1c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="454" y="0" width="24" height="15" uuid="a2f87530-66e1-4fcf-9fc8-a5a518bcd560"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date6}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="477" y="0" width="24" height="15" uuid="be36fe28-4a43-4db8-b1d7-16ba2bb43410"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date7}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="500" y="0" width="24" height="15" uuid="ea938784-5051-47a5-9e96-f76524681f4c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date8}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="523" y="0" width="24" height="15" uuid="fed13e94-421d-432c-9402-410d19dff468"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date9}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="546" y="0" width="24" height="15" uuid="96be9a65-fc81-4d3f-a7ce-7eb05e9f8bc6"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date10}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="569" y="0" width="24" height="15" uuid="4592cdb2-6e6d-4e0f-a3ef-fcfeae3590c6"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date11}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="592" y="0" width="24" height="15" uuid="5b5bbfae-61bc-4df0-91cb-e53884b08e86"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date12}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="615" y="0" width="24" height="15" uuid="e39a80ea-9744-4eeb-956c-c80866a4b62d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date13}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="638" y="0" width="24" height="15" uuid="4cf2c9d9-0e25-4d8c-ae35-5ca1c94bf564"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date14}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="661" y="0" width="24" height="15" uuid="51e9bff7-04c2-4dc6-a245-9f92a4f242a6"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date15}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="684" y="0" width="24" height="15" uuid="7faa0b8a-7cef-4004-8677-f82dd93af55a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date16}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="707" y="0" width="24" height="15" uuid="43645132-a96b-4def-a249-ae0f2716a86a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date17}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="730" y="0" width="24" height="15" uuid="eda87cf3-77bc-429e-b0b6-1f4dd12b4764"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date18}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="753" y="0" width="24" height="15" uuid="c8a5c3b1-b0b5-4a64-b04f-17f5308ef7d2"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date19}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="776" y="0" width="24" height="15" uuid="4ea30917-11ef-4071-aa33-69fe87202230"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date20}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="799" y="0" width="24" height="15" uuid="5db4e9ed-b59d-471c-933b-3876683cfeb1"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date21}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="822" y="0" width="24" height="15" uuid="88d2bb76-6ae2-4952-8996-1f636b033106"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date22}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="845" y="0" width="24" height="15" uuid="99a3231a-46aa-4981-bdb9-d1ad926595c9"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date23}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="868" y="0" width="24" height="15" uuid="14376017-b917-4a10-b58d-5f60b5180f58"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date24}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="891" y="0" width="24" height="15" uuid="cff12453-d1eb-4c97-9069-fbb65b4b5ee6"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date25}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="914" y="0" width="24" height="15" uuid="f1b45f61-c9fe-41a7-ab0c-459097a7b0db"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date26}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="937" y="0" width="24" height="15" uuid="92e6baeb-3d83-42ea-8988-028e038c6c44"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date27}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="960" y="0" width="24" height="15" uuid="0917e900-f369-4372-9487-6099af436c9f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date28}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="983" y="0" width="24" height="15" uuid="e840f266-7130-4575-9e50-da0bfe9fca45"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date29}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="1006" y="0" width="24" height="15" uuid="278da5ee-898a-48e1-bac9-6bca03a5a474"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date30}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="1029" y="0" width="24" height="15" uuid="87c9ae46-1bad-42bc-bfe8-86c2b063ddec"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_date31}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="1052" y="0" width="49" height="15" uuid="78fd1a0b-ea14-4c81-93b7-4d0372a8dab5"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_totalHr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="1141" y="0" width="42" height="15" uuid="0eb1d527-b893-40ca-acb6-62180b9ca723"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_countAbs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="1100" y="0" width="42" height="15" uuid="83b5e344-dbfc-491f-8696-2034fe1ec9b9"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_con_timesheet_countLeave}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="92" y="0" width="118" height="15" uuid="3d00764d-57f8-4ed6-8c13-7c3f7e5d2b37"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_conemployee_site}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="33" width="1183" height="12" uuid="45c232b5-3707-4990-9ba7-f557b10db3d1"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<text><![CDATA[*****This is a computer generated report and does not require company stamp and signature *****]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1052" y="0" width="49" height="20" uuid="8b5043a6-a3de-452a-a893-1bb41e398d9a"/>
+				<textElement>
+					<font fontName="Century Gothic" size="11" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{Grand Total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="952" y="0" width="100" height="20" uuid="eb6f7ab0-3908-437d-93ce-6ec910697703"/>
+				<textElement>
+					<font fontName="Century Gothic" size="11" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Grand Total Working Hr.]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="1064" y="0" width="80" height="20" uuid="4a504963-1887-482d-b66b-617ecfbd5b76"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="1144" y="0" width="40" height="20" uuid="2cfff784-29af-48b2-91ec-f0814ec26f1b"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="d817afd8-1fbd-4be8-beec-930e4eab7630"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

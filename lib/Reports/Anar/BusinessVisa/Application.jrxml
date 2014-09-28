@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Application" language="java" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="d79ca479-5ecd-40da-9475-15753ca9aa5d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="businessVisaId" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     tbl_business_visa_appli.`applicantName` AS tbl_business_visa_appli_applicantName,
+     tbl_business_visa_appli.`sex` AS tbl_business_visa_appli_sex,
+     tbl_business_visa_appli.`nationality` AS tbl_business_visa_appli_nationality,
+     tbl_business_visa_appli.`passportNumber` AS tbl_business_visa_appli_passportNumber,
+     tbl_business_visa_appli.`passportExpiry` AS tbl_business_visa_appli_passportExpiry,
+     tbl_business_visa_appli.`dateOfBirth` AS tbl_business_visa_appli_dateOfBirth,
+     tbl_business_visa_appli.`profession` AS tbl_business_visa_appli_profession,
+     tbl_business_visa_appli.`eduQualification` AS tbl_business_visa_appli_eduQualification,
+     substring(tbl_business_visa_appli.`companyId`,1,1) AS c1,
+     substring(tbl_business_visa_appli.`companyId`,2,1) AS c2,
+     substring(tbl_business_visa_appli.`companyId`,3,1) AS c3,
+     substring(tbl_business_visa_appli.`companyId`,4,1) AS c4,
+     substring(tbl_business_visa_appli.`companyId`,5,1) AS c5,
+     substring(tbl_business_visa_appli.`companyId`,6,1) AS c6,
+     substring(tbl_business_visa_appli.`companyId`,7,1) AS c7,
+     substring(tbl_business_visa_appli.`companyId`,8,1) AS c8,
+     tbl_business_visa_appli.`companyName` AS tbl_business_visa_appli_companyName,
+     tbl_business_visa_appli.`ProName` AS tbl_business_visa_appli_ProName,
+     substring(tbl_business_visa_appli.`proId`,1,1) AS Id1,
+     substring(tbl_business_visa_appli.`proId`,2,1) AS Id2,
+     substring(tbl_business_visa_appli.`proId`,3,1) AS Id3,
+     substring(tbl_business_visa_appli.`proId`,4,1) AS Id4,
+     substring(tbl_business_visa_appli.`proId`,5,1) AS Id5,
+     substring(tbl_business_visa_appli.`proId`,6,1) AS Id6,
+     substring(tbl_business_visa_appli.`proId`,7,1) AS Id7,
+     substring(tbl_business_visa_appli.`proId`,8,1) AS Id8,
+     substring(tbl_business_visa_appli.`proId`,9,1) AS Id9,
+     substring(tbl_business_visa_appli.`proId`,10,1) AS Id10,
+     substring(tbl_business_visa_appli.`proId`,11,1) AS Id11
+FROM
+     `tbl_business_visa_appli` tbl_business_visa_appli
+where businessVisaId=$P{businessVisaId}]]>
+	</queryString>
+	<field name="tbl_business_visa_appli_applicantName" class="java.lang.String"/>
+	<field name="tbl_business_visa_appli_sex" class="java.lang.String"/>
+	<field name="tbl_business_visa_appli_nationality" class="java.lang.String"/>
+	<field name="tbl_business_visa_appli_passportNumber" class="java.lang.String"/>
+	<field name="tbl_business_visa_appli_passportExpiry" class="java.sql.Date"/>
+	<field name="tbl_business_visa_appli_dateOfBirth" class="java.sql.Date"/>
+	<field name="tbl_business_visa_appli_profession" class="java.lang.String"/>
+	<field name="tbl_business_visa_appli_eduQualification" class="java.lang.String"/>
+	<field name="c1" class="java.lang.String"/>
+	<field name="c2" class="java.lang.String"/>
+	<field name="c3" class="java.lang.String"/>
+	<field name="c4" class="java.lang.String"/>
+	<field name="c5" class="java.lang.String"/>
+	<field name="c6" class="java.lang.String"/>
+	<field name="c7" class="java.lang.String"/>
+	<field name="c8" class="java.lang.String"/>
+	<field name="tbl_business_visa_appli_companyName" class="java.lang.String"/>
+	<field name="tbl_business_visa_appli_ProName" class="java.lang.String"/>
+	<field name="Id1" class="java.lang.String"/>
+	<field name="Id2" class="java.lang.String"/>
+	<field name="Id3" class="java.lang.String"/>
+	<field name="Id4" class="java.lang.String"/>
+	<field name="Id5" class="java.lang.String"/>
+	<field name="Id6" class="java.lang.String"/>
+	<field name="Id7" class="java.lang.String"/>
+	<field name="Id8" class="java.lang.String"/>
+	<field name="Id9" class="java.lang.String"/>
+	<field name="Id10" class="java.lang.String"/>
+	<field name="Id11" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<detail>
+		<band height="766" splitType="Stretch">
+			<image>
+				<reportElement x="11" y="110" width="584" height="656" uuid="0c4da28a-f068-41ea-9ede-f03f92ca2480"/>
+				<imageExpression><![CDATA["C:\\Users\\MAC\\Documents\\NetBeansProjects\\ANAR TRADING\\lib\\Reports\\Anar\\BusinessVisa\\BUsiness Visa Application Form1.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement style="Detail" x="77" y="185" width="449" height="17" uuid="c12cb041-02bd-432a-814b-5d9dfc07d212"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_applicantName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="74" y="202" width="35" height="15" uuid="39f4d3b4-e46c-4d76-b8c3-aa914d68f083"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_sex}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="228" y="202" width="63" height="15" uuid="449ee5d0-672a-4937-91ad-1b5c355449e6"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_nationality}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="416" y="202" width="110" height="15" uuid="bb33e377-def2-44dd-8f21-7566733156b6"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_passportNumber}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd">
+				<reportElement style="Detail" x="182" y="234" width="81" height="15" uuid="4ddc1ee7-3d0e-4b30-a0e7-587a2b1b2b05"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_passportExpiry}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd">
+				<reportElement style="Detail" x="182" y="249" width="81" height="15" uuid="8880555e-f67e-45f7-988e-78668d28b852"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_dateOfBirth}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="182" y="264" width="250" height="15" uuid="e83b988b-83fb-4e92-bff6-45f1b841dd79"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_profession}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="182" y="279" width="250" height="15" uuid="cdcac7bb-ba6b-44fb-a284-e949441dba08"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_eduQualification}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="97" y="328" width="37" height="16" uuid="adff87a6-cdfb-468e-a22d-1016d63e6ece"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{c1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="101" y="345" width="407" height="20" uuid="b6c7ae56-12a4-4c18-9a29-c176d278bea9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_companyName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="341" y="591" width="204" height="21" uuid="17ae3172-07f4-4eae-83e1-8c4ffb006d70"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_ProName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="94" y="575" width="34" height="16" uuid="df54227f-3f3c-4f55-bb29-c0654dfc2ce1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Id1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MM">
+				<reportElement style="Detail" x="263" y="234" width="84" height="15" uuid="3c46951e-5ead-4618-a72a-da952af26667"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_passportExpiry}]]></textFieldExpression>
+			</textField>
+			<textField pattern="YYYY">
+				<reportElement style="Detail" x="347" y="234" width="85" height="15" uuid="dc54fc63-8ed2-49bc-99dd-e3c4dc32eab0"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_passportExpiry}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MM">
+				<reportElement style="Detail" x="263" y="249" width="84" height="15" uuid="80990c11-a98a-4cd2-a8b6-0b74a038ec80"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_dateOfBirth}]]></textFieldExpression>
+			</textField>
+			<textField pattern="YYYY">
+				<reportElement style="Detail" x="347" y="249" width="85" height="15" uuid="6de676e0-5641-41d0-9c3f-1b0e10a75c6d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_dateOfBirth}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="128" y="328" width="42" height="16" uuid="51d57b26-eae0-487f-8e60-d02f12f6116d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{c2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="207" y="328" width="45" height="16" uuid="0e217be6-859e-4a15-b721-a404146b56c5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{c3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="255" y="328" width="45" height="16" uuid="ee422c7e-425e-4271-ae0d-cff7d617fa4e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{c4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="300" y="328" width="45" height="16" uuid="5fe9444b-8c14-4f4d-be34-3243eb5a1cf0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{c5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="346" y="328" width="47" height="16" uuid="0a79638e-9de5-4456-a56e-42630842e76c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{c6}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="436" y="328" width="37" height="16" uuid="a4db9bc9-1f61-4d4b-b6e6-5e2810868580"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{c7}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="473" y="328" width="35" height="16" uuid="d7bd55da-816f-4d34-8fb4-8070be5e9b4d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{c8}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="130" y="575" width="40" height="16" uuid="18039485-5d7a-45f1-a4bd-0641a23575ff"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Id2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="170" y="575" width="36" height="16" uuid="8befdf54-981a-43b3-b153-f1a946eb84b4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Id3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="207" y="575" width="33" height="16" uuid="435ba9ea-3041-49cc-b9af-ba1c0c313266"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Id4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="240" y="575" width="36" height="15" uuid="a077252c-1150-4d86-826c-4be73e37f6ce"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Id5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="282" y="575" width="35" height="15" uuid="8b06cdd8-89ad-4225-bfbf-39581f768402"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Id6}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="324" y="575" width="35" height="15" uuid="31272eb4-84b3-4ba8-ba43-daff8f4b1c12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Id7}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="359" y="575" width="34" height="15" uuid="c337a977-792d-4e5d-aa05-5bcfcc6e2314"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Id8}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="395" y="575" width="37" height="15" uuid="f54b54ae-ba3c-4412-bb31-e93ed11ce260"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Id9}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="432" y="575" width="37" height="15" uuid="437cf148-bab9-42b9-8f8f-e51ac823329d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Id10}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="469" y="575" width="37" height="15" uuid="cf7aa5bd-1ce8-47d3-bd32-dec80f3d30ea"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Id11}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

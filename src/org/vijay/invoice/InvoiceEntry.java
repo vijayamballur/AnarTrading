@@ -28,7 +28,6 @@ import net.proteanit.sql.DbUtils;
 import org.vijay.common.DateCellRenderer;
 import org.vijay.common.NumberRenderer;
 import org.vijay.employee.LabourDetails;
-import static org.vijay.employee.LabourDetails.dateFormat;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -131,7 +130,7 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
             connection c = new connection();
             Connection con = c.conn();
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT fromAdd,toAdd,invoiceNumber,invoiceDate,amount,InvoiceMonth,invoiceYear,terms,paymentDate,remark,balance,status,deduction FROM tbl_invoicedetails where invoiceId="+invoiceId);
+            ResultSet rs = stmt.executeQuery("SELECT fromAdd,toAdd,invoiceNumber,invoiceDate,amount,invoiceMonth,invoiceYear,terms,paymentDate,remark,balance,status,deduction FROM tbl_invoicedetails where invoiceId="+invoiceId);
             while (rs.next()) {
                 cmbFrom.setSelectedItem(rs.getString("fromAdd"));
                 cmbTo.setSelectedItem(rs.getString("toAdd"));
@@ -145,7 +144,7 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
                     Logger.getLogger(LabourDetails.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 txtAmount.setText(rs.getString("amount"));
-                cmbMonth.setSelectedItem(rs.getString("InvoiceMonth"));
+                cmbMonth.setSelectedItem(rs.getString("invoiceMonth"));
                 cmbYear.setSelectedItem(rs.getString("invoiceYear"));
                 txtTerms.setText(rs.getString("terms"));
                 txtPaymentDate.setText(rs.getString("paymentDate"));
@@ -194,7 +193,7 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
         Connection con=c.conn();
         try
         {
-            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_invoiceDetails(fromAdd,toAdd,invoiceNumber,invoiceDate,amount,InvoiceMonth,invoiceYear,terms,paymentDate,remark,balance,status,deduction) VALUES(upper(?),upper(?),upper(?),?,?,?,?,?,?,upper(?),?,?,?)");           
+            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_invoicedetails(fromAdd,toAdd,invoiceNumber,invoiceDate,amount,invoiceMonth,invoiceYear,terms,paymentDate,remark,balance,status,deduction) VALUES(upper(?),upper(?),upper(?),?,?,?,?,?,?,upper(?),?,?,?)");           
             ps.setString(1, cmbFrom.getSelectedItem().toString());
             ps.setString(2, cmbTo.getSelectedItem().toString());
             ps.setString(3, txtInvoiceNumber.getText());
@@ -223,7 +222,7 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
     }
     public void viewDbInvoiceDetails()
     {
-        query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',InvoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',status,deduction '"+"DEDUCTION"+"' from tbl_invoiceDetails,(SELECT @i := 0) temp order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(InvoiceMonth,'%M')Desc limit 40";
+        query="select @i := @i + 1 '"+"SL.NO"+"',invoiceId '"+"ID"+"',fromAdd'"+"FROM"+"',toAdd '"+"TO"+"',invoiceNumber'"+"INVOICE#"+"',invoiceDate '"+"INVOICE DATE"+"',amount'"+"AMOUNT"+"',invoiceMonth'"+"MONTH"+"',invoiceYear '"+"YEAR"+"',terms'"+"TERMS"+"',paymentDate'"+"PAY DATE"+"',remark '"+"REMARK"+"',balance '"+"BALANCE"+"',status,deduction '"+"DEDUCTION"+"' from tbl_invoicedetails,(SELECT @i := 0) temp order by STR_TO_DATE(invoiceYear,'%Y')Desc,STR_TO_DATE(invoiceMonth,'%M')Desc limit 40";
         connection c=new connection();
         Connection con=c.conn();
         try
@@ -295,7 +294,7 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
         Connection con=c.conn();
         try
         {
-            PreparedStatement ps=con.prepareStatement("UPDATE tbl_invoiceDetails SET fromAdd=upper(?),toAdd=upper(?),invoiceNumber=upper(?),invoiceDate=?,amount=?,InvoiceMonth=?,invoiceYear=?,terms=?,paymentDate=?,remark=upper(?),balance=?,status=?,deduction=? where invoiceId=?");
+            PreparedStatement ps=con.prepareStatement("UPDATE tbl_invoicedetails SET fromAdd=upper(?),toAdd=upper(?),invoiceNumber=upper(?),invoiceDate=?,amount=?,invoiceMonth=?,invoiceYear=?,terms=?,paymentDate=?,remark=upper(?),balance=?,status=?,deduction=? where invoiceId=?");
             ps.setString(1,cmbFrom.getSelectedItem().toString());
             ps.setString(2,cmbTo.getSelectedItem().toString());
             ps.setString(3,txtInvoiceNumber.getText());
@@ -805,7 +804,7 @@ public final class InvoiceEntry extends javax.swing.JInternalFrame {
                     connection c=new connection();
                     Connection con=c.conn();
                     Statement stmt1=con.createStatement();
-                    int i=stmt1.executeUpdate("delete from tbl_invoiceDetails where invoiceId="+invoiceId);
+                    int i=stmt1.executeUpdate("delete from tbl_invoicedetails where invoiceId="+invoiceId);
                     dispose();
                     ViewInvoiceDetailsForm();
                 }

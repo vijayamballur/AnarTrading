@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="InvoiceNew" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="b4745cd6-b1aa-4795-87c2-fb99c929d211">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="masterId" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     tbl_invoice_parent.`invoiceMasterId` AS tbl_invoice_parent_invoiceMasterId,
+     tbl_invoice_parent.`Name` AS tbl_invoice_parent_Name,
+     tbl_invoice_parent.`invNumber` AS tbl_invoice_parent_invNumber,
+     tbl_invoice_parent.`invDate` AS tbl_invoice_parent_invDate,
+     tbl_invoice_parent.`DeliveryNo` AS tbl_invoice_parent_DeliveryNo,
+     tbl_invoice_parent.`LPONo` AS tbl_invoice_parent_LPONo,
+     tbl_invoice_parent.`Address` AS tbl_invoice_parent_Address,
+     tbl_invoice_parent.`grandTotal` AS tbl_invoice_parent_grandTotal,
+     tbl_invoice_parent.`amountInWords` AS tbl_invoice_parent_amountInWords,
+     tbl_invoice_child.`invoiceSubId` AS tbl_invoice_child_invoiceSubId,
+     tbl_invoice_child.`invoiceMasterId` AS tbl_invoice_child_invoiceMasterId,
+     tbl_invoice_child.`description` AS tbl_invoice_child_description,
+     tbl_invoice_child.`unitPrice` AS tbl_invoice_child_unitPrice,
+     concat(concat(tbl_invoice_child.`qty`," "),tbl_invoice_child.`umo`) AS tbl_invoice_child_qty,
+     tbl_invoice_child.`umo` AS tbl_invoice_child_umo,
+     tbl_invoice_child.`amount` AS tbl_invoice_child_amount
+FROM
+     `tbl_invoice_parent` tbl_invoice_parent INNER JOIN `tbl_invoice_child` tbl_invoice_child ON tbl_invoice_parent.`invoiceMasterId` = tbl_invoice_child.`invoiceMasterId`
+where tbl_invoice_parent.`invoiceMasterId`=$P{masterId}]]>
+	</queryString>
+	<field name="tbl_invoice_parent_invoiceMasterId" class="java.lang.Long"/>
+	<field name="tbl_invoice_parent_Name" class="java.lang.String"/>
+	<field name="tbl_invoice_parent_invNumber" class="java.lang.Long"/>
+	<field name="tbl_invoice_parent_invDate" class="java.sql.Date"/>
+	<field name="tbl_invoice_parent_DeliveryNo" class="java.lang.String"/>
+	<field name="tbl_invoice_parent_LPONo" class="java.lang.String"/>
+	<field name="tbl_invoice_parent_Address" class="java.lang.String"/>
+	<field name="tbl_invoice_parent_grandTotal" class="java.math.BigDecimal"/>
+	<field name="tbl_invoice_parent_amountInWords" class="java.lang.String"/>
+	<field name="tbl_invoice_child_invoiceSubId" class="java.lang.Long"/>
+	<field name="tbl_invoice_child_invoiceMasterId" class="java.lang.Long"/>
+	<field name="tbl_invoice_child_description" class="java.lang.String"/>
+	<field name="tbl_invoice_child_unitPrice" class="java.math.BigDecimal"/>
+	<field name="tbl_invoice_child_qty" class="java.lang.String"/>
+	<field name="tbl_invoice_child_umo" class="java.lang.String"/>
+	<field name="tbl_invoice_child_amount" class="java.math.BigDecimal"/>
+	<background>
+		<band height="842" splitType="Stretch">
+			<textField>
+				<reportElement style="Detail" x="49" y="164" width="303" height="15" uuid="97a7341e-055c-45a2-bfe1-d29e8dba0e1d"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Century Gothic" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoice_parent_Name}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement style="Detail" x="431" y="137" width="156" height="15" uuid="27c93562-600c-4d6e-993c-b845f39ed08e"/>
+				<textElement>
+					<font fontName="Century Gothic" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoice_parent_invDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="444" y="164" width="143" height="15" uuid="79006e9a-98e3-40b9-85aa-5cad5d0ab27a"/>
+				<textElement>
+					<font fontName="Century Gothic" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoice_parent_DeliveryNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="453" y="195" width="132" height="15" uuid="701b35b2-bcbd-4b0e-b724-d0ece565bba7"/>
+				<textElement>
+					<font fontName="Century Gothic" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoice_parent_LPONo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="70" y="196" width="282" height="15" uuid="42b879ad-4069-4061-bbda-6f3c99a5998b"/>
+				<textElement>
+					<font fontName="Century Gothic" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoice_parent_Address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="451" y="689" width="81" height="28" uuid="831f7a12-4d1e-4ec4-a1cc-df75f9f3e22a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoice_parent_grandTotal}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="82" y="695" width="369" height="15" uuid="8e43ab7a-4293-4432-8c16-726766096fff"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoice_parent_amountInWords}]]></textFieldExpression>
+			</textField>
+		</band>
+	</background>
+	<columnHeader>
+		<band height="277" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="33" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="70" y="0" width="250" height="15" uuid="575f4067-5929-41f7-a8e7-71ea3fb43f40"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Century Gothic" size="10"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoice_child_description}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="371" y="-2" width="52" height="15" uuid="16ebf96b-a810-46c4-bd15-61d50d814f04"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Century Gothic" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoice_child_unitPrice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="451" y="0" width="81" height="15" uuid="35c098e6-ed12-4eb7-9d2a-b938f5196e6d"/>
+				<textElement textAlignment="Right">
+					<font fontName="Century Gothic" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoice_child_amount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="330" y="-2" width="40" height="15" uuid="d8c053f0-7757-4683-a3c8-638b18c3fd0a"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Century Gothic" size="10"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoice_child_qty}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

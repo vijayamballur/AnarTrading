@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DeliveryNoteTemplate" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="655da2f2-84d9-4424-b24f-8a363ebd87d4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     tbl_invoice_parent.`Name` AS tbl_invoice_parent_Name,
+     tbl_invoice_parent.`invNumber` AS tbl_invoice_parent_invNumber,
+     tbl_invoice_parent.`invDate` AS tbl_invoice_parent_invDate,
+     tbl_invoice_parent.`DeliveryNo` AS tbl_invoice_parent_DeliveryNo,
+     tbl_invoice_parent.`LPONo` AS tbl_invoice_parent_LPONo,
+     tbl_invoice_parent.`Address` AS tbl_invoice_parent_Address,
+     tbl_invoice_parent.`grandTotal` AS tbl_invoice_parent_grandTotal,
+     tbl_invoice_parent.`amountInWords` AS tbl_invoice_parent_amountInWords,
+     tbl_invoice_child.`invoiceMasterId` AS tbl_invoice_child_invoiceMasterId,
+     tbl_invoice_child.`description` AS tbl_invoice_child_description,
+     tbl_invoice_child.`unitPrice` AS tbl_invoice_child_unitPrice,
+     tbl_invoice_child.`qty` AS tbl_invoice_child_qty,
+     tbl_invoice_child.`umo` AS tbl_invoice_child_umo,
+     tbl_invoice_child.`amount` AS tbl_invoice_child_amount
+FROM
+     `tbl_invoice_parent` tbl_invoice_parent INNER JOIN `tbl_invoice_child` tbl_invoice_child ON tbl_invoice_parent.`invoiceMasterId` = tbl_invoice_child.`invoiceMasterId`]]>
+	</queryString>
+	<field name="tbl_invoice_parent_Name" class="java.lang.String"/>
+	<field name="tbl_invoice_parent_invNumber" class="java.lang.Long"/>
+	<field name="tbl_invoice_parent_invDate" class="java.sql.Date"/>
+	<field name="tbl_invoice_parent_DeliveryNo" class="java.lang.String"/>
+	<field name="tbl_invoice_parent_LPONo" class="java.lang.String"/>
+	<field name="tbl_invoice_parent_Address" class="java.lang.String"/>
+	<field name="tbl_invoice_parent_grandTotal" class="java.math.BigDecimal"/>
+	<field name="tbl_invoice_parent_amountInWords" class="java.lang.String"/>
+	<field name="tbl_invoice_child_invoiceMasterId" class="java.lang.Long"/>
+	<field name="tbl_invoice_child_description" class="java.lang.String"/>
+	<field name="tbl_invoice_child_unitPrice" class="java.math.BigDecimal"/>
+	<field name="tbl_invoice_child_qty" class="java.lang.Long"/>
+	<field name="tbl_invoice_child_umo" class="java.lang.String"/>
+	<field name="tbl_invoice_child_amount" class="java.math.BigDecimal"/>
+	<background>
+		<band height="842" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="595" height="842" uuid="bf41af2a-7695-431e-849d-4f1828451a52"/>
+				<imageExpression><![CDATA["C:\\Users\\MAC\\Documents\\NetBeansProjects\\ANAR TRADING\\lib\\Reports\\Anar\\Invoice\\Template\\Invoice Template.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<columnHeader>
+		<band height="163" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="78" y="98" width="234" height="18" uuid="dc664666-dfd4-4b40-9fa3-1429fa20dfda"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoice_parent_Name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="351" y="98" width="39" height="18" uuid="04551086-bf03-4f90-9a0c-833d92e630e5"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoice_parent_invNumber}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="39" y="116" width="39" height="18" uuid="11bd3b19-9ddc-4847-9a3a-f3cb13d3af1c"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoice_parent_invDate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="117" y="134" width="39" height="18" uuid="771829a7-dd6e-4f2f-b9cb-e471af21db8a"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoice_parent_DeliveryNo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="195" y="134" width="39" height="18" uuid="837a21b6-2683-49aa-99c1-7202d6e4f9bd"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoice_parent_LPONo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="285" y="134" width="39" height="18" uuid="b24d34b5-16f9-4409-b692-11c822ff8783"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoice_parent_Address}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="375" y="134" width="39" height="18" uuid="9e857804-0c06-49bf-bc4d-223f3c42985e"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoice_parent_grandTotal}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="455" y="116" width="39" height="18" uuid="aa25a959-d9c5-4351-ba70-8a4523aec0cd"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoice_parent_amountInWords}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="616" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="18" uuid="8f714ef0-da20-452d-84e7-60229ea3a8e1"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="312" y="0" width="39" height="18" uuid="a002b55b-d334-4a1a-a2ab-dd7a5d296fac"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_invoice_child_invoiceMasterId}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="351" y="0" width="39" height="18" uuid="e0c0f40a-fb61-488a-88b5-be07850b78c9"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_invoice_child_description}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="390" y="0" width="39" height="18" uuid="57667d02-eeb0-4efa-9ad2-e458b28ce3d8"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_invoice_child_unitPrice}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="429" y="0" width="39" height="18" uuid="17613819-156d-40b4-98d0-8aff96cf7b84"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_invoice_child_qty}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="468" y="0" width="39" height="18" uuid="a1913bb0-3ff8-47f2-95b3-c39e142d2986"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_invoice_child_umo}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="507" y="0" width="39" height="18" uuid="a904398b-08ab-4ffa-98a1-cec8d277899b"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_invoice_child_amount}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

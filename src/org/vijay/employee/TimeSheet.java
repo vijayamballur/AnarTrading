@@ -3582,7 +3582,7 @@ public final class TimeSheet extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtOT3KeyPressed
 
     private void txtDate1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDate1FocusLost
-        // TODO add your handling code here:
+                        // TODO add your handling code here:
         fillTextFields(txtDate1,txtOT1,txtNormalDate1,txtHot1);
     }//GEN-LAST:event_txtDate1FocusLost
 

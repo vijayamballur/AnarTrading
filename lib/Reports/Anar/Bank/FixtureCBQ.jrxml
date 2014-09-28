@@ -10,8 +10,8 @@
 	<parameter name="fromDate" class="java.lang.String"/>
 	<parameter name="toDate" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[SELECT x.FcbqId,x.transDate,x.description, x.debit, x.credit, SUM(y.bal) balance FROM( SELECT *,credit-debit bal FROM tbl_temp_fixturecbq) X JOIN( SELECT *,credit-debit bal FROM tbl_temp_fixturecbq) Y ON y.id <= x.id
-WHERE x.transDate BETWEEN $P{fromDate} AND $P{toDate} GROUP BY x.id]]>
+		<![CDATA[SELECT X.FcbqId,X.transDate,X.description, X.debit, X.credit, SUM(Y.bal) balance FROM( SELECT *,credit-debit bal FROM tbl_temp_fixturecbq) X JOIN( SELECT *,credit-debit bal FROM tbl_temp_fixturecbq) Y ON Y.id <= X.id
+WHERE X.transDate BETWEEN $P{fromDate} AND $P{toDate} GROUP BY X.id]]>
 	</queryString>
 	<field name="FcbqId" class="java.lang.Long">
 		<fieldDescription><![CDATA[]]></fieldDescription>

@@ -89,7 +89,7 @@ public class PettyCashEntry extends javax.swing.JInternalFrame {
             connection c = new connection();
             Connection con = c.conn();
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT pettyDate,Name,debit,credit,description FROM tbl_pettycash where pettyId="+pettyCashId);
+            ResultSet rs = stmt.executeQuery("SELECT pettyDate,Name,debit,credit,description FROM fixturei_anar.tbl_pettycash where pettyId="+pettyCashId);
             while (rs.next()) {
                 try 
                 {
@@ -120,7 +120,7 @@ public class PettyCashEntry extends javax.swing.JInternalFrame {
         try
         {
             Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("SELECT x.pettyId,x.Name,x.pettyDate,x.description, x.debit, x.credit, SUM(y.bal) balance FROM( SELECT *,credit-debit bal FROM tbl_temp_petty) X JOIN( SELECT *,credit-debit bal FROM tbl_temp_petty) Y ON y.id <= x.id  WHERE MONTH(x.pettyDate)=MONTH(CURRENT_DATE) GROUP BY x.id");
+            ResultSet rs=stmt.executeQuery("SELECT X.pettyId,X.Name,X.pettyDate,X.description, X.debit, X.credit, SUM(Y.bal) balance FROM( SELECT *,credit-debit bal FROM tbl_temp_petty) X JOIN( SELECT *,credit-debit bal FROM tbl_temp_petty) Y ON Y.id <= X.id  WHERE MONTH(X.pettyDate)=MONTH(CURRENT_DATE) GROUP BY X.id");
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             
             jTable1.getColumnModel().getColumn(0).setMinWidth(50);
