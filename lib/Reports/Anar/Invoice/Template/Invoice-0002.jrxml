@@ -21,21 +21,21 @@ FROM
 				<textElement verticalAlignment="Middle">
 					<font fontName="Century Gothic" size="11" isBold="false"/>
 				</textElement>
-				<text><![CDATA[VEOLIA WATER]]></text>
+				<text><![CDATA[PRIME POWER(ME) LTD.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="date" x="452" y="133" width="94" height="20" uuid="3a425240-fbfd-4048-a54e-48b0c7719d2e"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Century Gothic" size="11"/>
 				</textElement>
-				<text><![CDATA[25-Sep-2014]]></text>
+				<text><![CDATA[08-Oct-2014]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="address" x="70" y="192" width="280" height="20" uuid="8db608c5-89dd-4b6e-8b9a-a6bc953d3cc9"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Century Gothic" size="11"/>
 				</textElement>
-				<text><![CDATA[P.O.Box.41026,Tel: +974 44762471,Doha-Qatar]]></text>
+				<text><![CDATA[P.O.BOX: 25525,TEL:+974 44360610,DOHA-QATAR.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="LPO" x="462" y="192" width="120" height="20" uuid="832a184f-f8a2-4ef1-82e1-744d8a9db7c2"/>
@@ -58,15 +58,15 @@ FROM
 					<font fontName="Century Gothic" size="11" isBold="false"/>
 					<paragraph lineSpacing="Double"/>
 				</textElement>
-				<text><![CDATA[Ceilling Repair]]></text>
+				<text><![CDATA[Equipment for Rental]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="Description" x="81" y="288" width="244" height="99" forecolor="#000000" uuid="bc6c87f0-98a3-40f5-87f0-0bc28192cf3e"/>
+				<reportElement key="Description" x="81" y="288" width="244" height="51" forecolor="#000000" uuid="bc6c87f0-98a3-40f5-87f0-0bc28192cf3e"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Century Gothic" size="11" isBold="false"/>
 					<paragraph lineSpacing="Double"/>
 				</textElement>
-				<text><![CDATA[Ceilling Repair of Electrical Cabin(Removing the existing damaged Gypsum ceilling & Fixing of new water proof Gypsum Ceilling without painting)]]></text>
+				<text><![CDATA[Heavy Duty Electrical Jack Hammer Capacity 35kg.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="Description" x="81" y="311" width="244" height="26" forecolor="#000000" uuid="50175ea9-4d25-49f7-b31a-faa55721437b"/>
@@ -165,12 +165,12 @@ FROM
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="Qty" x="325" y="288" width="42" height="23" uuid="b59d76de-da05-49bd-b97b-5aa2b56a4da3"/>
+				<reportElement key="Qty" x="325" y="288" width="42" height="48" uuid="b59d76de-da05-49bd-b97b-5aa2b56a4da3"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Century Gothic" size="11"/>
 					<paragraph lineSpacing="Double"/>
 				</textElement>
-				<text><![CDATA[1 Unit]]></text>
+				<text><![CDATA[15 Days.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="Qty" x="325" y="311" width="42" height="26" uuid="393c33e2-00c4-44f3-873a-d92a56dfbf0a"/>
@@ -226,7 +226,7 @@ FROM
 					<font fontName="Century Gothic" size="11"/>
 					<paragraph lineSpacing="Double"/>
 				</textElement>
-				<text><![CDATA[1800]]></text>
+				<text><![CDATA[160]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="Qty" x="368" y="311" width="57" height="26" uuid="62616fdb-5f45-4fcf-9d75-3f67b3bc1d10"/>
@@ -338,7 +338,7 @@ FROM
 					<font fontName="Century Gothic" size="11"/>
 					<paragraph lineSpacing="Double"/>
 				</textElement>
-				<text><![CDATA[1800]]></text>
+				<text><![CDATA[2400]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="Qty" x="452" y="311" width="84" height="25" uuid="11e73f4f-8308-44eb-871e-8bc932e8ee86"/>

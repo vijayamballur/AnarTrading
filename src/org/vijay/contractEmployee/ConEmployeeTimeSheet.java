@@ -50,6 +50,7 @@ public final class ConEmployeeTimeSheet extends javax.swing.JDialog {
         txtTotalHr.setText("0.0");
         defaultValueFills();
         setLocation(0,110);
+        setSize(Toolkit.getDefaultToolkit().getScreenSize());
         cmbEmpNameFill();
         jDatecurrentMonth.addPropertyChangeListener(new PropertyChangeListener() {
 
@@ -259,7 +260,7 @@ public final class ConEmployeeTimeSheet extends javax.swing.JDialog {
         try
         {
             Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("SELECT timeSheetId '"+"Id"+"',tbl_con_timesheet.empId '"+"empId"+"',empName '"+"Name"+"',date1 '"+"1"+"',date2 '"+"2"+"',date3 '"+"3"+"',date4 '"+"4"+"',date5 '"+"5"+"',date6 '"+"6"+"',date7 '"+"7"+"',date8 '"+"8"+"',date9 '"+"9"+"',date10 '"+"10"+"',date11 '"+"11"+"',date12 '"+"12"+"',date13 '"+"13"+"',date14 '"+"14"+"',date15 '"+"15"+"',date16 '"+"16"+"',date17 '"+"17"+"',date18 '"+"18"+"',date19 '"+"19"+"',date20 '"+"20"+"',date21 '"+"21"+"',date22 '"+"22"+"',date23 '"+"23"+"',date24 '"+"24"+"',date25 '"+"25"+"',date26 '"+"26"+"',date27 '"+"27"+"',date28 '"+"28"+"',date29 '"+"29"+"',date30 '"+"30"+"',date31 '"+"31"+"',totalHr THr,countAbs Abs,countLeave Lev,DATE_FORMAT(timesheetDate,'"+"%b %y"+"') MONTH FROM anar.tbl_con_timesheet INNER JOIN anar.tbl_conemployee ON (tbl_con_timesheet.empId = tbl_conemployee.empId) ORDER BY DATE_FORMAT(timesheetDate,'"+"%b %y"+"') desc;");
+            ResultSet rs=stmt.executeQuery("SELECT timeSheetId '"+"Id"+"',tbl_con_timesheet.empId '"+"empId"+"',empName '"+"Name"+"',date1 '"+"1"+"',date2 '"+"2"+"',date3 '"+"3"+"',date4 '"+"4"+"',date5 '"+"5"+"',date6 '"+"6"+"',date7 '"+"7"+"',date8 '"+"8"+"',date9 '"+"9"+"',date10 '"+"10"+"',date11 '"+"11"+"',date12 '"+"12"+"',date13 '"+"13"+"',date14 '"+"14"+"',date15 '"+"15"+"',date16 '"+"16"+"',date17 '"+"17"+"',date18 '"+"18"+"',date19 '"+"19"+"',date20 '"+"20"+"',date21 '"+"21"+"',date22 '"+"22"+"',date23 '"+"23"+"',date24 '"+"24"+"',date25 '"+"25"+"',date26 '"+"26"+"',date27 '"+"27"+"',date28 '"+"28"+"',date29 '"+"29"+"',date30 '"+"30"+"',date31 '"+"31"+"',totalHr THr,countAbs Abs,countLeave Lev,DATE_FORMAT(timesheetDate,'"+"%b %y"+"') MONTH FROM anar.tbl_con_timesheet INNER JOIN anar.tbl_conemployee ON (tbl_con_timesheet.empId = tbl_conemployee.empId) ORDER BY DATE_FORMAT(timesheetDate,'"+"%b %y"+"')");
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             jTable1.setAutoCreateRowSorter(true);
             con.close();

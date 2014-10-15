@@ -343,7 +343,7 @@ public class InvoiceNew extends javax.swing.JInternalFrame {
             @Override
             public void valueChanged(ListSelectionEvent e) {
             int rowNo=jTable2.getSelectedRow();
-            btnAdd.setEnabled(false);
+            btnViewInvoice.setEnabled(false);
             btnUpdate.setEnabled(true);
             btnDelete.setEnabled(true);
        
@@ -615,19 +615,18 @@ public class InvoiceNew extends javax.swing.JInternalFrame {
         jLabel17 = new javax.swing.JLabel();
         txtAmount = new javax.swing.JTextField();
         jToolBar1 = new javax.swing.JToolBar();
-        btnAdd = new javax.swing.JButton();
         btnRefresh = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jToolBar2 = new javax.swing.JToolBar();
-        btnSave = new javax.swing.JButton();
-        btnClose = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         txtNumberTowords = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         txtGrandTotal = new javax.swing.JTextField();
+        btnViewInvoice = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
 
         menuItemPrint.setText("Print");
         jtablePopUp.add(menuItemPrint);
@@ -642,13 +641,6 @@ public class InvoiceNew extends javax.swing.JInternalFrame {
 
         setTitle("Invoice Template");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
-            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
-                formInternalFrameOpened(evt);
-            }
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
@@ -656,6 +648,13 @@ public class InvoiceNew extends javax.swing.JInternalFrame {
             public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameOpened(evt);
             }
         });
 
@@ -885,22 +884,6 @@ public class InvoiceNew extends javax.swing.JInternalFrame {
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
-        btnAdd.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btnAdd.setMnemonic('s');
-        btnAdd.setText("Add");
-        btnAdd.setToolTipText("");
-        btnAdd.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAdd.setFocusable(false);
-        btnAdd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAdd.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(btnAdd);
-
         btnRefresh.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnRefresh.setMnemonic('s');
         btnRefresh.setText("Refresh");
@@ -1019,41 +1002,6 @@ public class InvoiceNew extends javax.swing.JInternalFrame {
         });
         jScrollPane4.setViewportView(jTable2);
 
-        jToolBar2.setFloatable(false);
-        jToolBar2.setRollover(true);
-
-        btnSave.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btnSave.setMnemonic('s');
-        btnSave.setText("Save");
-        btnSave.setToolTipText("");
-        btnSave.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSave.setFocusable(false);
-        btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnSave.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
-            }
-        });
-        jToolBar2.add(btnSave);
-
-        btnClose.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btnClose.setMnemonic('s');
-        btnClose.setText("Close");
-        btnClose.setToolTipText("");
-        btnClose.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnClose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnClose.setFocusable(false);
-        btnClose.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnClose.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCloseActionPerformed(evt);
-            }
-        });
-        jToolBar2.add(btnClose);
-
         jLabel19.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel19.setText("Amount In Words");
 
@@ -1086,6 +1034,51 @@ public class InvoiceNew extends javax.swing.JInternalFrame {
             }
         });
 
+        btnViewInvoice.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnViewInvoice.setMnemonic('s');
+        btnViewInvoice.setText("View Invoice");
+        btnViewInvoice.setToolTipText("");
+        btnViewInvoice.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnViewInvoice.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnViewInvoice.setFocusable(false);
+        btnViewInvoice.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnViewInvoice.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnViewInvoice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewInvoiceActionPerformed(evt);
+            }
+        });
+
+        btnClose.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnClose.setMnemonic('s');
+        btnClose.setText("Close");
+        btnClose.setToolTipText("");
+        btnClose.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnClose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnClose.setFocusable(false);
+        btnClose.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnClose.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
+
+        btnSave.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnSave.setMnemonic('s');
+        btnSave.setText("Save");
+        btnSave.setToolTipText("");
+        btnSave.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSave.setFocusable(false);
+        btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSave.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1093,7 +1086,6 @@ public class InvoiceNew extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4)
-                    .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1105,7 +1097,14 @@ public class InvoiceNew extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanelSub, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jPanelSub, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnSave)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnViewInvoice)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnClose)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -1114,8 +1113,8 @@ public class InvoiceNew extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanelMain, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanelSub, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(47, 47, 47)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
@@ -1123,8 +1122,11 @@ public class InvoiceNew extends javax.swing.JInternalFrame {
                     .addComponent(jLabel20)
                     .addComponent(txtGrandTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSave)
+                    .addComponent(btnClose)
+                    .addComponent(btnViewInvoice))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
@@ -1181,30 +1183,13 @@ public class InvoiceNew extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAmountKeyPressed
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-
-        if(cmbToName.getSelectedItem().equals("--select Name--"))
-        {
-            JOptionPane.showMessageDialog(cmbToName, "Please select the 'TO Name'");
-        }
-        else if(txtInvoiceNumber.getText().equals(""))
-        {
-            JOptionPane.showMessageDialog(txtInvoiceNumber, "Please Enter the Invoice Number from your Template");
-        }
-        else if(invoiceDate.equals(""))
-        {
-            JOptionPane.showMessageDialog(jDateInvoiceDate, "Please Enter the Invoice Date");
-        }
-        else if(txtAddress.getText().equals(""))
-        {
-            JOptionPane.showMessageDialog(txtAddress, "Please Enter the Address");
-        }
-        else
-        {
-             insertSubTempTable();
-        }
-        
-    }//GEN-LAST:event_btnAddActionPerformed
+    private void btnViewInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewInvoiceActionPerformed
+      
+        InvoiceviewTemplate IVT= new InvoiceviewTemplate();
+        AnarTrading.desktopPane1.add(IVT);
+        IVT.setVisible(true);
+        btnViewInvoice.setEnabled(false);
+    }//GEN-LAST:event_btnViewInvoiceActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
@@ -1295,12 +1280,12 @@ public class InvoiceNew extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton btnViewInvoice;
     private javax.swing.JComboBox cmbToName;
     private com.toedter.calendar.JDateChooser jDateInvoiceDate;
     private javax.swing.JLabel jLabel10;
@@ -1323,7 +1308,6 @@ public class InvoiceNew extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable2;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JToolBar jToolBar2;
     private javax.swing.JToolBar jToolBar3;
     private javax.swing.JPopupMenu jtablePopUp;
     private javax.swing.JMenuItem menuItemDelete;

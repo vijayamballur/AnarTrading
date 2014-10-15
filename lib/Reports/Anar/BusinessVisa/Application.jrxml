@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Application" language="java" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="d79ca479-5ecd-40da-9475-15753ca9aa5d">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Application" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="d79ca479-5ecd-40da-9475-15753ca9aa5d">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -10,7 +10,11 @@
 	<parameter name="businessVisaId" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
-     tbl_business_visa_appli.`applicantName` AS tbl_business_visa_appli_applicantName,
+     tbl_business_visa_appli.`applicantName1` AS applicantName1,
+     tbl_business_visa_appli.`applicantName2` AS applicantName2,
+     tbl_business_visa_appli.`applicantName3` AS applicantName3,
+     tbl_business_visa_appli.`applicantName4` AS applicantName4,
+     tbl_business_visa_appli.`applicantName5` AS applicantName5,
      tbl_business_visa_appli.`sex` AS tbl_business_visa_appli_sex,
      tbl_business_visa_appli.`nationality` AS tbl_business_visa_appli_nationality,
      tbl_business_visa_appli.`passportNumber` AS tbl_business_visa_appli_passportNumber,
@@ -43,7 +47,21 @@ FROM
      `tbl_business_visa_appli` tbl_business_visa_appli
 where businessVisaId=$P{businessVisaId}]]>
 	</queryString>
-	<field name="tbl_business_visa_appli_applicantName" class="java.lang.String"/>
+	<field name="applicantName1" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="applicantName2" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="applicantName3" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="applicantName4" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="applicantName5" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<field name="tbl_business_visa_appli_sex" class="java.lang.String"/>
 	<field name="tbl_business_visa_appli_nationality" class="java.lang.String"/>
 	<field name="tbl_business_visa_appli_passportNumber" class="java.lang.String"/>
@@ -85,58 +103,58 @@ where businessVisaId=$P{businessVisaId}]]>
 				<imageExpression><![CDATA["C:\\Users\\MAC\\Documents\\NetBeansProjects\\ANAR TRADING\\lib\\Reports\\Anar\\BusinessVisa\\BUsiness Visa Application Form1.jpg"]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement style="Detail" x="77" y="185" width="449" height="17" uuid="c12cb041-02bd-432a-814b-5d9dfc07d212"/>
+				<reportElement style="Detail" x="77" y="185" width="93" height="17" uuid="c12cb041-02bd-432a-814b-5d9dfc07d212"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Century Gothic" size="12" isBold="false"/>
+					<font fontName="Century Gothic" size="11" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_applicantName}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{applicantName1}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="Detail" x="74" y="202" width="35" height="15" uuid="39f4d3b4-e46c-4d76-b8c3-aa914d68f083"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Century Gothic" size="12"/>
+					<font fontName="Century Gothic" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_sex}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="Detail" x="228" y="202" width="63" height="15" uuid="449ee5d0-672a-4937-91ad-1b5c355449e6"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Century Gothic" size="12"/>
+					<font fontName="Century Gothic" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_nationality}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="Detail" x="416" y="202" width="110" height="15" uuid="bb33e377-def2-44dd-8f21-7566733156b6"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Century Gothic" size="12"/>
+					<font fontName="Century Gothic" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_passportNumber}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd">
 				<reportElement style="Detail" x="182" y="234" width="81" height="15" uuid="4ddc1ee7-3d0e-4b30-a0e7-587a2b1b2b05"/>
 				<textElement textAlignment="Center">
-					<font fontName="Century Gothic" size="12"/>
+					<font fontName="Century Gothic" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_passportExpiry}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd">
 				<reportElement style="Detail" x="182" y="249" width="81" height="15" uuid="8880555e-f67e-45f7-988e-78668d28b852"/>
 				<textElement textAlignment="Center">
-					<font fontName="Century Gothic" size="12"/>
+					<font fontName="Century Gothic" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_dateOfBirth}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="Detail" x="182" y="264" width="250" height="15" uuid="e83b988b-83fb-4e92-bff6-45f1b841dd79"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Century Gothic" size="12"/>
+					<font fontName="Century Gothic" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_profession}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="Detail" x="182" y="279" width="250" height="15" uuid="cdcac7bb-ba6b-44fb-a284-e949441dba08"/>
 				<textElement textAlignment="Center">
-					<font fontName="Century Gothic" size="12"/>
+					<font fontName="Century Gothic" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_eduQualification}]]></textFieldExpression>
 			</textField>
@@ -150,7 +168,7 @@ where businessVisaId=$P{businessVisaId}]]>
 			<textField>
 				<reportElement style="Detail" x="101" y="345" width="407" height="20" uuid="b6c7ae56-12a4-4c18-9a29-c176d278bea9"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Century Gothic" size="12"/>
+					<font fontName="Century Gothic" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_companyName}]]></textFieldExpression>
 			</textField>
@@ -171,28 +189,28 @@ where businessVisaId=$P{businessVisaId}]]>
 			<textField pattern="MM">
 				<reportElement style="Detail" x="263" y="234" width="84" height="15" uuid="3c46951e-5ead-4618-a72a-da952af26667"/>
 				<textElement textAlignment="Center">
-					<font fontName="Century Gothic" size="12"/>
+					<font fontName="Century Gothic" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_passportExpiry}]]></textFieldExpression>
 			</textField>
 			<textField pattern="YYYY">
 				<reportElement style="Detail" x="347" y="234" width="85" height="15" uuid="dc54fc63-8ed2-49bc-99dd-e3c4dc32eab0"/>
 				<textElement textAlignment="Center">
-					<font fontName="Century Gothic" size="12"/>
+					<font fontName="Century Gothic" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_passportExpiry}]]></textFieldExpression>
 			</textField>
 			<textField pattern="MM">
 				<reportElement style="Detail" x="263" y="249" width="84" height="15" uuid="80990c11-a98a-4cd2-a8b6-0b74a038ec80"/>
 				<textElement textAlignment="Center">
-					<font fontName="Century Gothic" size="12"/>
+					<font fontName="Century Gothic" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_dateOfBirth}]]></textFieldExpression>
 			</textField>
 			<textField pattern="YYYY">
 				<reportElement style="Detail" x="347" y="249" width="85" height="15" uuid="6de676e0-5641-41d0-9c3f-1b0e10a75c6d"/>
 				<textElement textAlignment="Center">
-					<font fontName="Century Gothic" size="12"/>
+					<font fontName="Century Gothic" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_dateOfBirth}]]></textFieldExpression>
 			</textField>
@@ -314,6 +332,34 @@ where businessVisaId=$P{businessVisaId}]]>
 					<font fontName="Century Gothic" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Id11}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="175" y="185" width="88" height="17" uuid="8b3e57a6-b0e5-4757-a63b-1fd4fc647c5b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{applicantName2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="265" y="185" width="84" height="17" uuid="7211fc6d-5162-4e8f-a157-d387d6e614d8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{applicantName3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="352" y="185" width="84" height="17" uuid="df4b0a08-f5b1-4edd-b4e5-642a3bd35d55"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{applicantName4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="436" y="185" width="90" height="17" uuid="6f6ec9be-f92e-4e47-af84-46e306829773"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{applicantName5}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

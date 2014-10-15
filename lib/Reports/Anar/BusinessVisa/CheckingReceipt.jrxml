@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="passportCopy" pageWidth="595" pageHeight="421" orientation="Landscape" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5a0afe71-f3b9-487a-bdf4-3e0ba6c0a3ac">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="businessVisaId" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     tbl_business_visa_checking_recepit.`checkingReceipt` AS tbl_business_visa_checking_recepit_checkingReceipt
+FROM
+     `tbl_business_visa_checking_recepit` tbl_business_visa_checking_recepit
+where tbl_business_visa_checking_recepit.businessVisaId=$P{businessVisaId}]]>
+	</queryString>
+	<field name="tbl_business_visa_checking_recepit_checkingReceipt" class="java.awt.Image"/>
+	<detail>
+		<band height="381" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="555" height="378" uuid="33c4991e-3b57-4140-91ce-3cbcfeb5ed0c"/>
+				<imageExpression><![CDATA[$F{tbl_business_visa_checking_recepit_checkingReceipt}]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>
