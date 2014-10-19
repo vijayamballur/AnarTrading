@@ -666,6 +666,75 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
         }
         return isEntryDateAvailable;
     }
+    public void addVisaDetails()
+    {
+        connection c=new connection();
+        Connection con=c.conn();
+        try
+        {
+            Statement stmt=con.createStatement();
+            ResultSet rs=stmt.executeQuery("SELECT * FROM tbl_business_visa_details WHERE businessVisaId="+businessVisaId);
+            if(rs.next()==false)
+            {
+                 int response=JOptionPane.showConfirmDialog(null,"There Is No VIsa Details Available for this person!!  Do you want to add the same? ","Please add agent details!",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                if(response==JOptionPane.NO_OPTION)
+                {
+
+                }
+                else if(response==JOptionPane.YES_OPTION)
+                {
+                    VisaDetails VD=new VisaDetails(businessVisaId,txtName1.getText()+" "+txtName2.getText()+" "+txtName3.getText()+" "+txtName4.getText()+" "+txtName5.getText(),txtPassportNumber.getText());
+                    AnarTrading.desktopPane1.add(VD);
+                    VD.setVisible(true);
+                    dispose();
+                }
+                else if(response==JOptionPane.CLOSED_OPTION)
+                {
+
+                }
+            }
+            else
+            {
+                VisaDetails VD=new VisaDetails(businessVisaId,txtName1.getText()+" "+txtName2.getText()+" "+txtName3.getText()+" "+txtName4.getText()+" "+txtName5.getText(),txtPassportNumber.getText(),0);
+                AnarTrading.desktopPane1.add(VD);
+                VD.setVisible(true);
+                dispose();
+            }
+            con.close();
+
+
+        }
+        catch(Exception e)
+        {
+
+        }
+    }
+    public boolean isEixtDateAvailable()
+    {
+        boolean isEixtDateAvailable=true;
+        connection c=new connection();
+        Connection con=c.conn();
+        try
+        {
+            Statement stmt=con.createStatement();
+            ResultSet rs=stmt.executeQuery("SELECT * FROM tbl_business_visa_exit WHERE businessVisaId="+businessVisaId);
+            if(rs.next()==false)
+            {
+                 isEixtDateAvailable=false;
+            }
+            else
+            {
+               isEixtDateAvailable=true;
+            }
+            con.close();
+            
+        }
+        catch(Exception e)
+        {
+
+        }
+        return isEixtDateAvailable;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -679,7 +748,9 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
         jtablePopUp = new javax.swing.JPopupMenu();
         menuItemAttachPassport = new javax.swing.JMenuItem();
         menuItemAttachCheckingReceipt = new javax.swing.JMenuItem();
+        menuItemAttachVisaDetails = new javax.swing.JMenuItem();
         menuItemEntryDate = new javax.swing.JMenuItem();
+        menuItemExitDate = new javax.swing.JMenuItem();
         menuItemPrint = new javax.swing.JMenuItem();
         menuItemDelete = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
@@ -747,6 +818,14 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
         });
         jtablePopUp.add(menuItemAttachCheckingReceipt);
 
+        menuItemAttachVisaDetails.setText("Attach Visa Details");
+        menuItemAttachVisaDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemAttachVisaDetailsActionPerformed(evt);
+            }
+        });
+        jtablePopUp.add(menuItemAttachVisaDetails);
+
         menuItemEntryDate.setText("Attach Entry Date");
         menuItemEntryDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -754,6 +833,15 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
             }
         });
         jtablePopUp.add(menuItemEntryDate);
+
+        menuItemExitDate.setForeground(new java.awt.Color(255, 0, 51));
+        menuItemExitDate.setText("Attach Exit Date");
+        menuItemExitDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemExitDateActionPerformed(evt);
+            }
+        });
+        jtablePopUp.add(menuItemExitDate);
 
         menuItemPrint.setMnemonic('p');
         menuItemPrint.setText("Print Application Form");
@@ -764,6 +852,7 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
         });
         jtablePopUp.add(menuItemPrint);
 
+        menuItemDelete.setForeground(new java.awt.Color(255, 0, 51));
         menuItemDelete.setText("Delete");
         menuItemDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1587,46 +1676,7 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
 
     private void btnVisaDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaDetailsActionPerformed
         // TODO add your handling code here:
-        connection c=new connection();
-        Connection con=c.conn();
-        try
-        {
-            Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("SELECT * FROM tbl_business_visa_details WHERE businessVisaId="+businessVisaId);
-            if(rs.next()==false)
-            {
-                 int response=JOptionPane.showConfirmDialog(null,"There Is No VIsa Details Available for this person!!  Do you want to add the same? ","Please add agent details!",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
-                if(response==JOptionPane.NO_OPTION)
-                {
-
-                }
-                else if(response==JOptionPane.YES_OPTION)
-                {
-                    VisaDetails VD=new VisaDetails(businessVisaId,txtName1.getText()+" "+txtName2.getText()+" "+txtName3.getText()+" "+txtName4.getText()+" "+txtName5.getText(),txtPassportNumber.getText());
-                    AnarTrading.desktopPane1.add(VD);
-                    VD.setVisible(true);
-                    dispose();
-                }
-                else if(response==JOptionPane.CLOSED_OPTION)
-                {
-
-                }
-            }
-            else
-            {
-                VisaDetails VD=new VisaDetails(businessVisaId,txtName1.getText()+" "+txtName2.getText()+" "+txtName3.getText()+" "+txtName4.getText()+" "+txtName5.getText(),txtPassportNumber.getText(),0);
-                AnarTrading.desktopPane1.add(VD);
-                VD.setVisible(true);
-                dispose();
-            }
-            con.close();
-
-
-        }
-        catch(Exception e)
-        {
-
-        }
+        addVisaDetails();
     }//GEN-LAST:event_btnVisaDetailsActionPerformed
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
@@ -1752,7 +1802,39 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
                 int response=JOptionPane.showConfirmDialog(null,"There Is No Checking Receipt available for this person!!  Do you want to attach the same? ","Please attach checking receipt first!",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
                 if(response==JOptionPane.NO_OPTION)
                 {
+                    if(isVisaDetailsAvailable())
+                    {
+                        if(isEntryDateAvailable())
+                        {
+                            EntryDateUpdate EDU=new EntryDateUpdate(null, closable,businessVisaId,screenX,screenY,txtName1.getText()+" "+txtName2.getText()+" "+txtName3.getText()+" "+txtName4.getText()+" "+txtName5.getText(),txtPassportNumber.getText(),0);
+                            EDU.setVisible(true);
+                        }
+                        else
+                        {
+                            EntryDateUpdate EDU=new EntryDateUpdate(null, closable,businessVisaId,screenX,screenY,txtName1.getText()+" "+txtName2.getText()+" "+txtName3.getText()+" "+txtName4.getText()+" "+txtName5.getText(),txtPassportNumber.getText());
+                            EDU.setVisible(true);
 
+                        }
+                    }
+                    else
+                    {
+                        int response1=JOptionPane.showConfirmDialog(null,"There Is No VIsa Details Available for this person!!  Do you want to add the same? ","Please add agent details first!",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                        if(response1==JOptionPane.NO_OPTION)
+                        {
+
+                        }
+                        else if(response1==JOptionPane.YES_OPTION)
+                        {
+                            VisaDetails VD=new VisaDetails(businessVisaId,txtName1.getText()+" "+txtName2.getText()+" "+txtName3.getText()+" "+txtName4.getText()+" "+txtName5.getText(),txtPassportNumber.getText());
+                            AnarTrading.desktopPane1.add(VD);
+                            VD.setVisible(true);
+                            dispose();
+                        }
+                        else if(response1==JOptionPane.CLOSED_OPTION)
+                        {
+
+                        }
+                    }
                 }
                 else if(response==JOptionPane.YES_OPTION)
                 {
@@ -1789,6 +1871,163 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
         // TODO add your handling code here:
     }//GEN-LAST:event_formFocusGained
+
+    private void menuItemExitDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemExitDateActionPerformed
+        // TODO add your handling code here:
+        if(ispassportCopyAvailable())
+        {
+            if(isCheckingReceiptAvailable())
+            {
+                if(isVisaDetailsAvailable())
+                {
+                    if(isEntryDateAvailable())
+                    {
+                        if(isEixtDateAvailable())
+                        {
+                            ExitDateUpdate EDU=new ExitDateUpdate(null, closable,businessVisaId,screenX,screenY,txtName1.getText()+" "+txtName2.getText()+" "+txtName3.getText()+" "+txtName4.getText()+" "+txtName5.getText(),txtPassportNumber.getText(),0);
+                            EDU.setVisible(true);
+                        }
+                        else
+                        {
+                            ExitDateUpdate EDU=new ExitDateUpdate(null, closable,businessVisaId,screenX,screenY,txtName1.getText()+" "+txtName2.getText()+" "+txtName3.getText()+" "+txtName4.getText()+" "+txtName5.getText(),txtPassportNumber.getText());
+                            EDU.setVisible(true);
+                        }
+                    }
+                    else
+                    {
+                        int response=JOptionPane.showConfirmDialog(null,"There Is No Entry Details Available for this person!!  Do you want to add the same? ","Please Attach Entry Date First!",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                        if(response==JOptionPane.NO_OPTION)
+                        {
+
+                        }
+                        else if(response==JOptionPane.YES_OPTION)
+                        {
+                            EntryDateUpdate EDU=new EntryDateUpdate(null, closable,businessVisaId,screenX,screenY,txtName1.getText()+" "+txtName2.getText()+" "+txtName3.getText()+" "+txtName4.getText()+" "+txtName5.getText(),txtPassportNumber.getText());
+                            EDU.setVisible(true);
+                        }   
+                        else if(response==JOptionPane.CLOSED_OPTION)
+                        {
+
+                        }
+                    }
+                }
+                else
+                {
+                    int response=JOptionPane.showConfirmDialog(null,"There Is No VIsa Details Available for this person!!  Do you want to add the same? ","Please add agent details first!",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                    if(response==JOptionPane.NO_OPTION)
+                    {
+
+                    }
+                    else if(response==JOptionPane.YES_OPTION)
+                    {
+                        VisaDetails VD=new VisaDetails(businessVisaId,txtName1.getText()+" "+txtName2.getText()+" "+txtName3.getText()+" "+txtName4.getText()+" "+txtName5.getText(),txtPassportNumber.getText());
+                        AnarTrading.desktopPane1.add(VD);
+                        VD.setVisible(true);
+                        dispose();
+                    }
+                    else if(response==JOptionPane.CLOSED_OPTION)
+                    {
+
+                    }
+                }
+            }
+            else
+            {
+                int response=JOptionPane.showConfirmDialog(null,"There Is No Checking Receipt available for this person!!  Do you want to attach the same? ","Please attach checking receipt first!",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                if(response==JOptionPane.NO_OPTION)
+                {
+                    if(isVisaDetailsAvailable())
+                    {
+                        if(isEntryDateAvailable())
+                        {
+                            if(isEixtDateAvailable())
+                            {
+                                ExitDateUpdate EDU=new ExitDateUpdate(null, closable,businessVisaId,screenX,screenY,txtName1.getText()+" "+txtName2.getText()+" "+txtName3.getText()+" "+txtName4.getText()+" "+txtName5.getText(),txtPassportNumber.getText(),0);
+                                EDU.setVisible(true);
+                            }
+                            else
+                            {
+                                ExitDateUpdate EDU=new ExitDateUpdate(null, closable,businessVisaId,screenX,screenY,txtName1.getText()+" "+txtName2.getText()+" "+txtName3.getText()+" "+txtName4.getText()+" "+txtName5.getText(),txtPassportNumber.getText());
+                                EDU.setVisible(true);
+                            }
+                        }
+                        else
+                        {
+                            int response1=JOptionPane.showConfirmDialog(null,"There Is No VIsa Details Available for this person!!  Do you want to add the same? ","Please add agent details first!",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                            if(response1==JOptionPane.NO_OPTION)
+                            {
+
+                            }
+                            else if(response1==JOptionPane.YES_OPTION)
+                            {
+                                EntryDateUpdate EDU=new EntryDateUpdate(null, closable,businessVisaId,screenX,screenY,txtName1.getText()+" "+txtName2.getText()+" "+txtName3.getText()+" "+txtName4.getText()+" "+txtName5.getText(),txtPassportNumber.getText());
+                                EDU.setVisible(true);
+                            }   
+                            else if(response1==JOptionPane.CLOSED_OPTION)
+                            {
+
+                            }
+                        }
+                    }   
+                    else
+                    {
+                        int response2=JOptionPane.showConfirmDialog(null,"There Is No VIsa Details Available for this person!!  Do you want to add the same? ","Please add Visa details first!",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                        if(response2==JOptionPane.NO_OPTION)
+                        {
+
+                        }
+                        else if(response2==JOptionPane.YES_OPTION)
+                        {
+                            VisaDetails VD=new VisaDetails(businessVisaId,txtName1.getText()+" "+txtName2.getText()+" "+txtName3.getText()+" "+txtName4.getText()+" "+txtName5.getText(),txtPassportNumber.getText());
+                            AnarTrading.desktopPane1.add(VD);
+                            VD.setVisible(true);
+                            dispose();
+                        }
+                        else if(response2==JOptionPane.CLOSED_OPTION)
+                        {
+
+                        }
+                    }
+                    
+                    
+                }
+                else if(response==JOptionPane.YES_OPTION)
+                {
+                    CheckingReceipt CR=new CheckingReceipt(businessVisaId);
+                    AnarTrading.desktopPane1.add(CR);
+                    CR.setVisible(true);
+                }
+                else if(response==JOptionPane.CLOSED_OPTION)
+                {
+
+                }
+            }
+        }
+        else
+        {
+            int response=JOptionPane.showConfirmDialog(null,"There Is No Passport Copy Available for this person!!  Do you want to attach the same? ","Please attach passport copy first!",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
+            if(response==JOptionPane.NO_OPTION)
+            {
+
+            }
+            else if(response==JOptionPane.YES_OPTION)
+            {
+                PassportCopy PC=new PassportCopy(businessVisaId);
+                AnarTrading.desktopPane1.add(PC);
+                PC.setVisible(true); 
+            }
+            else if(response==JOptionPane.CLOSED_OPTION)
+            {
+
+            }
+        }
+    }//GEN-LAST:event_menuItemExitDateActionPerformed
+
+    private void menuItemAttachVisaDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAttachVisaDetailsActionPerformed
+        // TODO add your handling code here:
+        addVisaDetails();
+        
+    }//GEN-LAST:event_menuItemAttachVisaDetailsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1837,8 +2076,10 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
     private javax.swing.JPopupMenu jtablePopUp;
     private javax.swing.JMenuItem menuItemAttachCheckingReceipt;
     private javax.swing.JMenuItem menuItemAttachPassport;
+    private javax.swing.JMenuItem menuItemAttachVisaDetails;
     private javax.swing.JMenuItem menuItemDelete;
     private javax.swing.JMenuItem menuItemEntryDate;
+    private javax.swing.JMenuItem menuItemExitDate;
     private javax.swing.JMenuItem menuItemPrint;
     private javax.swing.JTextField txtName1;
     private javax.swing.JTextField txtName2;

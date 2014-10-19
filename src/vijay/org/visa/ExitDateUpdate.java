@@ -27,12 +27,12 @@ import static org.vijay.invoice.InvoiceEntry.dateFormat;
  *
  * @author MAC
  */
-public class EntryDateUpdate extends javax.swing.JDialog {
+public class ExitDateUpdate extends javax.swing.JDialog {
 
     /**
      * Creates new form EntryDateUpdate
      */
-    public EntryDateUpdate(java.awt.Frame parent, boolean modal,int businessVisaId,int screenX,int screenY,String name,String ppNumber) {
+    public ExitDateUpdate(java.awt.Frame parent, boolean modal,int businessVisaId,int screenX,int screenY,String name,String ppNumber) {
         super(parent, modal);
         initComponents();
         setLocation(screenX,screenY);
@@ -42,35 +42,18 @@ public class EntryDateUpdate extends javax.swing.JDialog {
         lblApplicatName.setText(name);
         lblPassportNumber.setText(ppNumber);
 
-        jDateEntryDate.addPropertyChangeListener(new PropertyChangeListener() {
+        jDateExitDate.addPropertyChangeListener(new PropertyChangeListener() {
 
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
                 if (evt.getPropertyName().equals("date")) {
-                    entryDate = new SimpleDateFormat("yyyy-MM-dd").format(jDateEntryDate.getDate());
+                    exitDate = new SimpleDateFormat("yyyy-MM-dd").format(jDateExitDate.getDate());
                 }
             }  
         });
-        jDateExpiryDate.addPropertyChangeListener(new PropertyChangeListener() {
-
-            @Override
-            public void propertyChange(PropertyChangeEvent evt) {
-                if (evt.getPropertyName().equals("date")) {
-                    expiryDate = new SimpleDateFormat("yyyy-MM-dd").format(jDateExpiryDate.getDate());
-                }
-            }  
-        });
+ 
     }
-    private void addDaysToDate(String date, int daysToAdd) throws Exception 
-     {
-         Date parsedDate = dateFormat.parse(date);
-         Calendar now = Calendar.getInstance();
-         now.setTime(parsedDate); 
-         now.add(Calendar.DAY_OF_MONTH, daysToAdd);
-         expiryDate=dateFormat.format(now.getTime());
-         jDateExpiryDate.setDate(now.getTime());
-      }
-    public EntryDateUpdate(java.awt.Frame parent, boolean modal,int businessVisaId,int screenX,int screenY,String name,String ppNumber,int i) {
+    public ExitDateUpdate(java.awt.Frame parent, boolean modal,int businessVisaId,int screenX,int screenY,String name,String ppNumber,int i) {
         super(parent, modal);
         initComponents();
         setLocation(screenX,screenY);
@@ -78,21 +61,12 @@ public class EntryDateUpdate extends javax.swing.JDialog {
         btnSave.setVisible(false);
         lblApplicatName.setText(name);
         lblPassportNumber.setText(ppNumber);
-        jDateEntryDate.addPropertyChangeListener(new PropertyChangeListener() {
+        jDateExitDate.addPropertyChangeListener(new PropertyChangeListener() {
 
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
                 if (evt.getPropertyName().equals("date")) {
-                    entryDate = new SimpleDateFormat("yyyy-MM-dd").format(jDateEntryDate.getDate());
-                }
-            }  
-        });
-        jDateExpiryDate.addPropertyChangeListener(new PropertyChangeListener() {
-
-            @Override
-            public void propertyChange(PropertyChangeEvent evt) {
-                if (evt.getPropertyName().equals("date")) {
-                    expiryDate = new SimpleDateFormat("yyyy-MM-dd").format(jDateExpiryDate.getDate());
+                    exitDate = new SimpleDateFormat("yyyy-MM-dd").format(jDateExitDate.getDate());
                 }
             }  
         });
@@ -105,11 +79,10 @@ public class EntryDateUpdate extends javax.swing.JDialog {
         try
         {
             Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("SELECT entryDate,expiryDate FROM tbl_business_visa_entrydate WHERE businessVisaId="+businessVisaId);
+            ResultSet rs=stmt.executeQuery("SELECT entryDate FROM tbl_business_visa_entrydate WHERE businessVisaId="+businessVisaId);
             while(rs.next())
             {
-                jDateEntryDate.setDate(rs.getDate("entryDate"));
-                jDateExpiryDate.setDate(rs.getDate("expiryDate"));
+                jDateExitDate.setDate(rs.getDate("entryDate"));
             }
             
             con.close();
@@ -125,14 +98,13 @@ public class EntryDateUpdate extends javax.swing.JDialog {
         Connection con=c.conn();
         try
         {
-            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_business_visa_entrydate(entryDate,businessVisaId,expiryDate) VALUES(?,?,?)");           
-            ps.setString(1, entryDate);
+            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_business_visa_exit(exitDate,businessVisaId) VALUES(?,?)");           
+            ps.setString(1, exitDate);
             ps.setInt(2, businessVisaId);
-            ps.setString(3, expiryDate);
             int i=ps.executeUpdate();
             if(i!=0)
             {
-                PreparedStatement ps1=con.prepareStatement("UPDATE tbl_business_visa_appli SET status='Entered to the Country' where businessVisaId=?");
+                PreparedStatement ps1=con.prepareStatement("UPDATE tbl_business_visa_appli SET status='Exited from Country' where businessVisaId=?");
                 ps1.setInt(1, businessVisaId);
                 int j=ps1.executeUpdate();
                 if(j!=0)
@@ -156,10 +128,9 @@ public class EntryDateUpdate extends javax.swing.JDialog {
         Connection con=c.conn();
         try
         {
-            PreparedStatement ps=con.prepareStatement("UPDATE tbl_business_visa_entrydate SET entryDate=upper(?),expiryDate=? where businessVisaId=?");
-            ps.setString(1,entryDate);
-            ps.setString(2,expiryDate);
-            ps.setInt(3, businessVisaId);
+            PreparedStatement ps=con.prepareStatement("UPDATE tbl_business_visa_exit SET exitDate=upper(?) where businessVisaId=?");
+            ps.setString(1,exitDate);
+            ps.setInt(2, businessVisaId);
             int i=ps.executeUpdate();
             if(i!=0)
             {
@@ -184,7 +155,7 @@ public class EntryDateUpdate extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel26 = new javax.swing.JLabel();
-        jDateEntryDate = new com.toedter.calendar.JDateChooser();
+        jDateExitDate = new com.toedter.calendar.JDateChooser();
         jLabel27 = new javax.swing.JLabel();
         lblApplicatName = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
@@ -193,41 +164,44 @@ public class EntryDateUpdate extends javax.swing.JDialog {
         btnCancel = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
-        jLabel28 = new javax.swing.JLabel();
-        jDateExpiryDate = new com.toedter.calendar.JDateChooser();
-        jLabel29 = new javax.swing.JLabel();
-        txtDaysForExpiry = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Entry Date");
+        setTitle("Exit Date Update");
 
         jLabel26.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel26.setText("Entry Date");
+        jLabel26.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel26.setText("Exit Date");
 
-        jDateEntryDate.setDateFormatString("yyyy-MM-dd");
-        jDateEntryDate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jDateEntryDate.addMouseListener(new java.awt.event.MouseAdapter() {
+        jDateExitDate.setForeground(new java.awt.Color(255, 51, 51));
+        jDateExitDate.setDateFormatString("yyyy-MM-dd");
+        jDateExitDate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jDateExitDate.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jDateEntryDateMouseClicked(evt);
+                jDateExitDateMouseClicked(evt);
             }
         });
-        jDateEntryDate.addFocusListener(new java.awt.event.FocusAdapter() {
+        jDateExitDate.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jDateEntryDateFocusLost(evt);
+                jDateExitDateFocusLost(evt);
             }
         });
 
         jLabel27.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(255, 51, 51));
         jLabel27.setText("Name");
 
         lblApplicatName.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        lblApplicatName.setForeground(new java.awt.Color(255, 51, 51));
 
         jLabel25.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(255, 51, 51));
         jLabel25.setText("Passport Number");
 
         lblPassportNumber.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        lblPassportNumber.setForeground(new java.awt.Color(255, 51, 51));
 
         btnSave.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnSave.setForeground(new java.awt.Color(255, 51, 51));
         btnSave.setMnemonic('s');
         btnSave.setText("Save");
         btnSave.setToolTipText("");
@@ -240,6 +214,7 @@ public class EntryDateUpdate extends javax.swing.JDialog {
         });
 
         btnCancel.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnCancel.setForeground(new java.awt.Color(255, 51, 51));
         btnCancel.setMnemonic('c');
         btnCancel.setText("Cancel");
         btnCancel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -251,6 +226,7 @@ public class EntryDateUpdate extends javax.swing.JDialog {
         });
 
         btnUpdate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnUpdate.setForeground(new java.awt.Color(255, 51, 51));
         btnUpdate.setMnemonic('c');
         btnUpdate.setText("Update");
         btnUpdate.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -262,6 +238,7 @@ public class EntryDateUpdate extends javax.swing.JDialog {
         });
 
         btnDelete.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(255, 51, 51));
         btnDelete.setMnemonic('c');
         btnDelete.setText("Delete");
         btnDelete.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -269,29 +246,6 @@ public class EntryDateUpdate extends javax.swing.JDialog {
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
-            }
-        });
-
-        jLabel28.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel28.setText("Expiry Date");
-
-        jDateExpiryDate.setDateFormatString("yyyy-MM-dd");
-        jDateExpiryDate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-
-        jLabel29.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel29.setText("Days For Expiry");
-
-        txtDaysForExpiry.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        txtDaysForExpiry.setText("30");
-        txtDaysForExpiry.setMinimumSize(new java.awt.Dimension(6, 25));
-        txtDaysForExpiry.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtDaysForExpiryFocusLost(evt);
-            }
-        });
-        txtDaysForExpiry.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtDaysForExpiryKeyPressed(evt);
             }
         });
 
@@ -315,7 +269,7 @@ public class EntryDateUpdate extends javax.swing.JDialog {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jDateEntryDate, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jDateExitDate, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(btnSave)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -324,14 +278,7 @@ public class EntryDateUpdate extends javax.swing.JDialog {
                                 .addComponent(btnDelete)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnCancel)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel29)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDaysForExpiry, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel28)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateExpiryDate, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 297, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -347,13 +294,8 @@ public class EntryDateUpdate extends javax.swing.JDialog {
                     .addComponent(lblPassportNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtDaysForExpiry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jDateExpiryDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateEntryDate, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateExitDate, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave)
@@ -386,7 +328,7 @@ public class EntryDateUpdate extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void jDateEntryDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jDateEntryDateFocusLost
+    private void jDateExitDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jDateExitDateFocusLost
         // TODO add your handling code here:
 //        try {
 //             addDaysToDate(entryDate, 30);
@@ -394,76 +336,32 @@ public class EntryDateUpdate extends javax.swing.JDialog {
 //            Logger.getLogger(InvoiceEntry.class.getName()).log(Level.SEVERE, null, ex);
 //        }
        
-    }//GEN-LAST:event_jDateEntryDateFocusLost
+    }//GEN-LAST:event_jDateExitDateFocusLost
 
-    private void jDateEntryDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDateEntryDateMouseClicked
+    private void jDateExitDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDateExitDateMouseClicked
         // TODO add your handling code here:
                 
-    }//GEN-LAST:event_jDateEntryDateMouseClicked
-
-    private void txtDaysForExpiryFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDaysForExpiryFocusLost
-        // TODO add your handling code here:
-        try {
-             addDaysToDate(entryDate,Integer.parseInt(txtDaysForExpiry.getText()));
-        } catch (Exception ex) {
-            Logger.getLogger(InvoiceEntry.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_txtDaysForExpiryFocusLost
-
-    private void txtDaysForExpiryKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDaysForExpiryKeyPressed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_txtDaysForExpiryKeyPressed
+    }//GEN-LAST:event_jDateExitDateMouseClicked
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EntryDateUpdate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EntryDateUpdate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EntryDateUpdate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EntryDateUpdate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;
-    private com.toedter.calendar.JDateChooser jDateEntryDate;
-    private com.toedter.calendar.JDateChooser jDateExpiryDate;
+    private com.toedter.calendar.JDateChooser jDateExitDate;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel lblApplicatName;
     private javax.swing.JLabel lblPassportNumber;
-    private javax.swing.JTextField txtDaysForExpiry;
     // End of variables declaration//GEN-END:variables
     int businessVisaId;
     public static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     DateFormat defaultDate = new SimpleDateFormat("yyyy-MM-dd");
-    String dateString = "",entryDate="",expiryDate="";
+    String dateString = "",exitDate="";
 }

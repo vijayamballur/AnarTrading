@@ -48,7 +48,7 @@ public class VisaDetails extends javax.swing.JInternalFrame {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
                 if (evt.getPropertyName().equals("date")) {
-                    expiryDate = new SimpleDateFormat("yyyy-MM-dd").format(jDateExpiryDate.getDate());
+                    Validity = new SimpleDateFormat("yyyy-MM-dd").format(jDateExpiryDate.getDate());
                 }
             }  
         });
@@ -75,7 +75,7 @@ public class VisaDetails extends javax.swing.JInternalFrame {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
                 if (evt.getPropertyName().equals("date")) {
-                    expiryDate = new SimpleDateFormat("yyyy-MM-dd").format(jDateExpiryDate.getDate());
+                    Validity = new SimpleDateFormat("yyyy-MM-dd").format(jDateExpiryDate.getDate());
                 }
             }  
         });
@@ -91,12 +91,12 @@ public class VisaDetails extends javax.swing.JInternalFrame {
         try
         {
             Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("SELECT visaNumber,issueDate,ExpiryDate FROM tbl_business_visa_details WHERE businessVisaId="+businessVisaId);
+            ResultSet rs=stmt.executeQuery("SELECT visaNumber,issueDate,Validity FROM tbl_business_visa_details WHERE businessVisaId="+businessVisaId);
             while(rs.next())
             {
                 txtVisaNumber.setText(rs.getString("visaNumber"));
                 jDateissueDate.setDate(rs.getDate("issueDate"));
-                jDateExpiryDate.setDate(rs.getDate("ExpiryDate"));
+                jDateExpiryDate.setDate(rs.getDate("Validity"));
             }
             
             con.close();
@@ -113,11 +113,11 @@ public class VisaDetails extends javax.swing.JInternalFrame {
         Connection con=c.conn();
         try
         {
-            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_business_visa_details(businessVisaId,visaNumber,issueDate,ExpiryDate) VALUES(?,upper(?),?,?)");           
+            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_business_visa_details(businessVisaId,visaNumber,issueDate,Validity) VALUES(?,upper(?),?,?)");           
             ps.setInt(1, businessVisaId);
             ps.setString(2, txtVisaNumber.getText());
             ps.setString(3, issueDate);
-            ps.setString(4, expiryDate);
+            ps.setString(4, Validity);
             int i=ps.executeUpdate();
             if(i!=0)
             {
@@ -152,10 +152,10 @@ public class VisaDetails extends javax.swing.JInternalFrame {
         Connection con=c.conn();
         try
         {
-            PreparedStatement ps=con.prepareStatement("UPDATE tbl_business_visa_details SET visaNumber=upper(?),issueDate=?,ExpiryDate=? where businessVisaId=?");
+            PreparedStatement ps=con.prepareStatement("UPDATE tbl_business_visa_details SET visaNumber=upper(?),issueDate=?,Validity=? where businessVisaId=?");
             ps.setString(1,txtVisaNumber.getText());
             ps.setString(2,issueDate);
-            ps.setString(3,expiryDate);
+            ps.setString(3,Validity);
             ps.setInt(4, businessVisaId);
             int i=ps.executeUpdate();
             if(i!=0)
@@ -272,7 +272,7 @@ public class VisaDetails extends javax.swing.JInternalFrame {
         jDateissueDate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
 
         jLabel24.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel24.setText("Expiry Date");
+        jLabel24.setText("Visa Validity");
 
         jDateExpiryDate.setDateFormatString("yyyy-MM-dd");
         jDateExpiryDate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
@@ -393,11 +393,13 @@ public class VisaDetails extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 49, Short.MAX_VALUE))
+                .addGap(0, 42, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnSave)
+                .addGap(0, 0, 0)
                 .addComponent(btnUpdate)
+                .addGap(0, 0, 0)
                 .addComponent(btnDelete)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCancel)
@@ -471,5 +473,5 @@ public class VisaDetails extends javax.swing.JInternalFrame {
     int businessVisaId,agentId;
     public static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     DateFormat defaultDate = new SimpleDateFormat("yyyy-MM-dd");
-    String dateString = "",issueDate="",expiryDate="",path;
+    String dateString = "",issueDate="",Validity="",path;
 }
