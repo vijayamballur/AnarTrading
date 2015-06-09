@@ -30,7 +30,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="clock1" min="-2" max="-2" attributes="0"/>
+              <Component id="btnAnarCbqOnline" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -38,13 +38,13 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  <Component id="clock1" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAnarCbqOnline" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane2" min="-2" pref="624" max="-2" attributes="0"/>
-              <EmptySpace pref="47" max="32767" attributes="0"/>
+              <Component id="jScrollPane2" min="-2" pref="590" max="-2" attributes="0"/>
+              <EmptySpace pref="89" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -336,11 +336,13 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="eu.hansolo.steelseries.gauges.Clock" name="clock1">
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
-        <Property name="useNullLayout" type="boolean" value="true"/>
-      </Layout>
-    </Container>
+    <Component class="javax.swing.JButton" name="btnAnarCbqOnline">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Anar CBQ Online"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAnarCbqOnlineActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>

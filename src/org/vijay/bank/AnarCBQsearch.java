@@ -12,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
@@ -67,6 +68,8 @@ public class AnarCBQsearch extends javax.swing.JInternalFrame {
             aCbqId=Integer.parseInt(jTable1.getValueAt(rowNo,0).toString());
             }
         });
+        truncateTempDbTable();
+        insertIntoTempDbTable();
         CurrentWorkingDirectory CWD=new CurrentWorkingDirectory();
         path=CWD.getpath();
     }
@@ -116,6 +119,46 @@ public class AnarCBQsearch extends javax.swing.JInternalFrame {
         catch(Exception e)
         {
 
+        }
+    }
+    public void insertIntoTempDbTable()
+    {
+        connection c=new connection();
+        Connection con=c.conn();
+        try
+        {
+            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_temp_anarcbq (AcbqId,transDate,debit,credit,description) SELECT * FROM tbl_anarcbq ORDER BY transDate,AcbqId");
+            int i=ps.executeUpdate();
+            if(i!=0)
+            {
+                    
+            }
+            con.close();
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(rootPane, e, "ERROR!!", JOptionPane.ERROR_MESSAGE);
+            //JOptionPane.showMessageDialog(rootPane,e+"Error SA001");
+        }
+    }
+    public void truncateTempDbTable()
+    {
+        connection c=new connection();
+        Connection con=c.conn();
+        try
+        {
+            PreparedStatement ps=con.prepareStatement("TRUNCATE TABLE tbl_temp_anarcbq");
+            int i=ps.executeUpdate();
+            if(i!=0)
+            {
+                    
+            }
+            con.close();
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(rootPane, e, "ERROR!!", JOptionPane.ERROR_MESSAGE);
+            //JOptionPane.showMessageDialog(rootPane,e+"Error SA001");
         }
     }
 

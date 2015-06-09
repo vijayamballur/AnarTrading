@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Application" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="d79ca479-5ecd-40da-9475-15753ca9aa5d">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="309"/>
 	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
 	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
@@ -97,15 +97,15 @@ where businessVisaId=$P{businessVisaId}]]>
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<detail>
-		<band height="766" splitType="Stretch">
+		<band height="820" splitType="Stretch">
 			<image>
 				<reportElement x="11" y="110" width="584" height="656" uuid="0c4da28a-f068-41ea-9ede-f03f92ca2480"/>
 				<imageExpression><![CDATA["C:\\Users\\MAC\\Documents\\NetBeansProjects\\ANAR TRADING\\lib\\Reports\\Anar\\BusinessVisa\\BUsiness Visa Application Form1.jpg"]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement style="Detail" x="77" y="185" width="93" height="17" uuid="c12cb041-02bd-432a-814b-5d9dfc07d212"/>
+				<reportElement style="Detail" positionType="Float" x="77" y="185" width="93" height="17" uuid="c12cb041-02bd-432a-814b-5d9dfc07d212"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Century Gothic" size="11" isBold="false"/>
+					<font fontName="Century Gothic" size="9" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{applicantName1}]]></textFieldExpression>
 			</textField>
@@ -119,7 +119,7 @@ where businessVisaId=$P{businessVisaId}]]>
 			<textField>
 				<reportElement style="Detail" x="228" y="202" width="63" height="15" uuid="449ee5d0-672a-4937-91ad-1b5c355449e6"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Century Gothic" size="11"/>
+					<font fontName="Century Gothic" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_nationality}]]></textFieldExpression>
 			</textField>
@@ -334,33 +334,41 @@ where businessVisaId=$P{businessVisaId}]]>
 				<textFieldExpression><![CDATA[$F{Id11}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="175" y="185" width="88" height="17" uuid="8b3e57a6-b0e5-4757-a63b-1fd4fc647c5b"/>
+				<reportElement style="Detail" positionType="Float" x="175" y="185" width="88" height="17" uuid="8b3e57a6-b0e5-4757-a63b-1fd4fc647c5b"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Century Gothic" size="11" isBold="false"/>
+					<font fontName="Century Gothic" size="9" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{applicantName2}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="Detail" x="265" y="185" width="84" height="17" uuid="7211fc6d-5162-4e8f-a157-d387d6e614d8"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Century Gothic" size="11" isBold="false"/>
+					<font fontName="Century Gothic" size="9" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{applicantName3}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="Detail" x="352" y="185" width="84" height="17" uuid="df4b0a08-f5b1-4edd-b4e5-642a3bd35d55"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Century Gothic" size="11" isBold="false"/>
+					<font fontName="Century Gothic" size="9" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{applicantName4}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="Detail" x="436" y="185" width="90" height="17" uuid="6f6ec9be-f92e-4e47-af84-46e306829773"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Century Gothic" size="11" isBold="false"/>
+					<font fontName="Century Gothic" size="9" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{applicantName5}]]></textFieldExpression>
 			</textField>
+			<image>
+				<reportElement x="13" y="8" width="587" height="102" uuid="7fbaf8a0-14f6-4f71-8d87-ae16b20aced8"/>
+				<imageExpression><![CDATA["D:\\Firms\\Fixture International\\Letter Head\\Header.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="11" y="768" width="584" height="50" uuid="bce44704-0bcd-4443-95e6-78689c0280fc"/>
+				<imageExpression><![CDATA["D:\\Firms\\Fixture International\\Letter Head\\Footer New.jpg"]]></imageExpression>
+			</image>
 		</band>
 	</detail>
 </jasperReport>

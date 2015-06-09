@@ -12,7 +12,7 @@
     , amount
     , amountInWords
 FROM
-    anar.tbl_cheque where chequeId=$P{ChequeId}]]>
+    tbl_cheque where chequeId=$P{ChequeId}]]>
 	</queryString>
 	<field name="fromName" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>

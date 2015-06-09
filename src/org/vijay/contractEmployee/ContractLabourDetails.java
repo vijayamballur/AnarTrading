@@ -207,7 +207,7 @@ public final class ContractLabourDetails extends javax.swing.JInternalFrame {
         try
         {
             Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',idNumber'"+"ID #"+"',idExpiry '"+"ID.EXIPRY"+"',joinDate'"+"JOIN.DATE"+"',site '"+"SITE"+"',contractingCompany '"+"CONT.COMAPNY"+"' from tbl_conemployee,(SELECT @i := 0) temp where status=0 order by empId desc limit 40");
+            ResultSet rs=stmt.executeQuery("select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',idNumber'"+"ID #"+"',idExpiry '"+"ID.EXIPRY"+"',joinDate'"+"JOIN.DATE"+"',site '"+"SITE"+"',contractingCompany '"+"CONT.COMAPNY"+"' from tbl_conemployee,(SELECT @i := 0) temp where status=0 order by empId desc");
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             jTable1.setAutoCreateRowSorter(true);
             con.close();

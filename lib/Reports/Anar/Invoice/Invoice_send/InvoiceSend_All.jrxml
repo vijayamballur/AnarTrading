@@ -138,7 +138,7 @@
 	<pageHeader>
 		<band height="69" splitType="Stretch">
 			<staticText>
-				<reportElement style="Title" x="2" y="20" width="263" height="33" uuid="428e35c2-11c1-42f1-a43e-ca92d5fc208d"/>
+				<reportElement style="Title" x="2" y="3" width="263" height="33" uuid="428e35c2-11c1-42f1-a43e-ca92d5fc208d"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Century Gothic"/>
 				</textElement>
@@ -148,6 +148,20 @@
 				<reportElement x="730" y="3" width="309" height="66" uuid="c5919991-d642-4196-b21e-1bc415ae2de2"/>
 				<imageExpression><![CDATA["C:\\Users\\MAC\\Documents\\NetBeansProjects\\ANAR TRADING\\lib\\Reports\\Anar\\Invoice\\Invoice_send\\Banner.jpg"]]></imageExpression>
 			</image>
+			<textField>
+				<reportElement style="Detail" x="2" y="36" width="263" height="15" uuid="a33ff318-3eec-459f-9de1-c809e5d9e3fc"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoicedetails_fromAdd}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="2" y="51" width="263" height="15" uuid="ceb9f94f-3a75-4447-9187-fcee2d392ca8"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_invoicedetails_toAdd}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
@@ -166,84 +180,70 @@
 				<text><![CDATA[Inv Id]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="40" y="19" width="176" height="15" uuid="f8fc944e-d9f9-4dbf-9921-78053df86eb3"/>
-				<textElement>
-					<font fontName="Century Gothic"/>
-				</textElement>
-				<text><![CDATA[From Add]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Column header" x="215" y="19" width="218" height="15" uuid="6b7350fc-678a-4261-a24d-8349e24f7e93"/>
-				<textElement>
-					<font fontName="Century Gothic"/>
-				</textElement>
-				<text><![CDATA[To Add]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Column header" x="432" y="19" width="92" height="15" uuid="dd3fa4a6-ddf5-4622-b5cb-c7370d8f07a8"/>
+				<reportElement style="Column header" x="40" y="19" width="92" height="15" uuid="dd3fa4a6-ddf5-4622-b5cb-c7370d8f07a8"/>
 				<textElement>
 					<font fontName="Century Gothic"/>
 				</textElement>
 				<text><![CDATA[Invoice #]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="523" y="19" width="66" height="15" uuid="24dc691c-ce0e-441b-bcc4-55f4b1006c10"/>
+				<reportElement style="Column header" x="131" y="19" width="66" height="15" uuid="24dc691c-ce0e-441b-bcc4-55f4b1006c10"/>
 				<textElement>
 					<font fontName="Century Gothic"/>
 				</textElement>
 				<text><![CDATA[Inv Date]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="588" y="19" width="93" height="15" uuid="54ad9f9f-722e-4780-b0fc-7a9ab8c7dbeb"/>
+				<reportElement style="Column header" x="196" y="19" width="93" height="15" uuid="54ad9f9f-722e-4780-b0fc-7a9ab8c7dbeb"/>
 				<textElement>
 					<font fontName="Century Gothic"/>
 				</textElement>
 				<text><![CDATA[Amount]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="680" y="19" width="52" height="15" uuid="9b369906-a737-4828-98bb-af75d0eb0479"/>
+				<reportElement style="Column header" x="288" y="19" width="52" height="15" uuid="9b369906-a737-4828-98bb-af75d0eb0479"/>
 				<textElement>
 					<font fontName="Century Gothic"/>
 				</textElement>
 				<text><![CDATA[Month]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="731" y="19" width="42" height="15" uuid="0d18c0f3-2893-4f01-aa9b-a8660ac2052d"/>
+				<reportElement style="Column header" x="339" y="19" width="42" height="15" uuid="0d18c0f3-2893-4f01-aa9b-a8660ac2052d"/>
 				<textElement>
 					<font fontName="Century Gothic"/>
 				</textElement>
 				<text><![CDATA[Year]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="772" y="19" width="40" height="15" uuid="79ffbe70-85f3-4017-9bb1-56c57e90c2a8"/>
+				<reportElement style="Column header" x="380" y="19" width="40" height="15" uuid="79ffbe70-85f3-4017-9bb1-56c57e90c2a8"/>
 				<textElement>
 					<font fontName="Century Gothic"/>
 				</textElement>
 				<text><![CDATA[Term]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="811" y="19" width="61" height="15" uuid="e195cbaa-6b85-4283-8bac-4ea749d27020"/>
+				<reportElement style="Column header" x="419" y="19" width="61" height="15" uuid="e195cbaa-6b85-4283-8bac-4ea749d27020"/>
 				<textElement>
 					<font fontName="Century Gothic"/>
 				</textElement>
 				<text><![CDATA[P.Date]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="871" y="19" width="53" height="15" uuid="a1737db6-1497-425b-a145-8e4c9fb73a1d"/>
+				<reportElement style="Column header" x="479" y="19" width="53" height="15" uuid="a1737db6-1497-425b-a145-8e4c9fb73a1d"/>
 				<textElement>
 					<font fontName="Century Gothic"/>
 				</textElement>
 				<text><![CDATA[Balance]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="980" y="19" width="83" height="15" uuid="cf23c253-4b5f-490b-af90-179719a05375"/>
+				<reportElement style="Column header" x="588" y="19" width="83" height="15" uuid="cf23c253-4b5f-490b-af90-179719a05375"/>
 				<textElement>
 					<font fontName="Century Gothic"/>
 				</textElement>
 				<text><![CDATA[Status]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="926" y="19" width="55" height="17" uuid="720236a0-d77d-4377-b6df-5c4190af599c"/>
+				<reportElement style="Column header" x="534" y="19" width="55" height="17" uuid="720236a0-d77d-4377-b6df-5c4190af599c"/>
 				<textElement>
 					<font fontName="Century Gothic"/>
 				</textElement>
@@ -267,84 +267,70 @@
 				<textFieldExpression><![CDATA[$F{tbl_invoicedetails_invoiceId}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="40" y="0" width="176" height="15" uuid="a33ff318-3eec-459f-9de1-c809e5d9e3fc"/>
-				<textElement>
-					<font fontName="Century Gothic" size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{tbl_invoicedetails_fromAdd}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement style="Detail" x="215" y="0" width="218" height="15" uuid="ceb9f94f-3a75-4447-9187-fcee2d392ca8"/>
-				<textElement>
-					<font fontName="Century Gothic" size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{tbl_invoicedetails_toAdd}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement style="Detail" x="432" y="0" width="92" height="15" uuid="b511b2d9-7cb8-49ff-bf19-fed3573da303"/>
+				<reportElement style="Detail" x="40" y="0" width="92" height="15" uuid="b511b2d9-7cb8-49ff-bf19-fed3573da303"/>
 				<textElement>
 					<font fontName="Century Gothic" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tbl_invoicedetails_invoiceNumber}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd-MMM-yy">
-				<reportElement style="Detail" x="523" y="0" width="66" height="15" uuid="940efa05-96ce-4157-a2a3-fcdb89e37e19"/>
+				<reportElement style="Detail" x="131" y="0" width="66" height="15" uuid="940efa05-96ce-4157-a2a3-fcdb89e37e19"/>
 				<textElement>
 					<font fontName="Century Gothic" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tbl_invoicedetails_invoiceDate}]]></textFieldExpression>
 			</textField>
 			<textField pattern="QR #,##0.00">
-				<reportElement style="Detail" x="588" y="0" width="93" height="15" uuid="4b91326d-8cc7-44a0-b5a7-c44bb497134d"/>
+				<reportElement style="Detail" x="196" y="0" width="93" height="15" uuid="4b91326d-8cc7-44a0-b5a7-c44bb497134d"/>
 				<textElement>
 					<font fontName="Century Gothic" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tbl_invoicedetails_amount}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="680" y="0" width="52" height="15" uuid="e3c20e8e-313c-474d-9908-bdc8db1e9e94"/>
+				<reportElement style="Detail" x="288" y="0" width="52" height="15" uuid="e3c20e8e-313c-474d-9908-bdc8db1e9e94"/>
 				<textElement>
 					<font fontName="Century Gothic" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tbl_invoicedetails_InvoiceMonth}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="731" y="0" width="42" height="15" uuid="16104670-bef0-44ef-9b81-173a0b6f6fb7"/>
+				<reportElement style="Detail" x="339" y="0" width="42" height="15" uuid="16104670-bef0-44ef-9b81-173a0b6f6fb7"/>
 				<textElement>
 					<font fontName="Century Gothic" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tbl_invoicedetails_invoiceYear}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="772" y="0" width="40" height="15" uuid="99ea3fee-7ba2-4558-a87d-94ea12d2f06b"/>
+				<reportElement style="Detail" x="380" y="0" width="40" height="15" uuid="99ea3fee-7ba2-4558-a87d-94ea12d2f06b"/>
 				<textElement>
 					<font fontName="Century Gothic" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tbl_invoicedetails_terms}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd-MMM-yy">
-				<reportElement style="Detail" x="811" y="0" width="61" height="15" uuid="7a08c703-497e-4fe3-9425-c1129e2740c5"/>
+				<reportElement style="Detail" x="419" y="0" width="61" height="15" uuid="7a08c703-497e-4fe3-9425-c1129e2740c5"/>
 				<textElement>
 					<font fontName="Century Gothic" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tbl_invoicedetails_paymentDate}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="871" y="0" width="53" height="15" uuid="e3d842a1-435d-4241-b1a3-ab9a6d2784bb"/>
+				<reportElement style="Detail" x="479" y="0" width="53" height="15" uuid="e3d842a1-435d-4241-b1a3-ab9a6d2784bb"/>
 				<textElement>
 					<font fontName="Century Gothic" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tbl_invoicedetails_balance}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="980" y="0" width="83" height="15" uuid="16b98567-bd3b-4bc3-be1d-911dae51ccb7"/>
+				<reportElement style="Detail" x="588" y="0" width="83" height="15" uuid="16b98567-bd3b-4bc3-be1d-911dae51ccb7"/>
 				<textElement>
 					<font fontName="Century Gothic" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tbl_invoicedetails_status}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="926" y="1" width="55" height="15" uuid="2bbdea10-a7c1-48d8-a8c2-ac92d5d3dce4"/>
+				<reportElement style="Detail" x="534" y="1" width="55" height="15" uuid="2bbdea10-a7c1-48d8-a8c2-ac92d5d3dce4"/>
 				<textElement>
 					<font fontName="Century Gothic" size="9"/>
 				</textElement>

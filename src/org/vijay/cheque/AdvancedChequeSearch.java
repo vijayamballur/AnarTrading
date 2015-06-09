@@ -3,7 +3,6 @@ package org.vijay.cheque;
 
 import org.vijay.invoice.*;
 import org.vijay.common.CurrentWorkingDirectory;
-import org.vijay.invoice.InvoiceDocument;
 import org.vijay.common.AnarTrading;
 import org.vijay.common.connection;
 import org.vijay.common.AutoCompleteDecorator;
@@ -482,7 +481,6 @@ public final class AdvancedChequeSearch extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jtablePopUp = new javax.swing.JPopupMenu();
-        menuItemDocument = new javax.swing.JMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         chkBank = new javax.swing.JCheckBox();
@@ -496,15 +494,6 @@ public final class AdvancedChequeSearch extends javax.swing.JInternalFrame {
         txtTotal = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-
-        menuItemDocument.setText("Add Document");
-        menuItemDocument.setToolTipText("");
-        menuItemDocument.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemDocumentActionPerformed(evt);
-            }
-        });
-        jtablePopUp.add(menuItemDocument);
 
         setClosable(true);
         setIconifiable(true);
@@ -735,14 +724,6 @@ public final class AdvancedChequeSearch extends javax.swing.JInternalFrame {
         queryGenerator();
     }//GEN-LAST:event_cmbFromActionPerformed
 
-    private void menuItemDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDocumentActionPerformed
-         // TODO add your handling code here:
-        InvoiceReceivedDocument ID = new InvoiceReceivedDocument(invoiceId);
-        AnarTrading.desktopPane1.add(ID);
-        ID.setVisible(true);
-        ID.show();
-    }//GEN-LAST:event_menuItemDocumentActionPerformed
-
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
         int rowNo=jTable1.getSelectedRow();
@@ -795,7 +776,6 @@ public final class AdvancedChequeSearch extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JPopupMenu jtablePopUp;
-    private javax.swing.JMenuItem menuItemDocument;
     private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
     Point middle = new Point(0,0);

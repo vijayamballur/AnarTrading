@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="InvoiceNew" language="java" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="b4745cd6-b1aa-4795-87c2-fb99c929d211">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="InvoiceNew" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="b4745cd6-b1aa-4795-87c2-fb99c929d211">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="669"/>
 	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
 	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
@@ -86,14 +86,14 @@ where tbl_invoice_parent.`invoiceMasterId`=$P{masterId}]]>
 			<textField>
 				<reportElement style="Detail" x="451" y="689" width="81" height="28" uuid="831f7a12-4d1e-4ec4-a1cc-df75f9f3e22a"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Century Gothic" size="10"/>
+					<font fontName="Century Gothic" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tbl_invoice_parent_grandTotal}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement style="Detail" x="82" y="695" width="369" height="15" uuid="8e43ab7a-4293-4432-8c16-726766096fff"/>
 				<textElement>
-					<font fontName="Century Gothic" size="9"/>
+					<font fontName="Century Gothic" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tbl_invoice_parent_amountInWords}]]></textFieldExpression>
 			</textField>

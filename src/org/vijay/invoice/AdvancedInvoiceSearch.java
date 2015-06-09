@@ -2,7 +2,6 @@ package org.vijay.invoice;
 
 
 import org.vijay.common.CurrentWorkingDirectory;
-import org.vijay.invoice.InvoiceDocument;
 import org.vijay.common.AnarTrading;
 import org.vijay.common.connection;
 import org.vijay.common.AutoCompleteDecorator;
@@ -1203,7 +1202,6 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jtablePopUp = new javax.swing.JPopupMenu();
-        menuItemDocument = new javax.swing.JMenuItem();
         menuItemEdit = new javax.swing.JMenuItem();
         menuItemDelete = new javax.swing.JMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
@@ -1236,15 +1234,6 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         jMenu2 = new javax.swing.JMenu();
         menuItemMonthCompany = new javax.swing.JMenuItem();
         menuItemMonthInvoice = new javax.swing.JMenuItem();
-
-        menuItemDocument.setText("View Document");
-        menuItemDocument.setToolTipText("");
-        menuItemDocument.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemDocumentActionPerformed(evt);
-            }
-        });
-        jtablePopUp.add(menuItemDocument);
 
         menuItemEdit.setText("Edit");
         menuItemEdit.setToolTipText("");
@@ -1698,14 +1687,6 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
         queryGenerator();
     }//GEN-LAST:event_cmbPaymentActionPerformed
 
-    private void menuItemDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDocumentActionPerformed
-         // TODO add your handling code here:
-        InvoiceDocument ID = new InvoiceDocument(invoiceId);
-        AnarTrading.desktopPane1.add(ID);
-        ID.setVisible(true);
-        ID.show();
-    }//GEN-LAST:event_menuItemDocumentActionPerformed
-
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
         int rowNo=jTable1.getSelectedRow();
@@ -1770,10 +1751,6 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        InvoiceDocument ID = new InvoiceDocument(Integer.parseInt(txtInvoiceId.getText().toString()));
-        AnarTrading.desktopPane1.add(ID);
-        ID.setVisible(true);
-        ID.show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void menuItemEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemEditActionPerformed
@@ -2477,7 +2454,6 @@ public final class AdvancedInvoiceSearch extends javax.swing.JInternalFrame {
     private javax.swing.JPopupMenu jtablePopUp;
     private javax.swing.JMenuItem menuItemComplete;
     private javax.swing.JMenuItem menuItemDelete;
-    private javax.swing.JMenuItem menuItemDocument;
     private javax.swing.JMenuItem menuItemEdit;
     private javax.swing.JMenuItem menuItemMonthCompany;
     private javax.swing.JMenuItem menuItemMonthInvoice;

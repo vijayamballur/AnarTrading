@@ -50,7 +50,7 @@ public class PPExpiryList extends javax.swing.JInternalFrame {
         try
         {
             Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',idNumber '"+"ID/VisaNumber"+"',visaExpiry '"+"RP Expiry"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',DATEDIFF(passportExpiry,CURDATE())'"+"DAYS LEFT"+"' from tbl_labourdetails,(SELECT @i := 0) temp WHERE DATEDIFF(passportExpiry,CURDATE()) <60 AND STATUS !='LEFT' order by DATEDIFF(passportExpiry,CURDATE())");
+            ResultSet rs=stmt.executeQuery("select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',idNumber '"+"ID/VisaNumber"+"',visaExpiry '"+"RP Expiry"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',DATEDIFF(passportExpiry,CURDATE())'"+"DAYS LEFT"+"' from tbl_labourdetails,(SELECT @i := 0) temp WHERE DATEDIFF(passportExpiry,CURDATE()) <60 AND STATUS !='EXITED FROM COUNTRY' order by DATEDIFF(passportExpiry,CURDATE())");
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
             jTable1.getColumnModel().getColumn(1).setMaxWidth(50);

@@ -12,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
@@ -67,6 +68,8 @@ public class FixtureCBQsearch extends javax.swing.JInternalFrame {
             FcbqId=Integer.parseInt(jTable1.getValueAt(rowNo,0).toString());
             }
         });
+        truncateTempDbTable();
+        insertIntoTempDbTable();
         CurrentWorkingDirectory CWD=new CurrentWorkingDirectory();
         path=CWD.getpath();
     }
@@ -76,6 +79,46 @@ public class FixtureCBQsearch extends javax.swing.JInternalFrame {
         AnarTrading.desktopPane1.add(FcbqSearch);
         FcbqSearch.setVisible(true);
         FcbqSearch.show();
+    }
+    public void insertIntoTempDbTable()
+    {
+        connection c=new connection();
+        Connection con=c.conn();
+        try
+        {
+            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_temp_fixturecbq (FcbqId,transDate,debit,credit,description) SELECT * FROM tbl_fixturecbq ORDER BY transDate,FcbqId");
+            int i=ps.executeUpdate();
+            if(i!=0)
+            {
+                    
+            }
+            con.close();
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(rootPane, e, "ERROR!!", JOptionPane.ERROR_MESSAGE);
+            //JOptionPane.showMessageDialog(rootPane,e+"Error SA001");
+        }
+    }
+    public void truncateTempDbTable()
+    {
+        connection c=new connection();
+        Connection con=c.conn();
+        try
+        {
+            PreparedStatement ps=con.prepareStatement("TRUNCATE TABLE tbl_temp_fixturecbq");
+            int i=ps.executeUpdate();
+            if(i!=0)
+            {
+                    
+            }
+            con.close();
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(rootPane, e, "ERROR!!", JOptionPane.ERROR_MESSAGE);
+            //JOptionPane.showMessageDialog(rootPane,e+"Error SA001");
+        }
     }
     
     public void Search()
@@ -251,8 +294,8 @@ public class FixtureCBQsearch extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 692, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();

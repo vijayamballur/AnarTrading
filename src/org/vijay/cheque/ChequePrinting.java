@@ -6,6 +6,7 @@
 
 package org.vijay.cheque;
 
+import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
@@ -76,6 +77,28 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
         {
             Statement stmt=con.createStatement();
             ResultSet rs=stmt.executeQuery("select @i := @i + 1 '"+"SL.NO"+"',chequeId,bankName '"+"BANK NAME"+"',fromName'"+"FROM"+"',bearer'"+"BEARER"+"',chequeNo'"+"CHEQUE#"+"',chequeDate'"+"CHEQUE DATE"+"',amount'"+"AMOUNT"+"',amountInWords'"+"AMOUNT IN WORDS"+"',remarks'"+"REMARKS"+"' from tbl_cheque,(SELECT @i := 0) temp order by chequeId desc");
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+            jTable1.setAutoCreateRowSorter(true);
+            con.close();
+            jTable1.getColumnModel().getColumn(1).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
+            jTable1.setShowHorizontalLines( true );
+            jTable1.setRowSelectionAllowed( true );
+
+        }
+        catch(Exception e)
+        {
+
+        }
+    }
+    public void viewDbChequeDetailsUsingChequeNumber()
+    {
+        connection c=new connection();
+        Connection con=c.conn();
+        try
+        {
+            Statement stmt=con.createStatement();
+            ResultSet rs=stmt.executeQuery("select @i := @i + 1 '"+"SL.NO"+"',chequeId,bankName '"+"BANK NAME"+"',fromName'"+"FROM"+"',bearer'"+"BEARER"+"',chequeNo'"+"CHEQUE#"+"',chequeDate'"+"CHEQUE DATE"+"',amount'"+"AMOUNT"+"',amountInWords'"+"AMOUNT IN WORDS"+"',remarks'"+"REMARKS"+"' from tbl_cheque,(SELECT @i := 0) temp where chequeNo='"+txtChequeNumberSearch.getText()+"' order by chequeId desc");
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             jTable1.setAutoCreateRowSorter(true);
             con.close();
@@ -173,9 +196,13 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
             {
                 ps.setString(1,radioCommercial.getText().toString());
             }
-            else
+            else if(radioDoha.isSelected())
             {
                 ps.setString(1,radioDoha.getText().toString());
+            }
+            else
+            {
+                ps.setString(1,radioMashreq.getText().toString());
             }
             ps.setString(2, cmbFromName.getSelectedItem().toString());
             ps.setString(3, cmbBearer.getSelectedItem().toString());
@@ -208,9 +235,13 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
             {
                 ps.setString(1,radioCommercial.getText().toString());
             }
-            else
+            else if(radioDoha.isSelected())
             {
                 ps.setString(1,radioDoha.getText().toString());
+            }
+            else
+            {
+                ps.setString(1,radioMashreq.getText().toString());
             }
             ps.setString(2,cmbFromName.getSelectedItem().toString());
             ps.setString(3,cmbBearer.getSelectedItem().toString());
@@ -305,6 +336,30 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
             //JOptionPane.showMessageDialog(rootPane,e+"Error SA001");
         }
     }
+   public void insertIntoFixMashreqDb()
+    {
+        connection c=new connection();
+        Connection con=c.conn();
+        try
+        {
+            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_fixturemashreq(transDate,debit,credit,description) VALUES(?,?,?,?)");           
+            ps.setString(1,chequeDate);
+            ps.setString(2, txtAmount.getText());
+            ps.setString(3,"0.00");
+            ps.setString(4, txtRemarks.getText());
+            int i=ps.executeUpdate();
+            if(i!=0)
+            {
+                insertIntoDb();
+            }
+            con.close();
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(rootPane, e, "ERROR!!", JOptionPane.ERROR_MESSAGE);
+            //JOptionPane.showMessageDialog(rootPane,e+"Error SA001");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -319,6 +374,7 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
         jTablePopUp = new javax.swing.JPopupMenu();
         menuItemPrintCommercial = new javax.swing.JMenuItem();
         menuItemPrintDoha = new javax.swing.JMenuItem();
+        menuItemPrintMashreq = new javax.swing.JMenuItem();
         radioCommercial = new javax.swing.JRadioButton();
         radioDoha = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
@@ -340,12 +396,19 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
         jToolBar1 = new javax.swing.JToolBar();
         btnSave = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
         btnRefresh = new javax.swing.JButton();
         btnView = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        txtChequeNumberSearch = new javax.swing.JTextField();
+        btnSearch = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        radioMashreq = new javax.swing.JRadioButton();
+        checkAccountPay = new javax.swing.JCheckBox();
 
         menuItemPrintCommercial.setText("Print Commercial");
         menuItemPrintCommercial.addActionListener(new java.awt.event.ActionListener() {
@@ -362,6 +425,14 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
             }
         });
         jTablePopUp.add(menuItemPrintDoha);
+
+        menuItemPrintMashreq.setText("Print Mashreq");
+        menuItemPrintMashreq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemPrintMashreqActionPerformed(evt);
+            }
+        });
+        jTablePopUp.add(menuItemPrintMashreq);
 
         setClosable(true);
         setIconifiable(true);
@@ -435,6 +506,14 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
         btnSave.setText("Save");
         btnSave.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSave.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSaveMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSaveMouseExited(evt);
+            }
+        });
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
@@ -453,18 +532,6 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
             }
         });
         jToolBar1.add(btnUpdate);
-
-        btnDelete.setEnabled(false);
-        btnDelete.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btnDelete.setText("Delete");
-        btnDelete.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(btnDelete);
 
         btnRefresh.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnRefresh.setText("Refresh");
@@ -488,7 +555,21 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnView);
 
+        btnDelete.setEnabled(false);
+        btnDelete.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(204, 0, 0));
+        btnDelete.setText("Delete");
+        btnDelete.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnDelete);
+
         btnCancel.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnCancel.setForeground(new java.awt.Color(204, 0, 0));
         btnCancel.setText("Cancel");
         btnCancel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -502,13 +583,10 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
         jTable1.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -517,6 +595,70 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
             }
         });
         jScrollPane2.setViewportView(jTable1);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Search", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
+
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel9.setText("Cheque #");
+
+        txtChequeNumberSearch.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        txtChequeNumberSearch.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtChequeNumberSearchFocusLost(evt);
+            }
+        });
+
+        btnSearch.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnSearch.setText("Search");
+        btnSearch.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 153, 51));
+        jLabel10.setText("For accurate results please refresh the form before search");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtChequeNumberSearch)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(txtChequeNumberSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSearch)
+                .addContainerGap(53, Short.MAX_VALUE))
+        );
+
+        buttonGroup1.add(radioMashreq);
+        radioMashreq.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        radioMashreq.setText("Mashreq Bank");
+
+        checkAccountPay.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        checkAccountPay.setText("Account Payee");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -535,29 +677,37 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(radioCommercial)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(radioDoha))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txtAmountInWords, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(txtChequeNo, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel6)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jDateCheque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addComponent(cmbFromName, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel2))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cmbBearer, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(jScrollPane1)
-                        .addComponent(jToolBar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(273, Short.MAX_VALUE))
+                        .addComponent(radioDoha)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(radioMashreq)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(checkAccountPay)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtAmountInWords, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(txtChequeNo, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jDateCheque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(cmbFromName, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cmbBearer, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1)
+                            .addComponent(jToolBar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
             .addComponent(jScrollPane2)
         );
         layout.setVerticalGroup(
@@ -565,41 +715,47 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(radioDoha)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(radioDoha)
+                        .addComponent(radioMashreq)
+                        .addComponent(checkAccountPay))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(radioCommercial)
                         .addComponent(jLabel8)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(cmbFromName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(cmbBearer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel5)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtChequeNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jDateCheque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtAmountInWords, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))))
+                            .addComponent(jLabel1)
+                            .addComponent(cmbFromName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addComponent(cmbBearer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel5)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtChequeNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jDateCheque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtAmountInWords, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -644,7 +800,7 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
                
            }
        }
-       else
+       else if(radioDoha.isSelected())
        {
            if(cmbFromName.getSelectedItem().equals("FIXTURE INTERNATIONAL W.L.L"))
            {
@@ -653,6 +809,21 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
            else if(cmbFromName.getSelectedItem().equals("ANAR TRADING & CONTRACTING"))
            {
                JOptionPane.showMessageDialog(null, "There no DOha-Bank Account Attached with ANAR TRADING & CONTRACTING");
+           }
+           else
+           {
+               
+           }
+       }
+       else
+       {
+           if(cmbFromName.getSelectedItem().equals("FIXTURE INTERNATIONAL W.L.L"))
+           {
+               insertIntoFixMashreqDb();
+           }
+           else if(cmbFromName.getSelectedItem().equals("ANAR TRADING & CONTRACTING"))
+           {
+               JOptionPane.showMessageDialog(null, "There no Mashreq-Bank Account Attached with ANAR TRADING & CONTRACTING");
            }
            else
            {
@@ -725,18 +896,39 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
 
     private void menuItemPrintCommercialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemPrintCommercialActionPerformed
         // TODO add your handling code here:
+        if(checkAccountPay.isSelected())
+        {
+            HashMap para=new HashMap();
+            para.put("ChequeId",chequeId);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\ChequePrinting\\Commercial\\Commercial - AccountPayee.jasper"),para);
+            re.setVisible(true);
+        }
+        else
+        {
             HashMap para=new HashMap();
             para.put("ChequeId",chequeId);
             ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\ChequePrinting\\Commercial\\Commercial.jasper"),para);
             re.setVisible(true);
+        }
+            
     }//GEN-LAST:event_menuItemPrintCommercialActionPerformed
 
     private void menuItemPrintDohaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemPrintDohaActionPerformed
         // TODO add your handling code here:
+        if(checkAccountPay.isSelected())
+        {
+            HashMap para=new HashMap();
+            para.put("ChequeId",chequeId);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\ChequePrinting\\Doha\\Doha - AccountPayee.jasper"),para);
+            re.setVisible(true);
+        }
+        else
+        {
             HashMap para=new HashMap();
             para.put("ChequeId",chequeId);
             ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\ChequePrinting\\Doha\\Doha.jasper"),para);
             re.setVisible(true);
+        }
     }//GEN-LAST:event_menuItemPrintDohaActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
@@ -747,19 +939,66 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
         ACS.show();
     }//GEN-LAST:event_btnViewActionPerformed
 
+    private void txtChequeNumberSearchFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtChequeNumberSearchFocusLost
+        // TODO add your handling code here:
 
+    }//GEN-LAST:event_txtChequeNumberSearchFocusLost
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+        if(txtChequeNumberSearch.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(txtChequeNumberSearch, "There is no cheque# to search");
+        }
+        else
+        {
+            viewDbChequeDetailsUsingChequeNumber();
+        }
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnSaveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSaveMouseEntered
+
+    private void btnSaveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSaveMouseExited
+
+    private void menuItemPrintMashreqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemPrintMashreqActionPerformed
+        // TODO add your handling code here:
+        if(checkAccountPay.isSelected())
+        {
+            HashMap para=new HashMap();
+            para.put("ChequeId",chequeId);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\ChequePrinting\\mashreq\\Mashreq -AccountPayee.jasper"),para);
+            re.setVisible(true);
+        }
+        else
+        {
+            HashMap para=new HashMap();
+            para.put("ChequeId",chequeId);
+            ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\ChequePrinting\\mashreq\\Mashreq.jasper"),para);
+            re.setVisible(true);
+        }
+        
+    }//GEN-LAST:event_menuItemPrintMashreqActionPerformed
+/*
+*/
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnView;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JCheckBox checkAccountPay;
     private javax.swing.JComboBox cmbBearer;
     private javax.swing.JComboBox cmbFromName;
     private com.toedter.calendar.JDateChooser jDateCheque;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -767,6 +1006,8 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
@@ -774,11 +1015,14 @@ public class ChequePrinting extends javax.swing.JInternalFrame {
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenuItem menuItemPrintCommercial;
     private javax.swing.JMenuItem menuItemPrintDoha;
+    private javax.swing.JMenuItem menuItemPrintMashreq;
     private javax.swing.JRadioButton radioCommercial;
     private javax.swing.JRadioButton radioDoha;
+    private javax.swing.JRadioButton radioMashreq;
     private javax.swing.JTextField txtAmount;
     private javax.swing.JTextField txtAmountInWords;
     private javax.swing.JTextField txtChequeNo;
+    private javax.swing.JTextField txtChequeNumberSearch;
     private javax.swing.JTextArea txtRemarks;
     // End of variables declaration//GEN-END:variables
 public static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

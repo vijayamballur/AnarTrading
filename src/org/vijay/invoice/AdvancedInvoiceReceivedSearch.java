@@ -2,7 +2,6 @@ package org.vijay.invoice;
 
 
 import org.vijay.common.CurrentWorkingDirectory;
-import org.vijay.invoice.InvoiceDocument;
 import org.vijay.common.AnarTrading;
 import org.vijay.common.connection;
 import org.vijay.common.AutoCompleteDecorator;
@@ -1173,7 +1172,6 @@ public final class AdvancedInvoiceReceivedSearch extends javax.swing.JInternalFr
     private void initComponents() {
 
         jtablePopUp = new javax.swing.JPopupMenu();
-        menuItemDocument = new javax.swing.JMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         chkFrom = new javax.swing.JCheckBox();
@@ -1200,15 +1198,6 @@ public final class AdvancedInvoiceReceivedSearch extends javax.swing.JInternalFr
         jMenu2 = new javax.swing.JMenu();
         menuItemMonthCompany = new javax.swing.JMenuItem();
         menuItemMonthInvoice = new javax.swing.JMenuItem();
-
-        menuItemDocument.setText("Add Document");
-        menuItemDocument.setToolTipText("");
-        menuItemDocument.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemDocumentActionPerformed(evt);
-            }
-        });
-        jtablePopUp.add(menuItemDocument);
 
         setClosable(true);
         setIconifiable(true);
@@ -1649,14 +1638,6 @@ public final class AdvancedInvoiceReceivedSearch extends javax.swing.JInternalFr
         queryGenerator();
     }//GEN-LAST:event_cmbPaymentActionPerformed
 
-    private void menuItemDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDocumentActionPerformed
-         // TODO add your handling code here:
-        InvoiceReceivedDocument ID = new InvoiceReceivedDocument(invoiceId);
-        AnarTrading.desktopPane1.add(ID);
-        ID.setVisible(true);
-        ID.show();
-    }//GEN-LAST:event_menuItemDocumentActionPerformed
-
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
         int rowNo=jTable1.getSelectedRow();
@@ -1848,7 +1829,6 @@ public final class AdvancedInvoiceReceivedSearch extends javax.swing.JInternalFr
     private javax.swing.JTable jTable1;
     private javax.swing.JPopupMenu jtablePopUp;
     private javax.swing.JMenuItem menuItemComplete;
-    private javax.swing.JMenuItem menuItemDocument;
     private javax.swing.JMenuItem menuItemMonthCompany;
     private javax.swing.JMenuItem menuItemMonthInvoice;
     private javax.swing.JRadioButton radioAll;

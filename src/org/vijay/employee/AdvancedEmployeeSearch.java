@@ -39,10 +39,9 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
         initComponents();
         setLocation(middle);
         setSize(Toolkit.getDefaultToolkit().getScreenSize());
-        cmbParentFill();
-        cmbChildFill();
-        cmbContractFill();
-        cmbCurrentSiteFill();
+        cmbSponserFill();
+        cmbEmployeeTypeFill();
+        cmbEmployeeStatus();
         queryGenerator();
         jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 
@@ -58,93 +57,50 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
     public void queryGenerator()
     {
         String query="";
-        String parent=cmbParent.getSelectedItem().toString();
-        String child=cmbChild.getSelectedItem().toString();
-        String contract=cmbContract.getSelectedItem().toString();
-        String site=cmbCurrentSite.getSelectedItem().toString();
+        String sponser=cmbSponserName.getSelectedItem().toString();
+        String empType=cmbEmployeeType.getSelectedItem().toString();
+        String status=cmbStatus.getSelectedItem().toString();
         
-        if(chkParent.isSelected()==false && chkChild.isSelected()==false && chkContract.isSelected()==false && chkCurrentSite.isSelected()==false)
+        if(chkSponser.isSelected()==false && chkSponser.isSelected()==false && chkStatus.isSelected()==false)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' order by empName";
+            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',firstParty '"+"FIRST PARTY"+"',employeeType '"+"EMPLOYEE TYPE"+"' from tbl_labourdetails,(SELECT @i := 0) temp order by empId desc";
             search(query);
         }
-        if(chkParent.isSelected()==false && chkChild.isSelected()==false && chkContract.isSelected()==false && chkCurrentSite.isSelected()==true)
+        if(chkSponser.isSelected()==false && chkSponser.isSelected()==false && chkStatus.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and currentSite=? order by empName";
-            search(query,site);
+            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',firstParty '"+"FIRST PARTY"+"',employeeType '"+"EMPLOYEE TYPE"+"' from tbl_labourdetails,(SELECT @i := 0) temp where Status=? order by empId desc";
+            search(query,status);
         }
-        if(chkParent.isSelected()==false && chkChild.isSelected()==false && chkContract.isSelected()==true && chkCurrentSite.isSelected()==false)
+        if(chkSponser.isSelected()==false && chkEmployeeType.isSelected()==true && chkStatus.isSelected()==false)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and contractingCompany=? order by empName";
-            search(query,contract);
+            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',firstParty '"+"FIRST PARTY"+"',employeeType '"+"EMPLOYEE TYPE"+"' from tbl_labourdetails,(SELECT @i := 0) temp where employeeType=? order by empId desc";
+            search(query,empType);
         }
-        if(chkParent.isSelected()==false && chkChild.isSelected()==false && chkContract.isSelected()==true && chkCurrentSite.isSelected()==true)
+        if(chkSponser.isSelected()==false && chkEmployeeType.isSelected()==true && chkStatus.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and contractingCompany=? and currentSite=? order by empName";
-            search(query,contract,site);
+            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',firstParty '"+"FIRST PARTY"+"',employeeType '"+"EMPLOYEE TYPE"+"' from tbl_labourdetails,(SELECT @i := 0) temp where employeeType=? and Status=? order by empId desc";
+            search(query,empType,status);
         }
-        if(chkParent.isSelected()==false && chkChild.isSelected()==true && chkContract.isSelected()==false && chkCurrentSite.isSelected()==false)
+        if(chkSponser.isSelected()==true && chkEmployeeType.isSelected()==false && chkStatus.isSelected()==false)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and secondParty=? order by empName";
-            search(query,child);
+            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',firstParty '"+"FIRST PARTY"+"',employeeType '"+"EMPLOYEE TYPE"+"' from tbl_labourdetails,(SELECT @i := 0) temp where firstParty=? order by empId desc";
+            search(query,sponser);
         }
-        if(chkParent.isSelected()==false && chkChild.isSelected()==true && chkContract.isSelected()==false && chkCurrentSite.isSelected()==true)
+         if(chkSponser.isSelected()==true && chkEmployeeType.isSelected()==false && chkStatus.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and secondParty=? and currentSite=? order by empName";
-            search(query,child,site);
+            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',firstParty '"+"FIRST PARTY"+"',employeeType '"+"EMPLOYEE TYPE"+"' from tbl_labourdetails,(SELECT @i := 0) temp where firstParty=? and Status=? order by empId desc";
+            search(query,sponser,status);
         }
-        if(chkParent.isSelected()==false && chkChild.isSelected()==true && chkContract.isSelected()==true && chkCurrentSite.isSelected()==false)
+         if(chkSponser.isSelected()==true && chkEmployeeType.isSelected()==true && chkStatus.isSelected()==false)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and secondParty=? and contractingCompany=? order by empName";
-            search(query,child,contract);
+            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',firstParty '"+"FIRST PARTY"+"',employeeType '"+"EMPLOYEE TYPE"+"' from tbl_labourdetails,(SELECT @i := 0) temp where firstParty=? and employeeType=? order by empId desc";
+            search(query,sponser,empType);
         }
-        if(chkParent.isSelected()==false && chkChild.isSelected()==true && chkContract.isSelected()==true && chkCurrentSite.isSelected()==true)
+         if(chkSponser.isSelected()==true && chkEmployeeType.isSelected()==true && chkStatus.isSelected()==true)
         {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and secondParty=? and contractingCompany=? and currentSite=? order by empName";
-            search(query,child,contract,site);
+            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',firstParty '"+"FIRST PARTY"+"',employeeType '"+"EMPLOYEE TYPE"+"' from tbl_labourdetails,(SELECT @i := 0) temp where firstParty=? and employeeType=? and Status=? order by empId desc";
+            search(query,sponser,empType,status);
         }
-        
-        if(chkParent.isSelected()==true && chkChild.isSelected()==false && chkContract.isSelected()==false && chkCurrentSite.isSelected()==false)
-        {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and firstParty=? order by empName";
-            search(query,parent);
-        }
-        if(chkParent.isSelected()==true && chkChild.isSelected()==false && chkContract.isSelected()==false && chkCurrentSite.isSelected()==true)
-        {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and firstParty=? and currentSite=? order by empName";
-            search(query,parent,site);
-        }
-        if(chkParent.isSelected()==true && chkChild.isSelected()==false && chkContract.isSelected()==true && chkCurrentSite.isSelected()==false)
-        {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and firstParty=? and contractingCompany=? order by empName";
-            search(query,parent,contract);
-        }
-        if(chkParent.isSelected()==true && chkChild.isSelected()==false && chkContract.isSelected()==true && chkCurrentSite.isSelected()==true)
-        {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and firstParty=? and contractingCompany=? and currentSite=? order by empName";
-            search(query,parent,contract,site);
-        }
-        if(chkParent.isSelected()==true && chkChild.isSelected()==true && chkContract.isSelected()==false && chkCurrentSite.isSelected()==false)
-        {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and firstParty=? and secondParty=? order by empName";
-            search(query,parent,child);
-        }
-        if(chkParent.isSelected()==true && chkChild.isSelected()==true && chkContract.isSelected()==false && chkCurrentSite.isSelected()==true)
-        {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and firstParty=? and secondParty=? and currentSite=? order by empName";
-            search(query,parent,child,site);
-        }
-        if(chkParent.isSelected()==true && chkChild.isSelected()==true && chkContract.isSelected()==true && chkCurrentSite.isSelected()==false)
-        {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and firstParty=? and secondParty=? and contractingCompany=? order by empName";
-            search(query,parent,child,contract);
-        }
-        if(chkParent.isSelected()==true && chkChild.isSelected()==true && chkContract.isSelected()==true && chkCurrentSite.isSelected()==true)
-        {
-            query="select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',nationality '"+"NATIONALITY"+"',profession '"+"PROFESSION"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',visaExpiry'"+"ID.EXPIRY"+"',idNumber '"+"ID#"+"',todayDate'"+"DATE"+"',dob'"+"DOB"+"',currentSite '"+"SITE"+"',firstParty '"+"FIRST PARTY"+"',secondParty '"+"SECOND PARTY"+"',contractingCompany '"+"CONT.COMAPNY"+"',basicSalary'"+"BASIC"+"' from tbl_labourdetails,(SELECT @i := 0) temp where status='PRESENT' and firstParty=? and secondParty=? and contractingCompany=? and currentSite=? order by empName";
-            search(query,parent,child,contract,site);
-        }
-        
         
     }
     public void search(String query,String field1)
@@ -158,45 +114,7 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
                 ResultSet rs=ps.executeQuery();
                 jTable1.setModel(DbUtils.resultSetToTableModel(rs));
                 con.close();
-            jTable1.getColumnModel().getColumn(1).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(1).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(3).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(3).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(3).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(4).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(4).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(4).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(9).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(9).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(9).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(10).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(10).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(10).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(15).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(15).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(15).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
-            jTable1.getColumnModel().getColumn(5).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(6).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(7).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(8).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(10).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(11).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(14).setMaxWidth(200);
-            
-            jTable1.getColumnModel().getColumn(6).setCellRenderer(new DateCellRenderer());
-            jTable1.getColumnModel().getColumn(7).setCellRenderer(new DateCellRenderer());
-            jTable1.getColumnModel().getColumn(9).setCellRenderer(new DateCellRenderer());
-            jTable1.getColumnModel().getColumn(10).setCellRenderer(new DateCellRenderer());
-                jTable1.setShowHorizontalLines( true );
-                jTable1.setRowSelectionAllowed( true );
+
 
             }
             catch(Exception e)
@@ -216,45 +134,7 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
                 ResultSet rs=ps.executeQuery();
                 jTable1.setModel(DbUtils.resultSetToTableModel(rs));
                 con.close();
-            jTable1.getColumnModel().getColumn(1).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(1).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(3).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(3).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(3).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(4).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(4).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(4).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(9).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(9).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(9).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(10).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(10).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(10).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(15).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(15).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(15).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
-            jTable1.getColumnModel().getColumn(5).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(6).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(7).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(8).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(10).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(11).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(14).setMaxWidth(200);
-            
-            jTable1.getColumnModel().getColumn(6).setCellRenderer(new DateCellRenderer());
-            jTable1.getColumnModel().getColumn(7).setCellRenderer(new DateCellRenderer());
-            jTable1.getColumnModel().getColumn(9).setCellRenderer(new DateCellRenderer());
-            jTable1.getColumnModel().getColumn(10).setCellRenderer(new DateCellRenderer());
-                jTable1.setShowHorizontalLines( true );
-                jTable1.setRowSelectionAllowed( true );
+
 
             }
             catch(Exception e)
@@ -272,45 +152,6 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
                 ResultSet rs=ps.executeQuery();
                 jTable1.setModel(DbUtils.resultSetToTableModel(rs));
                 con.close();
-                            jTable1.getColumnModel().getColumn(1).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(1).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(3).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(3).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(3).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(4).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(4).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(4).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(9).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(9).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(9).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(10).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(10).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(10).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(15).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(15).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(15).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
-            jTable1.getColumnModel().getColumn(5).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(6).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(7).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(8).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(10).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(11).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(14).setMaxWidth(200);
-            
-            jTable1.getColumnModel().getColumn(6).setCellRenderer(new DateCellRenderer());
-            jTable1.getColumnModel().getColumn(7).setCellRenderer(new DateCellRenderer());
-            jTable1.getColumnModel().getColumn(9).setCellRenderer(new DateCellRenderer());
-            jTable1.getColumnModel().getColumn(10).setCellRenderer(new DateCellRenderer());
-                jTable1.setShowHorizontalLines( true );
-                jTable1.setRowSelectionAllowed( true );
 
             }
             catch(Exception e)
@@ -331,45 +172,6 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
                 ResultSet rs=ps.executeQuery();
                 jTable1.setModel(DbUtils.resultSetToTableModel(rs));
                 con.close();
-                           jTable1.getColumnModel().getColumn(1).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(1).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(3).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(3).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(3).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(4).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(4).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(4).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(9).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(9).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(9).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(10).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(10).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(10).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(15).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(15).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(15).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
-            jTable1.getColumnModel().getColumn(5).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(6).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(7).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(8).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(10).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(11).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(14).setMaxWidth(200);
-            
-            jTable1.getColumnModel().getColumn(6).setCellRenderer(new DateCellRenderer());
-            jTable1.getColumnModel().getColumn(7).setCellRenderer(new DateCellRenderer());
-            jTable1.getColumnModel().getColumn(9).setCellRenderer(new DateCellRenderer());
-            jTable1.getColumnModel().getColumn(10).setCellRenderer(new DateCellRenderer());
-                jTable1.setShowHorizontalLines( true );
-                jTable1.setRowSelectionAllowed( true );
 
             }
             catch(Exception e)
@@ -391,45 +193,6 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
                 ResultSet rs=ps.executeQuery();
                 jTable1.setModel(DbUtils.resultSetToTableModel(rs));
                 con.close();
-                            jTable1.getColumnModel().getColumn(1).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(1).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(3).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(3).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(3).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(4).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(4).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(4).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(9).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(9).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(9).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(10).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(10).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(10).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(15).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(15).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(15).setWidth(0);
-            
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
-            jTable1.getColumnModel().getColumn(5).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(6).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(7).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(8).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(10).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(11).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(14).setMaxWidth(200);
-            
-            jTable1.getColumnModel().getColumn(6).setCellRenderer(new DateCellRenderer());
-            jTable1.getColumnModel().getColumn(7).setCellRenderer(new DateCellRenderer());
-            jTable1.getColumnModel().getColumn(9).setCellRenderer(new DateCellRenderer());
-            jTable1.getColumnModel().getColumn(10).setCellRenderer(new DateCellRenderer());
-                jTable1.setShowHorizontalLines( true );
-                jTable1.setRowSelectionAllowed( true );
 
             }
             catch(Exception e)
@@ -437,57 +200,44 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
 
             }      
     }
-     public void cmbParentFill() {
+     public void cmbSponserFill() {
         try {
             connection c = new connection();
             Connection con = c.conn();
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT DISTINCT firstParty FROM tbl_labourdetails order by firstParty asc");
             while (rs.next()) {
-                cmbParent.addItem(rs.getString(1));
+                cmbSponserName.addItem(rs.getString(1));
             }
             con.close();
         } catch (SQLException ex) {
             
         }
     }
-     public void cmbChildFill() {
+     public void cmbEmployeeTypeFill() {
         try {
             connection c = new connection();
             Connection con = c.conn();
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT DISTINCT secondParty FROM tbl_labourdetails order by secondParty asc");
+            ResultSet rs = stmt.executeQuery("SELECT DISTINCT employeeType FROM tbl_labourdetails order by employeeType asc");
             while (rs.next()) 
             {
-                cmbChild.addItem(rs.getString(1));
+                cmbEmployeeType.addItem(rs.getString(1));
             }
             con.close();
         } catch (SQLException ex) {
             
         }
     }
-     public void cmbContractFill() {
+     public void cmbEmployeeStatus() {
         try {
             connection c = new connection();
             Connection con = c.conn();
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT DISTINCT contractingCompany FROM tbl_labourdetails order by contractingCompany asc");
-            while (rs.next()) {
-                cmbContract.addItem(rs.getString(1));
-            }
-            con.close();
-        } catch (SQLException ex) {
-            
-        }
-    }
-     public void cmbCurrentSiteFill() {
-        try {
-            connection c = new connection();
-            Connection con = c.conn();
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT DISTINCT currentSite FROM tbl_labourdetails order by currentSite asc");
-            while (rs.next()) {
-                cmbCurrentSite.addItem(rs.getString(1));
+            ResultSet rs = stmt.executeQuery("SELECT DISTINCT Status FROM tbl_labourdetails order by Status asc");
+            while (rs.next()) 
+            {
+                cmbStatus.addItem(rs.getString(1));
             }
             con.close();
         } catch (SQLException ex) {
@@ -578,14 +328,12 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
         menuItemDelete = new javax.swing.JMenuItem();
         menuItemJobStatus = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
-        chkParent = new javax.swing.JCheckBox();
-        cmbParent = new javax.swing.JComboBox();
-        chkChild = new javax.swing.JCheckBox();
-        cmbChild = new javax.swing.JComboBox();
-        chkContract = new javax.swing.JCheckBox();
-        chkCurrentSite = new javax.swing.JCheckBox();
-        cmbCurrentSite = new javax.swing.JComboBox();
-        cmbContract = new javax.swing.JComboBox();
+        chkSponser = new javax.swing.JCheckBox();
+        cmbSponserName = new javax.swing.JComboBox();
+        chkEmployeeType = new javax.swing.JCheckBox();
+        cmbEmployeeType = new javax.swing.JComboBox();
+        chkStatus = new javax.swing.JCheckBox();
+        cmbStatus = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -646,76 +394,66 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
             }
         });
 
-        chkParent.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        chkParent.setText("Parent Company");
-        chkParent.addActionListener(new java.awt.event.ActionListener() {
+        chkSponser.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        chkSponser.setText("Sponser Name");
+        chkSponser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkParentActionPerformed(evt);
+                chkSponserActionPerformed(evt);
             }
         });
 
-        cmbParent.addItem("--select name--");
-        cmbParent.setSelectedItem("--select name--");
-        cmbParent.setEnabled(false);
-        cmbParent.addItemListener(new java.awt.event.ItemListener() {
+        cmbSponserName.setEnabled(false);
+        cmbSponserName.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--select name--" }));
+        cmbSponserName.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbParentItemStateChanged(evt);
+                cmbSponserNameItemStateChanged(evt);
             }
         });
-        cmbParent.addActionListener(new java.awt.event.ActionListener() {
+        cmbSponserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbParentActionPerformed(evt);
-            }
-        });
-
-        chkChild.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        chkChild.setText("Child Company");
-        chkChild.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkChildActionPerformed(evt);
+                cmbSponserNameActionPerformed(evt);
             }
         });
 
-        cmbChild.addItem("--select name--");
-        cmbChild.setSelectedItem("--select name--");
-        cmbChild.setEnabled(false);
-        cmbChild.addActionListener(new java.awt.event.ActionListener() {
+        chkEmployeeType.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        chkEmployeeType.setText("Employee Type");
+        chkEmployeeType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbChildActionPerformed(evt);
+                chkEmployeeTypeActionPerformed(evt);
             }
         });
 
-        chkContract.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        chkContract.setText("Con.Company");
-        chkContract.addActionListener(new java.awt.event.ActionListener() {
+        cmbSponserName.setEnabled(false);
+        cmbEmployeeType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--select type--" }));
+        cmbEmployeeType.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbEmployeeTypeItemStateChanged(evt);
+            }
+        });
+        cmbEmployeeType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkContractActionPerformed(evt);
+                cmbEmployeeTypeActionPerformed(evt);
             }
         });
 
-        chkCurrentSite.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        chkCurrentSite.setText("Current Site");
-        chkCurrentSite.addActionListener(new java.awt.event.ActionListener() {
+        chkStatus.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        chkStatus.setText("Status");
+        chkStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkCurrentSiteActionPerformed(evt);
+                chkStatusActionPerformed(evt);
             }
         });
 
-        cmbCurrentSite.addItem("--select site--");
-        cmbCurrentSite.setSelectedItem("--select site--");
-        cmbCurrentSite.setEnabled(false);
-        cmbCurrentSite.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbCurrentSiteActionPerformed(evt);
+        cmbSponserName.setEnabled(false);
+        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--select status--" }));
+        cmbStatus.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbStatusItemStateChanged(evt);
             }
         });
-
-        cmbContract.addItem("--select name--");
-        cmbContract.setSelectedItem("--select name--");
-        cmbContract.setEnabled(false);
-        cmbContract.addActionListener(new java.awt.event.ActionListener() {
+        cmbStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbContractActionPerformed(evt);
+                cmbStatusActionPerformed(evt);
             }
         });
 
@@ -726,42 +464,31 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chkChild)
-                    .addComponent(chkParent))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cmbParent, 0, 337, Short.MAX_VALUE)
-                    .addComponent(cmbChild, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 325, Short.MAX_VALUE)
+                    .addComponent(chkSponser)
+                    .addComponent(chkStatus))
+                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chkCurrentSite)
-                    .addComponent(chkContract))
-                .addGap(14, 14, 14)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cmbContract, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmbCurrentSite, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(cmbSponserName, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(chkEmployeeType)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbEmployeeType, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(294, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbParent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(chkParent))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(chkChild)
-                            .addComponent(cmbChild, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(cmbContract, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(chkContract)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(chkCurrentSite)
-                            .addComponent(cmbCurrentSite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbSponserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkSponser)
+                    .addComponent(chkEmployeeType)
+                    .addComponent(cmbEmployeeType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chkStatus)
+                    .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jTable1.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
@@ -802,98 +529,38 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(169, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void chkParentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkParentActionPerformed
+    private void chkSponserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSponserActionPerformed
         // TODO add your handling code here:
-        if(chkParent.isSelected()==false)
+        if(chkSponser.isSelected()==false)
         {
-            cmbParent.setSelectedItem("--Select Name--");
-            cmbParent.setEnabled(false);
+            cmbSponserName.setSelectedItem("--select name--");
+            cmbSponserName.setEnabled(false);
         }
         else
         {
-            cmbParent.setEnabled(true);
-            cmbParent.setEditable(true);
-            AutoCompleteDecorator.decorate(cmbParent);
+            cmbSponserName.setEnabled(true);
+            cmbSponserName.setEditable(true);
+            AutoCompleteDecorator.decorate(cmbSponserName);
         }
-    }//GEN-LAST:event_chkParentActionPerformed
+    }//GEN-LAST:event_chkSponserActionPerformed
 
-    private void chkContractActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkContractActionPerformed
-        // TODO add your handling code here:
-        if(chkContract.isSelected()==false)
-        {
-            cmbContract.setSelectedItem("--Select Name--");
-            cmbContract.setEnabled(false);
-        }
-        else
-        {
-            cmbContract.setEnabled(true);
-            cmbContract.setEditable(true);
-            AutoCompleteDecorator.decorate(cmbContract);
-        }
-    }//GEN-LAST:event_chkContractActionPerformed
-
-    private void chkChildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkChildActionPerformed
-        // TODO add your handling code here:
-        if(chkChild.isSelected()==false)
-        {
-            cmbChild.setSelectedItem("--Select Name--");
-            cmbChild.setEnabled(false);
-        }
-        else
-        {
-            cmbChild.setEnabled(true);
-            cmbChild.setEditable(true);
-            AutoCompleteDecorator.decorate(cmbChild);
-        }
-    }//GEN-LAST:event_chkChildActionPerformed
-
-    private void chkCurrentSiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCurrentSiteActionPerformed
-        // TODO add your handling code here:
-        if(chkCurrentSite.isSelected()==false)
-        {
-            cmbCurrentSite.setSelectedItem("--Select Name--");
-            cmbCurrentSite.setEnabled(false);
-        }
-        else
-        {
-            cmbCurrentSite.setEnabled(true);
-            cmbCurrentSite.setEditable(true);
-            AutoCompleteDecorator.decorate(cmbCurrentSite);
-        }
-    }//GEN-LAST:event_chkCurrentSiteActionPerformed
-
-    private void cmbParentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbParentActionPerformed
+    private void cmbSponserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSponserNameActionPerformed
         // TODO add your handling code here:
         queryGenerator();
 
-    }//GEN-LAST:event_cmbParentActionPerformed
+    }//GEN-LAST:event_cmbSponserNameActionPerformed
 
-    private void cmbParentItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbParentItemStateChanged
+    private void cmbSponserNameItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbSponserNameItemStateChanged
         // TODO add your handling code here:
-        queryGenerator();
-    }//GEN-LAST:event_cmbParentItemStateChanged
-
-    private void cmbContractActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbContractActionPerformed
-        // TODO add your handling code here:
-        queryGenerator();
-    }//GEN-LAST:event_cmbContractActionPerformed
-
-    private void cmbChildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbChildActionPerformed
-        // TODO add your handling code here:
-        queryGenerator();
-    }//GEN-LAST:event_cmbChildActionPerformed
-
-    private void cmbCurrentSiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCurrentSiteActionPerformed
-        // TODO add your handling code here:
-        queryGenerator();
-    }//GEN-LAST:event_cmbCurrentSiteActionPerformed
+        //queryGenerator();
+    }//GEN-LAST:event_cmbSponserNameItemStateChanged
 
     private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
         // TODO add your handling code here:
@@ -1019,17 +686,64 @@ public class AdvancedEmployeeSearch extends javax.swing.JInternalFrame {
         updateJobStatus();
     }//GEN-LAST:event_menuItemJobStatusActionPerformed
 
+    private void chkEmployeeTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkEmployeeTypeActionPerformed
+        // TODO add your handling code here:
+        
+        if(chkEmployeeType.isSelected()==false)
+        {
+            cmbEmployeeType.setSelectedItem("--select type--");
+            cmbEmployeeType.setEnabled(false);
+        }
+        else
+        {
+            cmbEmployeeType.setEnabled(true);
+            cmbEmployeeType.setEditable(true);
+            AutoCompleteDecorator.decorate(cmbEmployeeType);
+        }
+    }//GEN-LAST:event_chkEmployeeTypeActionPerformed
+
+    private void cmbEmployeeTypeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbEmployeeTypeItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbEmployeeTypeItemStateChanged
+
+    private void cmbEmployeeTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEmployeeTypeActionPerformed
+        // TODO add your handling code here:
+        queryGenerator();
+    }//GEN-LAST:event_cmbEmployeeTypeActionPerformed
+
+    private void chkStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkStatusActionPerformed
+        // TODO add your handling code here:
+        if(chkStatus.isSelected()==false)
+        {
+            cmbStatus.setSelectedItem("--select status--");
+            cmbStatus.setEnabled(false);
+        }
+        else
+        {
+            cmbStatus.setEnabled(true);
+            cmbStatus.setEditable(true);
+            AutoCompleteDecorator.decorate(cmbStatus);
+        }
+    }//GEN-LAST:event_chkStatusActionPerformed
+
+    private void cmbStatusItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbStatusItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbStatusItemStateChanged
+
+    private void cmbStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbStatusActionPerformed
+        // TODO add your handling code here:
+        queryGenerator();
+    }//GEN-LAST:event_cmbStatusActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPopupMenu JtablePopUP;
-    private javax.swing.JCheckBox chkChild;
-    private javax.swing.JCheckBox chkContract;
-    private javax.swing.JCheckBox chkCurrentSite;
-    private javax.swing.JCheckBox chkParent;
-    private javax.swing.JComboBox cmbChild;
-    private javax.swing.JComboBox cmbContract;
-    private javax.swing.JComboBox cmbCurrentSite;
-    private javax.swing.JComboBox cmbParent;
+    private javax.swing.JCheckBox chkEmployeeType;
+    private javax.swing.JCheckBox chkSponser;
+    private javax.swing.JCheckBox chkStatus;
+    private javax.swing.JComboBox cmbEmployeeType;
+    private javax.swing.JComboBox cmbSponserName;
+    private javax.swing.JComboBox cmbStatus;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

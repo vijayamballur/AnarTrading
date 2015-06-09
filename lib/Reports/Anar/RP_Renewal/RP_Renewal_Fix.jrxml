@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RP_Renewal_Fix" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9ba62924-c65f-48b5-9574-89d4a21a80e3">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="559"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="EmpId" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     tbl_labourdetails.`empId` AS tbl_labourdetails_empId,
+     tbl_labourdetails.`empName` AS tbl_labourdetails_empName,
+     tbl_labourdetails.`passportNumber` AS tbl_labourdetails_passportNumber,
+     tbl_labourdetails.`passportExpiry` AS tbl_labourdetails_passportExpiry,
+     tbl_labourdetails.`visaExpiry` AS tbl_labourdetails_visaExpiry,
+     tbl_labourdetails.`idNumber` AS tbl_labourdetails_idNumber,
+     substring(tbl_labourdetails.`idNumber`,1,1) AS Id1,
+     substring(tbl_labourdetails.`idNumber`,2,1) AS Id2,
+     substring(tbl_labourdetails.`idNumber`,3,1) AS Id3,
+     substring(tbl_labourdetails.`idNumber`,4,1) AS Id4,
+     substring(tbl_labourdetails.`idNumber`,5,1) AS Id5,
+     substring(tbl_labourdetails.`idNumber`,6,1) AS Id6,
+     substring(tbl_labourdetails.`idNumber`,7,1) AS Id7,
+     substring(tbl_labourdetails.`idNumber`,8,1) AS Id8,
+     substring(tbl_labourdetails.`idNumber`,9,1) AS Id9,
+     substring(tbl_labourdetails.`idNumber`,10,1) AS Id10,
+     substring(tbl_labourdetails.`idNumber`,11,1) AS Id11
+FROM
+     `tbl_labourdetails` tbl_labourdetails
+where   tbl_labourdetails.`empId`=$P{EmpId}]]>
+	</queryString>
+	<field name="tbl_labourdetails_empId" class="java.lang.Long"/>
+	<field name="tbl_labourdetails_empName" class="java.lang.String"/>
+	<field name="tbl_labourdetails_passportNumber" class="java.lang.String"/>
+	<field name="tbl_labourdetails_passportExpiry" class="java.sql.Date"/>
+	<field name="tbl_labourdetails_visaExpiry" class="java.sql.Date"/>
+	<field name="tbl_labourdetails_idNumber" class="java.lang.String"/>
+	<field name="Id1" class="java.lang.String"/>
+	<field name="Id2" class="java.lang.String"/>
+	<field name="Id3" class="java.lang.String"/>
+	<field name="Id4" class="java.lang.String"/>
+	<field name="Id5" class="java.lang.String"/>
+	<field name="Id6" class="java.lang.String"/>
+	<field name="Id7" class="java.lang.String"/>
+	<field name="Id8" class="java.lang.String"/>
+	<field name="Id9" class="java.lang.String"/>
+	<field name="Id10" class="java.lang.String"/>
+	<field name="Id11" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<image>
+				<reportElement x="-20" y="16" width="607" height="637" uuid="ea152c86-6dc6-4732-8bb8-231f86243a99"/>
+				<imageExpression><![CDATA["C:\\Users\\MAC\\Documents\\NetBeansProjects\\ANAR TRADING\\lib\\Reports\\Anar\\RP_Renewal\\RP_RenewalForm_Fix.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement style="Detail" x="387" y="280" width="92" height="15" uuid="0852ee71-4f70-4793-a9a6-587a7b95bb5e"/>
+				<textElement textAlignment="Right">
+					<font fontName="Century Gothic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_labourdetails_passportNumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="231" y="216" width="293" height="15" uuid="7cde00f2-f471-4aba-a5e3-af576b858eff"/>
+				<textElement textAlignment="Right">
+					<font fontName="Century Gothic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_labourdetails_empName}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement style="Detail" x="190" y="280" width="92" height="15" uuid="6fb72e94-bfa8-43a5-84dc-50f2686dc322"/>
+				<textElement textAlignment="Right">
+					<font fontName="Century Gothic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_labourdetails_passportExpiry}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement style="Detail" x="0" y="280" width="92" height="15" uuid="45d94be6-36de-4942-850a-3b21162fac42"/>
+				<textElement textAlignment="Right">
+					<font fontName="Century Gothic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_labourdetails_visaExpiry}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="5" y="243" width="15" height="16" uuid="fedec107-b69f-4354-a235-d01e1be2da9d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Id1}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="338" y="494" width="160" height="25" uuid="975875fd-a6d0-4dd6-bce4-4b3dc00eb0b4"/>
+				<imageExpression><![CDATA["C:\\Users\\MAC\\Documents\\NetBeansProjects\\ANAR TRADING\\lib\\Reports\\Anar\\RP_Renewal\\Arabic_Fix.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="49" y="478" width="12" height="16" uuid="5dbd69a2-b928-49aa-a3c2-1d3cc2b96c7c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<text><![CDATA[7]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="78" y="478" width="14" height="16" uuid="27f30ab3-3c51-400b-97d1-ff0972ba1030"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<text><![CDATA[7]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="62" y="478" width="16" height="16" uuid="bfce84c9-b768-4f5f-a9ea-b39c5d4d5dde"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<text><![CDATA[7]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="92" y="478" width="14" height="16" uuid="87ee9343-b586-4a1a-8269-10ca498634cf"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<text><![CDATA[5]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="478" width="16" height="16" uuid="c26540df-2700-4cff-8ed1-5110f0ec18fc"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="478" width="14" height="16" uuid="61bbade0-0ccc-4fc5-9584-e7f78e995382"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<text><![CDATA[3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="122" y="478" width="13" height="16" uuid="0df4d384-6d8b-4e9f-bea2-c2b7e20aa90d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="135" y="478" width="14" height="16" uuid="873c7518-a6bb-4d10-80b1-dea1b88b79ac"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="20" y="243" width="15" height="16" uuid="8f381212-53ae-46c5-9f46-566812b8b400"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Id2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="34" y="243" width="15" height="16" uuid="663e9df1-8d68-4415-b901-0ba8db87cb87"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Id3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="49" y="243" width="15" height="16" uuid="76cc784f-29b9-4e95-b54b-53f3d34f7290"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Id4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="63" y="243" width="15" height="16" uuid="b5304e91-de80-4f81-a40f-386d6ed385f6"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Id5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="78" y="243" width="15" height="16" uuid="20494c64-0d07-42f2-a909-1c0745d19af3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Id6}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="92" y="243" width="15" height="16" uuid="dd38642d-bbe7-4c7a-a58b-0393a22b942a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Id7}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="106" y="243" width="15" height="16" uuid="3cb32d60-d55b-4f51-83ea-1ba079ce7a17"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Id8}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="120" y="243" width="15" height="16" uuid="926990d7-28fc-4d1c-b3ed-ea6a3ba02e12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Id9}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="135" y="243" width="15" height="16" uuid="f8f63e91-58dc-41e8-bb67-e6b9375570b9"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Id10}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="150" y="243" width="15" height="16" uuid="3492ebe0-a613-474a-a94b-7c875f5208aa"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Id11}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="52" y="262" width="41" height="15" uuid="540ef12b-1eb5-4b90-8025-75ab0b486159"/>
+				<imageExpression><![CDATA["C:\\Users\\MAC\\Documents\\NetBeansProjects\\ANAR TRADING\\lib\\Reports\\Anar\\RP_Renewal\\year.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Commercial" pageWidth="496" pageHeight="226" orientation="Landscape" columnWidth="496" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a8d2ad6a-7e59-44b3-a139-c06febe3ee08">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ChequeId" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+    fromName
+    , bearer
+    , IF(chequeDate IS NULL ," ",DATE_FORMAT(chequeDate,'%d-%b-%Y') ) as chequeDate
+    , amount
+    , amountInWords
+FROM
+    tbl_cheque where chequeId=$P{ChequeId}]]>
+	</queryString>
+	<field name="fromName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="bearer" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="chequeDate" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="amount" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="amountInWords" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band height="226">
+			<textField>
+				<reportElement x="78" y="47" width="409" height="20" uuid="3fc463e5-0049-4f61-a98c-4764a1f106d3"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Century Gothic" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bearer}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="78" y="69" width="315" height="42" uuid="95adc0d7-150d-4d06-beec-a84d831649c9"/>
+				<textElement verticalAlignment="Top" markup="none">
+					<font fontName="Century Gothic" size="10" isBold="false"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{amountInWords}]]></textFieldExpression>
+			</textField>
+			<textField pattern="**#,##0.00">
+				<reportElement x="393" y="75" width="94" height="20" uuid="eb45768a-1d0f-4aa5-baea-7800df309464"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font fontName="Century Gothic" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MMM-yyyy">
+				<reportElement x="393" y="4" width="94" height="20" uuid="b25f7010-071f-4fc6-b12c-5cd95a5b52fd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Century Gothic" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{chequeDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="219" y="21" width="88" height="20" uuid="30687d42-428d-4741-a0ad-9739b6718e3f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[ACCOUNT PAYEE]]></text>
+			</staticText>
+			<line>
+				<reportElement x="219" y="20" width="88" height="1" uuid="d7015a2a-9bd1-41e3-8700-3d40ddc133bb"/>
+			</line>
+			<line>
+				<reportElement x="219" y="35" width="88" height="1" uuid="852280a0-d98c-4637-87c9-80e2912b046c"/>
+			</line>
+		</band>
+	</background>
+	<detail>
+		<band height="226" splitType="Stretch"/>
+	</detail>
+</jasperReport>

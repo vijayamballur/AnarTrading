@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="3monthRenewal" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="4810bd27-e6b3-4368-872f-86ec31d65018">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="52"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="businessVisaId" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+		CONCAT(CONCAT(CONCAT(CONCAT(CONCAT(CONCAT(CONCAT(CONCAT(applicantName1,' '),applicantName2),' '),applicantName3),' '),applicantName4),' '),applicantName5) as name,
+     tbl_business_visa_details.`visaNumber` AS tbl_business_visa_details_visaNumber,
+     tbl_business_visa_appli.`nationality` AS tbl_business_visa_appli_nationality,
+     tbl_business_visa_appli.`passportNumber` AS tbl_business_visa_appli_passportNumber
+FROM
+     `tbl_business_visa_appli` tbl_business_visa_appli INNER JOIN `tbl_business_visa_details` tbl_business_visa_details ON tbl_business_visa_appli.`businessVisaId` = tbl_business_visa_details.`businessVisaId`
+where tbl_business_visa_appli.`businessVisaId`=$P{businessVisaId}]]>
+	</queryString>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tbl_business_visa_details_visaNumber" class="java.lang.String"/>
+	<field name="tbl_business_visa_appli_nationality" class="java.lang.String"/>
+	<field name="tbl_business_visa_appli_passportNumber" class="java.lang.String"/>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="116" width="555" height="686" uuid="fb6b2ae5-727a-4727-81ee-e9a9eab573df"/>
+				<imageExpression><![CDATA["C:\\Users\\MAC\\Documents\\NetBeansProjects\\ANAR TRADING\\lib\\Reports\\Anar\\BusinessVisa\\3 Month Renewal.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement style="Detail" x="284" y="351" width="255" height="25" uuid="747765ed-34c8-4595-80db-9257062920af"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="7" y="351" width="85" height="15" uuid="928faa11-0836-44aa-ae99-4f235a1bd077"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_business_visa_details_visaNumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="200" y="351" width="80" height="15" uuid="e84dae8f-53ba-409c-8fec-741b6c998975"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_nationality}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="104" y="351" width="93" height="15" uuid="e3761a14-22d2-474e-bfd1-bb9c8cc16beb"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_passportNumber}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="-11" y="-14" width="578" height="122" uuid="889d86ab-7b07-41a0-96b2-aad6663a0f2e"/>
+				<imageExpression><![CDATA["C:\\Users\\MAC\\Documents\\NetBeansProjects\\ANAR TRADING\\lib\\Reports\\Anar\\BusinessVisa\\Fixture Header.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="-16" y="751" width="1192" height="51" uuid="bc8817d3-0ca5-4328-9929-f4a25725fddd"/>
+				<imageExpression><![CDATA["C:\\Users\\MAC\\Documents\\NetBeansProjects\\ANAR TRADING\\lib\\Reports\\Anar\\BusinessVisa\\Footer New.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>

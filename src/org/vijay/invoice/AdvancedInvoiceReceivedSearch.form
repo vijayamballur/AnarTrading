@@ -7,17 +7,6 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
-      <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="menuItemDocument">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Add Document"/>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemDocumentActionPerformed"/>
-          </Events>
-        </MenuItem>
-      </SubComponents>
     </Container>
     <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
     </Component>

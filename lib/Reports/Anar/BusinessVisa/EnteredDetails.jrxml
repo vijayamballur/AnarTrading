@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="EnteredDetails" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="95a71936-e14f-4adb-9a08-fb8f57db1ceb">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString>
+		<![CDATA[SELECT
+      tbl_business_visa_appli.businessVisaId AS tbl_business_visa_appli_businessVisaId,
+     concat(concat(concat(concat(concat(concat(concat(concat(tbl_business_visa_appli.applicantName1," "),tbl_business_visa_appli.applicantName2)," "),tbl_business_visa_appli.applicantName3)," "),tbl_business_visa_appli.applicantName4)," "),tbl_business_visa_appli.applicantName5) AS tbl_business_visa_appli_applicantName,
+     tbl_business_visa_appli.`sex` AS tbl_business_visa_appli_sex,
+     tbl_business_visa_appli.`nationality` AS tbl_business_visa_appli_nationality,
+     tbl_business_visa_appli.`passportNumber` AS tbl_business_visa_appli_passportNumber,
+     tbl_business_visa_appli.`passportExpiry` AS tbl_business_visa_appli_passportExpiry,
+     tbl_business_visa_appli.`dateOfBirth` AS tbl_business_visa_appli_dateOfBirth,
+     tbl_business_visa_appli.`status` AS tbl_business_visa_appli_status,
+     tbl_business_visa_appli.`AgentName` AS tbl_business_visa_appli_AgentName,
+     tbl_business_visa_details.`visaDetailId` AS tbl_business_visa_details_visaDetailId,
+     tbl_business_visa_details.`visaNumber` AS tbl_business_visa_details_visaNumber,
+     tbl_business_visa_entrydate.`entryDate` AS tbl_business_visa_entrydate_entryDate,
+     tbl_business_visa_entrydate.`expiryDate` AS tbl_business_visa_entrydate_expiryDate
+FROM
+     `tbl_business_visa_appli` tbl_business_visa_appli INNER JOIN `tbl_business_visa_details` tbl_business_visa_details ON tbl_business_visa_appli.`businessVisaId` = tbl_business_visa_details.`businessVisaId`
+     INNER JOIN `tbl_business_visa_entrydate` tbl_business_visa_entrydate ON tbl_business_visa_appli.`businessVisaId` = tbl_business_visa_entrydate.`businessVisaId`
+
+WHERE tbl_business_visa_appli.status='Entered to the country'
+order by concat(concat(concat(concat(concat(concat(concat(concat(tbl_business_visa_appli.applicantName1," "),tbl_business_visa_appli.applicantName2)," "),tbl_business_visa_appli.applicantName3)," "),tbl_business_visa_appli.applicantName4)," "),tbl_business_visa_appli.applicantName5)]]>
+	</queryString>
+	<field name="tbl_business_visa_appli_businessVisaId" class="java.lang.Long"/>
+	<field name="tbl_business_visa_appli_applicantName" class="java.lang.String"/>
+	<field name="tbl_business_visa_appli_sex" class="java.lang.String"/>
+	<field name="tbl_business_visa_appli_nationality" class="java.lang.String"/>
+	<field name="tbl_business_visa_appli_passportNumber" class="java.lang.String"/>
+	<field name="tbl_business_visa_appli_passportExpiry" class="java.sql.Date"/>
+	<field name="tbl_business_visa_appli_dateOfBirth" class="java.sql.Date"/>
+	<field name="tbl_business_visa_appli_status" class="java.lang.String"/>
+	<field name="tbl_business_visa_appli_AgentName" class="java.lang.String"/>
+	<field name="tbl_business_visa_details_visaDetailId" class="java.lang.Long"/>
+	<field name="tbl_business_visa_details_visaNumber" class="java.lang.String"/>
+	<field name="tbl_business_visa_entrydate_entryDate" class="java.sql.Date"/>
+	<field name="tbl_business_visa_entrydate_expiryDate" class="java.sql.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="71" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="507" height="71" uuid="cf95f44c-18ac-4c87-9c29-2790a085a936"/>
+				<imageExpression><![CDATA["C:\\Users\\MAC\\Documents\\NetBeansProjects\\ANAR TRADING\\lib\\Reports\\Anar\\Bank\\Fixture.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="47" y="51" width="460" height="20" forecolor="#999999" uuid="9ff446ec-a724-4f62-b96c-47f2c2c28982"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Business Visa- Entered To Country Details]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="802" height="1" uuid="dcdfa102-cc24-45fb-962b-95b091dcf1e1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="21" width="41" height="15" uuid="ab214d9f-def1-4557-80d4-a130a37dec0c"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<text><![CDATA[VisaId]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="41" y="21" width="209" height="15" uuid="e6ed6874-a93c-4ebe-976e-fcf209d8cabd"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="250" y="20" width="33" height="15" uuid="24e66759-be6f-46cc-89f7-25c9fb004a3d"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<text><![CDATA[Sex]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="283" y="20" width="65" height="15" uuid="c99185ec-4b32-4152-a120-3f331150df72"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<text><![CDATA[Nationality]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="352" y="20" width="57" height="15" uuid="dbaae3ad-6f20-48a3-a8a6-2e1ab35f9162"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<text><![CDATA[PP Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="411" y="20" width="53" height="15" uuid="0731389f-41c4-421a-b302-446db4926df6"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<text><![CDATA[PP.Expiry]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="471" y="20" width="61" height="15" uuid="2b6f39a2-1c11-4941-bd3e-11a0f38ff442"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<text><![CDATA[DateOfBirth]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="733" y="20" width="68" height="15" uuid="e6a23df9-c4bc-441a-87f4-fcfe93778a2b"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<text><![CDATA[AgentName]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="543" y="19" width="62" height="15" uuid="8b669611-18bd-428c-aacd-c96de9231b12"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<text><![CDATA[VisaNumber]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="612" y="20" width="57" height="15" uuid="9f332739-f4a1-48f4-9fc5-56c505e89d2d"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<text><![CDATA[EntryDate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="672" y="20" width="59" height="15" uuid="5ff4f60f-6d43-4191-9e3c-faed120516f4"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<text><![CDATA[ExpiryDate]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="8437144e-8a2b-4679-951e-e34b479fb334"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="41" y="1" width="209" height="15" uuid="d8e0f1fa-65c1-4863-982d-f6b37c0b85e1"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_applicantName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="250" y="1" width="33" height="15" uuid="64b5e19a-2402-400d-ab93-d88b7fd084ed"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_sex}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="283" y="1" width="65" height="15" uuid="7ec65b56-820e-41fa-b16b-752d39a88bb5"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_nationality}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="352" y="1" width="57" height="15" uuid="71b618c3-0c69-448f-ad93-d8a3d7ff2da7"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_passportNumber}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MMM-yy">
+				<reportElement style="Detail" x="411" y="1" width="53" height="15" uuid="8cde82a8-d1c5-41d4-a2f5-991a3d8dd83a"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_passportExpiry}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MMM-yy">
+				<reportElement style="Detail" x="471" y="1" width="61" height="15" uuid="8988de00-8c2a-41a0-a537-f707a6d94db5"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_dateOfBirth}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="733" y="1" width="68" height="15" uuid="73265fae-a3a2-473c-97a8-f7c8d539d067"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_AgentName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="543" y="0" width="62" height="15" uuid="df275182-42b9-4647-bd89-ae5a772f4b1b"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_business_visa_details_visaNumber}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MMM-yy">
+				<reportElement style="Detail" x="612" y="1" width="57" height="15" uuid="cb0c8ad8-b654-4143-a6a7-1c0f7143a77e"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_business_visa_entrydate_entryDate}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MMM-yy">
+				<reportElement style="Detail" x="672" y="1" width="59" height="15" uuid="5423b1d7-6a8e-4139-8eba-939d43549dd1"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_business_visa_entrydate_expiryDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="41" height="15" uuid="6224b9a7-62bc-4182-a54c-aff8b2618b46"/>
+				<textElement>
+					<font fontName="Century Gothic" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_business_visa_appli_businessVisaId}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="102" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="ddb25f50-a864-4269-8cb5-f788850c089d"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="907bb17e-78b4-40f3-a250-3e055c265b60"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="9835e3d5-6165-4788-9f17-dc401867b767"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

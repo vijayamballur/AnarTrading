@@ -618,6 +618,7 @@ public class InvoiceNew extends javax.swing.JInternalFrame {
         btnRefresh = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
+        btnRefresh1 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jLabel19 = new javax.swing.JLabel();
@@ -641,6 +642,13 @@ public class InvoiceNew extends javax.swing.JInternalFrame {
 
         setTitle("Invoice Template");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameOpened(evt);
+            }
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
@@ -648,13 +656,6 @@ public class InvoiceNew extends javax.swing.JInternalFrame {
             public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
-                formInternalFrameOpened(evt);
             }
         });
 
@@ -933,6 +934,22 @@ public class InvoiceNew extends javax.swing.JInternalFrame {
             }
         });
         jToolBar1.add(btnDelete);
+
+        btnRefresh1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnRefresh1.setMnemonic('s');
+        btnRefresh1.setText("Add");
+        btnRefresh1.setToolTipText("");
+        btnRefresh1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnRefresh1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRefresh1.setFocusable(false);
+        btnRefresh1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnRefresh1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnRefresh1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefresh1ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnRefresh1);
 
         javax.swing.GroupLayout jPanelSubLayout = new javax.swing.GroupLayout(jPanelSub);
         jPanelSub.setLayout(jPanelSubLayout);
@@ -1278,11 +1295,17 @@ public class InvoiceNew extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTable2MouseClicked
 
+    private void btnRefresh1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefresh1ActionPerformed
+        // TODO add your handling code here:
+        insertSubTempTable();
+    }//GEN-LAST:event_btnRefresh1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnRefresh;
+    private javax.swing.JButton btnRefresh1;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnViewInvoice;

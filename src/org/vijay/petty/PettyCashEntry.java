@@ -89,7 +89,7 @@ public class PettyCashEntry extends javax.swing.JInternalFrame {
             connection c = new connection();
             Connection con = c.conn();
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT pettyDate,Name,debit,credit,description FROM fixturei_anar.tbl_pettycash where pettyId="+pettyCashId);
+            ResultSet rs = stmt.executeQuery("SELECT pettyDate,Name,debit,credit,description FROM tbl_pettycash where pettyId="+pettyCashId);
             while (rs.next()) {
                 try 
                 {

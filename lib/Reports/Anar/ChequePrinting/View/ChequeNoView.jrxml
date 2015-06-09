@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ChequeNoView" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a6dad0b9-835c-4e40-9521-767b4edc466f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="bankName" class="java.lang.String"/>
+	<parameter name="fromName" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     tbl_cheque.`chequeId` AS tbl_cheque_chequeId,
+     tbl_cheque.`bankName` AS tbl_cheque_bankName,
+     tbl_cheque.`fromName` AS tbl_cheque_fromName,
+     tbl_cheque.`bearer` AS tbl_cheque_bearer,
+     tbl_cheque.`chequeNo` AS tbl_cheque_chequeNo,
+     tbl_cheque.`chequeDate` AS tbl_cheque_chequeDate,
+     tbl_cheque.`amount` AS tbl_cheque_amount,
+     tbl_cheque.`amountInWords` AS tbl_cheque_amountInWords,
+     tbl_cheque.`remarks` AS tbl_cheque_remarks
+FROM
+     `tbl_cheque` tbl_cheque
+where tbl_cheque.`bankName`=$P{bankName} and tbl_cheque.`fromName`=$P{fromName}
+order by tbl_cheque.`chequeNo`]]>
+	</queryString>
+	<field name="tbl_cheque_chequeId" class="java.lang.Integer"/>
+	<field name="tbl_cheque_bankName" class="java.lang.String"/>
+	<field name="tbl_cheque_fromName" class="java.lang.String"/>
+	<field name="tbl_cheque_bearer" class="java.lang.String"/>
+	<field name="tbl_cheque_chequeNo" class="java.lang.String"/>
+	<field name="tbl_cheque_chequeDate" class="java.sql.Date"/>
+	<field name="tbl_cheque_amount" class="java.math.BigDecimal"/>
+	<field name="tbl_cheque_amountInWords" class="java.lang.String"/>
+	<field name="tbl_cheque_remarks" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="73" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="0" width="263" height="33" uuid="54fc0121-a121-403c-ac26-1d0867ffc6a5"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Cheque Details]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="33" width="263" height="20" uuid="08c3b1ff-af1b-467f-83da-7d3695a77d0a"/>
+				<textFieldExpression><![CDATA[$P{fromName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="53" width="263" height="20" uuid="f323770d-9578-4ddd-bcc2-197ca16f5db3"/>
+				<textFieldExpression><![CDATA[$P{bankName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="802" height="1" uuid="c54c26ba-75f7-4653-abd7-dc82b063c83a"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="2" y="19" width="156" height="15" uuid="fd6dbfca-13b5-4a2d-b505-53e385b386fa"/>
+				<textElement>
+					<font fontName="Century Gothic" size="11"/>
+				</textElement>
+				<text><![CDATA[Bearer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="157" y="20" width="60" height="15" uuid="cc189166-7835-4c2f-a92f-baaf56623404"/>
+				<textElement>
+					<font fontName="Century Gothic" size="11"/>
+				</textElement>
+				<text><![CDATA[Cheque#]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="216" y="19" width="48" height="15" uuid="3e987d84-afbe-4cec-b762-cf427f04691f"/>
+				<textElement>
+					<font fontName="Century Gothic" size="11"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="263" y="19" width="61" height="15" uuid="37366a3f-5dbc-4477-acee-140795b94a02"/>
+				<textElement textAlignment="Right">
+					<font fontName="Century Gothic" size="11"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="337" y="19" width="465" height="15" uuid="29e9f939-d25e-4df2-a813-c2039b2c2f80"/>
+				<textElement>
+					<font fontName="Century Gothic" size="11"/>
+				</textElement>
+				<text><![CDATA[Remarks]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="13f22419-11c6-4e76-ab5e-da28931cb673"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="2" y="0" width="156" height="15" uuid="a2c98052-9a9a-44c2-826e-fef5ecfbe270"/>
+				<textElement>
+					<font fontName="Century Gothic" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_cheque_bearer}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="157" y="1" width="60" height="15" uuid="737299e7-1326-4344-b7d1-1d1b42d89878"/>
+				<textElement>
+					<font fontName="Century Gothic" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_cheque_chequeNo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MMM-yy">
+				<reportElement style="Detail" x="216" y="0" width="48" height="15" uuid="9556a7e3-be23-4df0-b286-93aac4459739"/>
+				<textElement>
+					<font fontName="Century Gothic" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_cheque_chequeDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="337" y="0" width="465" height="15" uuid="062e6c98-2279-4670-8b9f-d15d8f2981f2"/>
+				<textElement>
+					<font fontName="Century Gothic" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_cheque_remarks}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="Detail" x="263" y="0" width="61" height="15" uuid="1a0b1dfd-f675-4d58-9d8b-69a8b3e21078"/>
+				<textElement textAlignment="Right">
+					<font fontName="Century Gothic" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_cheque_amount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="e33de8dc-9eca-40c1-8206-4215d040249c"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="550" y="0" width="80" height="20" uuid="c0ea6a1b-99d5-456d-9d2a-1f3e040f00ee"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="630" y="0" width="40" height="20" uuid="1b45fdb3-d73a-4c53-a362-0b05bddc2ca2"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="e3c5e235-030a-42ec-9823-d6a237e5dc9a"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

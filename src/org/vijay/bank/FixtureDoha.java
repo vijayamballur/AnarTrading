@@ -302,6 +302,7 @@ public class FixtureDoha extends javax.swing.JInternalFrame {
         btnCancel = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        btnFixDohaOnline = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Fixture Doha Bank");
@@ -463,13 +464,21 @@ public class FixtureDoha extends javax.swing.JInternalFrame {
         ));
         jScrollPane2.setViewportView(jTable1);
 
+        btnFixDohaOnline.setText("Fix Doha Online");
+        btnFixDohaOnline.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFixDohaOnlineActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 165, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addComponent(btnFixDohaOnline))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2))
@@ -477,10 +486,12 @@ public class FixtureDoha extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFixDohaOnline))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         pack();
@@ -547,11 +558,25 @@ public class FixtureDoha extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
 
+    private void btnFixDohaOnlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFixDohaOnlineActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            String URL="http://www.dohabank.com.qa/1/db2/en/Personal.aspx";
+            java.awt.Desktop.getDesktop().browse(java.net.URI.create(URL));
+        }
+        catch(Exception e)
+        {
+
+        }
+    }//GEN-LAST:event_btnFixDohaOnlineActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton View;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnFixDohaOnline;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;

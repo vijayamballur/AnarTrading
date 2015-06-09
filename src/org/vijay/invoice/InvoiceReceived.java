@@ -332,7 +332,6 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jtablePopUp = new javax.swing.JPopupMenu();
-        menuItemDocument = new javax.swing.JMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -371,15 +370,6 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
         lblEmployeeName11 = new javax.swing.JLabel();
         radioPaid = new javax.swing.JRadioButton();
         radioNotPaid = new javax.swing.JRadioButton();
-
-        menuItemDocument.setText("Add Document");
-        menuItemDocument.setToolTipText("");
-        menuItemDocument.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemDocumentActionPerformed(evt);
-            }
-        });
-        jtablePopUp.add(menuItemDocument);
 
         setClosable(true);
         setIconifiable(true);
@@ -836,14 +826,6 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jTable1MouseClicked
 
-    private void menuItemDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDocumentActionPerformed
-        // TODO add your handling code here:
-        InvoiceReceivedDocument IRD = new InvoiceReceivedDocument(receivedId);
-        AnarTrading.desktopPane1.add(IRD);
-        IRD.setVisible(true);
-        IRD.show();
-    }//GEN-LAST:event_menuItemDocumentActionPerformed
-
     private void txtBalanceFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBalanceFocusGained
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBalanceFocusGained
@@ -901,7 +883,6 @@ public class InvoiceReceived extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblEmployeeName7;
     private javax.swing.JLabel lblEmployeeName8;
     private javax.swing.JLabel lblEmployeeName9;
-    private javax.swing.JMenuItem menuItemDocument;
     private javax.swing.JRadioButton radioNotPaid;
     private javax.swing.JRadioButton radioPaid;
     private javax.swing.JTextField txtAmount;

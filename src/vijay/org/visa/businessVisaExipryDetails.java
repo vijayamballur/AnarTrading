@@ -33,16 +33,7 @@ public class businessVisaExipryDetails extends javax.swing.JInternalFrame {
         initComponents();
         setSize(Toolkit.getDefaultToolkit().getScreenSize());
         viewDbEmployeeDetails();
-        jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-            int rowNo=jTable1.getSelectedRow();
-            empId=Integer.parseInt(jTable1.getValueAt(rowNo,1).toString());
-
-            }
-        });
-        
+       
     }
     public void viewDbEmployeeDetails()
     {
@@ -51,13 +42,13 @@ public class businessVisaExipryDetails extends javax.swing.JInternalFrame {
         try
         {
             Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("select @i := @i + 1 '"+"SL.NO"+"',empId '"+"ID"+"',empName'"+"NAME"+"',idNumber '"+"ID/VisaNumber"+"',visaExpiry '"+"RP Expiry"+"',passportNumber '"+"PASSPORT#"+"',passportExpiry'"+"P.EXPIRY"+"',DATEDIFF(visaExpiry,CURDATE())'"+"DAYS LEFT"+"' from tbl_labourdetails,(SELECT @i := 0) temp WHERE DATEDIFF(visaExpiry,CURDATE()) <30 AND STATUS !='LEFT' order by DATEDIFF(visaExpiry,CURDATE())");
+            ResultSet rs=stmt.executeQuery("SELECT tbl_business_visa_appli.businessVisaId as id,CONCAT(CONCAT(CONCAT(CONCAT(CONCAT(CONCAT(CONCAT(CONCAT(tbl_business_visa_appli.applicantName1,\" \"),tbl_business_visa_appli.applicantName2),\" \"),tbl_business_visa_appli.applicantName3),\" \"),tbl_business_visa_appli.applicantName4),\" \"),tbl_business_visa_appli.applicantName5) as Name,tbl_business_visa_appli.AgentName,tbl_business_visa_appli.passportNumber as PP_Number,tbl_business_visa_entrydate.entryDate as Entry_Date,tbl_business_visa_entrydate.expiryDate As Expiry_Date,DATEDIFF(tbl_business_visa_entrydate.expiryDate,tbl_business_visa_entrydate.entryDate) as Visa_Applied_For,DATEDIFF(tbl_business_visa_entrydate.expiryDate,CURDATE()) as Days_Left FROM anar.tbl_business_visa_entrydate INNER JOIN anar.tbl_business_visa_appli ON (tbl_business_visa_entrydate.businessVisaId = tbl_business_visa_appli.businessVisaId) WHERE tbl_business_visa_appli.status='Entered to the Country' ORDER BY DATEDIFF(tbl_business_visa_entrydate.expiryDate,CURDATE()) ");
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
-            jTable1.getColumnModel().getColumn(1).setMaxWidth(50);
-            jTable1.getColumnModel().getColumn(7).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(4).setCellRenderer(new DateCellRenderer());
-            jTable1.getColumnModel().getColumn(6).setCellRenderer(new DateCellRenderer());
+//            jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
+//            jTable1.getColumnModel().getColumn(1).setMaxWidth(50);
+//            jTable1.getColumnModel().getColumn(7).setMaxWidth(100);
+//            jTable1.getColumnModel().getColumn(4).setCellRenderer(new DateCellRenderer());
+//            jTable1.getColumnModel().getColumn(6).setCellRenderer(new DateCellRenderer());
             jTable1.setAutoCreateRowSorter(true);
             con.close();
 
@@ -81,18 +72,15 @@ public class businessVisaExipryDetails extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
 
         setClosable(true);
-        setTitle("Resident Permit Expiry List");
+        setTitle("Business VIsa Expiry Details");
 
         jTable1.setFont(new java.awt.Font("Century Gothic", 0, 10)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jTable1.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -115,9 +103,9 @@ public class businessVisaExipryDetails extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 19, Short.MAX_VALUE))
         );
 
         pack();
@@ -128,9 +116,7 @@ public class businessVisaExipryDetails extends javax.swing.JInternalFrame {
         int keyCode = evt.getKeyCode();
         if(keyCode == KeyEvent.VK_ENTER)
         {
-            LabourDetails LD = new LabourDetails(empId);
-            AnarTrading.desktopPane1.add(LD);
-            LD.setVisible(true);
+
         }
     }//GEN-LAST:event_jTable1KeyPressed
 

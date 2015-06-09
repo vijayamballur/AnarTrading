@@ -51,6 +51,7 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
         cmbQualificationFill();
         cmbProNameFill();
         cmbProIdFill();
+        cmbAgentNameFill();
         viewDbDetailsEnteredCountry();
         viewDbDetailsVisaApproved();
         viewDbDetailsUnderProcessing();
@@ -79,6 +80,33 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
         jtable1Selection();
         jtable2Selection();
         jtable3Selection();
+    }
+    public boolean checkDuplication()
+    {
+        boolean checkDuplication=true;
+        try {
+            connection c = new connection();
+            Connection con = c.conn();
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT passportNumber,nationality,businessVisaId FROM tbl_business_visa_appli where status!='Exited from Country'");
+            while (rs.next()) {
+                
+                if(txtPassportNumber.getText().equals(rs.getString(1)) && cmbNationality.getSelectedItem().equals(rs.getString(2)))
+                {
+                    checkDuplication=false;
+                    referenceId=rs.getInt(3);
+                    break;
+                }
+                else
+                {
+                    checkDuplication=true;
+                }
+            }
+            con.close();
+        } catch (SQLException ex) {
+            
+        }
+        return checkDuplication;
     }
     public boolean validation()
     {
@@ -125,7 +153,7 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
         Connection con=c.conn();
         try
         {
-            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_business_visa_appli(applicantName1,applicantName2,applicantName3,applicantName4,applicantName5,sex,nationality,passportNumber,passportExpiry,dateOfBirth,profession,eduQualification,companyId,companyName,ProName,proId,status) VALUES(upper(?),upper(?),upper(?),upper(?),upper(?),upper(?),upper(?),upper(?),upper(?),upper(?),upper(?),upper(?),upper(?),upper(?),upper(?),upper(?),'Under Processing')");           
+            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_business_visa_appli(applicantName1,applicantName2,applicantName3,applicantName4,applicantName5,sex,nationality,passportNumber,passportExpiry,dateOfBirth,profession,eduQualification,companyId,companyName,ProName,proId,status,AgentName) VALUES(upper(?),upper(?),upper(?),upper(?),upper(?),upper(?),upper(?),upper(?),upper(?),upper(?),upper(?),upper(?),upper(?),upper(?),upper(?),upper(?),'Under Processing',upper(?))");           
             ps.setString(1, txtName1.getText());
             ps.setString(2, txtName2.getText());
             ps.setString(3, txtName3.getText());
@@ -142,6 +170,7 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
             ps.setString(14,cmbCompanyName.getSelectedItem().toString());
             ps.setString(15,cmbProName.getSelectedItem().toString());
             ps.setString(16,cmbProId.getSelectedItem().toString());
+            ps.setString(17,cmbAgentName.getSelectedItem().toString());
             int i=ps.executeUpdate();
             if(i!=0)
             {
@@ -155,6 +184,45 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, e, "ERROR!!", JOptionPane.ERROR_MESSAGE);
             //JOptionPane.showMessageDialog(rootPane,e+"Error SA001");
         }
+    }
+    public void insertIntoDb3monthExtensionGroup()
+    {
+         connection c=new connection();
+         Connection con=c.conn();
+        try
+        {
+            PreparedStatement ps=con.prepareStatement("INSERT INTO tbl_business_visa_extensiongroup(businessVisaId) VALUES(?)");           
+            ps.setInt(1, businessVisaId);
+            int i=ps.executeUpdate();
+            if(i!=0)
+            {
+            }
+            con.close();
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(rootPane, e, "ERROR!!", JOptionPane.ERROR_MESSAGE);
+            //JOptionPane.showMessageDialog(rootPane,e+"Error SA001");
+        }
+    }
+    public void Clear3monthExtensionGroup()
+    {
+        connection c=new connection();
+        Connection con=c.conn();
+        try
+        {
+            PreparedStatement ps=con.prepareStatement("TRUNCATE TABLE tbl_business_visa_extensiongroup");
+            int i=ps.executeUpdate();
+            if(i!=0)
+            {
+            }
+            con.close();
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(rootPane, e, "ERROR!!", JOptionPane.ERROR_MESSAGE);
+        }
+
     }
     public void viewBusinessVisaForm()
     {
@@ -232,6 +300,20 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
             
         }
     }
+    public void cmbAgentNameFill() {
+        try {
+            connection c = new connection();
+            Connection con = c.conn();
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT DISTINCT AgentName FROM tbl_business_visa_appli order by proId asc");
+            while (rs.next()) {
+                cmbAgentName.addItem(rs.getString(1));
+            }
+            con.close();
+        } catch (SQLException ex) {
+            
+        }
+    }
      public void viewDbDetailsEnteredCountry()
     {
         connection c=new connection();
@@ -239,9 +321,61 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
         try
         {
             Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("select @i := @i + 1 '"+"SL.NO"+"',businessVisaId '"+"Id"+"',concat(concat(concat(concat(applicantName1,'"+" "+"'),applicantName2),'"+" "+"'),applicantName3)'"+"Name"+"',sex ,nationality,passportNumber'"+"pp.no"+"',passportExpiry '"+"pp.Exp"+"',dateOfBirth'"+"dob"+"',profession ,eduQualification '"+"Qualification"+"',companyId,companyName,ProName,proId,applicantName1,applicantName2,applicantName3,applicantName4,applicantName5 from tbl_business_visa_appli,(SELECT @i := 0) temp where status='Entered to the Country' order by businessVisaId desc");
+            ResultSet rs=stmt.executeQuery("select @i := @i + 1 '"+"SL.NO"+"',businessVisaId '"+"Id"+"',concat(concat(concat(concat(concat(concat(concat(concat(applicantName1,'"+" "+"'),applicantName2),'"+" "+"'),applicantName3),'"+" "+"'),applicantName4),'"+" "+"'),applicantName5)'"+"Name"+"',sex ,nationality,passportNumber'"+"pp.no"+"',passportExpiry '"+"pp.Exp"+"',dateOfBirth'"+"dob"+"',profession ,eduQualification '"+"Qualification"+"',companyId,companyName,ProName,proId,applicantName1,applicantName2,applicantName3,applicantName4,applicantName5,status,AgentName from tbl_business_visa_appli,(SELECT @i := 0) temp where status='Entered to the Country' order by businessVisaId desc");
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             jTable1.setAutoCreateRowSorter(true);
+            
+            jTable1.getColumnModel().getColumn(0).setMinWidth(50);
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
+            
+            jTable1.getColumnModel().getColumn(1).setMinWidth(50);
+            jTable1.getColumnModel().getColumn(1).setMaxWidth(50);
+            
+            jTable1.getColumnModel().getColumn(3).setMinWidth(50);
+            jTable1.getColumnModel().getColumn(3).setMaxWidth(50);
+            
+            jTable1.getColumnModel().getColumn(4).setMinWidth(100);
+            jTable1.getColumnModel().getColumn(4).setMaxWidth(100);
+            
+            jTable1.getColumnModel().getColumn(5).setMinWidth(100);
+            jTable1.getColumnModel().getColumn(5).setMaxWidth(100);
+            
+            jTable1.getColumnModel().getColumn(6).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(6).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(6).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(7).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(7).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(7).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(7).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(7).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(7).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(8).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(8).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(8).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(9).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(9).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(9).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(10).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(10).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(10).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(11).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(11).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(11).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(12).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(12).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(12).setWidth(0);
+            
+            jTable1.getColumnModel().getColumn(13).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(13).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(13).setWidth(0);
+            
             
             jTable1.getColumnModel().getColumn(14).setMinWidth(0);
             jTable1.getColumnModel().getColumn(14).setMaxWidth(0);
@@ -264,6 +398,12 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
             jTable1.getColumnModel().getColumn(18).setMaxWidth(0);
             jTable1.getColumnModel().getColumn(18).setWidth(0);
             
+            jTable1.getColumnModel().getColumn(19).setMinWidth(150);
+            jTable1.getColumnModel().getColumn(19).setMaxWidth(150);
+            
+            jTable1.getColumnModel().getColumn(20).setMinWidth(150);
+            jTable1.getColumnModel().getColumn(20).setMaxWidth(150);
+            
             jTable1.getColumnModel().getColumn(6).setCellRenderer(new DateCellRenderer());
             jTable1.getColumnModel().getColumn(7).setCellRenderer(new DateCellRenderer());
             con.close();
@@ -282,9 +422,61 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
         try
         {
             Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("select @i := @i + 1 '"+"SL.NO"+"',businessVisaId '"+"Id"+"',concat(concat(concat(concat(applicantName1,'"+" "+"'),applicantName2),'"+" "+"'),applicantName3)'"+"Name"+"',sex ,nationality,passportNumber'"+"pp.no"+"',passportExpiry '"+"pp.Exp"+"',dateOfBirth'"+"dob"+"',profession ,eduQualification '"+"Qualification"+"',companyId,companyName,ProName,proId,applicantName1,applicantName2,applicantName3,applicantName4,applicantName5 from tbl_business_visa_appli,(SELECT @i := 0) temp where status='Under Processing' order by businessVisaId desc");
+            ResultSet rs=stmt.executeQuery("select @i := @i + 1 '"+"SL.NO"+"',businessVisaId '"+"Id"+"',concat(concat(concat(concat(concat(concat(concat(concat(applicantName1,'"+" "+"'),applicantName2),'"+" "+"'),applicantName3),'"+" "+"'),applicantName4),'"+" "+"'),applicantName5)'"+"Name"+"',sex ,nationality,passportNumber'"+"pp.no"+"',passportExpiry '"+"pp.Exp"+"',dateOfBirth'"+"dob"+"',profession ,eduQualification '"+"Qualification"+"',companyId,companyName,ProName,proId,applicantName1,applicantName2,applicantName3,applicantName4,applicantName5,status,AgentName from tbl_business_visa_appli,(SELECT @i := 0) temp where status='Under Processing' order by businessVisaId desc");
             jTable2.setModel(DbUtils.resultSetToTableModel(rs));
             jTable2.setAutoCreateRowSorter(true);
+            
+            jTable2.getColumnModel().getColumn(0).setMinWidth(50);
+            jTable2.getColumnModel().getColumn(0).setMaxWidth(50);
+            
+            jTable2.getColumnModel().getColumn(1).setMinWidth(50);
+            jTable2.getColumnModel().getColumn(1).setMaxWidth(50);
+            
+            jTable2.getColumnModel().getColumn(3).setMinWidth(50);
+            jTable2.getColumnModel().getColumn(3).setMaxWidth(50);
+            
+            jTable2.getColumnModel().getColumn(4).setMinWidth(100);
+            jTable2.getColumnModel().getColumn(4).setMaxWidth(100);
+            
+            jTable2.getColumnModel().getColumn(5).setMinWidth(100);
+            jTable2.getColumnModel().getColumn(5).setMaxWidth(100);
+            
+            jTable2.getColumnModel().getColumn(6).setMinWidth(0);
+            jTable2.getColumnModel().getColumn(6).setMaxWidth(0);
+            jTable2.getColumnModel().getColumn(6).setWidth(0);
+            
+            jTable2.getColumnModel().getColumn(7).setMinWidth(0);
+            jTable2.getColumnModel().getColumn(7).setMaxWidth(0);
+            jTable2.getColumnModel().getColumn(7).setWidth(0);
+            
+            jTable2.getColumnModel().getColumn(7).setMinWidth(0);
+            jTable2.getColumnModel().getColumn(7).setMaxWidth(0);
+            jTable2.getColumnModel().getColumn(7).setWidth(0);
+            
+            jTable2.getColumnModel().getColumn(8).setMinWidth(0);
+            jTable2.getColumnModel().getColumn(8).setMaxWidth(0);
+            jTable2.getColumnModel().getColumn(8).setWidth(0);
+            
+            jTable2.getColumnModel().getColumn(9).setMinWidth(0);
+            jTable2.getColumnModel().getColumn(9).setMaxWidth(0);
+            jTable2.getColumnModel().getColumn(9).setWidth(0);
+            
+            jTable2.getColumnModel().getColumn(10).setMinWidth(0);
+            jTable2.getColumnModel().getColumn(10).setMaxWidth(0);
+            jTable2.getColumnModel().getColumn(10).setWidth(0);
+            
+            jTable2.getColumnModel().getColumn(11).setMinWidth(0);
+            jTable2.getColumnModel().getColumn(11).setMaxWidth(0);
+            jTable2.getColumnModel().getColumn(11).setWidth(0);
+            
+            jTable2.getColumnModel().getColumn(12).setMinWidth(0);
+            jTable2.getColumnModel().getColumn(12).setMaxWidth(0);
+            jTable2.getColumnModel().getColumn(12).setWidth(0);
+            
+            jTable2.getColumnModel().getColumn(13).setMinWidth(0);
+            jTable2.getColumnModel().getColumn(13).setMaxWidth(0);
+            jTable2.getColumnModel().getColumn(13).setWidth(0);
+            
             
             jTable2.getColumnModel().getColumn(14).setMinWidth(0);
             jTable2.getColumnModel().getColumn(14).setMaxWidth(0);
@@ -307,6 +499,12 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
             jTable2.getColumnModel().getColumn(18).setMaxWidth(0);
             jTable2.getColumnModel().getColumn(18).setWidth(0);
             
+            jTable2.getColumnModel().getColumn(19).setMinWidth(150);
+            jTable2.getColumnModel().getColumn(19).setMaxWidth(150);
+            
+            jTable2.getColumnModel().getColumn(20).setMinWidth(150);
+            jTable2.getColumnModel().getColumn(20).setMaxWidth(150);
+            
             jTable2.getColumnModel().getColumn(6).setCellRenderer(new DateCellRenderer());
             jTable2.getColumnModel().getColumn(7).setCellRenderer(new DateCellRenderer());
             con.close();
@@ -325,9 +523,61 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
         try
         {
             Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("select @i := @i + 1 '"+"SL.NO"+"',businessVisaId '"+"Id"+"',concat(concat(concat(concat(applicantName1,'"+" "+"'),applicantName2),'"+" "+"'),applicantName3)'"+"Name"+"',sex ,nationality,passportNumber'"+"pp.no"+"',passportExpiry '"+"pp.Exp"+"',dateOfBirth'"+"dob"+"',profession ,eduQualification '"+"Qualification"+"',companyId,companyName,ProName,proId,applicantName1,applicantName2,applicantName3,applicantName4,applicantName5 from tbl_business_visa_appli,(SELECT @i := 0) temp where status='Visa Approved' order by businessVisaId desc");
+            ResultSet rs=stmt.executeQuery("select @i := @i + 1 '"+"SL.NO"+"',businessVisaId '"+"Id"+"',concat(concat(concat(concat(concat(concat(concat(concat(applicantName1,'"+" "+"'),applicantName2),'"+" "+"'),applicantName3),'"+" "+"'),applicantName4),'"+" "+"'),applicantName5)'"+"Name"+"',sex ,nationality,passportNumber'"+"pp.no"+"',passportExpiry '"+"pp.Exp"+"',dateOfBirth'"+"dob"+"',profession ,eduQualification '"+"Qualification"+"',companyId,companyName,ProName,proId,applicantName1,applicantName2,applicantName3,applicantName4,applicantName5,status,AgentName from tbl_business_visa_appli,(SELECT @i := 0) temp where status='Visa Approved' order by businessVisaId desc");
             jTable3.setModel(DbUtils.resultSetToTableModel(rs));
             jTable3.setAutoCreateRowSorter(true);
+            
+            jTable3.getColumnModel().getColumn(0).setMinWidth(50);
+            jTable3.getColumnModel().getColumn(0).setMaxWidth(50);
+            
+            jTable3.getColumnModel().getColumn(1).setMinWidth(50);
+            jTable3.getColumnModel().getColumn(1).setMaxWidth(50);
+            
+            jTable3.getColumnModel().getColumn(3).setMinWidth(50);
+            jTable3.getColumnModel().getColumn(3).setMaxWidth(50);
+            
+            jTable3.getColumnModel().getColumn(4).setMinWidth(100);
+            jTable3.getColumnModel().getColumn(4).setMaxWidth(100);
+            
+            jTable3.getColumnModel().getColumn(5).setMinWidth(100);
+            jTable3.getColumnModel().getColumn(5).setMaxWidth(100);
+            
+            jTable3.getColumnModel().getColumn(6).setMinWidth(0);
+            jTable3.getColumnModel().getColumn(6).setMaxWidth(0);
+            jTable3.getColumnModel().getColumn(6).setWidth(0);
+            
+            jTable3.getColumnModel().getColumn(7).setMinWidth(0);
+            jTable3.getColumnModel().getColumn(7).setMaxWidth(0);
+            jTable3.getColumnModel().getColumn(7).setWidth(0);
+            
+            jTable3.getColumnModel().getColumn(7).setMinWidth(0);
+            jTable3.getColumnModel().getColumn(7).setMaxWidth(0);
+            jTable3.getColumnModel().getColumn(7).setWidth(0);
+            
+            jTable3.getColumnModel().getColumn(8).setMinWidth(0);
+            jTable3.getColumnModel().getColumn(8).setMaxWidth(0);
+            jTable3.getColumnModel().getColumn(8).setWidth(0);
+            
+            jTable3.getColumnModel().getColumn(9).setMinWidth(0);
+            jTable3.getColumnModel().getColumn(9).setMaxWidth(0);
+            jTable3.getColumnModel().getColumn(9).setWidth(0);
+            
+            jTable3.getColumnModel().getColumn(10).setMinWidth(0);
+            jTable3.getColumnModel().getColumn(10).setMaxWidth(0);
+            jTable3.getColumnModel().getColumn(10).setWidth(0);
+            
+            jTable3.getColumnModel().getColumn(11).setMinWidth(0);
+            jTable3.getColumnModel().getColumn(11).setMaxWidth(0);
+            jTable3.getColumnModel().getColumn(11).setWidth(0);
+            
+            jTable3.getColumnModel().getColumn(12).setMinWidth(0);
+            jTable3.getColumnModel().getColumn(12).setMaxWidth(0);
+            jTable3.getColumnModel().getColumn(12).setWidth(0);
+            
+            jTable3.getColumnModel().getColumn(13).setMinWidth(0);
+            jTable3.getColumnModel().getColumn(13).setMaxWidth(0);
+            jTable3.getColumnModel().getColumn(13).setWidth(0);
+            
             
             jTable3.getColumnModel().getColumn(14).setMinWidth(0);
             jTable3.getColumnModel().getColumn(14).setMaxWidth(0);
@@ -350,6 +600,11 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
             jTable3.getColumnModel().getColumn(18).setMaxWidth(0);
             jTable3.getColumnModel().getColumn(18).setWidth(0);
             
+            jTable3.getColumnModel().getColumn(19).setMinWidth(150);
+            jTable3.getColumnModel().getColumn(19).setMaxWidth(150);
+            
+            jTable3.getColumnModel().getColumn(20).setMinWidth(150);
+            jTable3.getColumnModel().getColumn(20).setMaxWidth(150);
             jTable3.getColumnModel().getColumn(6).setCellRenderer(new DateCellRenderer());
             jTable3.getColumnModel().getColumn(7).setCellRenderer(new DateCellRenderer());
             con.close();
@@ -372,10 +627,6 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
             btnUpdate.setEnabled(true);
             btnDelete.setEnabled(true);
             btnPrint.setEnabled(true);
-            btnAttachPassport.setEnabled(true);
-            btnAttachCheckingReceipt.setEnabled(true);
-            btnAgentDetails.setEnabled(true);
-            btnVisaDetails.setEnabled(true);
             
             businessVisaId=Integer.parseInt(jTable1.getValueAt(rowNo,1).toString());
             cmbSex.setSelectedItem(jTable1.getValueAt(rowNo,3).toString());
@@ -396,6 +647,7 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
                     txtName3.setText(jTable1.getValueAt(rowNo,16).toString());
                     txtName4.setText(jTable1.getValueAt(rowNo,17).toString());
                     txtName5.setText(jTable1.getValueAt(rowNo,18).toString());
+                    cmbAgentName.setSelectedItem(jTable1.getValueAt(rowNo,20).toString());
                     
             } 
             catch (ParseException ex) 
@@ -416,10 +668,6 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
             btnUpdate.setEnabled(true);
             btnDelete.setEnabled(true);
             btnPrint.setEnabled(true);
-            btnAttachPassport.setEnabled(true);
-            btnAttachCheckingReceipt.setEnabled(true);
-            btnAgentDetails.setEnabled(true);
-            btnVisaDetails.setEnabled(true);
             
             businessVisaId=Integer.parseInt(jTable2.getValueAt(rowNo,1).toString());
             cmbSex.setSelectedItem(jTable2.getValueAt(rowNo,3).toString());
@@ -440,6 +688,7 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
                     txtName3.setText(jTable2.getValueAt(rowNo,16).toString());
                     txtName4.setText(jTable2.getValueAt(rowNo,17).toString());
                     txtName5.setText(jTable2.getValueAt(rowNo,18).toString());
+                    cmbAgentName.setSelectedItem(jTable2.getValueAt(rowNo,20).toString());
                     
             } 
             catch (ParseException ex) 
@@ -460,10 +709,6 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
             btnUpdate.setEnabled(true);
             btnDelete.setEnabled(true);
             btnPrint.setEnabled(true);
-            btnAttachPassport.setEnabled(true);
-            btnAttachCheckingReceipt.setEnabled(true);
-            btnAgentDetails.setEnabled(true);
-            btnVisaDetails.setEnabled(true);
             
             businessVisaId=Integer.parseInt(jTable3.getValueAt(rowNo,1).toString());
             cmbSex.setSelectedItem(jTable3.getValueAt(rowNo,3).toString());
@@ -484,6 +729,7 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
                     txtName3.setText(jTable3.getValueAt(rowNo,16).toString());
                     txtName4.setText(jTable3.getValueAt(rowNo,17).toString());
                     txtName5.setText(jTable3.getValueAt(rowNo,18).toString());
+                    cmbAgentName.setSelectedItem(jTable3.getValueAt(rowNo,20).toString());
                     
             } 
             catch (ParseException ex) 
@@ -500,7 +746,7 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
         Connection con=c.conn();
         try
         {
-            PreparedStatement ps=con.prepareStatement("UPDATE tbl_business_visa_appli SET applicantName1=upper(?),applicantName2=upper(?),applicantName3=upper(?),applicantName4=upper(?),applicantName5=upper(?),sex=upper(?),nationality=upper(?),passportNumber=upper(?),passportExpiry=upper(?),dateOfBirth=upper(?),profession=upper(?),eduQualification=upper(?),companyId=upper(?),companyName=upper(?),ProName=upper(?),proId=upper(?) where businessVisaId=?");
+            PreparedStatement ps=con.prepareStatement("UPDATE tbl_business_visa_appli SET applicantName1=upper(?),applicantName2=upper(?),applicantName3=upper(?),applicantName4=upper(?),applicantName5=upper(?),sex=upper(?),nationality=upper(?),passportNumber=upper(?),passportExpiry=upper(?),dateOfBirth=upper(?),profession=upper(?),eduQualification=upper(?),companyId=upper(?),companyName=upper(?),ProName=upper(?),proId=upper(?),AgentName=upper(?) where businessVisaId=?");
             ps.setString(1,txtName1.getText());
             ps.setString(2,txtName2.getText());
             ps.setString(3,txtName3.getText());
@@ -517,7 +763,8 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
             ps.setString(14,cmbCompanyName.getSelectedItem().toString());
             ps.setString(15,cmbProName.getSelectedItem().toString());
             ps.setString(16,cmbProId.getSelectedItem().toString());
-            ps.setInt(17, businessVisaId);
+            ps.setString(17,cmbAgentName.getSelectedItem().toString());
+            ps.setInt(18, businessVisaId);
             int i=ps.executeUpdate();
             if(i!=0)
             {
@@ -562,58 +809,6 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
 
             }
      }
-     public boolean ispassportCopyAvailable()
-    {
-        boolean ispassportCopyAvailable=true;
-        connection c=new connection();
-        Connection con=c.conn();
-        try
-        {
-            Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("SELECT * FROM tbl_business_visa_passport WHERE businessVisaId="+businessVisaId);
-            if(rs.next()==false)
-            {
-                 ispassportCopyAvailable=false;
-            }
-            else
-            {
-               ispassportCopyAvailable=true;
-            }
-            con.close();
-            
-        }
-        catch(Exception e)
-        {
-
-        }
-        return ispassportCopyAvailable;
-    }
-    public boolean isCheckingReceiptAvailable()
-    {
-        boolean isCheckingReceiptAvailbale=true;
-        connection c=new connection();
-        Connection con=c.conn();
-        try
-        {
-            Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("SELECT * FROM tbl_business_visa_checking_recepit WHERE businessVisaId="+businessVisaId);
-            if(rs.next()==false)
-            {
-                 isCheckingReceiptAvailbale=false;
-            }
-            else
-            {
-               isCheckingReceiptAvailbale=true;
-            }
-            con.close();
-            
-        }
-        catch(Exception e)
-        {
-
-        }
-        return isCheckingReceiptAvailbale;
-    }
     public boolean isVisaDetailsAvailable()
     {
         boolean isVisaDetailsAvailable=true;
@@ -746,12 +941,18 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jtablePopUp = new javax.swing.JPopupMenu();
-        menuItemAttachPassport = new javax.swing.JMenuItem();
-        menuItemAttachCheckingReceipt = new javax.swing.JMenuItem();
         menuItemAttachVisaDetails = new javax.swing.JMenuItem();
         menuItemEntryDate = new javax.swing.JMenuItem();
-        menuItemExitDate = new javax.swing.JMenuItem();
         menuItemPrint = new javax.swing.JMenuItem();
+        menuVisaExtension = new javax.swing.JMenu();
+        menuItem3MonthExtensionGroup = new javax.swing.JMenuItem();
+        menuItemview3monthGroup = new javax.swing.JMenuItem();
+        menuItemClearGroup3month = new javax.swing.JMenuItem();
+        menuItemPrintGroup3month = new javax.swing.JMenuItem();
+        menuItem3MonthExtension = new javax.swing.JMenuItem();
+        menuItemDrivingLnceAppli = new javax.swing.JMenuItem();
+        menuItemExitDate = new javax.swing.JMenuItem();
+        menuItemRejected = new javax.swing.JMenuItem();
         menuItemDelete = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
@@ -774,6 +975,8 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
         cmbProfession = new javax.swing.JComboBox();
         jLabel22 = new javax.swing.JLabel();
         cmbQualification = new javax.swing.JComboBox();
+        jLabel27 = new javax.swing.JLabel();
+        cmbAgentName = new javax.swing.JComboBox();
         jPanel2 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
@@ -793,30 +996,12 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
         btnRefresh = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         btnPrint = new javax.swing.JButton();
-        btnAttachPassport = new javax.swing.JButton();
-        btnAttachCheckingReceipt = new javax.swing.JButton();
-        btnAgentDetails = new javax.swing.JButton();
-        btnVisaDetails = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
-
-        menuItemAttachPassport.setText("Attach Passport Copy");
-        menuItemAttachPassport.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemAttachPassportActionPerformed(evt);
-            }
-        });
-        jtablePopUp.add(menuItemAttachPassport);
-
-        menuItemAttachCheckingReceipt.setText("Attach Checking Receipt");
-        menuItemAttachCheckingReceipt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemAttachCheckingReceiptActionPerformed(evt);
-            }
-        });
-        jtablePopUp.add(menuItemAttachCheckingReceipt);
+        btnVisEnquiryPrinting = new javax.swing.JButton();
+        btnPrint1 = new javax.swing.JButton();
 
         menuItemAttachVisaDetails.setText("Attach Visa Details");
         menuItemAttachVisaDetails.addActionListener(new java.awt.event.ActionListener() {
@@ -834,6 +1019,71 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
         });
         jtablePopUp.add(menuItemEntryDate);
 
+        menuItemPrint.setMnemonic('p');
+        menuItemPrint.setText("Print Application Form");
+        menuItemPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemPrintActionPerformed(evt);
+            }
+        });
+        jtablePopUp.add(menuItemPrint);
+
+        menuVisaExtension.setText("Visa Extension");
+
+        menuItem3MonthExtensionGroup.setMnemonic('p');
+        menuItem3MonthExtensionGroup.setText("Add to Group - 3 Month");
+        menuItem3MonthExtensionGroup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItem3MonthExtensionGroupActionPerformed(evt);
+            }
+        });
+        menuVisaExtension.add(menuItem3MonthExtensionGroup);
+
+        menuItemview3monthGroup.setText("View Group - 3 Month");
+        menuItemview3monthGroup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemview3monthGroupActionPerformed(evt);
+            }
+        });
+        menuVisaExtension.add(menuItemview3monthGroup);
+
+        menuItemClearGroup3month.setForeground(new java.awt.Color(255, 0, 51));
+        menuItemClearGroup3month.setText("Clear Group - 3 month");
+        menuItemClearGroup3month.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemClearGroup3monthActionPerformed(evt);
+            }
+        });
+        menuVisaExtension.add(menuItemClearGroup3month);
+
+        menuItemPrintGroup3month.setText("Print Group - 3 Month");
+        menuItemPrintGroup3month.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemPrintGroup3monthActionPerformed(evt);
+            }
+        });
+        menuVisaExtension.add(menuItemPrintGroup3month);
+
+        menuItem3MonthExtension.setMnemonic('p');
+        menuItem3MonthExtension.setText("Print 3 month- Individual");
+        menuItem3MonthExtension.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItem3MonthExtensionActionPerformed(evt);
+            }
+        });
+        menuVisaExtension.add(menuItem3MonthExtension);
+
+        jtablePopUp.add(menuVisaExtension);
+
+        menuItemDrivingLnceAppli.setMnemonic('p');
+        menuItemDrivingLnceAppli.setText("Driving license Application");
+        menuItemDrivingLnceAppli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemDrivingLnceAppliActionPerformed(evt);
+            }
+        });
+        jtablePopUp.add(menuItemDrivingLnceAppli);
+
         menuItemExitDate.setForeground(new java.awt.Color(255, 0, 51));
         menuItemExitDate.setText("Attach Exit Date");
         menuItemExitDate.addActionListener(new java.awt.event.ActionListener() {
@@ -843,14 +1093,14 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
         });
         jtablePopUp.add(menuItemExitDate);
 
-        menuItemPrint.setMnemonic('p');
-        menuItemPrint.setText("Print Application Form");
-        menuItemPrint.addActionListener(new java.awt.event.ActionListener() {
+        menuItemRejected.setForeground(new java.awt.Color(255, 0, 51));
+        menuItemRejected.setText("Rejected");
+        menuItemRejected.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemPrintActionPerformed(evt);
+                menuItemRejectedActionPerformed(evt);
             }
         });
-        jtablePopUp.add(menuItemPrint);
+        jtablePopUp.add(menuItemRejected);
 
         menuItemDelete.setForeground(new java.awt.Color(255, 0, 51));
         menuItemDelete.setText("Delete");
@@ -963,6 +1213,14 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
         cmbQualification.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         cmbQualification.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--select qualification--" }));
 
+        jLabel27.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel27.setText("Agent Name");
+
+        cmbAgentName.setEditable(true);
+        AutoCompleteDecorator.decorate(cmbAgentName);
+        cmbAgentName.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        cmbAgentName.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--name--" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -1000,15 +1258,18 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
                                             .addComponent(jDateDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addComponent(cmbQualification, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
-                    .addComponent(txtName4)
-                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                        .addComponent(txtName4)
+                        .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel27))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cmbProfession, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtPassportNumber)
-                    .addComponent(txtName5))
+                    .addComponent(txtName5)
+                    .addComponent(cmbAgentName, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -1049,7 +1310,9 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbQualification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbQualification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbAgentName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -1064,12 +1327,12 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
         cmbCompanyName.setEditable(true);
         AutoCompleteDecorator.decorate(cmbCompanyName);
         cmbCompanyName.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        cmbCompanyName.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Fixture International W.L.L" }));
+        cmbCompanyName.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Fixture International W.L.L", "Instant Trading & Contracting Co W.L.L" }));
 
         cmbCompanyId.setEditable(true);
         AutoCompleteDecorator.decorate(cmbCompanyId);
         cmbCompanyId.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        cmbCompanyId.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13777500" }));
+        cmbCompanyId.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13777500", "13421100" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -1081,9 +1344,9 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
                     .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cmbCompanyName, 0, 367, Short.MAX_VALUE)
+                    .addComponent(cmbCompanyName, 0, 357, Short.MAX_VALUE)
                     .addComponent(cmbCompanyId, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1126,7 +1389,7 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cmbProName, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmbProId, 0, 367, Short.MAX_VALUE))
+                    .addComponent(cmbProId, 0, 359, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -1241,7 +1504,7 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
 
         btnPrint.setEnabled(false);
         btnPrint.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btnPrint.setText("Print Application Form");
+        btnPrint.setText("Visa Extension Individual");
         btnPrint.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnPrint.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPrint.setFocusable(false);
@@ -1250,66 +1513,6 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
         btnPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPrintActionPerformed(evt);
-            }
-        });
-
-        btnAttachPassport.setEnabled(false);
-        btnAttachPassport.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btnAttachPassport.setMnemonic('r');
-        btnAttachPassport.setText("1.Attach Passport");
-        btnAttachPassport.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnAttachPassport.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAttachPassport.setFocusable(false);
-        btnAttachPassport.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAttachPassport.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnAttachPassport.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAttachPassportActionPerformed(evt);
-            }
-        });
-
-        btnAttachCheckingReceipt.setEnabled(false);
-        btnAttachCheckingReceipt.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btnAttachCheckingReceipt.setMnemonic('r');
-        btnAttachCheckingReceipt.setText("2.Attach Checking Receipt");
-        btnAttachCheckingReceipt.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnAttachCheckingReceipt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAttachCheckingReceipt.setFocusable(false);
-        btnAttachCheckingReceipt.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAttachCheckingReceipt.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnAttachCheckingReceipt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAttachCheckingReceiptActionPerformed(evt);
-            }
-        });
-
-        btnAgentDetails.setEnabled(false);
-        btnAgentDetails.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btnAgentDetails.setMnemonic('r');
-        btnAgentDetails.setText("3.Agent Details");
-        btnAgentDetails.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnAgentDetails.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAgentDetails.setFocusable(false);
-        btnAgentDetails.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAgentDetails.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnAgentDetails.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgentDetailsActionPerformed(evt);
-            }
-        });
-
-        btnVisaDetails.setEnabled(false);
-        btnVisaDetails.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btnVisaDetails.setMnemonic('r');
-        btnVisaDetails.setText("4.Visa Details");
-        btnVisaDetails.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnVisaDetails.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnVisaDetails.setFocusable(false);
-        btnVisaDetails.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnVisaDetails.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnVisaDetails.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVisaDetailsActionPerformed(evt);
             }
         });
 
@@ -1373,6 +1576,34 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
         });
         jScrollPane3.setViewportView(jTable3);
 
+        btnPrint.setEnabled(false);
+        btnVisEnquiryPrinting.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnVisEnquiryPrinting.setText("Visa Enquiry & Printing ");
+        btnVisEnquiryPrinting.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnVisEnquiryPrinting.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVisEnquiryPrinting.setFocusable(false);
+        btnVisEnquiryPrinting.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnVisEnquiryPrinting.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnVisEnquiryPrinting.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisEnquiryPrintingActionPerformed(evt);
+            }
+        });
+
+        btnPrint.setEnabled(false);
+        btnPrint1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnPrint1.setText("Visa Extension Group");
+        btnPrint1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnPrint1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPrint1.setFocusable(false);
+        btnPrint1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPrint1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnPrint1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrint1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1381,32 +1612,24 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addComponent(jScrollPane1))
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1267, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnPrint)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnAttachPassport)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnAttachCheckingReceipt)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnAgentDetails)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnVisaDetails)
-                                .addGap(13, 13, 13)))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnPrint)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnPrint1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnVisEnquiryPrinting)))
+                    .addComponent(jScrollPane2))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -1421,20 +1644,17 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAttachPassport)
-                    .addComponent(btnAttachCheckingReceipt)
                     .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPrint)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btnVisaDetails, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAgentDetails, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(btnVisEnquiryPrinting)
+                    .addComponent(btnPrint1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(209, Short.MAX_VALUE))
+                .addContainerGap(225, Short.MAX_VALUE))
         );
 
         pack();
@@ -1449,8 +1669,15 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtPassportNumberKeyPressed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        if(checkDuplication())
+        {
+            insertIntoDb();
+        }
+        else
+        {
+           JOptionPane.showMessageDialog(null, "This Document is already submitted...for more details please refer the id # "+referenceId,"Warning",JOptionPane.WARNING_MESSAGE);
+        }
 
-        insertIntoDb();
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
@@ -1491,6 +1718,14 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
                 jtablePopUp.show(evt.getComponent(), evt.getX(),evt.getY());
                 screenX = evt.getXOnScreen();
                 screenY = evt.getYOnScreen();
+                    menuItemEntryDate.setEnabled(true);
+                    menuItemExitDate.setEnabled(true);
+                    menuItemDrivingLnceAppli.setEnabled(true);
+                    menuItem3MonthExtensionGroup.setEnabled(true);
+                    menuItem3MonthExtension.setEnabled(true);
+                    menuItemview3monthGroup.setEnabled(true);
+                    menuItemClearGroup3month.setEnabled(true); 
+                    menuItemPrintGroup3month.setEnabled(true);
             }
         }
     }//GEN-LAST:event_jTable1MouseClicked
@@ -1545,140 +1780,6 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtName5KeyPressed
 
-    private void btnAttachPassportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttachPassportActionPerformed
-        // TODO add your handling code here:
-            if(ispassportCopyAvailable())
-            {
-                PassportCopy PC=new PassportCopy(businessVisaId);
-                AnarTrading.desktopPane1.add(PC);
-                PC.setVisible(true); 
-            }
-            else
-            {
-                int response=JOptionPane.showConfirmDialog(null,"There Is No Passport Copy Available for this person!!  Do you want to attach the same? ","Please attach passport copy!",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
-                if(response==JOptionPane.NO_OPTION)
-                {
-
-                }
-                else if(response==JOptionPane.YES_OPTION)
-                {
-                    PassportCopy PC=new PassportCopy(businessVisaId);
-                    AnarTrading.desktopPane1.add(PC);
-                    PC.setVisible(true); 
-                }
-                else if(response==JOptionPane.CLOSED_OPTION)
-                {
-
-                }
-            }
-
-    }//GEN-LAST:event_btnAttachPassportActionPerformed
-
-    private void menuItemAttachPassportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAttachPassportActionPerformed
-        // TODO add your handling code here:
-        PassportCopy PC=new PassportCopy(businessVisaId);
-        AnarTrading.desktopPane1.add(PC);
-        PC.setVisible(true);
-    }//GEN-LAST:event_menuItemAttachPassportActionPerformed
-
-    private void btnAttachCheckingReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttachCheckingReceiptActionPerformed
-        // TODO add your handling code here:
-        connection c=new connection();
-        Connection con=c.conn();
-        try
-        {
-            Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("SELECT * FROM tbl_business_visa_checking_recepit WHERE businessVisaId="+businessVisaId);
-            if(rs.next()==false)
-            {
-                 int response=JOptionPane.showConfirmDialog(null,"There Is No Checking Receipt available for this person!!  Do you want to attach the same? ","Please attach checking receipt!",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
-                if(response==JOptionPane.NO_OPTION)
-                {
-
-                }
-                else if(response==JOptionPane.YES_OPTION)
-                {
-                    CheckingReceipt CR=new CheckingReceipt(businessVisaId);
-                    AnarTrading.desktopPane1.add(CR);
-                    CR.setVisible(true);
-                }
-                else if(response==JOptionPane.CLOSED_OPTION)
-                {
-
-                }
-            }
-            else
-            {
-                CheckingReceipt CR=new CheckingReceipt(businessVisaId);
-                AnarTrading.desktopPane1.add(CR);
-                CR.setVisible(true);
-            }
-            con.close();
-
-
-        }
-        catch(Exception e)
-        {
-
-        }
-        
-    }//GEN-LAST:event_btnAttachCheckingReceiptActionPerformed
-
-    private void menuItemAttachCheckingReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAttachCheckingReceiptActionPerformed
-        // TODO add your handling code here:
-        CheckingReceipt CR=new CheckingReceipt(businessVisaId);
-        AnarTrading.desktopPane1.add(CR);
-        CR.setVisible(true);
-    }//GEN-LAST:event_menuItemAttachCheckingReceiptActionPerformed
-
-    private void btnAgentDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgentDetailsActionPerformed
-        // TODO add your handling code here:
-        connection c=new connection();
-        Connection con=c.conn();
-        try
-        {
-            Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("SELECT * FROM tbl_business_visa_agent WHERE businessVisaId="+businessVisaId);
-            if(rs.next()==false)
-            {
-                 int response=JOptionPane.showConfirmDialog(null,"There Is No Agent Details Available for this person!!  Do you want to add the same? ","Please add agent details!",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
-                if(response==JOptionPane.NO_OPTION)
-                {
-
-                }
-                else if(response==JOptionPane.YES_OPTION)
-                {
-                    AgentDetails AD=new AgentDetails(businessVisaId,txtName1.getText()+" "+txtName2.getText()+" "+txtName3.getText()+" "+txtName4.getText()+" "+txtName5.getText(),txtPassportNumber.getText());
-                    AnarTrading.desktopPane1.add(AD);
-                    AD.setVisible(true);
-                }
-                else if(response==JOptionPane.CLOSED_OPTION)
-                {
-
-                }
-            }
-            else
-            {
-                AgentDetails AD=new AgentDetails(businessVisaId,txtName1.getText()+" "+txtName2.getText()+" "+txtName3.getText()+" "+txtName4.getText()+" "+txtName5.getText(),txtPassportNumber.getText());
-                AnarTrading.desktopPane1.add(AD);
-                AD.setVisible(true);
-            }
-            con.close();
-
-
-        }
-        catch(Exception e)
-        {
-
-        }
-//  
-    }//GEN-LAST:event_btnAgentDetailsActionPerformed
-
-    private void btnVisaDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaDetailsActionPerformed
-        // TODO add your handling code here:
-        addVisaDetails();
-    }//GEN-LAST:event_btnVisaDetailsActionPerformed
-
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         // TODO add your handling code here:
         int rowNo=jTable2.getSelectedRow();
@@ -1693,6 +1794,14 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
                 jtablePopUp.show(evt.getComponent(), evt.getX(),evt.getY());
                 screenX = evt.getXOnScreen();
                 screenY = evt.getYOnScreen();
+                menuItemEntryDate.setEnabled(false);
+                menuItemExitDate.setEnabled(false);
+                menuItemDrivingLnceAppli.setEnabled(false);
+                menuItem3MonthExtensionGroup.setEnabled(false);
+                menuItem3MonthExtension.setEnabled(false);
+                menuItemview3monthGroup.setEnabled(false);
+                menuItemClearGroup3month.setEnabled(false); 
+                menuItemPrintGroup3month.setEnabled(false);
             }
         }
     }//GEN-LAST:event_jTable2MouseClicked
@@ -1730,6 +1839,16 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
                 jtablePopUp.show(evt.getComponent(), evt.getX(),evt.getY());
                     screenX = evt.getXOnScreen();
                     screenY = evt.getYOnScreen();
+                    menuItemEntryDate.setEnabled(false);
+                    menuItemExitDate.setEnabled(false);
+                    menuItemDrivingLnceAppli.setEnabled(false);
+                    menuItem3MonthExtensionGroup.setEnabled(false);
+                    menuItem3MonthExtension.setEnabled(false);
+                    menuItemview3monthGroup.setEnabled(false);
+                    menuItemClearGroup3month.setEnabled(false); 
+                    menuItemPrintGroup3month.setEnabled(false);
+                            
+                            
             }
         }
     }//GEN-LAST:event_jTable3MouseClicked
@@ -1759,10 +1878,6 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
 
     private void menuItemEntryDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemEntryDateActionPerformed
         // TODO add your handling code here:
-        if(ispassportCopyAvailable())
-        {
-            if(isCheckingReceiptAvailable())
-            {
                 if(isVisaDetailsAvailable())
                 {
                     if(isEntryDateAvailable())
@@ -1796,76 +1911,6 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
 
                     }
                 }
-            }
-            else
-            {
-                int response=JOptionPane.showConfirmDialog(null,"There Is No Checking Receipt available for this person!!  Do you want to attach the same? ","Please attach checking receipt first!",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
-                if(response==JOptionPane.NO_OPTION)
-                {
-                    if(isVisaDetailsAvailable())
-                    {
-                        if(isEntryDateAvailable())
-                        {
-                            EntryDateUpdate EDU=new EntryDateUpdate(null, closable,businessVisaId,screenX,screenY,txtName1.getText()+" "+txtName2.getText()+" "+txtName3.getText()+" "+txtName4.getText()+" "+txtName5.getText(),txtPassportNumber.getText(),0);
-                            EDU.setVisible(true);
-                        }
-                        else
-                        {
-                            EntryDateUpdate EDU=new EntryDateUpdate(null, closable,businessVisaId,screenX,screenY,txtName1.getText()+" "+txtName2.getText()+" "+txtName3.getText()+" "+txtName4.getText()+" "+txtName5.getText(),txtPassportNumber.getText());
-                            EDU.setVisible(true);
-
-                        }
-                    }
-                    else
-                    {
-                        int response1=JOptionPane.showConfirmDialog(null,"There Is No VIsa Details Available for this person!!  Do you want to add the same? ","Please add agent details first!",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
-                        if(response1==JOptionPane.NO_OPTION)
-                        {
-
-                        }
-                        else if(response1==JOptionPane.YES_OPTION)
-                        {
-                            VisaDetails VD=new VisaDetails(businessVisaId,txtName1.getText()+" "+txtName2.getText()+" "+txtName3.getText()+" "+txtName4.getText()+" "+txtName5.getText(),txtPassportNumber.getText());
-                            AnarTrading.desktopPane1.add(VD);
-                            VD.setVisible(true);
-                            dispose();
-                        }
-                        else if(response1==JOptionPane.CLOSED_OPTION)
-                        {
-
-                        }
-                    }
-                }
-                else if(response==JOptionPane.YES_OPTION)
-                {
-                    CheckingReceipt CR=new CheckingReceipt(businessVisaId);
-                    AnarTrading.desktopPane1.add(CR);
-                    CR.setVisible(true);
-                }
-                else if(response==JOptionPane.CLOSED_OPTION)
-                {
-
-                }
-            }
-        }
-        else
-        {
-            int response=JOptionPane.showConfirmDialog(null,"There Is No Passport Copy Available for this person!!  Do you want to attach the same? ","Please attach passport copy first!",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
-            if(response==JOptionPane.NO_OPTION)
-            {
-
-            }
-            else if(response==JOptionPane.YES_OPTION)
-            {
-                PassportCopy PC=new PassportCopy(businessVisaId);
-                AnarTrading.desktopPane1.add(PC);
-                PC.setVisible(true); 
-            }
-            else if(response==JOptionPane.CLOSED_OPTION)
-            {
-
-            }
-        }
     }//GEN-LAST:event_menuItemEntryDateActionPerformed
 
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
@@ -1874,10 +1919,6 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
 
     private void menuItemExitDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemExitDateActionPerformed
         // TODO add your handling code here:
-        if(ispassportCopyAvailable())
-        {
-            if(isCheckingReceiptAvailable())
-            {
                 if(isVisaDetailsAvailable())
                 {
                     if(isEntryDateAvailable())
@@ -1930,97 +1971,6 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
 
                     }
                 }
-            }
-            else
-            {
-                int response=JOptionPane.showConfirmDialog(null,"There Is No Checking Receipt available for this person!!  Do you want to attach the same? ","Please attach checking receipt first!",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
-                if(response==JOptionPane.NO_OPTION)
-                {
-                    if(isVisaDetailsAvailable())
-                    {
-                        if(isEntryDateAvailable())
-                        {
-                            if(isEixtDateAvailable())
-                            {
-                                ExitDateUpdate EDU=new ExitDateUpdate(null, closable,businessVisaId,screenX,screenY,txtName1.getText()+" "+txtName2.getText()+" "+txtName3.getText()+" "+txtName4.getText()+" "+txtName5.getText(),txtPassportNumber.getText(),0);
-                                EDU.setVisible(true);
-                            }
-                            else
-                            {
-                                ExitDateUpdate EDU=new ExitDateUpdate(null, closable,businessVisaId,screenX,screenY,txtName1.getText()+" "+txtName2.getText()+" "+txtName3.getText()+" "+txtName4.getText()+" "+txtName5.getText(),txtPassportNumber.getText());
-                                EDU.setVisible(true);
-                            }
-                        }
-                        else
-                        {
-                            int response1=JOptionPane.showConfirmDialog(null,"There Is No VIsa Details Available for this person!!  Do you want to add the same? ","Please add agent details first!",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
-                            if(response1==JOptionPane.NO_OPTION)
-                            {
-
-                            }
-                            else if(response1==JOptionPane.YES_OPTION)
-                            {
-                                EntryDateUpdate EDU=new EntryDateUpdate(null, closable,businessVisaId,screenX,screenY,txtName1.getText()+" "+txtName2.getText()+" "+txtName3.getText()+" "+txtName4.getText()+" "+txtName5.getText(),txtPassportNumber.getText());
-                                EDU.setVisible(true);
-                            }   
-                            else if(response1==JOptionPane.CLOSED_OPTION)
-                            {
-
-                            }
-                        }
-                    }   
-                    else
-                    {
-                        int response2=JOptionPane.showConfirmDialog(null,"There Is No VIsa Details Available for this person!!  Do you want to add the same? ","Please add Visa details first!",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
-                        if(response2==JOptionPane.NO_OPTION)
-                        {
-
-                        }
-                        else if(response2==JOptionPane.YES_OPTION)
-                        {
-                            VisaDetails VD=new VisaDetails(businessVisaId,txtName1.getText()+" "+txtName2.getText()+" "+txtName3.getText()+" "+txtName4.getText()+" "+txtName5.getText(),txtPassportNumber.getText());
-                            AnarTrading.desktopPane1.add(VD);
-                            VD.setVisible(true);
-                            dispose();
-                        }
-                        else if(response2==JOptionPane.CLOSED_OPTION)
-                        {
-
-                        }
-                    }
-                    
-                    
-                }
-                else if(response==JOptionPane.YES_OPTION)
-                {
-                    CheckingReceipt CR=new CheckingReceipt(businessVisaId);
-                    AnarTrading.desktopPane1.add(CR);
-                    CR.setVisible(true);
-                }
-                else if(response==JOptionPane.CLOSED_OPTION)
-                {
-
-                }
-            }
-        }
-        else
-        {
-            int response=JOptionPane.showConfirmDialog(null,"There Is No Passport Copy Available for this person!!  Do you want to attach the same? ","Please attach passport copy first!",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
-            if(response==JOptionPane.NO_OPTION)
-            {
-
-            }
-            else if(response==JOptionPane.YES_OPTION)
-            {
-                PassportCopy PC=new PassportCopy(businessVisaId);
-                AnarTrading.desktopPane1.add(PC);
-                PC.setVisible(true); 
-            }
-            else if(response==JOptionPane.CLOSED_OPTION)
-            {
-
-            }
-        }
     }//GEN-LAST:event_menuItemExitDateActionPerformed
 
     private void menuItemAttachVisaDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAttachVisaDetailsActionPerformed
@@ -2029,18 +1979,116 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_menuItemAttachVisaDetailsActionPerformed
 
+    private void btnVisEnquiryPrintingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisEnquiryPrintingActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            String URL="http://www.moi.gov.qa/VsaWeb/Actions?action=geteServiceVisaInfoInput&language=english";
+            java.awt.Desktop.getDesktop().browse(java.net.URI.create(URL));
+        }
+        catch(Exception e)
+        {
+            
+        }
+    }//GEN-LAST:event_btnVisEnquiryPrintingActionPerformed
+
+    private void menuItemRejectedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRejectedActionPerformed
+        // TODO add your handling code here:
+        int response=JOptionPane.showConfirmDialog(null,"Do you want to continue?","Rejected?",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
+        if(response==JOptionPane.NO_OPTION)
+        {
+
+        }
+        else if(response==JOptionPane.YES_OPTION)
+        {
+            
+            connection c=new connection();
+            Connection con=c.conn();
+            try
+            {
+                    PreparedStatement ps1=con.prepareStatement("UPDATE tbl_business_visa_appli SET status='Rejected' where businessVisaId=?");
+                    ps1.setInt(1, businessVisaId);
+                    int j=ps1.executeUpdate();
+                    if(j!=0)
+                    {
+                        dispose();
+                        viewBusinessVisaForm();
+                    } 
+            }
+            catch(Exception e)
+            {
+                JOptionPane.showMessageDialog(rootPane, e, "ERROR!!", JOptionPane.ERROR_MESSAGE);
+                //JOptionPane.showMessageDialog(rootPane,e+"Error SA001");
+            }
+        }   
+        else if(response==JOptionPane.CLOSED_OPTION)
+        {
+
+        }
+        
+    }//GEN-LAST:event_menuItemRejectedActionPerformed
+
+    private void menuItem3MonthExtensionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem3MonthExtensionActionPerformed
+        // TODO add your handling code here:
+        HashMap para=new HashMap();
+        para.put("businessVisaId",businessVisaId);
+        ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\BusinessVisa\\3monthRenewal.jasper"),para);
+        re.setVisible(true);
+    }//GEN-LAST:event_menuItem3MonthExtensionActionPerformed
+
+    private void menuItemDrivingLnceAppliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDrivingLnceAppliActionPerformed
+        // TODO add your handling code here:
+        HashMap para=new HashMap();
+        para.put("businessVisaId",businessVisaId);
+        ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\BusinessVisa\\DrivingApplication.jasper"),para);
+        re.setVisible(true);
+    }//GEN-LAST:event_menuItemDrivingLnceAppliActionPerformed
+
+    private void menuItem3MonthExtensionGroupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem3MonthExtensionGroupActionPerformed
+        // TODO add your handling code here:
+        insertIntoDb3monthExtensionGroup();
+    }//GEN-LAST:event_menuItem3MonthExtensionGroupActionPerformed
+
+    private void menuItemClearGroup3monthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemClearGroup3monthActionPerformed
+        // TODO add your handling code here:
+        Clear3monthExtensionGroup();
+    }//GEN-LAST:event_menuItemClearGroup3monthActionPerformed
+
+    private void menuItemview3monthGroupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemview3monthGroupActionPerformed
+        // TODO add your handling code here:
+        bv3MonthExtensionGroup view3monthExtnGroup = new bv3MonthExtensionGroup();
+        AnarTrading.desktopPane1.add(view3monthExtnGroup);
+        view3monthExtnGroup.setVisible(true);
+        view3monthExtnGroup.show();
+    }//GEN-LAST:event_menuItemview3monthGroupActionPerformed
+
+    private void btnPrint1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrint1ActionPerformed
+        // TODO add your handling code here:
+        bv3MonthExtensionGroup view3monthExtnGroup = new bv3MonthExtensionGroup();
+        AnarTrading.desktopPane1.add(view3monthExtnGroup);
+        view3monthExtnGroup.setVisible(true);
+        view3monthExtnGroup.show();
+        
+    }//GEN-LAST:event_btnPrint1ActionPerformed
+
+    private void menuItemPrintGroup3monthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemPrintGroup3monthActionPerformed
+        // TODO add your handling code here:
+        HashMap para=new HashMap();
+        ReportView re=new ReportView(path.concat("\\lib\\Reports\\Anar\\BusinessVisa\\3monthRenewalGroup.jasper"));
+        re.setVisible(true);
+    }//GEN-LAST:event_menuItemPrintGroup3monthActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgentDetails;
-    private javax.swing.JButton btnAttachCheckingReceipt;
-    private javax.swing.JButton btnAttachPassport;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnPrint;
+    private javax.swing.JButton btnPrint1;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JButton btnVisaDetails;
+    private javax.swing.JButton btnVisEnquiryPrinting;
+    private javax.swing.JComboBox cmbAgentName;
     private javax.swing.JComboBox cmbCompanyId;
     private javax.swing.JComboBox cmbCompanyName;
     private javax.swing.JComboBox cmbNationality;
@@ -2063,6 +2111,7 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -2074,13 +2123,19 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTable3;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JPopupMenu jtablePopUp;
-    private javax.swing.JMenuItem menuItemAttachCheckingReceipt;
-    private javax.swing.JMenuItem menuItemAttachPassport;
+    private javax.swing.JMenuItem menuItem3MonthExtension;
+    private javax.swing.JMenuItem menuItem3MonthExtensionGroup;
     private javax.swing.JMenuItem menuItemAttachVisaDetails;
+    private javax.swing.JMenuItem menuItemClearGroup3month;
     private javax.swing.JMenuItem menuItemDelete;
+    private javax.swing.JMenuItem menuItemDrivingLnceAppli;
     private javax.swing.JMenuItem menuItemEntryDate;
     private javax.swing.JMenuItem menuItemExitDate;
     private javax.swing.JMenuItem menuItemPrint;
+    private javax.swing.JMenuItem menuItemPrintGroup3month;
+    private javax.swing.JMenuItem menuItemRejected;
+    private javax.swing.JMenuItem menuItemview3monthGroup;
+    private javax.swing.JMenu menuVisaExtension;
     private javax.swing.JTextField txtName1;
     private javax.swing.JTextField txtName2;
     private javax.swing.JTextField txtName3;
@@ -2091,5 +2146,5 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
     public static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     DateFormat defaultDate = new SimpleDateFormat("yyyy-MM-dd");
     String dateString = "",passportExpiry="",dateOfBirth="",path;
-    int businessVisaId,screenX,screenY;
+    int businessVisaId,screenX,screenY,referenceId;
 }
