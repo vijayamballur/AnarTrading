@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DeliveryNote" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="012f02a6-f9a8-4dcb-8eb4-90ee35e95d67">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="Table Dataset 1" uuid="f4679f6f-f336-4b76-830a-2714a9830d87"/>
+	<queryString>
+		<![CDATA[SELECT
+     tbl_pettycash.`pettyId` AS tbl_pettycash_pettyId
+FROM
+     `tbl_pettycash` tbl_pettycash where tbl_pettycash.`pettyId`=120]]>
+	</queryString>
+	<field name="tbl_pettycash_pettyId" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="842" splitType="Stretch">
+			<staticText>
+				<reportElement key="name" x="51" y="160" width="299" height="20" uuid="ffaedc87-84a1-49ad-a878-efbdaa85091d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[M/S QPMC	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="date" x="432" y="133" width="132" height="20" uuid="3a425240-fbfd-4048-a54e-48b0c7719d2e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+				</textElement>
+				<text><![CDATA[28-06-2015]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="address" x="70" y="192" width="316" height="20" uuid="8db608c5-89dd-4b6e-8b9a-a6bc953d3cc9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+				</textElement>
+				<text><![CDATA[P.O Box: 22095,Tel: +974 44479411,Doha-Qatar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="LPO" x="443" y="192" width="152" height="20" uuid="832a184f-f8a2-4ef1-82e1-744d8a9db7c2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[4500001891]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Sl.no" x="26" y="387" width="44" height="23" uuid="ddbeb427-7eee-4e50-9b13-ee955db3c95a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[6.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Description" x="81" y="265" width="269" height="23" forecolor="#000000" uuid="705b596e-388d-4d1b-a9d6-06e81c29d5fb"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11" isBold="false" isUnderline="false"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[safety shoe Black Size 6	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Qty" x="356" y="265" width="54" height="23" uuid="ec6f49bd-49d3-41ce-9e03-c4c1c2c1e93c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[40 Pcs]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Description" x="81" y="288" width="269" height="26" forecolor="#000000" uuid="bc6c87f0-98a3-40f5-87f0-0bc28192cf3e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11" isBold="false"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[safety shoe Black Size 7]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Description" x="81" y="311" width="269" height="26" forecolor="#000000" uuid="50175ea9-4d25-49f7-b31a-faa55721437b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11" isBold="false"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[safety shoe Black Size 8]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Description" x="81" y="337" width="269" height="25" forecolor="#000000" uuid="9d89a102-cd0c-434d-a8f9-498bd8082728"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11" isBold="false"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[safety shoe Black Size 9]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Description" x="81" y="385" width="269" height="25" forecolor="#000000" uuid="8004f2dd-ccb8-498d-81fb-cf40e30d1936"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11" isBold="false"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[safety shoe Black Size 11]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Description" x="81" y="410" width="269" height="25" forecolor="#000000" uuid="54927408-6f87-4bb6-9af8-7ff025c43ed4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11" isBold="false"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[safety shoe Black Size 12]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Description" x="81" y="435" width="269" height="25" forecolor="#000000" uuid="b624ad85-8e72-4e94-a4bd-31112ebadba5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11" isBold="false"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Sl.no" x="26" y="288" width="44" height="23" uuid="9167574e-92ca-4aa2-9497-9b1a6383a4f9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[2.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Sl.no" x="26" y="314" width="44" height="23" uuid="335f54b8-ab68-4047-85a8-859c0d56ec0b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[3.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Sl.no" x="26" y="339" width="44" height="23" uuid="364b9a40-e728-4741-8865-badcb9ee4b2a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[4.	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Sl.no" x="26" y="362" width="44" height="23" uuid="f88c95cc-9878-443f-902b-dacf877e67fd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[5.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Sl.no" x="26" y="412" width="44" height="23" uuid="94875bc9-9874-43b4-85d2-bddbfb150bec"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[7.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Sl.no" x="26" y="439" width="44" height="21" uuid="99396e01-078f-4afa-8dae-65f0706dbea7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Qty" x="356" y="311" width="54" height="23" uuid="393c33e2-00c4-44f3-873a-d92a56dfbf0a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[50 Pcs]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Qty" x="356" y="334" width="54" height="28" uuid="d1cc8d5f-2a65-48fb-b686-bed57ad0eb79"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[33 Pcs]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Qty" x="356" y="362" width="54" height="23" uuid="4260fc26-8d21-4176-9072-f1d359caffaa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[12 Pcs]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Qty" x="356" y="387" width="54" height="23" uuid="7450f04e-b644-4f1f-a754-1a32625118fc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[13 Pcs]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Qty" x="356" y="412" width="54" height="23" uuid="615534c3-1c40-4b0f-9dce-f4ea09b34f43"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[12 Pcs]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Qty" x="356" y="439" width="54" height="21" uuid="d872eb08-9b8c-4681-8f87-bec4507d8b8d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="LPO" x="454" y="160" width="110" height="20" uuid="b456771e-45ed-476c-912e-872e9579ed5b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Qty" x="356" y="288" width="54" height="23" uuid="8d034c51-c911-42a3-9253-72db6759cfba"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[45 Pcs]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Sl.no" x="26" y="265" width="44" height="23" uuid="cecc15af-83b5-4110-abcd-faecd037cfb8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[1.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Sl.no" x="26" y="462" width="44" height="21" uuid="2e9b938c-fc37-4e8b-a164-adbba7330813"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Description" x="81" y="460" width="269" height="25" forecolor="#000000" uuid="d43175d1-411b-4a74-90cb-dcc28c489528"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11" isBold="true"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Qty" x="356" y="464" width="54" height="21" uuid="938f78dd-fd52-460c-818b-20dfe70c84c4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Sl.no" x="26" y="486" width="44" height="21" uuid="80049bd9-b354-4458-867e-3e66de0ae618"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Description" x="81" y="485" width="269" height="25" forecolor="#000000" uuid="4204ac3e-5bc5-405c-99fe-532a8306c305"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11" isBold="false"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Qty" x="356" y="487" width="54" height="21" uuid="6061fcda-59cf-40aa-9047-cc76c951482a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Sl.no" x="26" y="510" width="44" height="25" uuid="b37bf35a-c6d0-4649-adf2-b9e0ac6c59c1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Description" x="81" y="510" width="269" height="25" forecolor="#000000" uuid="c299a910-81cd-474c-aaa4-0370d9cc0a69"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11" isBold="false"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Qty" x="356" y="510" width="54" height="25" uuid="0e12f3f3-4c5c-4ad2-a4d7-052237ddcc93"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Sl.no" x="26" y="535" width="44" height="25" uuid="8b1f4985-b655-4191-a7e8-4586a92dd284"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Description" x="81" y="535" width="269" height="25" forecolor="#000000" uuid="ed38bd18-8003-442e-a7b3-b5dbd60e970e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11" isBold="false"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Qty" x="356" y="535" width="54" height="25" uuid="89e6c67d-cefe-40bd-8497-1134a868f099"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Sl.no" x="26" y="560" width="44" height="25" uuid="883eecea-5785-4ce7-8030-c4af01f8c124"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Description" x="81" y="560" width="269" height="25" forecolor="#000000" uuid="2e4eefa6-ccf3-4e6a-b669-5c4312ad7f2e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11" isBold="false"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Qty" x="356" y="560" width="54" height="25" uuid="54237d19-9903-4d42-a062-1f2540fbf272"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Sl.no" x="26" y="585" width="44" height="25" uuid="30b6501b-dd04-4b86-9344-052c559744a5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Description" x="81" y="585" width="269" height="25" forecolor="#000000" uuid="18d25fea-520b-40f1-98b1-37550ff2e6e3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11" isBold="false"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Qty" x="356" y="585" width="54" height="25" uuid="36a4aab0-4ca2-41de-9094-7597d24a35d1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="Description" x="81" y="360" width="269" height="25" forecolor="#000000" uuid="9719b9de-2381-45bd-8dac-66bac018a3aa"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="11" isBold="false"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[safety shoe Black Size 10]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

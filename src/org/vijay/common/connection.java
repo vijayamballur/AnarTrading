@@ -29,8 +29,8 @@ public class connection
             //con=DriverManager.getConnection("jdbc:sqlite:C:\\Program Files\\InventryManagement\\DB\\inventry.db");
             con=DriverManager.getConnection("jdbc:mysql://localhost:3306/anar","root","manager");
             //con=DriverManager.getConnection("jdbc:mysql://192.168.1.3:3306/anar","anar","creative");
-            //con=DriverManager.getConnection("jdbc:mysql://www.fixtureinternational.com:3306/fixturei_EasySoft","fixturei_root","12creative34.");
-            
+            //con=DriverManager.getConnection("jdbc:mysql://209.133.210.101:3306/fixturei_Mysoft","fixturei_root","12creative34.");
+            System.out.println(con);
         }
         catch(Exception e)
         {

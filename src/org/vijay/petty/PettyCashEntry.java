@@ -120,7 +120,7 @@ public class PettyCashEntry extends javax.swing.JInternalFrame {
         try
         {
             Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("SELECT X.pettyId,X.Name,X.pettyDate,X.description, X.debit, X.credit, SUM(Y.bal) balance FROM( SELECT *,credit-debit bal FROM tbl_temp_petty) X JOIN( SELECT *,credit-debit bal FROM tbl_temp_petty) Y ON Y.id <= X.id  WHERE MONTH(X.pettyDate)=MONTH(CURRENT_DATE) GROUP BY X.id");
+            ResultSet rs=stmt.executeQuery("SELECT X.pettyId,X.Name,X.pettyDate,X.description, X.debit, X.credit, SUM(Y.bal) balance FROM( SELECT *,credit-debit bal FROM tbl_temp_petty) X JOIN( SELECT *,credit-debit bal FROM tbl_temp_petty) Y ON Y.id <= X.id  WHERE MONTH(X.pettyDate)=MONTH(CURRENT_DATE) AND YEAR(X.pettyDate)=YEAR(CURRENT_DATE) GROUP BY X.id");
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             
             jTable1.getColumnModel().getColumn(0).setMinWidth(50);

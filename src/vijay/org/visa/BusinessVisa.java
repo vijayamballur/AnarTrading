@@ -1839,7 +1839,6 @@ public class BusinessVisa extends javax.swing.JInternalFrame {
                 jtablePopUp.show(evt.getComponent(), evt.getX(),evt.getY());
                     screenX = evt.getXOnScreen();
                     screenY = evt.getYOnScreen();
-                    menuItemEntryDate.setEnabled(false);
                     menuItemExitDate.setEnabled(false);
                     menuItemDrivingLnceAppli.setEnabled(false);
                     menuItem3MonthExtensionGroup.setEnabled(false);
